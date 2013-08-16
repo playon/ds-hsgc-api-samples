@@ -1,0 +1,14 @@
+{
+  "name": "hsgcApiSample",
+  "version": "1.2.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async": "~0.2.9",
+    "request": "~2.27.0"
+  },
+  "devDependencies": {},
+  "repository": "",
+  "author": "",
+  "license": "BSD"
+}
