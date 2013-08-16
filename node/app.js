@@ -7,8 +7,11 @@ var sys = require('util'),
     hsgc = require('./apiClient'),
     async = require('async');
 
+//this method will grab all box scores for teams associated with your account
+getUserBoxScores2();
+
 //this method will grab the football teams associated with your account, and get the box scores for those teams
-getUserBoxScores();
+//getUserBoxScores();
 
 //if you use this function, it will look up all schools by state, all varsity football teams in those schools, and get the box scores for those teams
 //getBoxScoresByState();
@@ -28,6 +31,24 @@ function getUserBoxScores() {
 					}
 					sys.puts(text);					
 				});
+			});
+		});
+	});
+}
+
+function getUserBoxScores2() {
+	if (!username || !password) {
+		sys.puts("Please edit your username and password at the top of app.js.");
+		quit();
+	}
+	hsgc.authenticate(username, password, function(authToken) {
+		hsgc.getUserBoxScores(authToken, function(boxScores) {
+			boxScores.forEach(function(boxScore) {
+				var text = boxScore.AwayTeamName + ' @ ' + boxScore.HomeTeamName + ' - ' + boxScore.StatusDisplay;
+				if (boxScore.Status == 'Complete') {
+					text = text + ' (' + boxScore.AwayTeamAcronym + ' ' + boxScore.AwayScore + ', ' + boxScore.HomeTeamAcronym + ' ' + boxScore.HomeScore + ')';
+				}
+				sys.puts(text);					
 			});
 		});
 	});

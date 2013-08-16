@@ -1,8 +1,11 @@
 var sys = require('util');
 var request = require('request'); 
-request = request.defaults({ headers: { Accept: 'application/json',  }});
+request = request.defaults({ headers: { Accept: 'application/json'  }});
 
 var apiRoot = 'http://api.hsgamecenter.com/v1.2';    
+//this is the identifier that relates seasons together, i.e. the high school 2013 football season
+//it can be obtained from http://api.hsgamecenter.com/json/metadata?op=GetUniversalSeasons
+var currentUniversalSeasonId = 6;
 
 function authenticate(username, password, callback) {
 	apiPost('/authenticate', { username: username, password: password }, function(response) {
@@ -41,8 +44,13 @@ function getGamesBySeason(seasonId, callback) {
 }
 
 function getBoxScores(teamSeasonIds, callback) {	
-	var idString = '';
 	apiRequest('/teams/seasons/' + teamSeasonIds.join(',') + '/football/boxScores', { }, function(response) {							
+		callback(response.BoxScores);
+	});
+}
+
+function getUserBoxScores(authToken, callback) {	
+	apiRequest('/user/teams/football/boxScores', { authToken: authToken, count: 2048, universalSeasonId: currentUniversalSeasonId }, function(response) {							
 		callback(response.BoxScores);
 	});
 }
@@ -78,3 +86,4 @@ exports.getGamesBySeason = getGamesBySeason;
 exports.getBoxScores = getBoxScores;
 exports.getUserTeams = getUserTeams;
 exports.authenticate = authenticate;
+exports.getUserBoxScores = getUserBoxScores;
