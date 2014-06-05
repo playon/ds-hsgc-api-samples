@@ -1,0 +1,29 @@
+<div>
+  <h4>Scoreboard</h4>
+  <table>
+    <tr>
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th class="final">F</th>
+    </tr>
+    <tr class="odd">
+      <td><img src="{{homeLogo}}" alt="" style="vertical-align:middle" /> {{homeName}}</td>
+      <td>{{homePeriodScores[0].Score}}</td>
+      <td>{{homePeriodScores[1].Score}}</td>
+      <td>{{homePeriodScores[2].Score}}</td>
+      <td>{{homePeriodScores[3].Score}}</td>
+      <td class="final">{{homeScore}}</td>
+    </tr>
+    <tr class="even">
+      <td><img src="{{awayLogo}}" alt="" style="vertical-align:middle" /> {{awayName}}</td>
+      <td>{{awayPeriodScores[0].Score}}</td>
+      <td>{{awayPeriodScores[1].Score}}</td>
+      <td>{{awayPeriodScores[2].Score}}</td>
+      <td>{{awayPeriodScores[3].Score}}</td>
+      <td class="final">{{awayScore}}</td>
+    </tr>
+  </table>
+</div>

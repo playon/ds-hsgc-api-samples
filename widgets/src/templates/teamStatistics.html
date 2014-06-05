@@ -1,0 +1,100 @@
+<div class="details">
+  <h4>Team Stat Comparison</h4>
+  <table>
+    <tr>
+      <th></th>
+      <th><img src="{{homeLogo}}" alt="" style="vertical-align:middle" /> {{homeName}}</th>
+      <th><img src="{{awayLogo}}" alt="" style="vertical-align:middle" /> {{awayName}}</th>
+    </tr>
+    <tr class="odd">
+      <td>Number of Plays</td>
+      <td>{{homeTeamStats.TotalPlays}}</td>
+      <td>{{awayTeamStats.TotalPlays}}</td>
+    </tr>
+    <tr class="even">
+      <td>Total Offense</td>
+      <td>{{homeTeamStats.TotalYards}}</td>
+      <td>{{awayTeamStats.TotalYards}}</td>
+    </tr>
+    <tr class="odd">
+      <td>Time of Possession</td>
+      <td>{{homeTeamStats.TimeOfPossession}}</td>
+      <td>{{awayTeamStats.TimeOfPossession}}</td>
+    </tr>
+    <tr class="even">
+      <td>Rushing Attempts - Yards</td>
+      <td>{{homeTeamStats.RushingAttempts}} - {{homeTeamStats.RushingYards}}</td>
+      <td>{{awayTeamStats.RushingAttempts}} - {{awayTeamStats.RushingYards}}</td>
+    </tr>
+    <tr class="odd">
+      <td>Passing: Completions - Attempts</td>
+      <td>{{homeTeamStats.PassingCompletions}} - {{homeTeamStats.PassingAttempts}}</td>
+      <td>{{awayTeamStats.PassingCompletions}} - {{awayTeamStats.PassingAttempts}}</td>
+    </tr>
+    <tr class="even">
+      <td>Passing Yards</td>
+      <td>{{homeTeamStats.PassingYards}}</td>
+      <td>{{awayTeamStats.PassingYards}}</td>
+    </tr>
+    <tr class="odd">
+      <td>Passing: Touchdowns - Interceptions</td>
+      <td>{{homeTeamStats.PassingTouchdowns}} - {{homeTeamStats.Interceptions}}</td>
+      <td>{{awayTeamStats.PassingTouchdowns}} - {{awayTeamStats.Interceptions}}</td>
+    </tr>
+    <tr class="even">
+      <td>Fumbles - Lost</td>
+      <td>{{homeTeamStats.Fumbles}} - {{homeTeamStats.FumblesLost}}</td>
+      <td>{{awayTeamStats.Fumbles}} - {{awayTeamStats.FumblesLost}}</td>
+    </tr>
+    <tr class="odd">
+      <td>Turnovers</td>
+      <td>{{homeTeamStats.Turnovers}}</td>
+      <td>{{awayTeamStats.Turnovers}}</td>
+    </tr>
+    <tr class="even">
+      <td>First Downs</td>
+      <td>{{homeTeamStats.FirstDowns}}</td>
+      <td>{{awayTeamStats.FirstDowns}}</td>
+    </tr>
+    <tr class="odd">
+      <td>First Downs - Rushing</td>
+      <td>{{homeTeamStats.FirstDownsRushing}}</td>
+      <td>{{awayTeamStats.FirstDownsRushing}}</td>
+    </tr>
+    <tr class="even">
+      <td>First Downs - Passing</td>
+      <td>{{homeTeamStats.FirstDownsPassing}}</td>
+      <td>{{awayTeamStats.FirstDownsPassing}}</td>
+    </tr>
+    <tr class="odd">
+      <td>First Downs - Penalties</td>
+      <td>{{homeTeamStats.FirstDownsPenalty}}</td>
+      <td>{{awayTeamStats.FirstDownsPenalty}}</td>
+    </tr>
+    <tr class="even">
+      <td>Third Down Conversions/Attempts</td>
+      <td>{{homeTeamStats.ThirdDownConversions}}/{{homeTeamStats.ThirdDownAttempts}} ({{homeTeamStats.ThirdDownConversionPercentage | number:1}}%)</td>
+      <td>{{awayTeamStats.ThirdDownConversions}}/{{awayTeamStats.ThirdDownAttempts}} ({{awayTeamStats.ThirdDownConversionPercentage | number:1}}%)</td>
+    </tr>
+    <tr class="odd">
+      <td>Fourth Down Conversions/Attempts</td>
+      <td>{{homeTeamStats.FourthDownConversions}}/{{homeTeamStats.FourthDownAttempts}} ({{homeTeamStats.FourthDownConversionPercentage | number:1}}%)</td>
+      <td>{{awayTeamStats.FourthDownConversions}}/{{awayTeamStats.FourthDownAttempts}} ({{awayTeamStats.FourthDownConversionPercentage | number:1}}%)</td>
+    </tr>
+    <tr class="even">
+      <td>Penalties - Yards</td>
+      <td>{{homeTeamStats.Penalties}} - {{homeTeamStats.PenaltyYards}}</td>
+      <td>{{awayTeamStats.Penalties}} - {{awayTeamStats.PenaltyYards}}</td>
+    </tr>
+    <tr class="odd">
+      <td>Defensive Sacks - Yards</td>
+      <td>{{homeTeamStats.DefensiveSacks}} - {{homeTeamStats.DefensiveSackYardage}}</td>
+      <td>{{awayTeamStats.DefensiveSacks}} - {{awayTeamStats.DefensiveSackYardage}}</td>
+    </tr>
+    <tr class="even">
+      <td>Punts - Average</td>
+      <td>{{homeTeamStats.PuntingAttempts}} - {{homeTeamStats.PuntingAverageYards | number:1}}</td>
+      <td>{{awayTeamStats.PuntingAttempts}} - {{awayTeamStats.PuntingAverageYards | number:1}}</td>
+    </tr>
+  </table>
+</div>

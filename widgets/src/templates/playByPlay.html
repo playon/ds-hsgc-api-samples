@@ -1,0 +1,27 @@
+<div>
+  <h4>Play by Play</h4>
+  <button ng-click="currentPeriod = 1">Q1</button>
+  <button ng-click="currentPeriod = 2">Q2</button>
+  <button ng-click="currentPeriod = 3">Q3</button>
+  <button ng-click="currentPeriod = 4">Q4</button>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Qtr</th>
+      <th>Time</th>
+      <th>Play</th>
+      <th>A</th>
+      <th>H</th>
+    </tr>
+    <tr ng-repeat="play in playByPlay | filter:{Quarter: currentPeriod}">
+      <td>{{play.TeamName}}</td>
+      <td>{{play.Quarter}}</td>
+      <td>{{play.TimeOnClock | timeOnClock }}</td>
+      <td>
+        {{play.Description}}
+      </td>
+      <td>{{play.AwayScore}}</td>
+      <td>{{play.HomeScore}}</td>
+    </tr>
+  </table>
+</div>
