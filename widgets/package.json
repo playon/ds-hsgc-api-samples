@@ -1,0 +1,23 @@
+{
+  "name": "hsgc-widgets",
+  "version": "1.0.0",
+  "description": "Widgets for hsgamecenter.com",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-angular-templates": "^0.5.5",
+    "temporary": "0.0.8",
+    "grunt-s3": "^0.2.0-alpha.3",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-cli": "^0.1.13",
+    "grunt": "^0.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Digital Scout",
+  "license": "MIT"
+}
