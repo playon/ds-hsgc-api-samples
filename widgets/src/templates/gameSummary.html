@@ -1,36 +1,40 @@
 <div>
   <h4>Game Summary</h4>
   <table>
-    <tr>
-      <th></th>
-      <th>{{homeAcronym}}</th>
-      <th>{{awayAcronym}}</th>
-    </tr>
-    <tr class="odd">
-      <td>Passing Yards</td>
-      <td>{{homeTeamStats.PassingYards}}</td>
-      <td>{{awayTeamStats.PassingYards}}</td>
-    </tr>
-    <tr class="even">
-      <td>Rushing Yards</td>
-      <td>{{homeTeamStats.RushingYards}}</td>
-      <td>{{awayTeamStats.RushingYards}}</td>
-    </tr>
-    <tr class="odd">
-      <td>First Downs</td>
-      <td>{{homeTeamStats.FirstDowns}}</td>
-      <td>{{awayTeamStats.FirstDowns}}</td>
-    </tr>
-    <tr class="even">
-      <td>Turnovers</td>
-      <td>{{homeTeamStats.Turnovers}}</td>
-      <td>{{awayTeamStats.Turnovers}}</td>
-    </tr>
-    <tr class="odd">
-      <td>Penalties - Yards</td>
-      <td>{{homeTeamStats.Penalties}} - {{homeTeamStats.PenaltyYards}}</td>
-      <td>{{awayTeamStats.Penalties}} - {{awayTeamStats.PenaltyYards}}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th></th>
+        <th>{{homeAcronym}}</th>
+        <th>{{awayAcronym}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="odd">
+        <td>Passing Yards</td>
+        <td>{{homeTeamStats.PassingYards}}</td>
+        <td>{{awayTeamStats.PassingYards}}</td>
+      </tr>
+      <tr class="even">
+        <td>Rushing Yards</td>
+        <td>{{homeTeamStats.RushingYards}}</td>
+        <td>{{awayTeamStats.RushingYards}}</td>
+      </tr>
+      <tr class="odd">
+        <td>First Downs</td>
+        <td>{{homeTeamStats.FirstDowns}}</td>
+        <td>{{awayTeamStats.FirstDowns}}</td>
+      </tr>
+      <tr class="even">
+        <td>Turnovers</td>
+        <td>{{homeTeamStats.Turnovers}}</td>
+        <td>{{awayTeamStats.Turnovers}}</td>
+      </tr>
+      <tr class="odd">
+        <td>Penalties - Yards</td>
+        <td>{{homeTeamStats.Penalties}} - {{homeTeamStats.PenaltyYards}}</td>
+        <td>{{awayTeamStats.Penalties}} - {{awayTeamStats.PenaltyYards}}</td>
+      </tr>
+    </tbody>
   </table>
   <a href="#" class="seemore">See Full Summary</a>
 </div>

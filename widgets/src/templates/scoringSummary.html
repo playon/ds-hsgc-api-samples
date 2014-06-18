@@ -1,21 +1,25 @@
 <div>
   <h4>Scoring Summary</h4>
   <table>
-    <tr>
-      <th>Team</th>
-      <th>Qtr</th>
-      <th>Time</th>
-      <th>Play</th>
-      <th>A</th>
-      <th>H</th>
-    </tr>
-    <tr ng-repeat="play in scoringPlays">
-      <td>{{play.TeamName}}</td>
-      <td>{{play.Quarter}}</td>
-      <td>{{play.TimeOnClock | timeOnClock }}</td>
-      <td>{{play.Description}}</td>
-      <td>{{play.AwayScore}}</td>
-      <td>{{play.HomeScore}}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Team</th>
+        <th>Qtr</th>
+        <th>Time</th>
+        <th>Play</th>
+        <th>A</th>
+        <th>H</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="play in scoringPlays">
+        <td>{{play.TeamName}}</td>
+        <td>{{play.Quarter}}</td>
+        <td>{{play.TimeOnClock | timeOnClock }}</td>
+        <td>{{play.Description}}</td>
+        <td>{{play.AwayScore}}</td>
+        <td>{{play.HomeScore}}</td>
+      </tr>
+    </tbody>      
   </table>
 </div>

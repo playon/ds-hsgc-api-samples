@@ -5,6 +5,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        less: {
+          basicExample: {
+            files: { 'build/basic.css': 'examples/basic.less' }
+          }
+        },
         uglify: {
             widget_js: {
                 options: {
@@ -25,7 +30,7 @@ module.exports = function (grunt) {
             examples: {
                 files: [{
                     cwd: "examples",
-                    src: "*.*",
+                    src: "*.html",
                     dest: 'build',
                     expand: true
                 }]
@@ -66,10 +71,10 @@ module.exports = function (grunt) {
         },
         watch: {
             files: {
-                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.html'],
-                tasks: ['default'],
+                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*'],
+                tasks: ['build'],
                 options: {
-                    spawn: true,
+                    livereload: true
                 },
             },
         },
@@ -83,6 +88,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-s3');
@@ -90,7 +96,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('build', ['ngtemplates', 'uglify', 'copy']);
+    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
     grunt.registerTask('deploy', ['build', 's3']);
-    grunt.registerTask('default', ['build', 'connect', 'watch']);
+    grunt.registerTask('default', ['connect', 'watch']);
 };

@@ -1,0 +1,194 @@
+<div>
+  <div>
+    <h4>Passing Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Cmp</th>
+          <th>Att</th>
+          <th>Yds</th>
+          <th>Cmp%</th>
+          <th>TD</th>
+          <th>Int</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="passer in passingStats">
+          <td>{{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}</td>
+          <td>{{passer.Completions}}</td>
+          <td>{{passer.Attempts}}</td>
+          <td>{{passer.Yards}}</td>
+          <td>{{passer.CompletionPercentage | number}}%</td>
+          <td>{{passer.Touchdowns}}</td>
+          <td>{{passer.Interceptions}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Rushing Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Att</th>
+          <th>Yds</th>
+          <th>Avg</th>
+          <th>TD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in rushingStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Attempts}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.Average | number}}</td>
+          <td>{{player.Touchdowns}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Receiving Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Rec</th>
+          <th>Yds</th>
+          <th>Avg</th>
+          <th>TD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in receivingStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Receptions}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.Average | number}}</td>
+          <td>{{player.Touchdowns }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Defensive Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tkl</th>
+          <th>Solo</th>
+          <th>Ast</th>
+          <th>Sac</th>
+          <th>TFL</th>
+          <th>Int</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in defensiveStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Tackles}}</td>
+          <td>{{player.Solos}}</td>
+          <td>{{player.Assists}}</td>
+          <td>{{player.Sacks}}</td>
+          <td>{{player.TacklesForLoss}}</td>
+          <td>{{player.Interceptions}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Kicking Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>FG</th>
+          <th>FGA</th>
+          <th>XP</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in kickingStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.FieldGoals}}</td>
+          <td>{{player.FieldGoalAttempts}}</td>
+          <td>{{player.ExtraPoints}}</td>
+          <td>{{player.Points}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Punting Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Att</th>
+          <th>Yds</th>
+          <th>Avg</th>
+          <th>I20</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in puntingStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Attempts}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.Average| number}}</td>
+          <td>{{player.Inside20}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Punt Return Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Att</th>
+          <th>Yds</th>
+          <th>Avg</th>
+          <th>TD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in puntReturnStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Attempts}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.Average| number}}</td>
+          <td>{{player.Touchdowns}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h4>Kick Return Stats</h4>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Att</th>
+          <th>Yds</th>
+          <th>Avg</th>
+          <th>TD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in kickReturnStats">
+          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td>{{player.Attempts}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.Average| number}}</td>
+          <td>{{player.Touchdowns}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
