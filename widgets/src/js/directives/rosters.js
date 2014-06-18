@@ -5,7 +5,7 @@ angular.module('hsgc')
       transclude: true,
       scope: { gameId: "@"},
       controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/' + $scope.gameId + '?includePlayers=true';
+        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameId + '?includePlayers=true';
         $http.get(url)
           .success(function(data) {
             $scope.homeLogo = "http://www.hsgamecenter.com/" + data.HomeTeamLogo + "?width=30&height=30";

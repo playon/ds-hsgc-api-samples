@@ -3,12 +3,12 @@ angular.module('hsgc')
     return {
       restrict: 'AE',
       transclude: true,
-      scope: { gameId: "@", teamId: "@" },
+      scope: { gameId: "@", homeTeam: "@" },
       controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/' + $scope.gameId + '?includePlayerStats=true';
+        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameId + '?includePlayerStats=true';
         $http.get(url)
           .success(function(data) {
-            if (data.HomeTeamSeasonId == $scope.teamId) {
+            if ($scope.homeTeam) {
               $scope.teamName = data.HomeTeamName;
               $scope.players = data.Players;
               $scope.teamId = data.HomeTeamSeasonId;
