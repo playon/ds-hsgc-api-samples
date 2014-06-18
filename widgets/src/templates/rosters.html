@@ -1,0 +1,18 @@
+<div>
+  <div class="left">
+    <h4>{{homeName}}</h4>
+    <table>
+      <tr ng-repeat="player in players | filter:{ TeamSeasonId: homeTeamSeasonId } | rosterPlayersToDisplay">
+        <td>{{player.DisplayName}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="right">
+    <h4>{{awayName}}</h4>
+    <table>
+      <tr ng-repeat="player in players | rosterPlayersToDisplay">
+        <td>{{player.DisplayName}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
