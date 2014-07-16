@@ -3,9 +3,9 @@ angular.module('hsgc')
     return {
       restrict: 'AE',
       transclude: true,
-      scope: { gameId: "@", homeTeam: "@" },
+      scope: { gameKey: "@game", homeTeam: "@" },
       controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameId + '?includePlayerStats=true';
+        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayerStats=true';
         $http.get(url)
           .success(function(data) {
             if ($scope.homeTeam) {

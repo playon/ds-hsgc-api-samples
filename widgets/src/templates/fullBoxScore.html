@@ -1,0 +1,35 @@
+<div>
+  <div class="nfhs-scout-scoreboard">
+    <div scoreboard game="{{unityGameKey}}" publisher="{{publisherKey}}" class="scoreboard"></div>
+  </div>
+
+  <div class="nfhs-scout-game-leaders">
+    <div game-leaders game="{{unityGameKey}}" publisher="{{publisherKey}}" class="game-leaders"></div>
+  </div>
+
+  <div class="nfhs-scout-tabbed-details">
+    <ul class="tabs">
+      <li class="details"><a href="#" class="active">Detailed Stats</a></li>
+      <li class="summary"><a href="#">Scoring Summary</a></li>
+      <li class="playbyplay"><a href="#">Play by Play</a></li>
+      <li class="rosters"><a href="#">Rosters</a></li>
+    </ul>
+    <div class="tabbedContent">
+      <div team-stats game="{{unityGameKey}}" publisher="{{publisherKey}}" class="details"></div>
+      <div scoring-summary game="{{unityGameKey}}" publisher="{{publisherKey}}" class="summary" style="display:none;"></div>
+      <div play-by-play game="{{unityGameKey}}" publisher="{{publisherKey}}" class="playbyplay" style="display:none;"></div>
+      <div rosters game="{{unityGameKey}}" publisher="{{publisherKey}}" class="rosters" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div class="nfhs-scout-playerstats">
+      <ul class="tabs">
+        <li class="team1"><a href="#" class="active"><img src="" alt="">Greenville High School</a></li>
+        <li class="team2"><a href="#" class=""><img src="" alt="">Berkmar High School</a></li>
+      </ul>
+      <div class="tabbedContent">
+        <div class="team1" player-stats game="{{unityGameKey}}" publisher="{{publisherKey}}" home-team="true"></div>
+        <div class="team2" player-stats game="{{unityGameKey}}" publisher="{{publisherKey}}" style="display: none;"></div>
+      </div>
+  </div>
+</div>

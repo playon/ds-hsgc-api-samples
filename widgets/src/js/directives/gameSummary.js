@@ -3,9 +3,9 @@ angular.module('hsgc')
     return {
       restrict: 'AE',
       transclude: true,
-      scope: { gameId: "@"},
+      scope: { gameKey: "@game"},
       controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameId + '?includeTeamAggregates=true';
+        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includeTeamAggregates=true';
         $http.get(url)
           .success(function(data) {
             $scope.homeAcronym = data.HomeTeamAcronym;
