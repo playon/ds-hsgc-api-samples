@@ -1,4 +1,4 @@
-1.0.3 / 2014-07-16
+1.0.2 / 2014-07-16
 ==================
 
   * Changed all directives to require unity keys as attributes
