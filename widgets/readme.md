@@ -1,5 +1,7 @@
 # HSGameCenter Widgets
 
+[CHANGELOG](https://github.com/playon/ds-hsgc-api-samples/blob/master/widgets/History.md)
+
 ## Requirements
 
 1. nodejs
