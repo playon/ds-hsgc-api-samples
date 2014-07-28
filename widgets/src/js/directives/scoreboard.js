@@ -4,8 +4,12 @@ angular.module('hsgc')
       restrict: 'AE',
       transclude: true,
       scope: { gameKey: "@game"},
-      controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey;
+      controller: ['$scope', 'HSGCApi', function($scope, HSGCApi) {
+        HSGCApi.getScores($scope.gameKey)
+          .then(function(result) {
+            angular.extend($scope, result);
+          });
+        /*var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey;
         $http.get(url)
           .success(function(data) {
             $scope.homeScore = data.HomeScore;
@@ -16,7 +20,7 @@ angular.module('hsgc')
             $scope.awayLogo = "http://www.hsgamecenter.com/" + data.AwayTeamLogo + "?width=30&height=30";
             $scope.awayName = data.AwayTeamName;
             $scope.awayPeriodScores = data.AwayPeriodScores;
-          });
+          });*/
       }],
       templateUrl: 'templates/scoreboard.html',
       replace: true

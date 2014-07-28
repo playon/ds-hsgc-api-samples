@@ -5,9 +5,11 @@ angular.module('hsgc')
       transclude: true,
       scope: {
         unityGameKey: "@game",
-        publisherKey: "@publisher"
+        publisherKey: "@publisher",
+        sport: "@sport"
       },
-      controller: ['$scope', function($scope) {
+
+      controller: ['$scope', 'HSGCApi', function($scope, HSGCApi) {
         $scope.getSubscribeUrl = function(dataOnly) {
           var base = '/subscribe/';
 

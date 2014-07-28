@@ -10,7 +10,6 @@ angular.module('hsgc')
         var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayByPlay=true';
         $http.get(url)
           .success(function(data) {
-            console.log(data);
             $scope.scoringPlays = data.ScoringPlays;
           });
       }],

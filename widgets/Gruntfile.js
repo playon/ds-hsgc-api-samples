@@ -15,7 +15,9 @@ module.exports = function (grunt) {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     sourceMap: true,
-                    sourceMapIncludeSources: true
+                    sourceMapIncludeSources: true,
+                    beautify: true,
+                    mangle: false
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
@@ -98,5 +100,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
     grunt.registerTask('deploy', ['build', 's3']);
-    grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
