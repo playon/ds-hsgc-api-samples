@@ -8,6 +8,7 @@ angular.module('hsgc')
         var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includeTeamAggregates=true';
         $http.get(url)
           .success(function(data) {
+            $scope.teamStatsAvailable =  data.HomeTeamStatistics.TotalPlays + data.AwayTeamStatistics.TotalPlays > 0;
             $scope.homeLogo = "http://www.hsgamecenter.com/" + data.HomeTeamLogo + "?width=30&height=30";
             $scope.homeName = data.HomeTeamName;
             $scope.homeTeamStats = data.HomeTeamStatistics;

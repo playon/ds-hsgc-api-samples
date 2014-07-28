@@ -1,6 +1,6 @@
 {
   "name": "hsgc-widgets",
-  "version": "1.0.2-button-demo",
+  "version": "1.0.3",
   "description": "Widgets for hsgamecenter.com",
   "dependencies": {},
   "devDependencies": {

@@ -1,4 +1,4 @@
-<div>
+<div ng-show="leadersAvailable">
     <h4>Game Leaders</h4>
     <table>
       <thead>
@@ -12,15 +12,15 @@
       <tbody>
         <tr class="odd">
           <td><img src="{{homeLogo}}" alt="" style="vertical-align:middle" /> {{homeName}}</td>
-          <td>{{homePassingLeader}}</td>
-          <td>{{homeRushingLeader}}</td>
-          <td>{{homeReceivingLeader}}</td>
+          <td>{{leaders.homePassingLeader}}</td>
+          <td>{{leaders.homeRushingLeader}}</td>
+          <td>{{leaders.homeReceivingLeader}}</td>
         </tr>
         <tr class="even">
           <td><img src="{{awayLogo}}" alt="" style="vertical-align:middle" /> {{awayName}}</td>
-          <td>{{awayPassingLeader}}</td>
-          <td>{{awayRushingLeader}}</td>
-          <td>{{awayReceivingLeader}}</td>
+          <td>{{leaders.awayPassingLeader}}</td>
+          <td>{{leaders.awayRushingLeader}}</td>
+          <td>{{leaders.awayReceivingLeader}}</td>
         </tr>
       </tbody>
     </table>

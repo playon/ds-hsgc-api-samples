@@ -8,6 +8,7 @@ angular.module('hsgc')
         var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayerStats=true';
         $http.get(url)
           .success(function(data) {
+            $scope.playerStatsAvailable = data.DetailLevel == 'Full';
             if ($scope.homeTeam) {
               $scope.teamName = data.HomeTeamName;
               $scope.players = data.Players;

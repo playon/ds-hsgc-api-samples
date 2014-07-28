@@ -7,7 +7,10 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         less: {
           basicExample: {
-            files: { 'build/basic.css': 'examples/basic.less' }
+            files: {
+                'build/basic.css': 'examples/basic.less',
+                'build/nfhs.css': 'examples/nfhs.less'
+            }
           }
         },
         uglify: {
@@ -16,8 +19,8 @@ module.exports = function (grunt) {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    beautify: true,
-                    mangle: false
+                    //beautify: true,
+                    //mangle: false
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
