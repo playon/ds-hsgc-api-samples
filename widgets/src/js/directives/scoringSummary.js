@@ -5,13 +5,9 @@ angular.module('hsgc')
       transclude: true,
       scope: { gameKey: "@game"},
       controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        //includeScoringPlays isn't working...
-        //var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includeScoringPlays=true';
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayByPlay=true';
-        $http.get(url)
-          .success(function(data) {
-            $scope.scoringPlays = data.ScoringPlays;
-          });
+        HSGCApi.getFullBox($scope.gameKey).then(function(result) {
+          angular.extend($scope, result);
+        });
       }],
       templateUrl: 'templates/scoringSummary.html',
       replace: true

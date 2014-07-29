@@ -4,18 +4,10 @@ angular.module('hsgc')
       restrict: 'AE',
       transclude: true,
       scope: { gameKey: "@game"},
-      controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayers=true';
-        $http.get(url)
-          .success(function(data) {
-            $scope.homeLogo = "http://www.hsgamecenter.com/" + data.HomeTeamLogo + "?width=30&height=30";
-            $scope.homeName = data.HomeTeamName;
-            $scope.homeTeamSeasonId = data.HomeTeamSeasonId;
-            $scope.players = data.Players;
-            $scope.awayLogo = "http://www.hsgamecenter.com/" + data.AwayTeamLogo + "?width=30&height=30";
-            $scope.awayName = data.AwayTeamName;
-            $scope.awayTeamSeasonId = data.AwayTeamSeasonId;
-          });
+      controller: ['$scope', '$element', 'HSGCApi', function($scope, $element, HSGCApi) {
+        HSGCApi.getFullBox($scope.gameKey).then(function(result) {
+          angular.extend($scope, result);
+        });
       }],
       templateUrl: 'templates/rosters.html',
       replace: true

@@ -5,22 +5,10 @@ angular.module('hsgc')
       transclude: true,
       scope: { gameKey: "@game"},
       controller: ['$scope', 'HSGCApi', function($scope, HSGCApi) {
-        HSGCApi.getScores($scope.gameKey)
+        HSGCApi.getFullBox($scope.gameKey)
           .then(function(result) {
             angular.extend($scope, result);
           });
-        /*var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey;
-        $http.get(url)
-          .success(function(data) {
-            $scope.homeScore = data.HomeScore;
-            $scope.homeLogo = "http://www.hsgamecenter.com/" + data.HomeTeamLogo + "?width=30&height=30";
-            $scope.homeName = data.HomeTeamName;
-            $scope.homePeriodScores = data.HomePeriodScores;
-            $scope.awayScore = data.AwayScore;
-            $scope.awayLogo = "http://www.hsgamecenter.com/" + data.AwayTeamLogo + "?width=30&height=30";
-            $scope.awayName = data.AwayTeamName;
-            $scope.awayPeriodScores = data.AwayPeriodScores;
-          });*/
       }],
       templateUrl: 'templates/scoreboard.html',
       replace: true

@@ -1,4 +1,4 @@
-<div ng-show="summaryAvailable">
+<div ng-show="statsAvailable">
   <h4>Game Summary</h4>
   <table>
     <thead>
@@ -11,28 +11,28 @@
     <tbody>
       <tr class="odd">
         <td>Passing Yards</td>
-        <td>{{homeTeamStats.PassingYards}}</td>
-        <td>{{awayTeamStats.PassingYards}}</td>
+        <td>{{homeStats.PassingYards}}</td>
+        <td>{{awayStats.PassingYards}}</td>
       </tr>
       <tr class="even">
         <td>Rushing Yards</td>
-        <td>{{homeTeamStats.RushingYards}}</td>
-        <td>{{awayTeamStats.RushingYards}}</td>
+        <td>{{homeStats.RushingYards}}</td>
+        <td>{{awayStats.RushingYards}}</td>
       </tr>
       <tr class="odd">
         <td>First Downs</td>
-        <td>{{homeTeamStats.FirstDowns}}</td>
-        <td>{{awayTeamStats.FirstDowns}}</td>
+        <td>{{homeStats.FirstDowns}}</td>
+        <td>{{awayStats.FirstDowns}}</td>
       </tr>
       <tr class="even">
         <td>Turnovers</td>
-        <td>{{homeTeamStats.Turnovers}}</td>
-        <td>{{awayTeamStats.Turnovers}}</td>
+        <td>{{homeStats.Turnovers}}</td>
+        <td>{{awayStats.Turnovers}}</td>
       </tr>
       <tr class="odd">
         <td>Penalties - Yards</td>
-        <td>{{homeTeamStats.Penalties}} - {{homeTeamStats.PenaltyYards}}</td>
-        <td>{{awayTeamStats.Penalties}} - {{awayTeamStats.PenaltyYards}}</td>
+        <td>{{homeStats.Penalties}} - {{homeStats.PenaltyYards}}</td>
+        <td>{{awayStats.Penalties}} - {{awayStats.PenaltyYards}}</td>
       </tr>
     </tbody>
   </table>

@@ -1,5 +1,5 @@
-<div ng-show="playerStatsAvailable">
-  <div>
+<div ng-show="statsAvailable">
+  <div ng-show="passingStats.length > 0">
     <h4>Passing Stats</h4>
     <table>
       <thead>
@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="passer in passingStats">
-          <td>{{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}</td>
+          <td>{{(players|getPlayerById:passer.PlayerId).DisplayName}}</td>
           <td>{{passer.Completions}}</td>
           <td>{{passer.Attempts}}</td>
           <td>{{passer.Yards}}</td>
@@ -26,7 +26,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="rushingStats.length > 0">
     <h4>Rushing Stats</h4>
     <table>
       <thead>
@@ -49,7 +49,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="receivingStats.length > 0">
     <h4>Receiving Stats</h4>
     <table>
       <thead>
@@ -72,7 +72,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="defensiveStats.length > 0">
     <h4>Defensive Stats</h4>
     <table>
       <thead>
@@ -99,7 +99,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="kickingStats.length > 0">
     <h4>Kicking Stats</h4>
     <table>
       <thead>
@@ -122,7 +122,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="puntingStats.length > 0">
     <h4>Punting Stats</h4>
     <table>
       <thead>
@@ -145,7 +145,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="puntReturnStats.length > 0">
     <h4>Punt Return Stats</h4>
     <table>
       <thead>
@@ -168,7 +168,7 @@
       </tbody>
     </table>
   </div>
-  <div>
+  <div ng-show="kickReturnStats.length > 0">
     <h4>Kick Return Stats</h4>
     <table>
       <thead>

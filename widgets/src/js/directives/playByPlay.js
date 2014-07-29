@@ -4,13 +4,10 @@ angular.module('hsgc')
       restrict: 'AE',
       transclude: true,
       scope: { gameKey: "@game"},
-      controller: ['$scope', '$element', '$http', function($scope, $element, $http) {
-        var url = 'http://api.gray.hsgamecenter.com/games/unity/' + $scope.gameKey + '?includePlayByPlay=true';
-        $http.get(url)
-          .success(function(data) {
-            $scope.playByPlay = data.PlaysInGame;
-            $scope.currentPeriod = 1; //todo: if game is live, show current period, otherwise show first period
-          });
+      controller: ['$scope', '$element', 'HSGCApi', function($scope, $element, HSGCApi) {
+        HSGCApi.getFullBox($scope.gameKey).then(function(result) {
+          angular.extend($scope, result);
+        });
       }],
       templateUrl: 'templates/playByPlay.html',
       replace: true
