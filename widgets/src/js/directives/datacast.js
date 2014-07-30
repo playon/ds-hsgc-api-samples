@@ -11,25 +11,30 @@ angular.module('hsgc')
       },
       controller: ["$scope", function($scope) {
         this.getPlayersForTeam = function(teamId) {
-          return $scope.players[teamId];
+          console.log ($scope.players);
+          if (!angular.isUndefined($scope.players))
+            return $scope.players[teamId];
         };
         this.getPlayerStatsForTeam = function(teamId) {
-          return $scope.playerStats[teamId];
+          if (!angular.isUndefined($scope.playerStats))
+            return $scope.playerStats[teamId];
         };
         this.getStatsAvailable = function() {
-          return $scope.statsAvailable;
+          if (!angular.isUndefined($scope.statsAvailable))
+            return $scope.statsAvailable;
         }
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {
+        transcludeFn(scope, function(clonedContent) {
+          //clonedContent.addClass('test');
+          element = element.replaceWith(clonedContent);
+          element = clonedContent;
+        });
+
         (function updateBoxScore() {
           console.log('polling...');
           HSGCApi.getFullBox(scope.gameKey).then(function(result) {
             angular.extend(scope, result);
-            transcludeFn(scope, function(clonedContent) {
-              //clonedContent.addClass('test');
-              element = element.replaceWith(clonedContent);
-              element = clonedContent;
-            });
             $timeout(updateBoxScore, 30*1000);
           });
         })();

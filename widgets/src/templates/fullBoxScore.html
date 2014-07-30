@@ -1,21 +1,16 @@
 <div datacast="{{unityGameKey}}">
-  <div class="nfhs-scout-scoreboard">
-     <div scoreboard></div>
-  </div>
+  <div scoreboard></div>
+  <div game-leaders></div>
 
-  <div class="nfhs-scout-game-leaders">
-    <div game-leaders></div>
-  </div>
-
-  <div class="nfhs-scout-tabbed-details">
+  <div class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
     <ul class="tabs">
       <li class="details" ng-show="statsAvailable"><a href="#" class="active">Detailed Stats</a></li>
       <li class="summary" ng-show="playByPlayAvailable"><a href="#">Scoring Summary</a></li>
       <li class="playbyplay" ng-show="playByPlayAvailable"><a href="#">Play by Play</a></li>
-      <li class="rosters" ng-show="(players | rosterPlayersToDisplay).length > 0"><a href="#">Rosters</a></li>
+      <li class="rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0"><a href="#">Rosters</a></li>
     </ul>
     <div class="tabbedContent">
-      <div team-stats class="details"></team-stats>
+      <div team-stats class="details"></div>
       <div scoring-summary class="summary" style="display:none;"></div>
       <div play-by-play class="playbyplay" style="display:none;"></div>
       <div rosters class="rosters" style="display:none;"></div>

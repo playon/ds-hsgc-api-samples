@@ -19,8 +19,8 @@ module.exports = function (grunt) {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    //beautify: true,
-                    //mangle: false
+                    beautify: true,
+                    mangle: false
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [

@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="hsgc">
   <head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
     <script src="hsgc-widgets.min.js"></script>
     <!--script src="http://localhost:35729/livereload.js"></script-->
@@ -24,5 +25,14 @@
       <div full-box-score game="0f214114ce"></div>
       <div game-summary game="0f214114ce" publisher="no pub"></div>
     </div>
+    <script>
+      $(function() {
+        //var $injector = angular.injector(['ng', 'hsgc']);
+        //$injector.invoke(function($rootScope, $compile) {
+        //  $('body').prepend($compile('<div id="test" full-box-score game="0f214114ce"></div>')($rootScope));
+        //});
+        //$('.container').append($('<div id="test" full-box-score game="0f214114ce"></div>'));
+      });
+    </script>
   </body>
 </html>

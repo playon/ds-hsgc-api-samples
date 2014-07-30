@@ -1,4 +1,5 @@
-var apiRoot = "http://api.gamecenter.dev/v1/"; //'http://api.gray.hsgamecenter.com/
+//var apiRoot = "http://api.gamecenter.dev/v1/";
+var apiRoot = 'http://api.gray.hsgamecenter.com/v1/';
 
 function populateBaseInfo(boxScore) {
   scores = { };
