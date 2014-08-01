@@ -1,3 +1,8 @@
+1.0.4 / 2014-07-28
+==================
+
+  * Added environment configuration.  Please call hsgcWidgets.init() to initialize.  By default this will point to the production environment.  If you would like to point to staging, use hsgcWidgets.init('stage').
+
 1.0.3 / 2014-07-28
 ==================
 
