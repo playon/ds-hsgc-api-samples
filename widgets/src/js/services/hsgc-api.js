@@ -54,7 +54,7 @@ angular.module('hsgc')
         }
 
         if (boxScore.GameLeaders.HomeTeamRushingLeader) {
-          bs.leaders.homeRushingLeader = $filter('stringFormat')("{0} car, {1} yds, {2} tds", [
+          bs.leaders.homeRushingLeader = $filter('stringFormat')("{0} {1} car, {2} yds, {3} tds", [
             $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.HomeTeamRushingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingYards,
@@ -62,7 +62,7 @@ angular.module('hsgc')
         }
 
         if (boxScore.GameLeaders.HomeTeamReceivingLeader) {
-          bs.leaders.homeReceivingLeader = $filter('stringFormat')("{0} rec, {1} yds, {2} tds", [
+          bs.leaders.homeReceivingLeader = $filter('stringFormat')("{0} {1} rec, {2} yds, {3} tds", [
             $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.HomeTeamReceivingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingYards,
@@ -79,7 +79,7 @@ angular.module('hsgc')
         }
 
         if (boxScore.GameLeaders.AwayTeamRushingLeader) {
-          bs.leaders.awayRushingLeader = $filter('stringFormat')("{0} car, {1} yds, {2} tds", [
+          bs.leaders.awayRushingLeader = $filter('stringFormat')("{0} {1} car, {2} yds, {3} tds", [
             $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.AwayTeamRushingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingYards,
@@ -87,7 +87,7 @@ angular.module('hsgc')
         }
 
         if (boxScore.GameLeaders.AwayTeamReceivingLeader) {
-          bs.leaders.awayReceivingLeader = $filter('stringFormat')("{0} rec, {1} yds, {2} tds", [
+          bs.leaders.awayReceivingLeader = $filter('stringFormat')("{0} {1} rec, {2} yds, {3} tds", [
             $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.AwayTeamReceivingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingYards,
