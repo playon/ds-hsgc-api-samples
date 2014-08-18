@@ -36,6 +36,23 @@ angular.module('hsgc')
         getScore: function(unityKey) {
           var tsId = unityTeamMapping[unityKey];
           return scores[tsId];
+        },
+        getPrimaryColor: function(unityKey) {
+          return '#ffffff'; //todo: populate color based off api response
+        },
+        getTeamName: function(unityKey) {
+          if (unityTeamMapping[unityKey] == boxScore.HomeTeamSeasonId) {
+            return boxScore.HomeTeamName;
+          } else {
+            return boxScore.AwayTeamName;
+          }
+        },
+        getTeamLogo: function(unityKey) {
+          if (unityTeamMapping[unityKey] == boxScore.HomeTeamSeasonId) {
+            return boxScore.HomeTeamLogo;
+          } else {
+            return boxScore.AwayTeamLogo;
+          }
         }
       }
     };
