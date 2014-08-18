@@ -7,6 +7,15 @@ angular.module('hsgc')
         publisherKey: "@publisher",
         sport: "@sport"
       },
+      link: function(scope) {
+        var listenerUnsubscribe = scope.$on('datacastLoaded', function() {
+          if (typeof(nfhs) != "undefined" && typeof(nfhs.analytics) != "undefined") {
+            console.log('sending pageview(data)');
+            nfhs.analytics.sendPageView('data');
+          }
+          listenerUnsubscribe();
+        });
+      },
       templateUrl: 'templates/fullBoxScore.html'
     };
   });

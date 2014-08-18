@@ -11,7 +11,6 @@ angular.module('hsgc')
       },
       controller: ["$scope", function($scope) {
         this.getPlayersForTeam = function(teamId) {
-          console.log ($scope.players);
           if (!angular.isUndefined($scope.players))
             return $scope.players[teamId];
         };
@@ -32,9 +31,9 @@ angular.module('hsgc')
         });
 
         (function updateBoxScore() {
-          console.log('polling...');
           HSGCApi.getFullBox(scope.gameKey).then(function(result) {
             angular.extend(scope, result);
+            scope.$emit('datacastLoaded');
             $timeout(updateBoxScore, 30*1000);
           });
         })();
