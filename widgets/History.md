@@ -1,7 +1,7 @@
 1.0.5 / 2014-08-18
 ==================
 
-  * Adding additional functions to datacast directive model - getPrimaryColor, getTeamName, getTeamLogo
+  * Adding additional functions to datacast directive model - getPrimaryColor, getTeamName, getTeamLogo, isFinal, isWinner
 
 1.0.4 / 2014-07-28
 ==================
