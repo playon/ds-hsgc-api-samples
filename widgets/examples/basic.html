@@ -10,18 +10,17 @@
   <body>
     <div class="container">
 
-      <!--div datacast="0f214114ce">
-        <scoreboard></scoreboard>
-        <game-leaders></game-leaders>
-        <game-summary></game-summary>
-        <play-by-play></play-by-play>
-        <player-stats team-id="{{homeTeamSeasonId}}"></player-stats>
-        <player-stats team-id="{{awayTeamSeasonId}}"></player-stats>
-        <rosters></rosters>
-        <scoring-summary></scoring-summary>
-        <team-stats></team-stats>
+      <div datacast="0f214114ce">
+        <ul>
+          <li>{{getScore('5f2f7aed32')}}</li>
+          <li>{{getTeamName('5f2f7aed32')}}</li>
+          <li>{{getTeamLogo('5f2f7aed32')}}</li>
+          <li>{{isFinal()}}</li>
+          <li>{{isWinner('5f2f7aed32')}}</li>
+        </ul>
       </div>
-      <hr /-->
+      <hr />
+
       <div full-box-score game="0f214114ce"></div>
       <div game-summary game="0f214114ce" publisher="no pub"></div>
     </div>

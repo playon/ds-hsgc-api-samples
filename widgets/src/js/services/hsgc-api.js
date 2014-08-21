@@ -5,8 +5,8 @@ angular.module('hsgc')
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
       unityTeamMapping = { };
-      unityTeamMapping[boxScore.HomeTeamUnityKey] = boxScore.HomeTeamSeasonId;
-      unityTeamMapping[boxScore.AwayTeamUnityKey] = boxScore.AwayTeamSeasonId;
+      unityTeamMapping[boxScore.HomeTeamUnityKey.toLowerCase()] = boxScore.HomeTeamSeasonId;
+      unityTeamMapping[boxScore.AwayTeamUnityKey.toLowerCase()] = boxScore.AwayTeamSeasonId;
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
@@ -33,26 +33,41 @@ angular.module('hsgc')
         statsAvailable: boxScore.StatsAvailable,
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
+        status: boxScore.Status,
         getScore: function(unityKey) {
-          var tsId = unityTeamMapping[unityKey];
-          return scores[tsId];
+          var tsId = this.unityTeamMapping[unityKey.toLowerCase()];
+          return this.totalScores[tsId];
         },
         getPrimaryColor: function(unityKey) {
           return '#ffffff'; //todo: populate color based off api response
         },
         getTeamName: function(unityKey) {
-          if (unityTeamMapping[unityKey] == boxScore.HomeTeamSeasonId) {
-            return boxScore.HomeTeamName;
+          if (this.unityTeamMapping[unityKey.toLowerCase()] ==this.homeTeamSeasonId) {
+            return this.homeName;
           } else {
-            return boxScore.AwayTeamName;
+            return this.awayName;
           }
         },
         getTeamLogo: function(unityKey) {
-          if (unityTeamMapping[unityKey] == boxScore.HomeTeamSeasonId) {
-            return boxScore.HomeTeamLogo;
+          if (this.unityTeamMapping[unityKey.toLowerCase()] == this.homeTeamSeasonId) {
+            return "http://www.hsgamecenter.com/" + boxScore.HomeTeamLogo + "?width=52&height=52";
           } else {
-            return boxScore.AwayTeamLogo;
+            return "http://www.hsgamecenter.com/" + boxScore.AwayTeamLogo + "?width=52&height=52";
           }
+        },
+        isFinal: function() {
+          return this.status == 'Complete';
+        },
+        isWinner: function (teamKey) {
+          if (this.isFinal()) {
+            if (this.homeScore > this.awayScore && this.unityTeamMapping[teamKey.toLowerCase()] == this.homeTeamSeasonId) {
+              return true;
+            }
+            if (this.homeScore < this.awayScore && this.unityTeamMapping[teamKey.toLowerCase()] == this.awayTeamSeasonId) {
+              return true;
+            }
+          }
+          return false;
         }
       }
     };
