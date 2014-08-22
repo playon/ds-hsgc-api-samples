@@ -31,16 +31,22 @@ angular.module('hsgc')
         });
 
         (function updateBoxScore() {
-          HSGCApi.getFullBox(scope.gameKey).then(function(result) {
+          HSGCApi.getFullBox( scope.gameKey,
+                              scope.publisher,
+                              scope.sport,
+                              {
+                                includeLeaders: angular.isDefined(attrs.includeLeaders),
+                                includePlayByPlay: angular.isDefined(attrs.includePlayByPlay),
+                                includePlayerStats: angular.isDefined(attrs.includePlayerStats),
+                                includeTeamAggregates: angular.isDefined(attrs.includeTeamStats),
+                                includePlayers: angular.isDefined(attrs.includePlayers)
+                              })
+          .then(function(result) {
             angular.extend(scope, result);
             scope.$emit('datacastLoaded');
             $timeout(updateBoxScore, 30*1000);
           });
         })();
-        //HSGCApi.getScores(scope.unityGameKey).then(function(result) {
-        //  angular.extend(scope, result);
-          //element.removeClass('test');
-        //});
       }
     };
   }]);

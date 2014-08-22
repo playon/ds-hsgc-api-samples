@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .factory('HSGCApi', [ '$http', '$filter', '$timeout', function($http, $filter, $timeout) {
+  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', function($http, $filter, $timeout, $q) {
     var populateBaseInfo = function(boxScore) {
       scores = { };
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
@@ -159,15 +159,25 @@ angular.module('hsgc')
       bs.players[boxScore.AwayTeamSeasonId] = $filter('filter')(boxScore.Players, { TeamSeasonId: boxScore.AwayTeamSeasonId });
     };
 
-    var getFullBox = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey + '?includeLeaders=true&includePlayByPlay=true&includePlayerStats=true&includeTeamAggregates=true';
-      return $http.get(url).then(function(boxScore) {
-        var bs = populateBaseInfo(boxScore.data);
-        populateLeaderInfo(boxScore.data, bs, $filter);
-        populatePlayerStats(boxScore.data, bs);
-        populatePlayers(boxScore.data, bs, $filter);
-        return bs;
-      });
+    var getFullBox = function(unityGameKey, publisherKey, sport, options) {
+      if (sport == "Football") {
+        var params = { };
+        angular.extend(params, options);
+        var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
+        var config = { params: params };
+        return $http.get(url, config).then(function(boxScore) {
+          var bs = populateBaseInfo(boxScore.data);
+          populateLeaderInfo(boxScore.data, bs, $filter);
+          populatePlayerStats(boxScore.data, bs);
+          populatePlayers(boxScore.data, bs, $filter);
+          return bs;
+        });
+      } else {
+        //I don't know how to return an empty promise
+        var deferred = $q.defer();
+        deferred.resolve();
+        return deferred.promise;
+      }
     }
 
     var getScores = function(unityGameKey, publisherKey, sport) {
