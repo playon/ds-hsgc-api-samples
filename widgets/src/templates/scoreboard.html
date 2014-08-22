@@ -1,4 +1,4 @@
-<div ng-show="scoresAvailable" class="nfhs-scout-scoreboard">
+<div ng-show="scoresAvailable" class="nfhs-scout-scoreboard ds-widget-scoreboard">
   <h4>Scoreboard</h4>
   <table>
     <thead>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr class="odd">
-        <td><img ng-src="{{homeLogo}}" alt="" style="vertical-align:middle" /> {{homeName}}</td>
+        <td><img ng-src="{{homeLogo}}" class="ds-widget-logo" /> {{homeName}}</td>
         <td>{{homePeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
@@ -27,7 +27,7 @@
         <td class="final">{{homeScore}}</td>
       </tr>
       <tr class="even">
-        <td><img ng-src="{{awayLogo}}" alt="" style="vertical-align:middle" /> {{awayName}}</td>
+        <td><img ng-src="{{awayLogo}}" class="ds-widget-logo" /> {{awayName}}</td>
         <td>{{awayPeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>

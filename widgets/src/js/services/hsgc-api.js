@@ -7,6 +7,10 @@ angular.module('hsgc')
       unityTeamMapping = { };
       unityTeamMapping[boxScore.HomeTeamUnityKey.toLowerCase()] = boxScore.HomeTeamSeasonId;
       unityTeamMapping[boxScore.AwayTeamUnityKey.toLowerCase()] = boxScore.AwayTeamSeasonId;
+      colors = { };
+      colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
+      colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
+
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
@@ -17,8 +21,8 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: "http://www.hsgamecenter.com/" + boxScore.HomeTeamLogo + "?width=30&height=30",
-        awayLogo: "http://www.hsgamecenter.com/" + boxScore.AwayTeamLogo + "?width=30&height=30",
+        homeLogo: boxScore.HomeTeamLogo,
+        awayLogo: boxScore.AwayTeamLogo,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeAcronym: boxScore.HomeTeamAcronym,
@@ -34,12 +38,14 @@ angular.module('hsgc')
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
+        colors: colors,
+
         getScore: function(unityKey) {
           var tsId = this.unityTeamMapping[unityKey.toLowerCase()];
           return this.totalScores[tsId];
         },
         getPrimaryColor: function(unityKey) {
-          return '#ffffff'; //todo: populate color based off api response
+          return colors[unityKey].primary; //todo: populate color based off api response
         },
         getTeamName: function(unityKey) {
           if (this.unityTeamMapping[unityKey.toLowerCase()] ==this.homeTeamSeasonId) {
@@ -50,9 +56,9 @@ angular.module('hsgc')
         },
         getTeamLogo: function(unityKey) {
           if (this.unityTeamMapping[unityKey.toLowerCase()] == this.homeTeamSeasonId) {
-            return "http://www.hsgamecenter.com/" + boxScore.HomeTeamLogo + "?width=52&height=52";
+            return boxScore.HomeTeamLogo;
           } else {
-            return "http://www.hsgamecenter.com/" + boxScore.AwayTeamLogo + "?width=52&height=52";
+            return boxScore.AwayTeamLogo;
           }
         },
         isFinal: function() {
