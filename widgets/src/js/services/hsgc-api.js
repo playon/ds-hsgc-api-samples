@@ -56,9 +56,9 @@ angular.module('hsgc')
         },
         getTeamLogo: function(unityKey) {
           if (this.unityTeamMapping[unityKey.toLowerCase()] == this.homeTeamSeasonId) {
-            return boxScore.HomeTeamLogo;
+            return this.homeLogo;
           } else {
-            return boxScore.AwayTeamLogo;
+            return this.awayLogo;
           }
         },
         isFinal: function() {
@@ -167,10 +167,10 @@ angular.module('hsgc')
 
     var getFullBox = function(unityGameKey, publisherKey, sport, options) {
       if (sport == "Football") {
-        var params = { };
-        angular.extend(params, options);
+        var config = { params: { } };
+        angular.extend(config.params, options);
+
         var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
-        var config = { params: params };
         return $http.get(url, config).then(function(boxScore) {
           var bs = populateBaseInfo(boxScore.data);
           populateLeaderInfo(boxScore.data, bs, $filter);

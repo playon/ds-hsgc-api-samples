@@ -69,9 +69,23 @@ module.exports = function (grunt) {
                 upload: [
                   {
                       src: 'build/*.*',
-                      dest: 'js/<%= pkg.name %>/<%= pkg.version %>'
+                      dest: 'js/<%= pkg.name %>/<%= pkg.version.substr(0, pkg.version.indexOf("-") > 0 ? pkg.version.indexOf("-") : pkg.version.length ) %>'
                   }
                 ]
+            }
+        },
+        'string-replace': {
+            clientVersion: {
+            src: 'build/hsgc-widgets.min.js',
+            dest: 'build/hsgc-widgets.min.js',
+            options: {
+                replacements: [
+                    {
+                        pattern: /["|']HSGC-Client-Version["|']\s*:\s*["|'].*?["|']/i,
+                        replacement: '"HSGC-Client-Version" : "<%= pkg.version %>"'
+                    }
+                ]
+            }
             }
         },
         watch: {
@@ -100,8 +114,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
+    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy', 'string-replace']);
     grunt.registerTask('deploy', ['build', 's3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };

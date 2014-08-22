@@ -1,9 +1,11 @@
 angular.module('hsgc', [])
   .config(['$httpProvider', '$sceProvider', function($httpProvider, $sceProvider) {
-    //$httpProvider.defaults.cache = true;
-    // Completely disable SCE.  For demonstration purposes only!
-    // Do not use in new projects.
     //$sceProvider.enabled(false);
+    $httpProvider.defaults.headers.get =  {
+        'Accept': 'application/json',
+        'HSGC-Client': "hsgc-widget-angular-client",
+        'HSGC-Client-Version': ""
+      };
   }]);
 
 hsgcWidgets = {
