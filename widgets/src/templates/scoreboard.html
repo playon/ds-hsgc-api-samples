@@ -15,17 +15,29 @@
       <tr class="odd">
         <td><img ng-src="{{homeLogo}}" alt="" style="vertical-align:middle" /> {{homeName}}</td>
         <td>{{homePeriodScores[0].Score}}</td>
-        <td>{{homePeriodScores[1].Score}}</td>
-        <td>{{homePeriodScores[2].Score}}</td>
-        <td>{{homePeriodScores[3].Score}}</td>
+        <td>
+          <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
+        </td>
+        <td>
+          <span ng-show="currentPeriod >= 3">{{homePeriodScores[2].Score}}</span>
+        </td>
+        <td>
+          <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
+        </td>
         <td class="final">{{homeScore}}</td>
       </tr>
       <tr class="even">
         <td><img ng-src="{{awayLogo}}" alt="" style="vertical-align:middle" /> {{awayName}}</td>
         <td>{{awayPeriodScores[0].Score}}</td>
-        <td>{{awayPeriodScores[1].Score}}</td>
-        <td>{{awayPeriodScores[2].Score}}</td>
-        <td>{{awayPeriodScores[3].Score}}</td>
+        <td>
+          <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
+        </td>
+        <td>
+          <span ng-show="currentPeriod >= 3">{{awayPeriodScores[2].Score}}</span>
+        </td>
+        <td>
+          <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
+        </td>
         <td class="final">{{awayScore}}</td>
       </tr>
     </tbody>

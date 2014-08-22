@@ -27,7 +27,7 @@ angular.module('hsgc')
         awayStats: boxScore.AwayTeamStatistics,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
-        currentPeriod: 1, //todo: if game is live, show current period, otherwise show first period
+        currentPeriod: boxScore.CurrentPeriod,
         unityTeamMapping: unityTeamMapping,
         scoresAvailable: boxScore.ScoresAvailable,
         statsAvailable: boxScore.StatsAvailable,

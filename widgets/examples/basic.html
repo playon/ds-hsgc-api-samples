@@ -10,7 +10,7 @@
   <body>
     <div class="container">
 
-      <div datacast="0f214114ce">
+      <!--div datacast="0f214114ce">
         <ul>
           <li>{{getScore('5f2f7aed32')}}</li>
           <li>{{getTeamName('5f2f7aed32')}}</li>
@@ -19,13 +19,19 @@
           <li>{{isWinner('5f2f7aed32')}}</li>
         </ul>
       </div>
-      <hr />
+      <hr /-->
 
-      <div full-box-score game="0f214114ce"></div>
-      <div game-summary game="0f214114ce" publisher="no pub"></div>
+      <div full-box-score game="c92c0d7c25"></div>
+      <div game-summary game="c92c0d7c25" publisher="no pub"></div>
     </div>
     <script>
       $(function() {
+          $('ul.tabs>li>a').click(function() {
+            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
+            var target = $(this).parent().attr('class');
+            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
+            return false;
+          });
         //var $injector = angular.injector(['ng', 'hsgc']);
         //$injector.invoke(function($rootScope, $compile) {
         //  $('body').prepend($compile('<div id="test" full-box-score game="0f214114ce"></div>')($rootScope));
