@@ -38,6 +38,7 @@ angular.module('hsgc')
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
+        statusDisplay: boxScore.StatusDisplay,
         colors: colors,
 
         getScore: function(unityKey) {

@@ -1,5 +1,8 @@
 <div ng-show="scoresAvailable" class="nfhs-scout-scoreboard ds-widget-scoreboard">
-  <h4>Scoreboard</h4>
+  <span class="ds-widget-game-status" ng-show="showStatus">{{statusDisplay}}</span>
+  <h4>
+    Scoreboard
+  </h4>
   <table>
     <thead>
       <tr>
