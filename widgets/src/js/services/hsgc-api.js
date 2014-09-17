@@ -5,11 +5,11 @@ angular.module('hsgc')
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
       unityTeamMapping = { };
-      unityTeamMapping[boxScore.HomeTeamUnityKey.toLowerCase()] = boxScore.HomeTeamSeasonId;
-      unityTeamMapping[boxScore.AwayTeamUnityKey.toLowerCase()] = boxScore.AwayTeamSeasonId;
+      //unityTeamMapping[boxScore.HomeTeamUnityKey.toLowerCase()] = boxScore.HomeTeamSeasonId;
+      //unityTeamMapping[boxScore.AwayTeamUnityKey.toLowerCase()] = boxScore.AwayTeamSeasonId;
       colors = { };
-      colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
-      colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
+      //colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
+      //colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
 
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
@@ -171,7 +171,7 @@ angular.module('hsgc')
         var config = { params: { } };
         angular.extend(config.params, options);
 
-        var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
+        var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
         return $http.get(url, config).then(function(boxScore) {
           var bs = populateBaseInfo(boxScore.data);
           populateLeaderInfo(boxScore.data, bs, $filter);
@@ -188,14 +188,14 @@ angular.module('hsgc')
     }
 
     var getScores = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
+      var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
       return $http.get(url).then(function(boxScore) {
         return populateBaseInfo(boxScore.data);
       });
     }
 
     var getLeaders = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey + '?includeLeaders=true';
+      var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey + '?includeLeaders=true';
       return $http.get(url).then(function(boxScore) {
         var bs = populateBaseInfo(boxScore.data);
         populateLeaderInfo(boxScore.data, bs, $filter);

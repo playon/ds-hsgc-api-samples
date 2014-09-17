@@ -11,8 +11,23 @@ angular.module('hsgc', [])
 hsgcWidgets = {
   apiRoot: "http://api.hsgamecenter.com/v1.2/",
   unityRoot: "http://unity.nfhsnetwork.com/v1/",
-  init: function(env) {
+  init: function(env, keyStrategy, loadedCallBack) {
     hsgcWidgets.env = env;
+    
+    if(keyStrategy === null){
+      hsgcWidgets.keyStrategy = "unity";
+    }
+    else{
+      hsgcWidgets.keyStrategy = keyStrategy;
+    }
+    
+    if (typeof(loadedCallBack) != "undefined"){
+      hsgcWidgets.datacastLoaded = loadedCallBack;
+    }
+    else{
+      hsgcWidgets.datacastLoaded = function (){};
+    }
+
     if (env == "stage") {
       hsgcWidgets.apiRoot = "http://api.gray.hsgamecenter.com/v1.2/";
       hsgcWidgets.unityRoot = "http://unity.stage.nfhsnetwork.com/v1/";

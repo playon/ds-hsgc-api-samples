@@ -1,12 +1,14 @@
 <div ng-show="scoresAvailable" class="nfhs-scout-scoreboard ds-widget-scoreboard">
-  <span class="ds-widget-game-status" ng-show="showStatus">{{statusDisplay}}</span>
-  <h4>
+  <span class="ds-widget-game-status" ng-show="displayStatusAtTop" >{{statusDisplay}}</span>
+  <h4 ng-show="displayStatusAtTop">
     Scoreboard
   </h4>
   <table>
     <thead>
       <tr>
-        <th></th>
+        <th>
+          <span class="ds-widget-game-status" ng-show="displayStatusInTable">{{statusDisplay}}</span>
+        </th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -44,5 +46,15 @@
         <td class="final">{{awayScore}}</td>
       </tr>
     </tbody>
+    <tfoot ng-show="compressDisplay">
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tfoot>
   </table>
 </div>
