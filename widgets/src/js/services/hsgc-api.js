@@ -10,6 +10,16 @@ angular.module('hsgc')
       colors = { };
       colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
       colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
+      
+      inOverTime = boxScore.CurrentPeriod > 4;
+      homeOTScore = 0;
+      awayOTScore = 0;
+      if(inOverTime){
+         for (var i = 4; i < boxScore.CurrentPeriod; i++) {
+            homeOTScore += boxScore.HomePeriodScores[i].Score;
+            awayOTScore += boxScore.AwayPeriodScores[i].Score;
+         }
+      }
 
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
@@ -40,6 +50,9 @@ angular.module('hsgc')
         status: boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
         colors: colors,
+        inOverTime: inOverTime,
+        awayOvertimeScore: awayOTScore,
+        homeOvertimeScore: homeOTScore,
 
         getScore: function(unityKey) {
           var tsId = this.unityTeamMapping[unityKey.toLowerCase()];

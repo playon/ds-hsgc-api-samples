@@ -11,6 +11,9 @@
         <th>2</th>
         <th>3</th>
         <th>4</th>
+         <td ng-show="inOverTime">
+          OT
+        </td>
         <th class="final">F</th>
       </tr>
     </thead>
@@ -27,6 +30,9 @@
         <td>
           <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
         </td>
+        <td ng-show="inOverTime">
+          <span>{{homeOvertimeScore}}</span>
+        </td>
         <td class="final">{{homeScore}}</td>
       </tr>
       <tr class="even">
@@ -40,6 +46,9 @@
         </td>
         <td>
           <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
+        </td>
+        <td ng-show="inOverTime">
+          <span>{{awayOvertimeScore}}</span>
         </td>
         <td class="final">{{awayScore}}</td>
       </tr>
