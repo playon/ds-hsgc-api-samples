@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="passer in playerStats.passingStats">
-          <td>{{(players|getPlayerById:passer.PlayerId).DisplayName}}</td>
+          <td>{{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}</td>
           <td>{{passer.Completions}}</td>
           <td>{{passer.Attempts}}</td>
           <td>{{passer.Yards}}</td>
