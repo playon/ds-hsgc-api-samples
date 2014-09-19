@@ -21,10 +21,18 @@
       </div>
       <hr /-->
 
-      <div full-box-score sport="Football" game="32e996f8e7" publisher="96c6864c38"></div>
-      <div game-summary game="3776efcb0b" sport="Football" publisher="no pub"></div>
+      <div full-box-score sport="Football" game="0f214114ce" publisher="96c6864c38"></div>
+      <div game-summary game="0f214114ce" sport="Football" publisher="no pub"></div>
     </div>
     <script>
+      nfhs = {
+        auth: {
+          datacast: function(gameKey, publisherKey, cb) {
+            cb({authorized: false});
+          }
+        }
+      }
+
       $(function() {
           $('ul.tabs>li>a').click(function() {
             $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
@@ -38,7 +46,8 @@
         //});
         //$('.container').append($('<div id="test" full-box-score game="0f214114ce"></div>'));
       });
-      hsgcWidgets.init('prod');
+      hsgcWidgets.init('stage');
+
     </script>
   </body>
 </html>

@@ -5,12 +5,18 @@ angular.module('hsgc')
       scope: { gameKey: "@game", publisherKey:"@publisher", sport: "@" },
       controller: ['$scope', '$element', 'HSGCApi', '$timeout', function($scope, $element, HSGCApi, $timeout) {
 
-        (function updateBoxScore() {
+        var updateBoxScore = function() {
           HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, { includeTeamAggregates: true }).then(function(result) {
             angular.extend($scope, result);
             $timeout(updateBoxScore, 30*1000);
           });
-        })();
+        };
+
+        nfhs.auth.datacast($scope.gameKey, $scope.publisherKey, function(auth) {
+          if (auth.authorized) {
+            updateBoxScore();
+          }
+        });
 
 
       }],
