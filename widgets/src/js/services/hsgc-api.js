@@ -20,6 +20,16 @@ angular.module('hsgc')
             awayOTScore += boxScore.AwayPeriodScores[i].Score;
          }
       }
+      
+      inOverTime = boxScore.CurrentPeriod > 4;
+      homeOTScore = 0;
+      awayOTScore = 0;
+      if(inOverTime){
+         for (var i = 4; i < boxScore.CurrentPeriod; i++) {
+            homeOTScore += boxScore.HomePeriodScores[i].Score;
+            awayOTScore += boxScore.AwayPeriodScores[i].Score;
+         }
+      }
 
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
