@@ -10,7 +10,6 @@ angular.module('hsgc')
       link: function(scope) {
         var listenerUnsubscribe = scope.$on('datacastLoaded', function() {
           if (typeof(nfhs) != "undefined" && typeof(nfhs.analytics) != "undefined") {
-            console.log('sending pageview(data)');
             nfhs.analytics.sendPageView('data');
           }
           listenerUnsubscribe();
