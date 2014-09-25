@@ -63,18 +63,14 @@ angular.module('hsgc')
               updateBoxScore();
             } else {
               nfhs.utils.getUnityObject('game', scope.gameKey, function (game) {
-                console.log(game);
                 //get the specific upsell variables by passing in the unity event object
                 nfhs.templater.datacastUpsell(game, function (upsellTemplateVars) {
                   if (typeof(upsellTemplateVars != "undefined") && upsellTemplateVars) {
-                    console.log(upsellTemplateVars);
                     //with the returned upsellTemplateVars, pass into handlebars template
                     var html = nfhsplayer.templates.upsell(upsellTemplateVars);
-                    html = html + "<p></p>"; //clearfix
-                    //console.log(html);
+                    html = html + "<p></p>";
                     //render html
                     element.replaceWith(html);
-                    //nfhsplayer.ui.render(html);
                   }
                 });
               });
