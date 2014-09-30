@@ -11,6 +11,7 @@ angular.module('hsgc', [])
 hsgcWidgets = {
   apiRoot: "http://api.hsgamecenter.com/v1.2/",
   unityRoot: "http://unity.nfhsnetwork.com/v1/",
+  imageRoot: "http://www.hsgamecenter.com",
   init: function(env, keyStrategy, loadedCallBack) {
     hsgcWidgets.env = env;
     
