@@ -1,13 +1,13 @@
 <div ng-show="scoresAvailable" class="nfhs-scout-scoreboard ds-widget-scoreboard">
-  <span class="ds-widget-game-status" ng-show="displayStatusAtTop" >{{statusDisplay}}</span>
-  <h4 ng-show="displayStatusAtTop">
+  <div attribution class="nfhs-scout-attribution"></div>
+  <h4>
     Scoreboard
   </h4>
   <table>
     <thead>
       <tr>
         <th>
-          <span class="ds-widget-game-status" ng-show="displayStatusInTable">{{statusDisplay}}</span>
+          <span class="ds-widget-game-status" ng-show="showStatus">{{statusDisplay}}</span>
         </th>
         <th>1</th>
         <th>2</th>

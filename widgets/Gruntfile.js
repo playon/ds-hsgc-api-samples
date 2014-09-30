@@ -39,7 +39,13 @@ module.exports = function (grunt) {
                     src: "*.html",
                     dest: 'build',
                     expand: true
-                }]
+                },
+                {
+                    cwd: "examples",
+                    src: "*.png",
+                    dest: 'build',
+                    expand: true
+                },]
             }
         },
         ngtemplates: {

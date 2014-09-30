@@ -7,8 +7,6 @@ angular.module('hsgc')
         scope.compressDisplay = angular.isDefined(attrs.compressDisplay);
 
         scope.showStatus = true;
-        scope.displayStatusInTable = scope.showStatus && scope.compressDisplay;
-        scope.displayStatusAtTop = !scope.displayStatusInTable;
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
        //$http.get(hsgcWidgets.unityRoot + 'games/' + scope.gameKey)
        //  .success(function(data) {
