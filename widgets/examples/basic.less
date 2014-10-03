@@ -1,9 +1,66 @@
+/*
 @import './bower_components/bootstrap/less/bootstrap.less';
+*/
+.container {
+width: 1170px;
+}
+
 
 table {
-  .table;
-  .table-bordered;
-  .table-striped;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table > tbody > tr:nth-child(odd) > td, table > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+table > tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+table .table {
+  background-color: #ffffff;
+}
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  border: 1px solid #dddddd;
+}
+table > thead > tr > th,
+table > thead > tr > td {
+  border-bottom-width: 2px;
+}
+table > tbody > tr:nth-child(odd) > td,
+table > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
 }
 
 
@@ -57,12 +114,53 @@ table {
       text-decoration:none;
     }
   }
-
-  span {
-      font-size:18px;
-      color:#e51837;
-      padding-right: 5px;
-      vertical-align: bottom;
-      line-height: 34px;
-  }
 }
+
+h4, .h4 {
+  font-size: 18px;  
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.nfhs-scout-tabs {
+padding-left: 0;
+margin-bottom: 0;
+list-style: none;
+}
+
+.nfhs-scout-tabs>li.active>a, .nfhs-scout-tabs>li.active>a:hover, .nfhs-scout-tabs>li.active>a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.nfhs-scout-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nfhs-scout-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  text-decoration:none;
+}
+.nfhs-scout-tabs>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nfhs-scout-tab-container {
+  margin-top: -10px;
+}
+.nfhs-scout-tab-container>div{
+  border: 1px solid #dddddd;
+  clear:both;
+  padding:10px;
+}
+
