@@ -13,47 +13,108 @@
   vertical-align:middle;
 }
 
-.ds-widget-scoreboard {
-  .ds-widget-game-status {
-    float: right;
+.page-events {
+  .ds-widget-scoreboard {
+    .ds-widget-game-status {
+      float: right;
+    }
+
+    .ds-widget-logo {
+      .widget-logo-medium
+    }
   }
 
-  .ds-widget-logo {
-    .widget-logo-medium
+  .ds-widget-leaders {
+    .ds-widget-logo {
+      .widget-logo-medium
+    }
   }
-}
 
-.ds-widget-leaders {
-  .ds-widget-logo {
-    .widget-logo-medium
+  .ds-widget-team-stats {
+    .ds-widget-logo {
+      .widget-logo-medium
+    }
   }
-}
 
-.ds-widget-team-stats {
-  .ds-widget-logo {
-    .widget-logo-medium
+  .nfhs-scout-playerstats {
+   .ds-widget-logo {
+      .widget-logo-medium
+    }
   }
-}
 
-.nfhs-scout-playerstats {
- .ds-widget-logo {
-    .widget-logo-medium
-  }
-}
+  .ds-widget-play-by-play {
+    table th {
+      background-color: #4685bd;
+      color: #fff;
+      font-weight: normal;
+    }
+    tbody tr { background-color: #fbfbfb; }
+    tbody tr:nth-child(even) {
+       background-color: #f2f5f7;
+    }
 
-.ds-widget-play-by-play {
-  td { vertical-align: middle; }
-  .ds-widget-logo {
-    width: 24px;
-    height: 24px;
-    vertical-align:middle;
+    td { vertical-align: middle; }
+    .ds-widget-logo {
+      width: 24px;
+      height: 24px;
+      vertical-align:middle;
+      display: inline !important;
+    }
+    .play-by-play-spot {
+      min-width: 160px;
+      text-align: center;
+    }
+    .play-by-play-score {
+      text-align: center;
+    }
+    .scoring { font-weight: bold; }
+
+    .ds-widget-play-by-play-period-selector {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+
+      li {
+        display: inline-block;
+        margin-right: 5px;
+        border: 1px solid #4685bd;
+
+        a {
+          text-decoration: none;
+          display: inline-block;
+          padding: 5px 15px;
+          color: #4685bd;
+        }
+
+        &:hover {
+          background-color: #4685bd;
+          a { color: #fff; }
+        }
+
+        &.active {
+          &, &:hover, &:focus {
+            background-color: #00255c;
+            a { color: #fff; }
+            border-color: #00255c;
+          }
+
+          a { cursor: default; }
+        }
+
+        &.selector-label {
+          border: none;
+          font-weight:bold;
+          text-transform: uppercase;
+          &:hover { background-color: transparent; }
+        }
+      }
+    }
+
+    .ds-widget-play-by-play-plays {
+
+      table {
+
+      }
+    }
   }
-  .play-by-play-spot {
-    min-width: 160px;
-    text-align: center;
-  }
-  .play-by-play-score {
-    text-align: center;
-  }
-  .scoring { font-weight: bold; }
 }
