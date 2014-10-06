@@ -1,3 +1,9 @@
+1.0.7 / 2014-10-06
+==================
+
+  * Add down and distance to play-by-play
+  * Group play-by-play by drive
+
 1.0.5 / 2014-08-18
 ==================
 
