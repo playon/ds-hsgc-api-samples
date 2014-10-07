@@ -1,5 +1,5 @@
-<div class="ds-widget-rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
-  <div class="roster">
+<div class="nfhs-scout-rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
+  <div class="nfhs-scout-roster">
     <h4>{{awayName}}</h4>
     <table>
       <tr ng-repeat="player in players[awayTeamSeasonId] | rosterPlayersToDisplay">
@@ -7,7 +7,7 @@
       </tr>
     </table>
   </div>
-  <div class="roster">
+  <div class="nfhs-scout-roster">
     <h4>{{homeName}}</h4>
     <table>
       <tr ng-repeat="player in players[homeTeamSeasonId] | rosterPlayersToDisplay">

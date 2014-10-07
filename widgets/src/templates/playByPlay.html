@@ -1,32 +1,32 @@
-<div ng-show="playByPlayAvailable" class="ds-widget-play-by-play">
-  <ul class="ds-widget-play-by-play-period-selector">
-    <li class="selector-label">Quarter:</li>
-    <li ng-repeat="period in playByPlayPeriods" ng-class="{active: selectedPeriod == period.value}">
+<div ng-show="playByPlayAvailable" class="nfhs-scout-play-by-play">
+  <ul class="nfhs-scout-play-by-play-period-selector">
+    <li class="nfhs-scout-selector-label">Quarter:</li>
+    <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedPeriod == period.value}">
       <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
     </li>
   </ul>
 
-  <div ng-repeat="drive in selectedPeriodPlays" class="ds-widget-play-by-play-plays">
+  <div ng-repeat="drive in selectedPeriodPlays" class="nfhs-scout-play-by-play-plays">
     <table>
       <thead>
         <tr>
           <th colspan="3">
-            <img ng-src="{{getLogo(drive[0])}}" class="ds-widget-logo"/>
+            <img ng-src="{{getLogo(drive[0])}}" class="nfhs-scout-logo"/>
             {{drive[0].TeamName}} at {{drive[0].TimeOnClock | timeOnClock }}
           </th>
           <!--th>Time</th>
           <th>Play</th-->
-          <th class="play-by-play-score">{{awayAcronym}}</th>
-          <th class="play-by-play-score">{{homeAcronym}}</th>
+          <th class="nfhs-scout-play-by-play-score">{{awayAcronym}}</th>
+          <th class="nfhs-scout-play-by-play-score">{{homeAcronym}}</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="play in drive">
-          <td ng-class='{"scoring": play.IsScoring }' class="play-by-play-spot">{{play.Down}} and {{play.Distance}} at {{getSpot(play)}}</td>
-          <td ng-class='{"scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
-          <td ng-class='{"scoring": play.IsScoring }'>{{play.Description}}</td>
-          <td ng-class='{"scoring": play.IsScoring }' class="play-by-play-score">{{play.AwayScore}}</td>
-          <td ng-class='{"scoring": play.IsScoring }' class="play-by-play-score">{{play.HomeScore}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-spot">{{play.Down}} and {{play.Distance}} at {{getSpot(play)}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.Description}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score">{{play.AwayScore}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score">{{play.HomeScore}}</td>
         </tr>
       </tbody>
     </table>

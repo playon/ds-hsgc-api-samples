@@ -1,5 +1,6 @@
-<div ng-show="scoresAvailable" class="nfhs-scout-scoreboard ds-widget-scoreboard">
-  <span class="ds-widget-game-status" ng-show="showStatus">{{statusDisplay}}</span>
+<div ng-show="scoresAvailable" class="nfhs-scout-scoreboard nfhs-scout-scoreboard">
+  <div attribution class="nfhs-scout-attribution"></div>
+  <span class="nfhs-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
   <h4>
     Scoreboard
   </h4>
@@ -14,12 +15,12 @@
          <td ng-show="inOverTime">
           OT
         </td>
-        <th class="final">F</th>
+        <th class="nfhs-scout-final">F</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td ng-class="{winner: isWinner(awayTeamKey)}"><img ng-src="{{awayLogo}}" class="ds-widget-logo" /> {{awayName}}</td>
+        <td ng-class="{'nfhs-scout-winner': isWinner(awayTeamKey)}"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo" /> {{awayName}}</td>
         <td>{{awayPeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
@@ -33,10 +34,10 @@
         <td ng-show="inOverTime">
           <span>{{awayOvertimeScore}}</span>
         </td>
-        <td class="final">{{awayScore}}</td>
+        <td class="nfhs-scout-final">{{awayScore}}</td>
       </tr>
       <tr>
-        <td ng-class="{winner: isWinner(homeTeamKey)}"><img ng-src="{{homeLogo}}" class="ds-widget-logo" /> {{homeName}}</td>
+        <td ng-class="{'nfhs-scout-winner': isWinner(homeTeamKey)}"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo" /> {{homeName}}</td>
         <td>{{homePeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
@@ -50,7 +51,7 @@
         <td ng-show="inOverTime">
           <span>{{homeOvertimeScore}}</span>
         </td>
-        <td class="final">{{homeScore}}</td>
+        <td class="nfhs-scout-final">{{homeScore}}</td>
       </tr>
     </tbody>
   </table>

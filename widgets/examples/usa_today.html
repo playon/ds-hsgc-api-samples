@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="hsgc-widgets.min.js"></script>
+    <!--script src="http://localhost:35729/livereload.js"></script-->
+    <link rel="stylesheet" href="basic.css">
+  </head>
+  <body>
+    <div class="container">
+      <div full-box-score sport="Football" game="123456" publisher="96c6864c38"></div>
+      <div game-summary game="123456" sport="Football" publisher="no pub"></div>
+    </div>
+    <script>
+      $(function() {
+          $('ul.tabs>li>a').click(function() {
+            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
+            var target = $(this).parent().attr('class');
+            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
+            return false;
+          });
+      });
+      hsgcWidgets.init({
+        env: 'prod',
+        keyStrategy: 'usa_today',
+        imageRoot: 'http://www.hsgamecenter.com/'
+      });
+
+    </script>
+  </body>
+</html>

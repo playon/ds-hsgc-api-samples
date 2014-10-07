@@ -17,53 +17,53 @@ table {
   vertical-align:middle;
 }
 
-.ds-widget-scoreboard {
-  .ds-widget-game-status {
+.nfhs-scout-scoreboard {
+  .nfhs-scout-game-status {
     float: right;
   }
 
-  .ds-widget-logo {
+  .nfhs-scout-logo {
     .widget-logo-medium
   }
 
-  .winner { font-weight: bold; }
+  .nfhs-scout-winner { font-weight: bold; }
 }
 
-.ds-widget-leaders {
-  .ds-widget-logo {
-    .widget-logo-medium
-  }
-}
-
-.ds-widget-team-stats {
-  .ds-widget-logo {
+.nfhs-scout-leaders {
+  .nfhs-scout-logo {
     .widget-logo-medium
   }
 }
 
-.ds-widget-player-stats-container {
- .ds-widget-logo {
+.nfhs-scout-team-stats {
+  .nfhs-scout-logo {
     .widget-logo-medium
   }
 }
 
-.ds-widget-play-by-play {
+.nfhs-scout-player-stats-container {
+ .nfhs-scout-logo {
+    .widget-logo-medium
+  }
+}
+
+.nfhs-scout-play-by-play {
   td { vertical-align: middle; }
-  .ds-widget-logo {
+  .nfhs-scout-logo {
     width: 24px;
     height: 24px;
     vertical-align:middle;
   }
-  .play-by-play-spot {
+  .nfhs-scout-play-by-play-spot {
     min-width: 160px;
     text-align: center;
   }
-  .play-by-play-score {
+  .nfhs-scout-play-by-play-score {
     text-align: center;
   }
-  .scoring { font-weight: bold; }
+  .nfhs-scout-scoring { font-weight: bold; }
 
-  .ds-widget-play-by-play-period-selector {
+  .nfhs-scout-play-by-play-period-selector {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
@@ -94,7 +94,7 @@ table {
     }
   }
 
-  .ds-widget-play-by-play-plays {
+  .nfhs-scout-play-by-play-plays {
     margin-top: -10px;
     table {
       border-top: 1px solid #ddd;
@@ -103,3 +103,52 @@ table {
     }
   }
 }
+
+h4, .h4 {
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.nfhs-scout-tabs {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nfhs-scout-tabs>li.active>a, .nfhs-scout-tabs>li.active>a:hover, .nfhs-scout-tabs>li.active>a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.nfhs-scout-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nfhs-scout-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  text-decoration:none;
+}
+.nfhs-scout-tabs>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nfhs-scout-tab-container {
+  margin-top: -10px;
+}
+.nfhs-scout-tab-container>div{
+  border: 1px solid #dddddd;
+  clear:both;
+  padding:10px;
+}
+

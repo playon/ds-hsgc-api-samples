@@ -24,6 +24,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
+                      'src/js/vendor/angular.js',
                       'src/js/app.js',
                       tmpTemplateFile.path,
                       'src/js/*/*.js'
@@ -36,6 +37,12 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: "examples",
                     src: "*.html",
+                    dest: 'build',
+                    expand: true
+                },
+                {
+                    cwd: "examples",
+                    src: "*.png",
                     dest: 'build',
                     expand: true
                 }]

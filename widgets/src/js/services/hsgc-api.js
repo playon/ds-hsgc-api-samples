@@ -33,8 +33,8 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: boxScore.HomeTeamLogo,
-        awayLogo: boxScore.AwayTeamLogo,
+        homeLogo: hsgcWidgets.imageRoot + boxScore.HomeTeamLogo,
+        awayLogo: hsgcWidgets.imageRoot + boxScore.AwayTeamLogo,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeAcronym: boxScore.HomeTeamAcronym,
@@ -186,7 +186,7 @@ angular.module('hsgc')
         var config = { params: { } };
         angular.extend(config.params, options);
 
-        var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
+        var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
         return $http.get(url, config).then(function(boxScore) {
           var bs = populateBaseInfo(boxScore.data);
           populateLeaderInfo(boxScore.data, bs, $filter);
@@ -202,25 +202,7 @@ angular.module('hsgc')
       }
     }
 
-    var getScores = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
-      return $http.get(url).then(function(boxScore) {
-        return populateBaseInfo(boxScore.data);
-      });
-    }
-
-    var getLeaders = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey + '?includeLeaders=true';
-      return $http.get(url).then(function(boxScore) {
-        var bs = populateBaseInfo(boxScore.data);
-        populateLeaderInfo(boxScore.data, bs, $filter);
-        return bs;
-      });
-    }
-
     return {
-      getScores : getScores,
-      getLeaders : getLeaders,
       getFullBox : getFullBox
     };
   }]);
