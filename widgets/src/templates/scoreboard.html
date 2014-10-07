@@ -18,8 +18,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="odd">
-        <td><img ng-src="{{awayLogo}}" class="ds-widget-logo" /> {{awayName}}</td>
+      <tr>
+        <td ng-class="{winner: isWinner(awayTeamKey)}"><img ng-src="{{awayLogo}}" class="ds-widget-logo" /> {{awayName}}</td>
         <td>{{awayPeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
@@ -35,8 +35,8 @@
         </td>
         <td class="final">{{awayScore}}</td>
       </tr>
-      <tr class="even">
-        <td><img ng-src="{{homeLogo}}" class="ds-widget-logo" /> {{homeName}}</td>
+      <tr>
+        <td ng-class="{winner: isWinner(homeTeamKey)}"><img ng-src="{{homeLogo}}" class="ds-widget-logo" /> {{homeName}}</td>
         <td>{{homePeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>

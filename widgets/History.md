@@ -3,6 +3,8 @@
 
   * Add down and distance to play-by-play
   * Group play-by-play by drive
+  * Add support for overtime in play-by-play
+  * Various styling and formatting changes
 
 1.0.5 / 2014-08-18
 ==================

@@ -10,7 +10,7 @@ angular.module('hsgc')
       colors = { };
       colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
       colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
-      
+
       inOverTime = boxScore.CurrentPeriod > 4;
       homeOTScore = 0;
       awayOTScore = 0;
@@ -24,6 +24,8 @@ angular.module('hsgc')
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
+        homeTeamKey: boxScore.HomeTeamUnityKey,
+        awayTeamKey: boxScore.AwayTeamUnityKey,
         homeScore: boxScore.HomeScore,
         awayScore: boxScore.AwayScore,
         periodScores: boxScore.PeriodScores,

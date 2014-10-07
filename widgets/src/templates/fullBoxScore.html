@@ -4,7 +4,7 @@
 
   <div class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
     <ul class="tabs">
-      <li class="details" ng-show="statsAvailable"><a href="#" class="active">Detailed Stats</a></li>
+      <li class="details" ng-show="statsAvailable"><a href="#" class="active">Team Stats</a></li>
       <li class="summary" ng-show="playByPlayAvailable"><a href="#">Scoring Summary</a></li>
       <li class="playbyplay" ng-show="playByPlayAvailable"><a href="#">Play by Play</a></li>
       <li class="rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0"><a href="#">Rosters</a></li>

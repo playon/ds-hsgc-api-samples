@@ -1,5 +1,4 @@
 <div ng-show="playByPlayAvailable" class="ds-widget-scoring-summary">
-  <h4>Scoring Summary</h4>
   <table>
     <thead>
       <tr>
@@ -7,16 +6,16 @@
         <th>Qtr</th>
         <th>Time</th>
         <th>Play</th>
-        <th>A</th>
-        <th>H</th>
+        <th>{{awayAcronym}}</th>
+        <th>{{homeAcronym}}</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="play in scoringPlays">
-        <td>{{play.TeamName}}</td>
+        <td class="team-name">{{play.TeamName}}</td>
         <td>{{play.Quarter}}</td>
         <td>{{play.TimeOnClock | timeOnClock }}</td>
-        <td>{{play.Description}}</td>
+        <td class="play-summary">{{play.Description}}</td>
         <td>{{play.AwayScore}}</td>
         <td>{{play.HomeScore}}</td>
       </tr>
