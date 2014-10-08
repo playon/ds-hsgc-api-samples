@@ -209,10 +209,16 @@ angular.module('hsgc')
           //error
           function(response) {
             hsgcWidgets.datacastLoadError(response.data, response.status, response.statusText);
+            var result = {
+              status: response.status,
+              statusText: response.statusText
+            };
+
             if (response.status == 402) {
+              result.boxScore = populateBaseInfo(response.data);
               hsgcWidgets.datacastPaymentRequired(response.data);
-              return $q.reject('Payment required');
             }
+            return $q.reject(result);
           });
       } else {
         //I don't know how to return an empty promise

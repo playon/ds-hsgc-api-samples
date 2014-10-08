@@ -19,7 +19,7 @@ hsgcWidgets = {
       beforeLoadDatacast: function(gameKey, publisherKey, cb) { cb(); },
       fullBoxScoreFirstLoaded: function() { },
       datacastLoadError: function() { },
-      datacastPaymentRequired: function(data) { console.log(data.GameDetailLink); }
+      datacastPaymentRequired: function(data) { }
     };
     var config = angular.extend(defaults, options);
 
