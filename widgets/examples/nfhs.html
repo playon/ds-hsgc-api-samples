@@ -25,6 +25,8 @@
                 </div>
                 <div class="container">
                   <div class="left eight columns alpha">
+                    <div class="eventdetails"></div>
+
                     <div full-box-score sport="Football" game="beb0006482" publisher="96c6864c38"></div>
 
                     <div class="cards" style="">
@@ -81,7 +83,7 @@
       nfhs = {
         auth: {
           datacast: function(gameKey, publisherKey, cb) {
-            cb({authorized: true});
+            cb({authorized: false});
           }
         },
         utils: {
@@ -97,35 +99,26 @@
         },
         analytics: {
           sendPageView: function(data) { console.log(data); }
+        },
+        templater: {
+          datacastUpsell: function(game, cb) {
+            cb({});
+          }
         }
-      }
+      };
+      nfhsplayer = {
+        templates: {
+          upsell: function(vars) {
+            return '<div>Upsell</div>';
+          }
+        }
+      };
 
       hsgcWidgets.init({
         env: 'stage',
         imageRoot: '',
-        beforeLoadDatacast: function(gameKey, publisherKey, cb) {
-          nfhs.auth.datacast(gameKey, publisherKey, function(auth) {
-            if (auth.authorized) {
-              cb();
-            } else {
-              nfhs.utils.getUnityObject('game', gameKey, function (game) {
-                //get the specific upsell variables by passing in the unity event object
-                nfhs.templater.datacastUpsell(game, function (upsellTemplateVars) {
-                  if (typeof(upsellTemplateVars != "undefined") && upsellTemplateVars) {
-                    //with the returned upsellTemplateVars, pass into handlebars template
-                    var html = nfhsplayer.templates.upsell(upsellTemplateVars);
-                    html = html + "<p></p>";
-                    //render html
-                    element.replaceWith(html);
-                  }
-                });
-              });
-            }
-          });
-        },
-        fullBoxScoreFirstLoaded: function() {
-          nfhs.analytics.sendPageView('data');
-        }
+        beforeLoadDatacast: hsgcWidgets.networkAuthorize,
+        fullBoxScoreFirstLoaded: function() { nfhs.analytics.sendPageView('data'); }
       });
 
     </script>
