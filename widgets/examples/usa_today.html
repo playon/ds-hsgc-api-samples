@@ -12,20 +12,11 @@
       <div game-summary game="123456" sport="Football" publisher="no pub"></div>
     </div>
     <script>
-      $(function() {
-          $('ul.tabs>li>a').click(function() {
-            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
-            var target = $(this).parent().attr('class');
-            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
-            return false;
-          });
-      });
       hsgcWidgets.init({
-        env: 'prod',
+        env: 'stage',
         keyStrategy: 'usa_today',
         imageRoot: 'http://www.hsgamecenter.com/'
       });
-
     </script>
   </body>
 </html>
