@@ -9,7 +9,8 @@ module.exports = function (grunt) {
           basicExample: {
             files: {
                 'build/basic.css': 'examples/basic.less',
-                'build/nfhs.css': 'examples/nfhs.less'
+                'build/nfhs.css': 'examples/nfhs.less',
+                'build/usa_today.css': 'examples/usa_today.less',
             }
           }
         },

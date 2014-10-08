@@ -1,11 +1,59 @@
-@import './bower_components/bootstrap/less/bootstrap.less';
-
-table {
-  .table;
-  .table-bordered;
-  .table-striped;
+table.nfhs-scout-table {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
+table.nfhs-scout-table > tbody > tr:nth-child(odd) > td, table.nfhs-scout-table > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+
+table.nfhs-scout-table > thead > tr > th,
+table.nfhs-scout-table > tbody > tr > th,
+table.nfhs-scout-table > tfoot > tr > th,
+table.nfhs-scout-table > thead > tr > td,
+table.nfhs-scout-table > tbody > tr > td,
+table.nfhs-scout-table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
+table.nfhs-scout-table > caption + thead > tr:first-child > th,
+table.nfhs-scout-table > colgroup + thead > tr:first-child > th,
+table.nfhs-scout-table > thead:first-child > tr:first-child > th,
+table.nfhs-scout-table > caption + thead > tr:first-child > td,
+table.nfhs-scout-table > colgroup + thead > tr:first-child > td,
+table.nfhs-scout-table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+table.nfhs-scout-table > tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+table.nfhs-scout-table .table {
+  background-color: #ffffff;
+}
+table.nfhs-scout-table > thead > tr > th,
+table.nfhs-scout-table > tbody > tr > th,
+table.nfhs-scout-table > tfoot > tr > th,
+table.nfhs-scout-table > thead > tr > td,
+table.nfhs-scout-table > tbody > tr > td,
+table.nfhs-scout-table > tfoot > tr > td {
+  border: 1px solid #dddddd;
+}
+table.nfhs-scout-table > thead > tr > th,
+table.nfhs-scout-table > thead > tr > td {
+  border-bottom-width: 2px;
+}
+table.nfhs-scout-table > tbody > tr:nth-child(odd) > td,
+table.nfhs-scout-table > tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
@@ -17,9 +65,12 @@ table {
   vertical-align:middle;
 }
 
+.nfhs-scout-logo {
+  .widget-logo-medium
+}
+
 .nfhs-scout-scoreboard {
   .nfhs-scout-game-status {
-    float: right;
   }
 
   .nfhs-scout-logo {
@@ -43,4 +94,63 @@ table {
  .nfhs-scout-logo {
     .widget-logo-medium
   }
+}
+
+.nfhs-scout-attribution {
+  float:right;
+  height:44px;
+
+  a {
+    &:hover{
+      text-decoration:none;
+    }
+  }
+}
+
+h4.nfhs-scout-heading {
+  font-size: 18px;  
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.nfhs-scout-tabs {
+padding-left: 0;
+margin-bottom: 0;
+list-style: none;
+}
+
+.nfhs-scout-tabs>li.active>a, .nfhs-scout-tabs>li.active>a:hover, .nfhs-scout-tabs>li.active>a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.nfhs-scout-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nfhs-scout-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  text-decoration:none;
+}
+.nfhs-scout-tabs>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nfhs-scout-tab-container {
+  margin-top: -10px;
+}
+.nfhs-scout-tab-container>div{
+  border: 1px solid #dddddd;
+  clear:both;
+  padding:10px;
 }
