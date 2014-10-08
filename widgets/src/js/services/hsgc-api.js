@@ -197,13 +197,23 @@ angular.module('hsgc')
         angular.extend(config.params, options);
 
         var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
-        return $http.get(url, config).then(function(boxScore) {
-          var bs = populateBaseInfo(boxScore.data);
-          populateLeaderInfo(boxScore.data, bs, $filter);
-          populatePlayerStats(boxScore.data, bs);
-          populatePlayers(boxScore.data, bs, $filter);
-          return bs;
-        });
+        return $http.get(url, config).then(
+          //success
+          function(boxScore) {
+            var bs = populateBaseInfo(boxScore.data);
+            populateLeaderInfo(boxScore.data, bs, $filter);
+            populatePlayerStats(boxScore.data, bs);
+            populatePlayers(boxScore.data, bs, $filter);
+            return bs;
+          },
+          //error
+          function(response) {
+            hsgcWidgets.datacastLoadError(response.data, response.status, response.statusText);
+            if (response.status == 402) {
+              hsgcWidgets.datacastPaymentRequired(response.data);
+              return $q.reject('Payment required');
+            }
+          });
       } else {
         //I don't know how to return an empty promise
         var deferred = $q.defer();

@@ -17,7 +17,9 @@ hsgcWidgets = {
       unityRoot: "http://unity.nfhsnetwork.com/v1/",
       datacastLoaded: function() {},
       beforeLoadDatacast: function(gameKey, publisherKey, cb) { cb(); },
-      fullBoxScoreFirstLoaded: function() { }
+      fullBoxScoreFirstLoaded: function() { },
+      datacastLoadError: function() { },
+      datacastPaymentRequired: function(data) { console.log(data.GameDetailLink); }
     };
     var config = angular.extend(defaults, options);
 

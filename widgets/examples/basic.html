@@ -12,38 +12,7 @@
       <div game-summary game="beb0006482" sport="Football" publisher="no pub"></div>
     </div>
     <script>
-      nfhs = {
-        auth: {
-          datacast: function(gameKey, publisherKey, cb) {
-            cb({authorized: true});
-          }
-        },
-        utils: {
-          getUnityObject: function(type, key, cb) {
-            var resource;
-            if (type == "game") {
-              resource = "games";
-            }
-            $.get(hsgcWidgets.unityRoot + resource + "/" + key, function(data) {
-              cb(data);
-            });
-          }
-        }
-      }
 
-      $(function() {
-          $('ul.tabs>li>a').click(function() {
-            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
-            var target = $(this).parent().attr('class');
-            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
-            return false;
-          });
-        //var $injector = angular.injector(['ng', 'hsgc']);
-        //$injector.invoke(function($rootScope, $compile) {
-        //  $('body').prepend($compile('<div id="test" full-box-score game="0f214114ce"></div>')($rootScope));
-        //});
-        //$('.container').append($('<div id="test" full-box-score game="0f214114ce"></div>'));
-      });
       hsgcWidgets.init({
         env: 'dev',
         imageRoot: ''
