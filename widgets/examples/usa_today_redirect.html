@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="hsgc-widgets.min.js"></script>
+    <!--script src="http://localhost:35729/livereload.js"></script-->
+    <link rel="stylesheet" href="usa_today.css">
+    <style>
+      .container {
+        width: 1170px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <div datacast="123456" publisher="" sport="Football">
+    <div scoreboard></div>
+    <div redirect></div>
+    </div>
+  </div>
+    <script>
+      hsgcWidgets.init({
+        env: 'stage',
+        keyStrategy: 'usa_today',
+        imageRoot: 'http://www.hsgamecenter.com/'
+      });
+    </script>
+  </body>
+</html>

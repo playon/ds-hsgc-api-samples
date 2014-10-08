@@ -56,6 +56,7 @@ angular.module('hsgc')
         inOverTime: inOverTime,
         awayOvertimeScore: awayOTScore,
         homeOvertimeScore: homeOTScore,
+        gameDetailLink: boxScore.GameDetailLink,
 
         getScore: function(unityKey) {
           var tsId = this.unityTeamMapping[safeToLower(unityKey)];
