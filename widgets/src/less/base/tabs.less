@@ -1,0 +1,40 @@
+
+.nfhs-scout-tabs {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  .clearfix;
+
+  li {
+    float: left;
+    margin-right: 2px;
+    margin-bottom: -1px;
+
+    a {
+      position: relative;
+      display: block;
+      border: 1px solid transparent;
+      text-decoration:none;
+      padding: 10px 15px;
+    }
+
+    &.active {
+      a, a:hover, a:focus {
+        color: #555;
+        cursor: default;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+
+.nfhs-scout-tab-container {
+  margin-top: -10px;
+  >div {
+    border: 1px solid #dddddd;
+    clear:both;
+    padding:10px;
+  }
+}

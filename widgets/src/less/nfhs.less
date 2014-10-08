@@ -1,0 +1,74 @@
+@import 'base/base.less';
+@table-border-width: 0px;
+
+.nfhs-scout-attribution { display: none; }
+
+.nfhs-scout-game-summary {
+  .nfhs-scout-game-summary {
+    border: 1px solid #cbcbcb;
+    background: #fff;
+    margin-bottom: 25px;
+    padding: 10px;
+  }
+}
+
+table.nfhs-scout-table {
+  > thead > tr {
+    border-bottom-width: 1px;
+  }
+
+  > tbody > tr {
+    background-color: #fbfbfb;
+
+    &:nth-child(even) {
+      background-color: #f2f5f7;
+    }
+  }
+}
+
+.nfhs-scout-tabs {
+  >li {
+    line-height: 24px;
+    font-size: 12px;
+    margin-right:0;
+
+    a {
+      height: 35px;
+      padding: 15px 10px 0;
+      background-color: #00255c;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: none;
+    }
+
+    &.active {
+      a, a:hover, a:focus {
+        background-color: #4685bd;
+        color: #fff;
+        border: none;
+
+        &:after {
+          top: 100%;
+          left: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-color: rgba(136,183,213,0);
+          border-top-color: #4685bd;
+          border-width: 7px 5px;
+          margin-left: -10px;
+        }
+      }
+    }
+  }
+}
+
+.nfhs-scout-tab-container {
+  >div {
+    border: none;
+  }
+}

@@ -1,0 +1,124 @@
+@import 'variables.less';
+@import 'mixins.less';
+@import 'tables.less';
+@import 'tabs.less';
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.nfhs-scout-logo {
+  .widget-logo-medium
+}
+
+/**** Scoreboard ****/
+.nfhs-scout-scoreboard {
+  .nfhs-scout-game-status {
+    float:right;
+  }
+
+  th, td { text-align: center; }
+  td:first-child { text-align: left; }
+
+  .nfhs-scout-winner { font-weight: bold; }
+}
+
+/**** Play by Play ****/
+.nfhs-scout-play-by-play {
+  .nfhs-scout-logo {
+    width: 24px;
+    height: 24px;
+    vertical-align:middle;
+  }
+  .nfhs-scout-play-by-play-spot {
+    min-width: 160px;
+    text-align: center;
+  }
+  .nfhs-scout-play-by-play-score {
+    text-align: center;
+  }
+  .nfhs-scout-scoring { font-weight: bold; }
+
+  .nfhs-scout-play-by-play-period-selector {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 5px;
+      border: 1px solid @highlight-color-1;
+
+      a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 15px;
+        color: @highlight-color-1;
+      }
+
+      &:hover {
+        background-color: @highlight-color-1;
+        a { color: #fff; }
+      }
+
+      &.nfhs-scout-active {
+        &, &:hover, &:focus {
+          background-color: @highlight-color-2;
+          a { color: #fff; }
+          border-color: @highlight-color-2;
+        }
+
+        a { cursor: default; }
+      }
+
+      &.nfhs-scout-selector-label {
+        border: none;
+        font-weight:bold;
+        text-transform: uppercase;
+        &:hover { background-color: transparent; }
+      }
+    }
+  }
+
+  .nfhs-scout-play-by-play-plays {
+    th {
+      background-color: @highlight-color-1;
+      color: #fff;
+      text-align: left;
+      font-weight: normal;
+
+      &.nfhs-scout-play-by-play-score { text-align:center; }
+    }
+
+    td { vertical-align: middle; }
+
+    table {
+      border-top: 1px solid #ddd;
+      clear:both;
+      padding-top: 10px;
+      margin-top:20px;
+    }
+  }
+}
+
+/**** Attribution ****/
+.nfhs-scout-attribution {
+  float:right;
+  height:44px;
+
+  a {
+    &:hover{
+      text-decoration:none;
+    }
+  }
+}
+
+/**** Rosters ****/
+.nfhs-scout-rosters {
+  .clearfix;
+
+  .nfhs-scout-roster {
+    float: left;
+    width: 50%;
+  }
+}

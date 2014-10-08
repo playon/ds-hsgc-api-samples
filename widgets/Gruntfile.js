@@ -8,9 +8,9 @@ module.exports = function (grunt) {
         less: {
           basicExample: {
             files: {
-                'build/basic.css': 'examples/basic.less',
-                'build/nfhs.css': 'examples/nfhs.less',
+                'build/css/nfhs.css': 'src/less/nfhs.less',
                 'build/usa_today.css': 'examples/usa_today.less',
+                'build/css/base.css': 'src/less/base/base.less'
             }
           }
         },
@@ -98,7 +98,7 @@ module.exports = function (grunt) {
         },
         watch: {
             files: {
-                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*'],
+                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*', 'src/less/**/*.less'],
                 tasks: ['build'],
                 options: {
                     livereload: true

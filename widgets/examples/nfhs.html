@@ -2,8 +2,8 @@
   <head>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="hsgc-widgets.min.js"></script>
-    <link rel="stylesheet" href="nfhs.css">
     <link href="http://www.nfhsnetwork.com/sites/all/themes/nfhs/css/layout.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nfhs.css">
 
     <style>
       .container { padding-top: 40px; }
@@ -100,17 +100,8 @@
         }
       }
 
-      $(function() {
-          $('ul.tabs>li>a').click(function() {
-            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
-            var target = $(this).parent().attr('class');
-            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
-            return false;
-          });
-
-      });
       hsgcWidgets.init({
-        env: 'dev',
+        env: 'stage',
         imageRoot: '',
         beforeLoadDatacast: function(gameKey, publisherKey, cb) {
           nfhs.auth.datacast(gameKey, publisherKey, function(auth) {

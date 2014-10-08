@@ -1,0 +1,39 @@
+table.nfhs-scout-table {
+  width: 100%;
+  border: @table-border-width solid @table-border-color;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      border-width: 0;
+
+      > th,
+      > td {
+        padding: 8px;
+        vertical-align: top;
+        border: @table-border-width solid @table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+
+    > th,
+    > td {
+      vertical-align: bottom;
+      border-bottom-width: (@table-border-width * 2);
+    }
+  }
+
+  tbody > tr:nth-child(odd) >  td {
+    background-color: @table-bg-accent;
+  }
+
+  thead:first-child > tr:first-child > th,td {
+    border-top: 0;
+  }
+}
