@@ -15,17 +15,32 @@ module.exports = function (grunt) {
           }
         },
         uglify: {
-            widget_js: {
+            widget: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    beautify: true,
+                    mangle: false,
+                    ASCIIOnly: true
+                },
+                files: {
+                    'build/hsgc-widgets.js': [
+                      'bower_components/angular/angular.js',
+                      'src/js/app.js',
+                      tmpTemplateFile.path,
+                      'src/js/*/*.js'
+                    ]
+                }
+            },
+            widget_min: {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    beautify: true,
-                    mangle: false
+                    ASCIIOnly: true
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
-                      'src/js/vendor/angular.js',
+                      'bower_components/angular/angular.js',
                       'src/js/app.js',
                       tmpTemplateFile.path,
                       'src/js/*/*.js'
@@ -76,24 +91,11 @@ module.exports = function (grunt) {
             dev: {
                 upload: [
                   {
-                      src: 'build/*.*',
+                      src: 'build/**',
+                      rel: 'build',
                       dest: 'js/<%= pkg.name %>/<%= pkg.version.substr(0, pkg.version.indexOf("-") > 0 ? pkg.version.indexOf("-") : pkg.version.length ) %>'
                   }
                 ]
-            }
-        },
-        'string-replace': {
-            clientVersion: {
-            src: 'build/hsgc-widgets.min.js',
-            dest: 'build/hsgc-widgets.min.js',
-            options: {
-                replacements: [
-                    {
-                        pattern: /["|']HSGC-Client-Version["|']\s*:\s*["|'].*?["|']/i,
-                        replacement: '"HSGC-Client-Version" : "<%= pkg.version %>"'
-                    }
-                ]
-            }
             }
         },
         watch: {
@@ -124,7 +126,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy', 'string-replace']);
+    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
     grunt.registerTask('deploy', ['build', 's3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
