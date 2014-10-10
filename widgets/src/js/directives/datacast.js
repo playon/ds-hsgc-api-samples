@@ -46,35 +46,31 @@ angular.module('hsgc')
                               scope.sport,
                               opts
                               )
-          .then(function(result) {
-            if (typeof(result) != "undefined") {
-              angular.extend(scope, result);
-              scope.$emit('datacastLoaded');
-              $timeout(updateBoxScore, 30*1000);
-            }
-          });
+          .then(
+            //success
+            function(result) {
+              if (typeof(result) != "undefined") {
+                angular.extend(scope, result);
+                scope.$emit('datacastLoaded');
+                $timeout(updateBoxScore, 30*1000);
+              }
+            },
+            //failure
+            function(result) {
+              if (result.status == 402) {
+                scope.paymentRequired = true;
+                angular.extend(scope, result.boxScore);
+                opts = {};
+                $timeout(updateBoxScore, 30*1000);
+              }
+            });
         };
 
         if (!opts.includeLeaders && !opts.includePlayByPlay && !opts.includePlayerStats && !opts.includeTeamAggregates) {
           updateBoxScore();
         } else {
-          nfhs.auth.datacast(scope.gameKey, scope.publisherKey, function(auth) {
-            if (auth.authorized) {
-              updateBoxScore();
-            } else {
-              nfhs.utils.getUnityObject('game', scope.gameKey, function (game) {
-                //get the specific upsell variables by passing in the unity event object
-                nfhs.templater.datacastUpsell(game, function (upsellTemplateVars) {
-                  if (typeof(upsellTemplateVars != "undefined") && upsellTemplateVars) {
-                    //with the returned upsellTemplateVars, pass into handlebars template
-                    var html = nfhsplayer.templates.upsell(upsellTemplateVars);
-                    html = html + "<p></p>";
-                    //render html
-                    element.replaceWith(html);
-                  }
-                });
-              });
-            }
+          hsgcWidgets.beforeLoadDatacast(scope.gameKey, scope.publisherKey, function() {
+            updateBoxScore();
           });
         }
       }

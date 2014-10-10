@@ -5,11 +5,12 @@ angular.module('hsgc')
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
       unityTeamMapping = { };
-      unityTeamMapping[boxScore.HomeTeamUnityKey.toLowerCase()] = boxScore.HomeTeamSeasonId;
-      unityTeamMapping[boxScore.AwayTeamUnityKey.toLowerCase()] = boxScore.AwayTeamSeasonId;
+
+      unityTeamMapping[safeToLower(boxScore.HomeTeamUnityKey)] = boxScore.HomeTeamSeasonId;
+      unityTeamMapping[safeToLower(boxScore.AwayTeamUnityKey)] = boxScore.AwayTeamSeasonId;
       colors = { };
-      colors[boxScore.HomeTeamUnityKey.toLowerCase()] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
-      colors[boxScore.AwayTeamUnityKey.toLowerCase()] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
+      colors[safeToLower(boxScore.HomeTeamUnityKey)] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
+      colors[safeToLower(boxScore.AwayTeamUnityKey)] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
 
       inOverTime = boxScore.CurrentPeriod > 4;
       homeOTScore = 0;
@@ -33,8 +34,8 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: boxScore.HomeTeamLogo,
-        awayLogo: boxScore.AwayTeamLogo,
+        homeLogo: hsgcWidgets.imageRoot + boxScore.HomeTeamLogo,
+        awayLogo: hsgcWidgets.imageRoot + boxScore.AwayTeamLogo,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeAcronym: boxScore.HomeTeamAcronym,
@@ -55,23 +56,24 @@ angular.module('hsgc')
         inOverTime: inOverTime,
         awayOvertimeScore: awayOTScore,
         homeOvertimeScore: homeOTScore,
+        gameDetailLink: boxScore.GameDetailLink,
 
         getScore: function(unityKey) {
-          var tsId = this.unityTeamMapping[unityKey.toLowerCase()];
+          var tsId = this.unityTeamMapping[safeToLower(unityKey)];
           return this.totalScores[tsId];
         },
         getPrimaryColor: function(unityKey) {
           return colors[unityKey].primary; //todo: populate color based off api response
         },
         getTeamName: function(unityKey) {
-          if (this.unityTeamMapping[unityKey.toLowerCase()] ==this.homeTeamSeasonId) {
+          if (this.unityTeamMapping[safeToLower(unityKey)] ==this.homeTeamSeasonId) {
             return this.homeName;
           } else {
             return this.awayName;
           }
         },
         getTeamLogo: function(unityKey) {
-          if (this.unityTeamMapping[unityKey.toLowerCase()] == this.homeTeamSeasonId) {
+          if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
             return this.homeLogo;
           } else {
             return this.awayLogo;
@@ -82,10 +84,10 @@ angular.module('hsgc')
         },
         isWinner: function (teamKey) {
           if (this.isFinal()) {
-            if (this.homeScore > this.awayScore && this.unityTeamMapping[teamKey.toLowerCase()] == this.homeTeamSeasonId) {
+            if (this.homeScore > this.awayScore && this.unityTeamMapping[safeToLower(teamKey)] == this.homeTeamSeasonId) {
               return true;
             }
-            if (this.homeScore < this.awayScore && this.unityTeamMapping[teamKey.toLowerCase()] == this.awayTeamSeasonId) {
+            if (this.homeScore < this.awayScore && this.unityTeamMapping[safeToLower(teamKey)] == this.awayTeamSeasonId) {
               return true;
             }
           }
@@ -150,6 +152,15 @@ angular.module('hsgc')
       }
     };
 
+    var safeToLower = function(toLower){
+      if(typeof(toLower) == "undefined"){
+        return "";
+      }
+      else{
+        return toLower.toLowerCase();
+      }
+    };
+
     var populatePlayerStats = function(boxScore, bs) {
       bs.playerStats = { };
       bs.playerStats[boxScore.HomeTeamSeasonId] = {
@@ -186,14 +197,30 @@ angular.module('hsgc')
         var config = { params: { } };
         angular.extend(config.params, options);
 
-        var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
-        return $http.get(url, config).then(function(boxScore) {
-          var bs = populateBaseInfo(boxScore.data);
-          populateLeaderInfo(boxScore.data, bs, $filter);
-          populatePlayerStats(boxScore.data, bs);
-          populatePlayers(boxScore.data, bs, $filter);
-          return bs;
-        });
+        var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
+        return $http.get(url, config).then(
+          //success
+          function(boxScore) {
+            var bs = populateBaseInfo(boxScore.data);
+            populateLeaderInfo(boxScore.data, bs, $filter);
+            populatePlayerStats(boxScore.data, bs);
+            populatePlayers(boxScore.data, bs, $filter);
+            return bs;
+          },
+          //error
+          function(response) {
+            hsgcWidgets.datacastLoadError(response.data, response.status, response.statusText);
+            var result = {
+              status: response.status,
+              statusText: response.statusText
+            };
+
+            if (response.status == 402) {
+              result.boxScore = populateBaseInfo(response.data);
+              hsgcWidgets.datacastPaymentRequired(response.data);
+            }
+            return $q.reject(result);
+          });
       } else {
         //I don't know how to return an empty promise
         var deferred = $q.defer();
@@ -202,25 +229,7 @@ angular.module('hsgc')
       }
     }
 
-    var getScores = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey;
-      return $http.get(url).then(function(boxScore) {
-        return populateBaseInfo(boxScore.data);
-      });
-    }
-
-    var getLeaders = function(unityGameKey, publisherKey, sport) {
-      var url = hsgcWidgets.apiRoot + 'games/unity/' + unityGameKey + '?includeLeaders=true';
-      return $http.get(url).then(function(boxScore) {
-        var bs = populateBaseInfo(boxScore.data);
-        populateLeaderInfo(boxScore.data, bs, $filter);
-        return bs;
-      });
-    }
-
     return {
-      getScores : getScores,
-      getLeaders : getLeaders,
       getFullBox : getFullBox
     };
   }]);

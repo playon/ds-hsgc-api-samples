@@ -11,14 +11,9 @@ angular.module('hsgc')
             $timeout(updateBoxScore, 30*1000);
           });
         };
-
-        nfhs.auth.datacast($scope.gameKey, $scope.publisherKey, function(auth) {
-          if (auth.authorized) {
+        hsgcWidgets.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {
             updateBoxScore();
-          }
         });
-
-
       }],
       templateUrl: 'templates/gameSummary.html'
     };

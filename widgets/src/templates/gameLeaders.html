@@ -1,6 +1,6 @@
-<div ng-show="leadersAvailable" class="nfhs-scout-game-leaders ds-widget-leaders">
-    <h4>Game Leaders</h4>
-    <table>
+<div ng-show="leadersAvailable" class="nfhs-scout-game-leaders nfhs-scout-leaders">
+    <h4 class="nfhs-scout-heading">Game Leaders</h4>
+    <table class="nfhs-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -11,13 +11,13 @@
       </thead>
       <tbody>
         <tr>
-          <td><img ng-src="{{awayLogo}}" alt="" class="ds-widget-logo" /> {{awayName}}</td>
+          <td><img ng-src="{{awayLogo}}" alt="" class="nfhs-scout-logo" /> {{awayName}}</td>
           <td>{{leaders.awayPassingLeader}}</td>
           <td>{{leaders.awayRushingLeader}}</td>
           <td>{{leaders.awayReceivingLeader}}</td>
         </tr>
         <tr>
-          <td><img ng-src="{{homeLogo}}" alt="" class="ds-widget-logo" /> {{homeName}}</td>
+          <td><img ng-src="{{homeLogo}}" alt="" class="nfhs-scout-logo" /> {{homeName}}</td>
           <td>{{leaders.homePassingLeader}}</td>
           <td>{{leaders.homeRushingLeader}}</td>
           <td>{{leaders.homeReceivingLeader}}</td>

@@ -1,5 +1,5 @@
-<div ng-show="playByPlayAvailable" class="ds-widget-scoring-summary">
-  <table>
+<div ng-show="playByPlayAvailable" class="nfhs-scout-scoring-summary">
+  <table class="nfhs-scout-table">
     <thead>
       <tr>
         <th>Team</th>
@@ -12,10 +12,10 @@
     </thead>
     <tbody>
       <tr ng-repeat="play in scoringPlays">
-        <td class="team-name">{{play.TeamName}}</td>
+        <td class="nfhs-scout-team-name">{{play.TeamName}}</td>
         <td>{{play.Quarter}}</td>
         <td>{{play.TimeOnClock | timeOnClock }}</td>
-        <td class="play-summary">{{play.Description}}</td>
+        <td class="nfhs-scout-play-summary">{{play.Description}}</td>
         <td>{{play.AwayScore}}</td>
         <td>{{play.HomeScore}}</td>
       </tr>

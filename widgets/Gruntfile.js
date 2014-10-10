@@ -8,22 +8,39 @@ module.exports = function (grunt) {
         less: {
           basicExample: {
             files: {
-                'build/basic.css': 'examples/basic.less',
-                'build/nfhs.css': 'examples/nfhs.less'
+                'build/css/nfhs.css': 'src/less/nfhs.less',
+                'build/usa_today.css': 'examples/usa_today.less',
+                'build/css/base.css': 'src/less/base/base.less'
             }
           }
         },
         uglify: {
-            widget_js: {
+            widget: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    beautify: true,
+                    mangle: false,
+                    ASCIIOnly: true
+                },
+                files: {
+                    'build/hsgc-widgets.js': [
+                      'bower_components/angular/angular.js',
+                      'src/js/app.js',
+                      tmpTemplateFile.path,
+                      'src/js/*/*.js'
+                    ]
+                }
+            },
+            widget_min: {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                     sourceMap: true,
                     sourceMapIncludeSources: true,
-                    beautify: true,
-                    mangle: false
+                    ASCIIOnly: true
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
+                      'bower_components/angular/angular.js',
                       'src/js/app.js',
                       tmpTemplateFile.path,
                       'src/js/*/*.js'
@@ -36,6 +53,12 @@ module.exports = function (grunt) {
                 files: [{
                     cwd: "examples",
                     src: "*.html",
+                    dest: 'build',
+                    expand: true
+                },
+                {
+                    cwd: "examples",
+                    src: "*.png",
                     dest: 'build',
                     expand: true
                 }]
@@ -68,29 +91,16 @@ module.exports = function (grunt) {
             dev: {
                 upload: [
                   {
-                      src: 'build/*.*',
+                      src: 'build/**',
+                      rel: 'build',
                       dest: 'js/<%= pkg.name %>/<%= pkg.version.substr(0, pkg.version.indexOf("-") > 0 ? pkg.version.indexOf("-") : pkg.version.length ) %>'
                   }
                 ]
             }
         },
-        'string-replace': {
-            clientVersion: {
-            src: 'build/hsgc-widgets.min.js',
-            dest: 'build/hsgc-widgets.min.js',
-            options: {
-                replacements: [
-                    {
-                        pattern: /["|']HSGC-Client-Version["|']\s*:\s*["|'].*?["|']/i,
-                        replacement: '"HSGC-Client-Version" : "<%= pkg.version %>"'
-                    }
-                ]
-            }
-            }
-        },
         watch: {
             files: {
-                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*'],
+                files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*', 'src/less/**/*.less'],
                 tasks: ['build'],
                 options: {
                     livereload: true
@@ -116,7 +126,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy', 'string-replace']);
+    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
     grunt.registerTask('deploy', ['build', 's3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };

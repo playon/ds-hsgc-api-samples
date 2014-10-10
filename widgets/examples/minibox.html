@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
+    <script src="hsgc-widgets.min.js"></script>
+    <!--script src="http://localhost:35729/livereload.js"></script-->
+    <link rel="stylesheet" href="css/basic.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <!--div datacast="0f214114ce">
+        <ul>
+          <li>{{getScore('5f2f7aed32')}}</li>
+          <li>{{getTeamName('5f2f7aed32')}}</li>
+          <li>{{getTeamLogo('5f2f7aed32')}}</li>
+          <li>{{isFinal()}}</li>
+          <li>{{isWinner('5f2f7aed32')}}</li>
+        </ul>
+      </div>
+      <hr /-->
+
+      <div mini-box-score compressDisplay sport="Football" game="32e996f8e7" ></div>
+    </div>
+    <script>
+      $(function() {
+          $('ul.tabs>li>a').click(function() {
+            $(this).parents('ul.tabs').next('.tabbedContent').children().hide();
+            var target = $(this).parent().attr('class');
+            $(this).parents('ul.tabs').next('.tabbedContent').children('.' + target).show();
+            return false;
+          });
+        //var $injector = angular.injector(['ng', 'hsgc']);
+        //$injector.invoke(function($rootScope, $compile) {
+        //  $('body').prepend($compile('<div id="test" full-box-score game="0f214114ce"></div>')($rootScope));
+        //});
+        //$('.container').append($('<div id="test" full-box-score game="0f214114ce"></div>'));
+      });
+      hsgcWidgets.init('prod', "unity");
+    </script>
+  </body>
+</html>
