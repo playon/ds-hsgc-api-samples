@@ -5,6 +5,15 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        checkDependencies: {
+             this: {
+                options: {
+                    //install: true,
+                    verbose: true,
+                    scopeList: ['devDependencies', 'dependencies']
+                },
+            },
+        },
         less: {
           basicExample: {
             files: {
@@ -117,6 +126,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-check-dependencies');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -126,7 +136,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('build', ['ngtemplates', 'less', 'uglify', 'copy']);
+    grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy']);
     grunt.registerTask('deploy', ['build', 's3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
