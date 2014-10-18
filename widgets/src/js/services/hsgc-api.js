@@ -22,6 +22,18 @@ angular.module('hsgc')
          }
       }
 
+
+      var homeLogoCompute = hsgcWidgets.imageRoot + boxScore.HomeTeamLogo;
+      if(boxScore.HomeTeamLogo.indexOf('http') == 0){
+        homeLogoCompute = boxScore.HomeTeamLogo;
+      }
+
+      var awayLogoCompute = hsgcWidgets.imageRoot + boxScore.AwayTeamLogo;
+     if(boxScore.AwayTeamLogo.indexOf('http') == 0){
+        awayLogoCompute = boxScore.awayTeamLogo;
+      }
+      
+
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
@@ -34,8 +46,8 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: hsgcWidgets.imageRoot + boxScore.HomeTeamLogo,
-        awayLogo: hsgcWidgets.imageRoot + boxScore.AwayTeamLogo,
+        homeLogo: homeLogoCompute,
+        awayLogo: awayLogoCompute,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeAcronym: boxScore.HomeTeamAcronym,
