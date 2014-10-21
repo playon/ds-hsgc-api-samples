@@ -3,7 +3,7 @@ angular.module('hsgc')
     return {
       restrict: 'EA',
       templateUrl: 'templates/scoreboard.html',
-      link: function(scope) {
+      link: function(scope, element, attrs) {
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
         if(hsgcWidgets.keyStrategy == "unity"){
           $http.get(hsgcWidgets.unityRoot + 'games/' + scope.gameKey)
@@ -21,8 +21,11 @@ angular.module('hsgc')
         }
         else
         {
-          scope.showStatus = true;
+          scope.compress = angular.isDefined(attrs.compressDisplay);
+          scope.showStatus = ! scope.compress;
         }
+        //console.log(attrs);
+        console.log(scope);
       }
     };
   }]);

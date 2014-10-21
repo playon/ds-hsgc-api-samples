@@ -4,7 +4,8 @@ angular.module('hsgc')
       restrict: 'AE',
       scope: {
         unityGameKey: "@game",
-        sport: "@sport"
+        sport: "@sport",
+        detailGameLink: "@detailLink"
       },
       link: function(scope) {
         var listenerUnsubscribe = scope.$on('datacastLoaded', function() {

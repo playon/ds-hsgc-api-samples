@@ -19,6 +19,7 @@ module.exports = function (grunt) {
             files: {
                 'build/css/nfhs.css': 'src/less/nfhs.less',
                 'build/usa_today.css': 'examples/usa_today.less',
+                'build/maddison.css': 'examples/maddison.less',
                 'build/css/base.css': 'src/less/base/base.less'
             }
           }

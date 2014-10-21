@@ -7,7 +7,8 @@ angular.module('hsgc')
       scope: {
         gameKey: "@datacast",
         publisherKey: "@publisher",
-        sport: "@sport"
+        sport: "@sport",
+        detailGameLink: "@detailGameLink"
       },
       controller: ["$scope", function($scope) {
         this.getPlayersForTeam = function(teamId) {

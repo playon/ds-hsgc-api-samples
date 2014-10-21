@@ -1,13 +1,12 @@
 <div ng-show="scoresAvailable" class="nfhs-scout-scoreboard nfhs-scout-scoreboard">
-  <div attribution class="nfhs-scout-attribution"></div>
   <span class="nfhs-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
-  <h4 class="nfhs-scout-heading">
+  <h4 class="nfhs-scout-heading" ng-hide="compress">
     Scoreboard
   </h4>
   <table class="nfhs-scout-table">
     <thead>
       <tr>
-        <th></th>
+        <th><span ng-show="compress">{{statusDisplay}}</span></th>
         <th>1</th>
         <th>2</th>
         <th>3</th>
@@ -54,5 +53,24 @@
         <td class="nfhs-scout-final">{{homeScore}}</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td ng-show="inOverTime">
+        </td>
+        <td>
+            <a ng-href="{{detailGameLink}}">Detailed Box</a>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
