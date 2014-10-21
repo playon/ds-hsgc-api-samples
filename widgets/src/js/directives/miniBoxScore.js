@@ -11,6 +11,7 @@ angular.module('hsgc')
         var listenerUnsubscribe = scope.$on('datacastLoaded', function() {
           listenerUnsubscribe();
         });
+      
       },
       templateUrl: 'templates/miniBoxScore.html'
     };

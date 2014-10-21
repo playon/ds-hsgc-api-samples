@@ -6,6 +6,8 @@ angular.module('hsgc')
       link: function(scope, element, attrs) {
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
         if(hsgcWidgets.keyStrategy == "unity"){
+          scope.compress = angular.isDefined(attrs.compressDisplay);
+          if(!scope.compress){
           $http.get(hsgcWidgets.unityRoot + 'games/' + scope.gameKey)
             .success(function(data) {
               var videoAndData = false;
@@ -18,6 +20,7 @@ angular.module('hsgc')
               }
               scope.showStatus = !videoAndData;
             });
+          }
         }
         else
         {
