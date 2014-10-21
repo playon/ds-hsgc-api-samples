@@ -24,8 +24,6 @@ angular.module('hsgc')
           scope.compress = angular.isDefined(attrs.compressDisplay);
           scope.showStatus = ! scope.compress;
         }
-        //console.log(attrs);
-        console.log(scope);
       }
     };
   }]);

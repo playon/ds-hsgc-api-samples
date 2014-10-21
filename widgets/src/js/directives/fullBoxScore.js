@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('fullBoxScore', function() {
+  .directive('fullBoxScore',['$location', function($location) {
     return {
       restrict: 'AE',
       scope: {
@@ -15,4 +15,4 @@ angular.module('hsgc')
       },
       templateUrl: 'templates/fullBoxScore.html'
     };
-  });
+  }]);

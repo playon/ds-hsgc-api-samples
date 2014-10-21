@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('datacast', ['HSGCApi', '$timeout', function(HSGCApi, $timeout) {
+  .directive('datacast', ['HSGCApi', '$timeout', '$location', function(HSGCApi, $timeout, $location) {
     var pollingStarted = false;
     return {
       restrict: 'EA',
@@ -10,7 +10,10 @@ angular.module('hsgc')
         sport: "@sport",
         detailGameLink: "@detailGameLink"
       },
-      controller: ["$scope", function($scope) {
+      controller: ["$scope","$location", function($scope, $location) {
+        if(angular.isDefined($scope.gameKey) && $scope.gameKey == ""){
+          $scope.gameKey = $location.search().game;
+        }
         this.getPlayersForTeam = function(teamId) {
           if (!angular.isUndefined($scope.players))
             return $scope.players[teamId];
