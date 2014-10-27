@@ -14,7 +14,7 @@ hsgcWidgets = {
       env: "prod",
       keyStrategy: "unity",
       apiRoot: "http://api.hsgamecenter.com/v1.2/",
-      unityRoot: "http://unity.nfhsnetwork.com/v1/",
+      unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
       datacastLoaded: function() {},
       beforeLoadDatacast: function(gameKey, publisherKey, cb) { cb(); },
       fullBoxScoreFirstLoaded: function() { },
