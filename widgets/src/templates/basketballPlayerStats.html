@@ -1,0 +1,74 @@
+<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
+  <h4 class="nfhs-scout-heading"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/> {{awayName}}</h4>
+  <table class="nfhs-scout-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th title="Field Goals Made">FGM</th>
+        <th title="Three Point Shots Made">3PM</th>
+        <th title="Free Throws Made">FTM</th>
+        <th title="Offensive Rebounds">OREB</th>
+        <th title="Defensive Rebounds">DREB</th>
+        <th title="Total Rebounds">REB</th>
+        <th title="Assists">AST</th>
+        <th title="Steals">STL</th>
+        <th title="Blocks">BLK</th>
+        <th title="Personal Fouls">PF</th>
+        <th title="Points">PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
+        <td>{{playerStat.JerseyNumber}} {{playerStat.FirstName}} {{playerStat.LastName}}</td>
+        <td>{{playerStat.ShotsMade}}</td>
+        <td>{{playerStat.ThreePointShotsMade}}</td>
+        <td>{{playerStat.FreeThrowsMade}}</td>
+        <td>{{playerStat.OffensiveRebounds}}</td>
+        <td>{{playerStat.DefensiveRebounds}}</td>
+        <td>{{playerStat.TotalRebounds}}</td>
+        <td>{{playerStat.Assists}}</td>
+        <td>{{playerStat.Steals}}</td>
+        <td>{{playerStat.Blocks}}</td>
+        <td>{{playerStat.PersonalFouls}}</td>
+        <td>{{playerStat.TotalPoints}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="nfhs-scout-roster">
+  <h4 class="nfhs-scout-heading"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/> {{homeName}}</h4>
+  <table class="nfhs-scout-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th title="Field Goals Made">FGM</th>
+        <th title="Three Point Shots Made">3PM</th>
+        <th title="Free Throws Made">FTM</th>
+        <th title="Offensive Rebounds">OREB</th>
+        <th title="Defensive Rebounds">DREB</th>
+        <th title="Total Rebounds">REB</th>
+        <th title="Assists">AST</th>
+        <th title="Steals">STL</th>
+        <th title="Blocks">BLK</th>
+        <th title="Personal Fouls">PF</th>
+        <th title="Points">PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
+        <td>{{playerStat.JerseyNumber}} {{playerStat.FirstName}} {{playerStat.LastName}}</td>
+        <td>{{playerStat.ShotsMade}}</td>
+        <td>{{playerStat.ThreePointShotsMade}}</td>
+        <td>{{playerStat.FreeThrowsMade}}</td>
+        <td>{{playerStat.OffensiveRebounds}}</td>
+        <td>{{playerStat.DefensiveRebounds}}</td>
+        <td>{{playerStat.TotalRebounds}}</td>
+        <td>{{playerStat.Assists}}</td>
+        <td>{{playerStat.Steals}}</td>
+        <td>{{playerStat.Blocks}}</td>
+        <td>{{playerStat.PersonalFouls}}</td>
+        <td>{{playerStat.TotalPoints}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

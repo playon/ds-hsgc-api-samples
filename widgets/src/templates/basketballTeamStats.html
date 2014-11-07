@@ -1,0 +1,38 @@
+<div ng-show="statsAvailable" class="details nfhs-scout-team-stats">
+  <table class="nfhs-scout-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/> {{awayName}}</th>
+        <th><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/> {{homeName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Points</td>
+        <td>{{awayStats.TotalPoints}}</td>
+        <td>{{homeStats.TotalPoints}}</td>
+      </tr>
+      <tr>
+        <td>Field Goals Made</td>
+        <td>{{awayStats.ShotsMade}}</td>
+        <td>{{homeStats.ShotsMade}}</td>
+      </tr>
+      <tr>
+        <td>3 Point Field Goals Made</td>
+        <td>{{awayStats.ThreePointShotsMade}}</td>
+        <td>{{homeStats.ThreePointShotsMade}}</td>
+      </tr>
+      <tr>
+        <td>Free Throws Made</td>
+        <td>{{awayStats.FreeThrowsMade}}</td>
+        <td>{{homeStats.FreeThrowsMade}}</td>
+      </tr>
+      <tr>
+        <td>Rebounds</td>
+        <td>{{awayStats.TotalRebounds}}</td>
+        <td>{{homeStats.TotalRebounds}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

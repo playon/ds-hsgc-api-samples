@@ -24,7 +24,7 @@ angular.module('hsgc')
         }
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {
-        if (scope.sport != 'Football') return;
+        if (scope.sport != 'Football' && scope.sport != 'Basketball') return;
 
         transcludeFn(scope, function(clonedContent) {
           //clonedContent.addClass('test');

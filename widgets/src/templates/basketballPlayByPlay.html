@@ -1,0 +1,29 @@
+<div ng-show="playByPlayAvailable" class="nfhs-scout-play-by-play">
+  <ul class="nfhs-scout-play-by-play-period-selector">
+    <li class="nfhs-scout-selector-label">Quarter:</li>
+    <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedPeriod == period.value}">
+      <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
+    </li>
+  </ul>
+
+  <div class="nfhs-scout-play-by-play-plays">
+    <table class="nfhs-scout-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Description</th>
+          <th>Time</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="play in playByPlay | filter:{'Quarter': selectedPeriod}:true">
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'><img ng-src="{{getLogo(play)}}" class="nfhs-scout-logo"/> {{play.TeamName}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.Description}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

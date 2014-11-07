@@ -32,7 +32,7 @@ angular.module('hsgc')
      if(boxScore.AwayTeamLogo.indexOf('http') == 0){
         awayLogoCompute = boxScore.awayTeamLogo;
       }
-      
+
 
       return {
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
@@ -52,8 +52,8 @@ angular.module('hsgc')
         awayName: boxScore.AwayTeamName,
         homeAcronym: boxScore.HomeTeamAcronym,
         awayAcronym: boxScore.AwayTeamAcronym,
-        homeStats: boxScore.HomeTeamStatistics,
-        awayStats: boxScore.AwayTeamStatistics,
+        homeStats: boxScore.Sport == 'Football' ? boxScore.HomeTeamStatistics : boxScore.HomeTeamTotalStats,
+        awayStats: boxScore.Sport == 'Football' ? boxScore.AwayTeamStatistics : boxScore.AwayTeamTotalStats,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
         currentPeriod: boxScore.CurrentPeriod,
@@ -109,6 +109,47 @@ angular.module('hsgc')
     };
 
     var populateLeaderInfo = function(boxScore, bs, $filter) {
+      if (boxScore.Sport == 'Basketball') {
+        if (bs.statsAvailable) {
+          bs.leadersAvailable = true;
+          bs.leaders = {};
+          bs.leaders[bs.homeTeamSeasonId] = {
+            points: { value: 0 },
+            rebounds: { value: 0 },
+            assists: { value: 0 }
+          };
+          bs.leaders[bs.awayTeamSeasonId] = {
+            points: { value: 0 },
+            rebounds: { value: 0 },
+            assists: { value: 0 }
+          };
+
+          boxScore.PlayerStatistics.forEach(function(ps) {
+            if (ps.PlayerId > 0) {
+              if (bs.leaders[ps.TeamSeasonId].points.value < ps.TotalPoints) {
+                bs.leaders[ps.TeamSeasonId].points.value = ps.TotalPoints;
+                bs.leaders[ps.TeamSeasonId].points.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].points.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].points.jerseyNumber = ps.JerseyNumber;
+              }
+              if (bs.leaders[ps.TeamSeasonId].rebounds.value < ps.TotalRebounds) {
+                bs.leaders[ps.TeamSeasonId].rebounds.value = ps.TotalRebounds;
+                bs.leaders[ps.TeamSeasonId].rebounds.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].rebounds.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].rebounds.jerseyNumber = ps.JerseyNumber;
+              }
+              if (bs.leaders[ps.TeamSeasonId].assists.value < ps.Assists) {
+                bs.leaders[ps.TeamSeasonId].assists.value = ps.Assists;
+                bs.leaders[ps.TeamSeasonId].assists.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].assists.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].assists.jerseyNumber = ps.JerseyNumber;
+              }
+            }
+          });
+        }
+        return;
+      }
+
       if (bs.leadersAvailable) {
         bs.leaders = { };
 
@@ -175,6 +216,12 @@ angular.module('hsgc')
 
     var populatePlayerStats = function(boxScore, bs) {
       bs.playerStats = { };
+      if (boxScore.Sport == 'Basketball') {
+        bs.playerStats[boxScore.HomeTeamSeasonId] = boxScore.HomeTeamPlayerStats;
+        bs.playerStats[boxScore.AwayTeamSeasonId] = boxScore.AwayTeamPlayerStats;
+        return;
+      }
+      //football
       bs.playerStats[boxScore.HomeTeamSeasonId] = {
         passingStats: boxScore.HomeTeamPassingStatistics,
         rushingStats: boxScore.HomeTeamRushingStatistics,
@@ -205,7 +252,7 @@ angular.module('hsgc')
     };
 
     var getFullBox = function(unityGameKey, publisherKey, sport, options) {
-      if (sport == "Football") {
+      if (sport == "Football" || sport == "Basketball") {
         var config = { params: { } };
         angular.extend(config.params, options);
 
