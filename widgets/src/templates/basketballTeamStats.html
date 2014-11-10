@@ -14,24 +14,59 @@
         <td>{{homeStats.TotalPoints}}</td>
       </tr>
       <tr>
-        <td>Field Goals Made</td>
-        <td>{{awayStats.ShotsMade}}</td>
-        <td>{{homeStats.ShotsMade}}</td>
+        <td>Field Goals Made-Attempted</td>
+        <td>{{awayStats.ShotsMade}}-{{awayStats.ShotsAttempted}}</td>
+        <td>{{homeStats.ShotsMade}}-{{homeStats.ShotsAttempted}}</td>
       </tr>
       <tr>
-        <td>3 Point Field Goals Made</td>
-        <td>{{awayStats.ThreePointShotsMade}}</td>
-        <td>{{homeStats.ThreePointShotsMade}}</td>
+        <td>3 Point Field Goals Made-Attempted</td>
+        <td>{{awayStats.ThreePointShotsMade}}-{{awayStats.ThreePointShotsAttempted}}</td>
+        <td>{{homeStats.ThreePointShotsMade}}-{{homeStats.ThreePointShotsAttempted}}</td>
       </tr>
       <tr>
-        <td>Free Throws Made</td>
-        <td>{{awayStats.FreeThrowsMade}}</td>
-        <td>{{homeStats.FreeThrowsMade}}</td>
+        <td>Free Throws Made-Attempted</td>
+        <td>{{awayStats.FreeThrowsMade}}-{{awayStats.FreeThrowsAttempted}}</td>
+        <td>{{homeStats.FreeThrowsMade}}-{{homeStats.FreeThrowsAttempted}}</td>
       </tr>
       <tr>
-        <td>Rebounds</td>
-        <td>{{awayStats.TotalRebounds}}</td>
-        <td>{{homeStats.TotalRebounds}}</td>
+        <td>Rebounds (Offensive/Defensive)</td>
+        <td>{{awayStats.TotalRebounds}} ({{awayStats.OffensiveRebounds}}/{{awayStats.DefensiveRebounds}})</td>
+        <td>{{homeStats.TotalRebounds}} ({{homeStats.OffensiveRebounds}}/{{homeStats.DefensiveRebounds}})</td>
+      </tr>
+      <tr>
+        <td>Assists</td>
+        <td>{{awayStats.Assists}}</td>
+        <td>{{homeStats.Assists}}</td>
+      </tr>
+      <tr>
+        <td>Steals</td>
+        <td>{{awayStats.Steals}}</td>
+        <td>{{homeStats.Steals}}</td>
+      </tr>
+      <tr>
+        <td>Blocks</td>
+        <td>{{awayStats.Blocks}}</td>
+        <td>{{homeStats.Blocks}}</td>
+      </tr>
+      <tr>
+        <td>Turnovers</td>
+        <td>{{awayStats.Turnovers}}</td>
+        <td>{{homeStats.Turnovers}}</td>
+      </tr>
+      <tr>
+        <td>Personal Fouls</td>
+        <td>{{awayStats.PersonalFouls}}</td>
+        <td>{{homeStats.PersonalFouls}}</td>
+      </tr>
+      <tr>
+        <td>Charges Taken</td>
+        <td>{{awayStats.ChargesTaken}}</td>
+        <td>{{homeStats.ChargesTaken}}</td>
+      </tr>
+      <tr>
+        <td>Deflections</td>
+        <td>{{awayStats.Deflections}}</td>
+        <td>{{homeStats.Deflections}}</td>
       </tr>
     </tbody>
   </table>

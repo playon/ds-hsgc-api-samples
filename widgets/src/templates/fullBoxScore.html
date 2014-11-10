@@ -36,19 +36,18 @@
   <div ng-show="sport =='Basketball'">
     <div basketball-game-leaders></div>
 
-    <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+    <div ng-init="selectedDetailTab=4" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
       <ul class="nfhs-scout-tabs">
         <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable"><a href ng-click="selectedDetailTab = 1">Team Stats</a></li>
-        <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="playByPlayAvailable"><a href ng-click="selectedDetailTab = 2">Player Stats</a></li>
+        <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable"><a href ng-click="selectedDetailTab = 2">Player Stats</a></li>
         <li ng-class='{"active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable"><a href ng-click="selectedDetailTab = 3">Play by Play</a></li>
-        <!--li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0"><a href ng-click="selectedDetailTab = 4">Rosters</a></li-->
+        <li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable"><a href ng-click="selectedDetailTab = 4">Shot Chart</a></li>
       </ul>
       <div class="nfhs-scout-tab-container">
         <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
         <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
         <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>
-        <!--div basketball-play-by-play ng-show="selectedDetailTab == 3">Play by play</div-->
-        <!--div rosters ng-show="selectedDetailTab == 4"></div-->
+        <div basketball-shot-chart ng-show="selectedDetailTab == 4"></div>
       </div>
     </div>
   </div>

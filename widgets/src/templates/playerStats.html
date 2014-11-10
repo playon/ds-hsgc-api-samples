@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="passer in playerStats.passingStats">
-          <td>{{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}</td>
           <td>{{passer.Completions}}</td>
           <td>{{passer.Attempts}}</td>
           <td>{{passer.Yards}}</td>
@@ -40,7 +40,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.rushingStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
           <td>{{player.Average | number}}</td>
@@ -63,7 +63,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.receivingStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Receptions}}</td>
           <td>{{player.Yards}}</td>
           <td>{{player.Average | number}}</td>
@@ -88,7 +88,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.defensiveStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Tackles}}</td>
           <td>{{player.Solos}}</td>
           <td>{{player.Assists}}</td>
@@ -113,7 +113,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.kickingStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.FieldGoals}}</td>
           <td>{{player.FieldGoalAttempts}}</td>
           <td>{{player.ExtraPoints}}</td>
@@ -136,7 +136,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.puntingStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
           <td>{{player.Average| number}}</td>
@@ -159,7 +159,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.puntReturnStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
           <td>{{player.Average| number}}</td>
@@ -182,7 +182,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.kickReturnStats">
-          <td>{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
+          <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
           <td>{{player.Average| number}}</td>

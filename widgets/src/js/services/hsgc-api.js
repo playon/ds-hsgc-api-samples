@@ -155,7 +155,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.HomeTeamPassingLeader) {
           bs.leaders.homePassingLeader = $filter('stringFormat')("{0} {1}-{2}, {3} yds, {4} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.HomeTeamPassingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.HomeTeamPassingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingCompletions,
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingAttempts,
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingYards,
@@ -164,7 +164,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.HomeTeamRushingLeader) {
           bs.leaders.homeRushingLeader = $filter('stringFormat')("{0} {1} car, {2} yds, {3} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.HomeTeamRushingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.HomeTeamRushingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingYards,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingTouchdowns]);
@@ -172,7 +172,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.HomeTeamReceivingLeader) {
           bs.leaders.homeReceivingLeader = $filter('stringFormat')("{0} {1} rec, {2} yds, {3} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.HomeTeamReceivingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.HomeTeamReceivingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingYards,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingTouchdowns]);
@@ -180,7 +180,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.AwayTeamPassingLeader) {
           bs.leaders.awayPassingLeader = $filter('stringFormat')("{0} {1}-{2}, {3} yds, {4} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.AwayTeamPassingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.AwayTeamPassingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingCompletions,
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingAttempts,
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingYards,
@@ -189,7 +189,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.AwayTeamRushingLeader) {
           bs.leaders.awayRushingLeader = $filter('stringFormat')("{0} {1} car, {2} yds, {3} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.AwayTeamRushingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.AwayTeamRushingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingYards,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingTouchdowns]);
@@ -197,7 +197,7 @@ angular.module('hsgc')
 
         if (boxScore.GameLeaders.AwayTeamReceivingLeader) {
           bs.leaders.awayReceivingLeader = $filter('stringFormat')("{0} {1} rec, {2} yds, {3} tds", [
-            $filter('getPlayerById')(boxScore.Players, boxScore.GameLeaders.AwayTeamReceivingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
+            $filter('getPlayerById')(bs.players, boxScore.GameLeaders.AwayTeamReceivingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingYards,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingTouchdowns]);
@@ -261,9 +261,9 @@ angular.module('hsgc')
           //success
           function(boxScore) {
             var bs = populateBaseInfo(boxScore.data);
+            populatePlayers(boxScore.data, bs, $filter);
             populateLeaderInfo(boxScore.data, bs, $filter);
             populatePlayerStats(boxScore.data, bs);
-            populatePlayers(boxScore.data, bs, $filter);
             return bs;
           },
           //error

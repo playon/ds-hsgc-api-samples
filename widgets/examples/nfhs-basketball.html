@@ -27,13 +27,13 @@
                   <div class="left eight columns alpha">
                     <div class="eventdetails"></div>
 
-                    <div full-box-score sport="Football" game="beb0006482" publisher="96c6864c38"></div>
+                    <div full-box-score sport="Basketball" game="2222" publisher=""></div>
 
-                    <div class="cards" style="">
+                    <!--div class="cards" style="">
                       <div class="card">
                         <div class="details">
                           <div class="cardplaybtn"></div>
-                          <div class="dataonly" datacast="beb0006482" publisher="96c6864c38" sport="Football">
+                          <div class="dataonly" datacast="2222" publisher="" sport="Basketball">
                             <div class="left">
                               <div class="score">{{getScore('0cab7a7072')}}</div>
                               <div class="logo" style="background-color: #546376; background-image: url(http://s3.amazonaws.com/unity-school-logos/Default_profile_icon.png)">
@@ -65,11 +65,11 @@
                           </div>
                         </ul>
                       </div>
-                    </div>
+                    </div-->
                   </div>
                   <div class="right four columns omega">
                     <div class="nfhs-scout-game-summary">
-                      <div game-summary game="beb0006482" sport="Football" publisher="no pub"></div>
+                      <div basketball-game-summary game="2222" sport="Basketball" publisher="no pub"></div>
                     </div>
                   </div>
                 </div>
@@ -114,13 +114,17 @@
         }
       };
 
-      hsgcWidgets.init({
+      /*hsgcWidgets.init({
         env: 'stage',
         imageRoot: '',
         beforeLoadDatacast: hsgcWidgets.networkAuthorize,
         fullBoxScoreFirstLoaded: function() { nfhs.analytics.sendPageView('data'); }
+      });*/
+      hsgcWidgets.init({
+        env: 'stage',
+        keyStrategy: 'usa_today',
+        imageRoot: 'http://www.hsgamecenter.com/'
       });
-
     </script>
   </body>
 </html>

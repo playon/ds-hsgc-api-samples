@@ -23,6 +23,17 @@
   .nfhs-scout-winner { font-weight: bold; }
 }
 
+/**** Player Stats ****/
+.nfhs-scout-player-stats {
+  th, td {
+    text-align: center;
+
+    &.nfhs-scout-player-stats-player-name {
+      text-align: left;
+    }
+  }
+}
+
 /**** Play by Play ****/
 .nfhs-scout-play-by-play {
   .nfhs-scout-logo {
@@ -39,55 +50,24 @@
   }
   .nfhs-scout-scoring { font-weight: bold; }
 
-  .nfhs-scout-play-by-play-period-selector {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-
-    li {
-      display: inline-block;
-      margin-right: 5px;
-      border: 1px solid @highlight-color-1;
-
-      a {
-        text-decoration: none;
-        display: inline-block;
-        padding: 5px 15px;
-        color: @highlight-color-1;
-      }
-
-      &:hover {
-        background-color: @highlight-color-1;
-        a { color: #fff; }
-      }
-
-      &.nfhs-scout-active {
-        &, &:hover, &:focus {
-          background-color: @highlight-color-2;
-          a { color: #fff; }
-          border-color: @highlight-color-2;
-        }
-
-        a { cursor: default; }
-      }
-
-      &.nfhs-scout-selector-label {
-        border: none;
-        font-weight:bold;
-        text-transform: uppercase;
-        &:hover { background-color: transparent; }
-      }
-    }
-  }
-
   .nfhs-scout-play-by-play-plays {
     th {
       background-color: @highlight-color-1;
       color: #fff;
       text-align: left;
       font-weight: normal;
+    }
 
-      &.nfhs-scout-play-by-play-score { text-align:center; }
+    th, td {
+      &.nfhs-scout-play-by-play-score,
+      &.nfhs-scout-play-by-play-time {
+        text-align:center;
+      }
+    }
+
+    .nfhs-scout-play-by-play-team {
+      img.nfhs-scout-logo { margin-right: 5px; }
+      white-space: nowrap;
     }
 
     td { vertical-align: middle; }
@@ -100,6 +80,48 @@
     }
   }
 }
+
+.nfhs-scout-period-selector {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 5px;
+    border: 1px solid @highlight-color-1;
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 5px 15px;
+      color: @highlight-color-1;
+    }
+
+    &:hover {
+      background-color: @highlight-color-1;
+      a { color: #fff; }
+    }
+
+    &.nfhs-scout-active {
+      &, &:hover, &:focus {
+        background-color: @highlight-color-2;
+        a { color: #fff; }
+        border-color: @highlight-color-2;
+      }
+
+      a { cursor: default; }
+    }
+
+    &.nfhs-scout-selector-label {
+      border: none;
+      font-weight:bold;
+      text-transform: uppercase;
+      &:hover { background-color: transparent; }
+    }
+  }
+}
+
 
 /**** Attribution ****/
 .nfhs-scout-attribution {
@@ -120,5 +142,70 @@
   .nfhs-scout-roster {
     float: left;
     width: 50%;
+  }
+}
+
+/**** Shot Chart ****/
+.nfhs-scout-shot-chart {
+  .nfhs-scout-shot-chart-teams {
+    .clearfix;
+
+    .nfhs-scout-shot-chart-team {
+      float: left;
+      width: 50%;
+      border: 0px solid #fff;
+      box-sizing: border-box;
+      color: #fff;
+      padding: 10px;
+      .clearfix;
+
+      &.nfhs-scout-shot-chart-team-away {
+        background-color: #12294E;
+        border-left-width: 3px;
+        border-right-width: 2px;
+      }
+
+      &.nfhs-scout-shot-chart-team-home {
+        background-color: #9D0B0E;
+        border-left-width: 2px;
+        border-right-width: 3px;
+      }
+
+      >div { width:50%; float:left; }
+      >select { font-size:12px; width:40%; float:right; margin:0; }
+    }
+  }
+
+  .nfhs-scout-shot-chart-container {
+    position: relative;
+
+    img.nfhs-scout-basketball-court { width: 100%; }
+    .nfhs-scout-shot-chart-shot {
+      width: 16px;
+      height: 16px;
+      position:absolute;
+
+      &.nfhs-scout-shot-chart-shot-made-home { background-image: url(../img/homeshotmade.png); }
+      &.nfhs-scout-shot-chart-shot-made-away { background-image: url(../img/awayshotmade.png); }
+      &.nfhs-scout-shot-chart-shot-missed-home { background-image: url(../img/homeshotmiss.png); }
+      &.nfhs-scout-shot-chart-shot-missed-away { background-image: url(../img/awayshotmiss.png); }
+    }
+  }
+
+  .nfhs-scout-shot-chart-legend {
+    text-align: right;
+
+    > span {
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 20px;
+
+      &.nfhs-scout-shot-chart-shot-made {
+        background-image: url(../img/awayshotmade.png);
+      }
+      &.nfhs-scout-shot-chart-shot-missed {
+        background-image: url(../img/awayshotmiss.png);
+      }
+    }
   }
 }

@@ -44,15 +44,6 @@ angular.module('hsgc')
           scope.playByPlayPeriods = periods;
         });
 
-        scope.$watch('selectedPeriod', function(newValue) {
-          if (angular.isUndefined(scope.playByPlay))
-            return;
-
-          var periodPlays = scope.playByPlay.filter(function(play) {
-            return play.Quarter == newValue;
-          });
-        });
-
         scope.getLogo = function(play) {
           return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeLogo : scope.awayLogo;
         };

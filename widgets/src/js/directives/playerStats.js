@@ -5,31 +5,27 @@ angular.module('hsgc')
       require: '^datacast',
       scope: { teamId: "@" },
       link: function(scope, element, attrs, datacastCtrl) {
-        //TODO: this timeout shouldn't be necessary, but for some reason i can't get the results to apply on the first api poll.
-        //without the timeout, they show up on subsequent polls
-        $timeout(function() {
-          scope.$watch(function() {
-            return datacastCtrl.getPlayerStatsForTeam(scope.teamId);
-          }, function(oldValue, newValue, sc) {
-            sc.playerStats = newValue;
-            //scope.statsAvailable = datacastCtrl.getStatsAvailable();
-          });
-          scope.$watch(function() {
-            return datacastCtrl.getPlayersForTeam(scope.teamId) ;
-          } , function(oldValue, newValue, sc) {
-            sc.players = newValue;
-            //scope.statsAvailable = datacastCtrl.getStatsAvailable();
-          });
+        scope.players = {};
 
-          scope.$watch(datacastCtrl.getStatsAvailable, function(newValue, oldValue, sc) {
-            sc.statsAvailable = newValue;
-          });
-        }, 2000);
+        //scope.teamId is not immediately available during linking.  Wait for a real value, and then set up watches
+        attrs.$observe('teamId', function(value) {
+          if (scope.teamId != "") {
+            scope.$watch(function() {
+              return datacastCtrl.getPlayerStatsForTeam(scope.teamId);
+            }, function(oldValue, newValue, sc) {
+              sc.playerStats = newValue;
+            });
+            scope.$watch(function() {
+              return datacastCtrl.getPlayersForTeam(scope.teamId) ;
+            } , function(oldValue, newValue, sc) {
+              sc.players[scope.teamId] = newValue;
+            });
 
-
-        //scope.players = datacastCtrl.getPlayersForTeam(scope.teamId);
-        //scope.playerStats = datacastCtrl.getPlayerStatsForTeam(scope.teamId);
-        //scope.statsAvailable = datacastCtrl.getStatsAvailable();
+            scope.$watch(datacastCtrl.getStatsAvailable, function(newValue, oldValue, sc) {
+              sc.statsAvailable = newValue;
+            });
+          }
+        });
       },
       templateUrl: 'templates/playerStats.html'
     };
