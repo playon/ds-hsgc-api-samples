@@ -36,7 +36,7 @@
   <div ng-show="sport =='Basketball'">
     <div basketball-game-leaders></div>
 
-    <div ng-init="selectedDetailTab=4" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+    <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
       <ul class="nfhs-scout-tabs">
         <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable"><a href ng-click="selectedDetailTab = 1">Team Stats</a></li>
         <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable"><a href ng-click="selectedDetailTab = 2">Player Stats</a></li>
