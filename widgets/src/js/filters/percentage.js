@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .filter('percentage', function ($window) {
+  .filter('percentage',['$window', function ($window) {
       return function (input, decimals, prefix, suffix) {
           decimals = angular.isNumber(decimals)? decimals :  3;
           suffix = suffix || '%';
@@ -10,4 +10,4 @@ angular.module('hsgc')
           }
           return prefix + Math.round(input * Math.pow(10, decimals + 2))/Math.pow(10, decimals) + suffix
       };
-  });
+  }]);

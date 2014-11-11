@@ -30,7 +30,7 @@ angular.module('hsgc')
 
       var awayLogoCompute = hsgcWidgets.imageRoot + boxScore.AwayTeamLogo;
      if(boxScore.AwayTeamLogo.indexOf('http') == 0){
-        awayLogoCompute = boxScore.awayTeamLogo;
+        awayLogoCompute = boxScore.AwayTeamLogo;
       }
 
 

@@ -1,0 +1,40 @@
+<div ng-show="statsAvailable" class="nfhs-scout-game-summary">
+  <h4 class="nfhs-scout-heading">Game Summary</h4>
+  <table class="nfhs-scout-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>{{awayAcronym}}</th>
+        <th>{{homeAcronym}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Passing Yards</td>
+        <td>{{awayStats.PassingYards}}</td>
+        <td>{{homeStats.PassingYards}}</td>
+      </tr>
+      <tr>
+        <td>Rushing Yards</td>
+        <td>{{awayStats.RushingYards}}</td>
+        <td>{{homeStats.RushingYards}}</td>
+      </tr>
+      <tr>
+        <td>First Downs</td>
+        <td>{{awayStats.FirstDowns}}</td>
+        <td>{{homeStats.FirstDowns}}</td>
+      </tr>
+      <tr>
+        <td>Turnovers</td>
+        <td>{{awayStats.Turnovers}}</td>
+        <td>{{homeStats.Turnovers}}</td>
+      </tr>
+      <tr>
+        <td>Penalties - Yards</td>
+        <td>{{awayStats.Penalties}} - {{awayStats.PenaltyYards}}</td>
+        <td>{{homeStats.Penalties}} - {{homeStats.PenaltyYards}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="#" class="nfhs-scout-seemore">See Full Summary</a>
+</div>

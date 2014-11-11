@@ -27,7 +27,7 @@
                   <div class="left eight columns alpha">
                     <div class="eventdetails"></div>
 
-                    <div full-box-score sport="Basketball" game="2222" publisher=""></div>
+                    <div full-box-score sport="Basketball" game="c9b50a6e89" publisher=""></div>
 
                     <!--div class="cards" style="">
                       <div class="card">
@@ -69,7 +69,7 @@
                   </div>
                   <div class="right four columns omega">
                     <div class="nfhs-scout-game-summary">
-                      <div basketball-game-summary game="2222" sport="Basketball" publisher="no pub"></div>
+                      <div game-summary game="c9b50a6e89" sport="Basketball" publisher="no pub"></div>
                     </div>
                   </div>
                 </div>
@@ -114,16 +114,11 @@
         }
       };
 
-      /*hsgcWidgets.init({
+      hsgcWidgets.init({
         env: 'stage',
         imageRoot: '',
         beforeLoadDatacast: hsgcWidgets.networkAuthorize,
         fullBoxScoreFirstLoaded: function() { nfhs.analytics.sendPageView('data'); }
-      });*/
-      hsgcWidgets.init({
-        env: 'stage',
-        keyStrategy: 'usa_today',
-        imageRoot: 'http://www.hsgamecenter.com/'
       });
     </script>
   </body>
