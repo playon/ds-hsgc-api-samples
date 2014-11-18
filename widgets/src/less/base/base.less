@@ -24,6 +24,13 @@
   .nfhs-scout-winner { font-weight: bold; }
 }
 
+/**** Team Stats ****/
+.nfhs-scout-team-stats {
+  th {
+    img { display: block; margin: 0 auto; }
+  }
+}
+
 /**** Player Stats ****/
 .nfhs-scout-player-stats {
   th, td {
@@ -35,8 +42,18 @@
   }
 }
 
+/**** Leaders ****/
+.nfhs-scout-game-leaders {
+  .nfhs-scout-leader-name {
+    font-weight: bold;
+  }
+}
+
 /**** Play by Play ****/
 .nfhs-scout-play-by-play {
+  max-height: 50vh;
+  overflow-y: auto;
+
   .nfhs-scout-logo {
     width: 24px;
     height: 24px;
@@ -83,45 +100,55 @@
   }
 }
 
-
+/**** Game Summary ****/
+.nfhs-scout-game-summary {
+  th, td {
+    text-align: center;
+    &:first-child {
+      text-align: left;
+    }
+  }
+}
 
 .nfhs-scout-period-selector {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
 
-  li {
-    display: inline-block;
-    margin-right: 5px;
-    border: 1px solid @highlight-color-1;
-
-    a {
-      text-decoration: none;
+    li {
       display: inline-block;
-      padding: 5px 15px;
-      color: @highlight-color-1;
-    }
+      margin-right: 5px;
+      border: 1px solid @highlight-color-1;
 
-    &:hover {
-      background-color: @highlight-color-1;
-      a { color: #fff; }
-    }
-
-    &.nfhs-scout-active {
-      &, &:hover, &:focus {
-        background-color: @highlight-color-2;
-        a { color: #fff; }
-        border-color: @highlight-color-2;
+      a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 15px;
+        color: @highlight-color-1;
       }
 
-      a { cursor: default; }
-    }
+      &:hover {
+        background-color: @highlight-color-1;
+        a { color: #fff; }
+      }
 
-    &.nfhs-scout-selector-label {
-      border: none;
-      font-weight:bold;
-      text-transform: uppercase;
-      &:hover { background-color: transparent; }
+      &.nfhs-scout-active {
+        &, &:hover, &:focus {
+          background-color: @highlight-color-2;
+          a { color: #fff; }
+          border-color: @highlight-color-2;
+        }
+
+        a { cursor: default; }
+      }
+
+      &.nfhs-scout-selector-label {
+        border: none;
+        font-weight:bold;
+        text-transform: uppercase;
+        &:hover { background-color: transparent; }
+      }
     }
   }
 }
@@ -175,8 +202,10 @@
         border-right-width: 3px;
       }
 
-      >div { width:50%; float:left; }
-      >select { font-size:12px; width:40%; float:right; margin:0; }
+      @media (min-width: @screen-sm-cutoff) {
+        >div { width:50%; float:left; }
+        >select { font-size:12px; width:40%; float:right; margin:0; }
+      }
     }
   }
 

@@ -39,13 +39,13 @@ table.nfhs-scout-table {
 }
 
 //responsive tables css converted to less & namespaced from https://github.com/zurb/responsive-tables
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-cutoff + 1) {
   .nfhs-scout-table-pinned {
     display: none;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: @screen-sm-cutoff) {
   .nfhs-scout-table-responsive {
     margin-bottom: 0;
     td, th {

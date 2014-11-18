@@ -3,12 +3,14 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  .clearfix;
+  width: 100%;
+  display: table;
 
   li {
-    float: left;
+    //float: left;
     margin-right: 2px;
     margin-bottom: -1px;
+    display: table-cell;
 
     a {
       position: relative;
@@ -16,6 +18,7 @@
       border: 1px solid transparent;
       text-decoration:none;
       padding: 10px 15px;
+      text-align: center;
     }
 
     &.active {
@@ -31,7 +34,6 @@
 }
 
 .nfhs-scout-tab-container {
-  margin-top: -10px;
   >div {
     border: 1px solid #dddddd;
     clear:both;

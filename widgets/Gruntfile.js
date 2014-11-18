@@ -128,7 +128,8 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 3001,
-                    base: './build'
+                    base: './build',
+                    livereload: true
                 }
             }
         }

@@ -1,13 +1,13 @@
 .nfhs-scout-visible-sm {
-  display:none;
+  display:none !important;
 
-  @media (max-width: 768px) {
+  @media (max-width: @screen-sm-cutoff) {
     display: block !important;
   }
 }
 
 .nfhs-scout-hidden-sm {
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: @screen-sm-cutoff) {
+    display: none !important;
   }
 }
