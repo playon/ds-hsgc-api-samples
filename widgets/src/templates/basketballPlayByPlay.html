@@ -18,7 +18,11 @@
       </thead>
       <tbody>
         <tr ng-repeat="play in playByPlay | filter:{'Quarter': selectedPeriod}:true">
-          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-team"><img ng-src="{{getLogo(play)}}" class="nfhs-scout-logo"/> {{play.TeamName}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-team">
+            <img ng-src="{{getLogo(play)}}" class="nfhs-scout-logo"/>
+            <span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{getTeamAcronym(play)}}</span>
+            <span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{play.TeamName}}</span>
+         </td>
           <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.Description}}</td>
           <td class="nfhs-scout-play-by-play-time" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
           <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.AwayScore}} - {{play.HomeScore}}</td>

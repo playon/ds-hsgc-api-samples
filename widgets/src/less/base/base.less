@@ -2,6 +2,7 @@
 @import 'mixins.less';
 @import 'tables.less';
 @import 'tabs.less';
+@import 'responsive-utilities.less';
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
@@ -67,6 +68,7 @@
 
     .nfhs-scout-play-by-play-team {
       img.nfhs-scout-logo { margin-right: 5px; }
+      .nfhs-scout-play-by-play-team-acronym { display: none; }
       white-space: nowrap;
     }
 
@@ -80,6 +82,8 @@
     }
   }
 }
+
+
 
 .nfhs-scout-period-selector {
   list-style: none;

@@ -1,6 +1,6 @@
 <div ng-show="statsAvailable" class="nfhs-scout-player-stats">
   <h4 class="nfhs-scout-heading"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/> {{awayName}}</h4>
-  <table class="nfhs-scout-table">
+  <table class="nfhs-scout-table" responsive-table>
     <thead>
       <tr>
         <th class="nfhs-scout-player-stats-player-name">Player</th>
@@ -27,7 +27,7 @@
         <td>{{playerStat.OffensiveRebounds}}</td>
         <td>{{playerStat.DefensiveRebounds}}</td>
         <td>{{playerStat.TotalRebounds}}</td>
-        <td>{{playerStat.MinutesPlayed}}</td>
+        <td>{{playerStat.MinutesPlayed*60 | timeOnClock}}</td>
         <td>{{playerStat.Assists}}</td>
         <td>{{playerStat.Steals}}</td>
         <td>{{playerStat.Blocks}}</td>
@@ -39,7 +39,7 @@
 </div>
 <div ng-show="statsAvailable" class="nfhs-scout-player-stats">
   <h4 class="nfhs-scout-heading"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/> {{homeName}}</h4>
-  <table class="nfhs-scout-table">
+  <table class="nfhs-scout-table" responsive-table>
     <thead>
       <tr>
         <th class="nfhs-scout-player-stats-player-name">Player</th>
@@ -59,14 +59,14 @@
     </thead>
     <tbody>
       <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
-        <td class="nfhs-scout-player-stats-player-name">{{playerStat.JerseyNumber}} {{playerStat.FirstName}} {{playerStat.LastName}}</td>
+        <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</td>
         <td>{{playerStat.ShotsMade}}</td>
         <td>{{playerStat.ThreePointShotsMade}}</td>
         <td>{{playerStat.FreeThrowsMade}}</td>
         <td>{{playerStat.OffensiveRebounds}}</td>
         <td>{{playerStat.DefensiveRebounds}}</td>
         <td>{{playerStat.TotalRebounds}}</td>
-        <td>{{playerStat.MinutesPlayed}}</td>
+        <td>{{playerStat.MinutesPlayed*60 | timeOnClock}}</td>
         <td>{{playerStat.Assists}}</td>
         <td>{{playerStat.Steals}}</td>
         <td>{{playerStat.Blocks}}</td>

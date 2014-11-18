@@ -37,3 +37,68 @@ table.nfhs-scout-table {
     border-top: 0;
   }
 }
+
+//responsive tables css converted to less & namespaced from https://github.com/zurb/responsive-tables
+@media (min-width: 768px) {
+  .nfhs-scout-table-pinned {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .nfhs-scout-table-responsive {
+    margin-bottom: 0;
+    td, th {
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &:first-child, &td.pinned {
+        display: none;
+      }
+    }
+  }
+
+  div.nfhs-scout-responsive-table-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid transparent;
+    max-height: 40vh;
+
+    div.nfhs-scout-table-scrollable {
+      margin-left: 35%;
+      overflow: scroll;
+      overflow-y: hidden;
+    }
+
+    .nfhs-scout-table-pinned {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 35%;
+      overflow: hidden;
+      overflow-x: auto;
+      border-right: 2px solid #ccc;
+
+      table {
+        border-right: none;
+        border-left: none;
+        width: 100%;
+
+        th, td {
+          white-space: nowrap;
+          display:none;
+
+          &:first-child {
+            display: table-cell;
+          }
+        }
+      }
+      td {
+        &:last-child { border-bottom: 0; }
+      }
+    }
+  }
+}

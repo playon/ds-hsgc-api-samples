@@ -47,6 +47,10 @@ angular.module('hsgc')
         scope.getLogo = function(play) {
           return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeLogo : scope.awayLogo;
         };
+
+        scope.getTeamAcronym = function(play) {
+          return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeAcronym : scope.awayAcronym;
+        };
       }
     };
   });
