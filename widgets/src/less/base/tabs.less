@@ -34,9 +34,11 @@
 }
 
 .nfhs-scout-tab-container {
-  .scrollable-sm;
-
   >div {
+    &:not(.nfhs-scout-tab-no-scroll) {
+      .scrollable-sm;
+    }
+
     border: 1px solid #dddddd;
     clear:both;
     padding:10px;

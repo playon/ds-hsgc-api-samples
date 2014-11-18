@@ -33,7 +33,7 @@
       <div class="nfhs-scout-tab-container">
         <div team-stats ng-show="selectedDetailTab == 1"></div>
         <div scoring-summary ng-show="selectedDetailTab == 2"></div>
-        <div play-by-play ng-show="selectedDetailTab == 3"></div>
+        <div play-by-play ng-show="selectedDetailTab == 3" class="nfhs-scout-tab-no-scroll"></div>
         <div rosters ng-show="selectedDetailTab == 4"></div>
       </div>
     </div>
@@ -76,8 +76,8 @@
       </ul>
       <div class="nfhs-scout-tab-container">
         <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
-        <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
-        <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>
+        <div basketball-player-stats ng-show="selectedDetailTab == 2" class="nfhs-scout-tab-no-scroll"></div>
+        <div basketball-play-by-play ng-show="selectedDetailTab == 3" class="nfhs-scout-tab-no-scroll"></div>
         <div basketball-shot-chart ng-show="selectedDetailTab == 4"></div>
       </div>
     </div>
