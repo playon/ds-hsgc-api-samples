@@ -17,3 +17,17 @@
   height: 30px;
   vertical-align:middle;
 }
+
+.scrollable-lg {
+  @media (min-width: @screen-sm-cutoff) {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+.scrollable-sm {
+  @media (max-width: @screen-sm-cutoff) {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}

@@ -4,9 +4,15 @@
     <script src="hsgc-widgets.js"></script>
     <link href="http://www.nfhsnetwork.com/sites/all/themes/nfhs/css/layout.css" rel="stylesheet">
     <link rel="stylesheet" href="css/nfhs.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <style>
       .container { padding-top: 40px; }
+      @media only screen and (max-device-width: 960px) {
+        nav#navigation {
+          display: none;
+        }
+        body #page { margin-left: 0; }
+      }
     </style>
   </head>
   <body class="page-events">

@@ -51,8 +51,6 @@
 
 /**** Play by Play ****/
 .nfhs-scout-play-by-play {
-  max-height: 50vh;
-  overflow-y: auto;
 
   .nfhs-scout-logo {
     width: 24px;
@@ -61,14 +59,16 @@
   }
   .nfhs-scout-play-by-play-spot {
     min-width: 160px;
-    text-align: center;
   }
   .nfhs-scout-play-by-play-score {
     text-align: center;
+    text-transform: uppercase;
   }
   .nfhs-scout-scoring { font-weight: bold; }
 
   .nfhs-scout-play-by-play-plays {
+    .scrollable-lg;
+
     th {
       background-color: @highlight-color-1;
       color: #fff;
@@ -77,9 +77,7 @@
     }
 
     th, td {
-      &.nfhs-scout-play-by-play-score,
-      &.nfhs-scout-play-by-play-time {
-        text-align:center;
+      &.nfhs-scout-play-description {
       }
     }
 
@@ -88,8 +86,6 @@
       .nfhs-scout-play-by-play-team-acronym { display: none; }
       white-space: nowrap;
     }
-
-    td { vertical-align: middle; }
 
     table {
       border-top: 1px solid #ddd;
@@ -168,11 +164,14 @@
 
 /**** Rosters ****/
 .nfhs-scout-rosters {
-  .clearfix;
 
-  .nfhs-scout-roster {
-    float: left;
-    width: 50%;
+  @media (min-width: @screen-sm-cutoff) {
+    .clearfix;
+
+    .nfhs-scout-roster {
+      float: left;
+      width: 50%;
+    }
   }
 }
 
