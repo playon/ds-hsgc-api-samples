@@ -50,6 +50,8 @@ angular.module('hsgc')
         awayLogo: awayLogoCompute,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
+        homeShortName: boxScore.HomeTeamShortName || boxScore.HomeTeamAcronym,
+        awayShortName: boxScore.AwayTeamShortName || boxScore.AwayTeamAcronym,
         homeAcronym: boxScore.HomeTeamAcronym,
         awayAcronym: boxScore.AwayTeamAcronym,
         homeStats: boxScore.Sport == 'Football' ? boxScore.HomeTeamStatistics : boxScore.HomeTeamTotalStats,

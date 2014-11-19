@@ -40,8 +40,18 @@
 
     <div ng-init="selectedPlayerTeam=1" class="nfhs-scout-playerstats" ng-show="statsAvailable">
         <ul class="nfhs-scout-tabs">
-          <li ng-class='{"active": selectedPlayerTeam == 1 }'  ng-click="selectedPlayerTeam = 1"><a href ng-click="selectedPlayerTeam = 1"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo">{{awayName}}</a></li>
-          <li ng-class='{"active": selectedPlayerTeam == 2 }'  ng-click="selectedPlayerTeam = 2"><a href ng-click="selectedPlayerTeam = 2"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo">{{homeName}}</a></li>
+          <li ng-class='{"active": selectedPlayerTeam == 1 }'  ng-click="selectedPlayerTeam = 1">
+            <a href ng-click="selectedPlayerTeam = 1">
+              <img ng-src="{{awayLogo}}" class="nfhs-scout-logo">
+              {{awayName}}
+            </a>
+          </li>
+          <li ng-class='{"active": selectedPlayerTeam == 2 }'  ng-click="selectedPlayerTeam = 2">
+            <a href ng-click="selectedPlayerTeam = 2">
+              <img ng-src="{{homeLogo}}" class="nfhs-scout-logo">
+              {{homeName}}
+            </a>
+          </li>
         </ul>
         <div class="nfhs-scout-tab-container">
           <div player-stats team-id="{{awayTeamSeasonId}}" ng-show="selectedPlayerTeam == 1"></div>
@@ -76,8 +86,8 @@
       </ul>
       <div class="nfhs-scout-tab-container">
         <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
-        <div basketball-player-stats ng-show="selectedDetailTab == 2" class="nfhs-scout-tab-no-scroll"></div>
-        <div basketball-play-by-play ng-show="selectedDetailTab == 3" class="nfhs-scout-tab-no-scroll"></div>
+        <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
+        <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>
         <div basketball-shot-chart ng-show="selectedDetailTab == 4"></div>
       </div>
     </div>

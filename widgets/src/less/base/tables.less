@@ -64,14 +64,13 @@ table.nfhs-scout-table {
     margin-bottom: 20px;
     overflow-x: hidden;
     border-right: 1px solid transparent;
-    //I can't get the horizontal + vertical scrolling working on the iphone for some reason.
-    //.scrollable-sm;
 
 
     div.nfhs-scout-table-scrollable {
       margin-left: 40%;
       overflow: scroll;
       overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .nfhs-scout-table-pinned {
@@ -87,6 +86,7 @@ table.nfhs-scout-table {
         border-right: none;
         border-left: none;
         width: 100%;
+        margin-bottom: 0;
 
         th, td {
           white-space: nowrap;
