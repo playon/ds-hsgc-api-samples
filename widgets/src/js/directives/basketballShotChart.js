@@ -40,11 +40,22 @@ angular.module('hsgc')
         };
 
         scope.getShotLeft = function(shot) {
-          return ((shot.X - 8)/641)*100;
+          //the image used here does not have the same ratio as a regulation high school court
+          //the percentage returned by the service assumes a court size of 84'x50', but our image is 637x424, so scale the x percentage appropriately
+          var xScale = (84.0 / 50.0) / (637.0 / 424.0);
+          var percent = shot.X * 100 * xScale;
+          if (shot.TeamSeasonId != scope.awayTeamSeasonId) {
+            percent = 100 - percent;
+          }
+          return percent;
         };
 
         scope.getShotTop = function(shot) {
-          return ((shot.Y - 8)/428)*100;
+          var percent = shot.Y * 100;
+          if (shot.TeamSeasonId != scope.awayTeamSeasonId) {
+            percent = 100 - percent;
+          }
+          return percent;
         };
 
         scope.getShotImageClass= function(shot) {
