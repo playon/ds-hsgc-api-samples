@@ -64,7 +64,8 @@
     <div basketball-game-leaders></div>
 
     <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
-      <ul class="nfhs-scout-tabs">
+      <a name="nfhs-scout-basketball-game-details" in-view="tabsInView($inview, $inviewpart, $event)" ng-class='{"nfhs-scout-tabs-fixed-placeholder": tabContainerIsInView && !tabsAreInView}'></a>
+      <ul class="nfhs-scout-tabs" ng-class='{"nfhs-scout-tabs-fixed" : tabContainerIsInView && !tabsAreInView}'>
         <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 1">Team <span class="nfhs-scout-hidden-sm">Stats</span></a>
         </li>
@@ -84,7 +85,7 @@
           </a>
         </li>
       </ul>
-      <div class="nfhs-scout-tab-container">
+      <div class="nfhs-scout-tab-container" in-view="tabContainerInView($inview, $inviewpart, $event)">
         <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
         <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
         <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>

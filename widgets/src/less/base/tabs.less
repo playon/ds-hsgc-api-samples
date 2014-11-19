@@ -7,7 +7,6 @@
   display: table;
 
   li {
-    //float: left;
     margin-right: 2px;
     margin-bottom: -1px;
     display: table-cell;
@@ -33,10 +32,29 @@
   }
 }
 
+
+
 .nfhs-scout-tab-container {
   >div {
     border: 1px solid #dddddd;
     clear:both;
     padding:10px;
+  }
+}
+
+@media only screen and (max-width: @screen-sm-cutoff) {
+  .nfhs-scout-tabs-fixed {
+    position: fixed;
+    z-index: 9999;
+    top: @fixed-nav-top-offset;
+    margin: 0;
+    left: 0;
+    right: 0;
+  }
+
+  a.nfhs-scout-tabs-fixed-placeholder { 
+    display: block;
+    //tab height
+    margin-bottom: @tab-height;
   }
 }

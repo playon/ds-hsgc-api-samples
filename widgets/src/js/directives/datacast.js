@@ -22,6 +22,14 @@ angular.module('hsgc')
           if (!angular.isUndefined($scope.statsAvailable))
             return $scope.statsAvailable;
         }
+
+        $scope.tabsInView = function(inView, part, event) {
+          $scope.tabsAreInView = inView;
+        };
+
+        $scope.tabContainerInView = function(inView, part, event) {
+          $scope.tabContainerIsInView = inView;
+        };
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {
         if (scope.sport != 'Football' && scope.sport != 'Basketball') return;

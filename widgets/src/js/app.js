@@ -1,4 +1,4 @@
-angular.module('hsgc', [])
+angular.module('hsgc', ['angular-inview'])
   .config(['$httpProvider', '$sceProvider', function($httpProvider, $sceProvider) {
     //$sceProvider.enabled(false);
     $httpProvider.defaults.headers.get =  {

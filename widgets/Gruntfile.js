@@ -36,6 +36,7 @@ module.exports = function (grunt) {
                 files: {
                     'build/hsgc-widgets.js': [
                       'bower_components/angular/angular.js',
+                      'bower_components/angular-inview/angular-inview.js',
                       'src/js/app.js',
                       tmpTemplateFile.path,
                       'src/js/*/*.js'
@@ -52,6 +53,7 @@ module.exports = function (grunt) {
                 files: {
                     'build/hsgc-widgets.min.js': [
                       'bower_components/angular/angular.js',
+                      'bower_components/angular-inview/angular-inview.js',
                       'src/js/app.js',
                       tmpTemplateFile.path,
                       'src/js/*/*.js'
