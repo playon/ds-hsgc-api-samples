@@ -3,7 +3,7 @@ angular.module('hsgc')
     return {
       restrict: 'AE',
       scope: { gameKey: "@game", publisherKey:"@publisher", sport: "@" },
-      controller: ['$scope', '$element', 'HSGCApi', '$timeout', function($scope, $element, HSGCApi, $timeout) {
+      controller: ['$scope', '$element', 'HSGCApi', '$timeout', 'hsgcConfig',  function($scope, $element, HSGCApi, $timeout, config) {
 
         var updateBoxScore = function() {
           HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, { includeTeamAggregates: true }).then(function(result) {
@@ -11,7 +11,7 @@ angular.module('hsgc')
             $timeout(updateBoxScore, 30*1000);
           });
         };
-        hsgcWidgets.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {
+        config.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {
             updateBoxScore();
         });
       }],

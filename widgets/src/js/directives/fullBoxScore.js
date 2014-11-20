@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('fullBoxScore', function() {
+  .directive('fullBoxScore', ['hsgcConfig', function(config) {
     return {
       restrict: 'AE',
       scope: {
@@ -9,10 +9,10 @@ angular.module('hsgc')
       },
       link: function(scope) {
         var listenerUnsubscribe = scope.$on('datacastLoaded', function() {
-          hsgcWidgets.fullBoxScoreFirstLoaded();
+          config.fullBoxScoreFirstLoaded();
           listenerUnsubscribe();
         });
       },
       templateUrl: 'templates/fullBoxScore.html'
     };
-  });
+  }]);

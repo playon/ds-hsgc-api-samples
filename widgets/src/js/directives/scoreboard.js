@@ -1,12 +1,12 @@
 angular.module('hsgc')
-  .directive('scoreboard', ['$http', function($http) {
+  .directive('scoreboard', ['$http','hsgcConfig',  function($http, config) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/scoreboard.html',
       link: function(scope) {
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
-        if(hsgcWidgets.keyStrategy == "unity"){
-          $http.get(hsgcWidgets.unityRoot + 'games/' + scope.gameKey)
+        if(config.keyStrategy == "unity"){
+          $http.get(config.unityRoot + 'games/' + scope.gameKey)
             .success(function(data) {
               var videoAndData = false;
               for (var i = 0; i < data.publishers.length; i++) {

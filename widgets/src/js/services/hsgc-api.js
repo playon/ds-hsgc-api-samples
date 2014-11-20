@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', function($http, $filter, $timeout, $q) {
+  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', 'hsgcConfig', function($http, $filter, $timeout, $q, hsgcConfig) {
     var populateBaseInfo = function(boxScore) {
       scores = { };
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
@@ -23,12 +23,12 @@ angular.module('hsgc')
       }
 
 
-      var homeLogoCompute = hsgcWidgets.imageRoot + boxScore.HomeTeamLogo;
+      var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
       if(boxScore.HomeTeamLogo.indexOf('http') == 0){
         homeLogoCompute = boxScore.HomeTeamLogo;
       }
 
-      var awayLogoCompute = hsgcWidgets.imageRoot + boxScore.AwayTeamLogo;
+      var awayLogoCompute = hsgcConfig.imageRoot + boxScore.AwayTeamLogo;
      if(boxScore.AwayTeamLogo.indexOf('http') == 0){
         awayLogoCompute = boxScore.AwayTeamLogo;
       }
@@ -258,7 +258,7 @@ angular.module('hsgc')
         var config = { params: { } };
         angular.extend(config.params, options);
 
-        var url = hsgcWidgets.apiRoot + 'games/thirdparty/' + hsgcWidgets.keyStrategy + '/' + unityGameKey;
+        var url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + unityGameKey;
         return $http.get(url, config).then(
           //success
           function(boxScore) {
@@ -270,7 +270,7 @@ angular.module('hsgc')
           },
           //error
           function(response) {
-            hsgcWidgets.datacastLoadError(response.data, response.status, response.statusText);
+            hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
             var result = {
               status: response.status,
               statusText: response.statusText
@@ -278,7 +278,7 @@ angular.module('hsgc')
 
             if (response.status == 402) {
               result.boxScore = populateBaseInfo(response.data);
-              hsgcWidgets.datacastPaymentRequired(response.data);
+              hsgcConfig.datacastPaymentRequired(response.data);
             }
             return $q.reject(result);
           });

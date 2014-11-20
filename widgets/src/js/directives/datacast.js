@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('datacast', ['HSGCApi', '$timeout', function(HSGCApi, $timeout) {
+  .directive('datacast', ['HSGCApi', '$timeout', 'hsgcConfig', function(HSGCApi, $timeout, config) {
     var pollingStarted = false;
     return {
       restrict: 'EA',
@@ -69,7 +69,7 @@ angular.module('hsgc')
         if (!opts.includeLeaders && !opts.includePlayByPlay && !opts.includePlayerStats && !opts.includeTeamAggregates) {
           updateBoxScore();
         } else {
-          hsgcWidgets.beforeLoadDatacast(scope.gameKey, scope.publisherKey, function() {
+          config.beforeLoadDatacast(scope.gameKey, scope.publisherKey, function() {
             updateBoxScore();
           });
         }
