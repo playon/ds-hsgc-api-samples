@@ -42,6 +42,20 @@ module.exports = function (grunt) {
                     ]
                 }
             },
+            widget_no_angular: {
+                options: {
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    beautify: true,
+                    mangle: false,
+                },
+                files: {
+                    'build/hsgc-widgets.bare.js': [
+                      'src/js/app.js',
+                      tmpTemplateFile.path,
+                      'src/js/*/*.js'
+                    ]
+                }
+            },
             widget_min: {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
