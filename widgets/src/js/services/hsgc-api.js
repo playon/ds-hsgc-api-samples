@@ -35,6 +35,9 @@ angular.module('hsgc')
 
 
       return {
+        hsgcGameId: boxScore.GameId,
+        hsgcHomeSchoolId: boxScore.HomeSchoolId,
+        hsgcAwaySchoolId: boxScore.AwaySchoolId,
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
         homeTeamKey: boxScore.HomeTeamUnityKey,
