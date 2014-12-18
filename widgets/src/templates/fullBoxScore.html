@@ -43,13 +43,15 @@
           <li ng-class='{"active": selectedPlayerTeam == 1 }'  ng-click="selectedPlayerTeam = 1">
             <a href ng-click="selectedPlayerTeam = 1">
               <img ng-src="{{awayLogo}}" class="nfhs-scout-logo">
-              {{awayName}}
+              <span class="nfhs-scout-hidden-sm">{{awayName}}</span>
+              <span class="nfhs-scout-visible-sm">{{awayAcronym}}</span>
             </a>
           </li>
           <li ng-class='{"active": selectedPlayerTeam == 2 }'  ng-click="selectedPlayerTeam = 2">
             <a href ng-click="selectedPlayerTeam = 2">
               <img ng-src="{{homeLogo}}" class="nfhs-scout-logo">
-              {{homeName}}
+              <span class="nfhs-scout-hidden-sm">{{homeName}}</span>
+              <span class="nfhs-scout-visible-sm">{{homeAcronym}}</span>
             </a>
           </li>
         </ul>
