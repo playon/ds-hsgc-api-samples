@@ -25,12 +25,16 @@ angular.module('hsgc')
 
       var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
       if(boxScore.HomeTeamLogo.indexOf('http') == 0){
-        homeLogoCompute = boxScore.HomeTeamLogo;
+        //there's a bug with unity where it sometimes returns double urls
+        //see: https://github.com/playon/unity-api/pull/163
+        homeLogoCompute = boxScore.HomeTeamLogo.substring(boxScore.HomeTeamLogo.lastIndexOf('http'));
       }
 
       var awayLogoCompute = hsgcConfig.imageRoot + boxScore.AwayTeamLogo;
      if(boxScore.AwayTeamLogo.indexOf('http') == 0){
-        awayLogoCompute = boxScore.AwayTeamLogo;
+        //there's a bug with unity where it sometimes returns double urls
+        //see: https://github.com/playon/unity-api/pull/163
+        awayLogoCompute = boxScore.AwayTeamLogo.substring(boxScore.AwayTeamLogo.lastIndexOf('http'));
       }
 
 
@@ -57,6 +61,8 @@ angular.module('hsgc')
         awayShortName: boxScore.AwayTeamShortName || boxScore.AwayTeamAcronym,
         homeAcronym: boxScore.HomeTeamAcronym,
         awayAcronym: boxScore.AwayTeamAcronym,
+        homeMascot: boxScore.HomeTeamMascot,
+        awayMascot: boxScore.AwayTeamMascot,
         homeStats: boxScore.Sport == 'Football' ? boxScore.HomeTeamStatistics : boxScore.HomeTeamTotalStats,
         awayStats: boxScore.Sport == 'Football' ? boxScore.AwayTeamStatistics : boxScore.AwayTeamTotalStats,
         playByPlay: boxScore.PlaysInGame,
