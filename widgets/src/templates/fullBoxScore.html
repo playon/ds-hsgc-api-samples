@@ -29,12 +29,18 @@
             Rosters
           </a>
         </li>
+        <li ng-class='{"active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" >
+          <a href ng-click="selectedDetailTab = 5">
+            Drive Chart
+          </a>
+        </li>
       </ul>
       <div class="nfhs-scout-tab-container">
         <div team-stats ng-show="selectedDetailTab == 1"></div>
         <div scoring-summary ng-show="selectedDetailTab == 2"></div>
         <div play-by-play ng-show="selectedDetailTab == 3" class="nfhs-scout-tab-no-scroll"></div>
         <div rosters ng-show="selectedDetailTab == 4"></div>
+        <div football-drive-chart ng-show="selectedDetailTab == 5"></div>
       </div>
     </div>
 
