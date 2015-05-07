@@ -1,6 +1,8 @@
 angular.module('hsgc')
-  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', 'hsgcConfig', function($http, $filter, $timeout, $q, hsgcConfig) {
+  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', '$log', 'hsgcConfig', function($http, $filter, $timeout, $q, $log, hsgcConfig) {
     var populateBaseInfo = function(boxScore) {
+      // $log.debug('Populating base info');
+
       scores = { };
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
@@ -15,13 +17,12 @@ angular.module('hsgc')
       inOverTime = boxScore.CurrentPeriod > 4;
       homeOTScore = 0;
       awayOTScore = 0;
-      if(inOverTime){
+      if (inOverTime) {
          for (var i = 4; i < boxScore.CurrentPeriod; i++) {
             homeOTScore += boxScore.HomePeriodScores[i].Score;
             awayOTScore += boxScore.AwayPeriodScores[i].Score;
          }
       }
-
 
       var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
       if(boxScore.HomeTeamLogo.indexOf('http') == 0){
@@ -31,12 +32,11 @@ angular.module('hsgc')
       }
 
       var awayLogoCompute = hsgcConfig.imageRoot + boxScore.AwayTeamLogo;
-     if(boxScore.AwayTeamLogo.indexOf('http') == 0){
+      if (boxScore.AwayTeamLogo.indexOf('http') == 0) {
         //there's a bug with unity where it sometimes returns double urls
         //see: https://github.com/playon/unity-api/pull/163
         awayLogoCompute = boxScore.AwayTeamLogo.substring(boxScore.AwayTeamLogo.lastIndexOf('http'));
       }
-
 
       return {
         hsgcGameId: boxScore.GameId,
@@ -63,8 +63,8 @@ angular.module('hsgc')
         awayAcronym: boxScore.AwayTeamAcronym,
         homeMascot: boxScore.HomeTeamMascot,
         awayMascot: boxScore.AwayTeamMascot,
-        homeStats: boxScore.Sport == 'Football' ? boxScore.HomeTeamStatistics : boxScore.HomeTeamTotalStats,
-        awayStats: boxScore.Sport == 'Football' ? boxScore.AwayTeamStatistics : boxScore.AwayTeamTotalStats,
+        homeStats: boxScore.Sport == 'Basketball' ? boxScore.HomeTeamTotalStats : boxScore.HomeTeamStatistics,
+        awayStats: boxScore.Sport == 'Basketball' ? boxScore.AwayTeamTotalStats : boxScore.AwayTeamStatistics,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
         currentPeriod: boxScore.CurrentPeriod,
@@ -120,6 +120,8 @@ angular.module('hsgc')
     };
 
     var populateLeaderInfo = function(boxScore, bs, $filter) {
+      $log.debug('Populating leader info', boxScore);
+
       if (boxScore.Sport == 'Basketball') {
         if (bs.statsAvailable) {
           bs.leadersAvailable = true;
@@ -263,7 +265,9 @@ angular.module('hsgc')
     };
 
     var getFullBox = function(unityGameKey, publisherKey, sport, options) {
-      if (sport == "Football" || sport == "Basketball") {
+      if (sport == "Football" || sport == "Basketball" || sport == "Volleyball") {
+        $log.debug('Getting full box for sport: ' + sport);
+
         var config = { params: { } };
         angular.extend(config.params, options);
 
@@ -292,6 +296,7 @@ angular.module('hsgc')
             return $q.reject(result);
           });
       } else {
+        $log.debug(sport + ' not implemented');
         //I don't know how to return an empty promise
         var deferred = $q.defer();
         deferred.resolve();

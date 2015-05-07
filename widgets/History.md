@@ -1,3 +1,9 @@
+1.0.8 / 2015-06-01
+==================
+
+  * Add volleyball support
+  * Minor fixes for the examples
+
 1.0.7 / 2014-10-06
 ==================
 

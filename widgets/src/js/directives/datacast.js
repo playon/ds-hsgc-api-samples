@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('datacast', ['HSGCApi', '$timeout', 'hsgcConfig', function(HSGCApi, $timeout, config) {
+  .directive('datacast', ['HSGCApi', '$timeout', '$log', 'hsgcConfig', function(HSGCApi, $timeout, $log, config) {
     var pollingStarted = false;
     return {
       restrict: 'EA',
@@ -24,7 +24,10 @@ angular.module('hsgc')
         }
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {
-        if (scope.sport != 'Football' && scope.sport != 'Basketball') return;
+        if (scope.sport != 'Football' && scope.sport != 'Basketball' && scope.sport != 'Volleyball') {
+          $log.debug(scope.sport + ' not implemented');
+          return;
+        }
 
         transcludeFn(scope, function(clonedContent) {
           //clonedContent.addClass('test');

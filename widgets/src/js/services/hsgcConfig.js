@@ -11,7 +11,6 @@ angular.module('hsgc').provider('hsgcConfig', function () {
       datacastPaymentRequired: function(data) { }
     };
 
-
     this.$get = function () {
         this.config.apiRoot = this.config.apiRoot || this.getHsgcApiRoot();
         this.config.unityRoot = this.config.unityRoot || this.getUnityApiRoot();

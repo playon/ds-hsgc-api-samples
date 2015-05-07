@@ -1,11 +1,13 @@
 angular.module('hsgc')
-  .directive('scoreboard', ['$http','hsgcConfig',  function($http, config) {
+  .directive('scoreboard', ['$http', '$log', 'hsgcConfig', function($http, $log, config) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/scoreboard.html',
       link: function(scope) {
+        //$log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
+
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
-        if(config.keyStrategy == "unity"){
+        if(config.keyStrategy == "unity") {
           $http.get(config.unityRoot + 'games/' + scope.gameKey)
             .success(function(data) {
               var videoAndData = false;
@@ -18,9 +20,7 @@ angular.module('hsgc')
               }
               scope.showStatus = !videoAndData;
             });
-        }
-        else
-        {
+        } else {
           scope.showStatus = true;
         }
       }

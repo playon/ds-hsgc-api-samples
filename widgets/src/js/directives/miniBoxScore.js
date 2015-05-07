@@ -1,6 +1,6 @@
 angular.module('hsgc')
   .directive('miniBoxScore', function() {
-        return {
+    return {
       restrict: 'AE',
       scope: {
         unityGameKey: "@game",

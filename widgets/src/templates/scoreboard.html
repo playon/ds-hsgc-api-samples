@@ -10,8 +10,8 @@
         <th></th>
         <th>1</th>
         <th>2</th>
-        <th>3</th>
-        <th>4</th>
+        <th ng-show="regulationPeriodCount >= 3">3</th>
+        <th ng-show="regulationPeriodCount >= 4">4</th>
          <th ng-show="inOverTime">
           OT
         </th>
@@ -25,10 +25,10 @@
         <td>
           <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
         </td>
-        <td>
+        <td ng-show="regulationPeriodCount >= 3">
           <span ng-show="currentPeriod >= 3">{{awayPeriodScores[2].Score}}</span>
         </td>
-        <td>
+        <td ng-show="regulationPeriodCount >= 4">
           <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
         </td>
         <td ng-show="inOverTime">
@@ -42,10 +42,10 @@
         <td>
           <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
         </td>
-        <td>
+        <td ng-show="regulationPeriodCount >= 3">
           <span ng-show="currentPeriod >= 3">{{homePeriodScores[2].Score}}</span>
         </td>
-        <td>
+        <td ng-show="regulationPeriodCount >= 4">
           <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
         </td>
         <td ng-show="inOverTime">

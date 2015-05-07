@@ -1,0 +1,51 @@
+<div ng-show="leadersAvailable" class="nfhs-scout-game-leaders nfhs-scout-leaders">
+    <h4 class="nfhs-scout-heading">Game Leaders</h4>
+    <table class="nfhs-scout-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Points</th>
+          <th>Rebounds</th>
+          <th>Assists</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img ng-src="{{awayLogo}}" alt="" class="nfhs-scout-logo" /> {{awayName}}</td>
+          <td>
+            <span ng-hide="leaders[awayTeamSeasonId].points.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].points.jerseyNumber}} {{leaders[awayTeamSeasonId].points.lastName}}:</span> {{leaders[awayTeamSeasonId].points.value}}
+            </span>
+          </td>
+          <td>
+            <span ng-hide="leaders[awayTeamSeasonId].rebounds.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].rebounds.jerseyNumber}} {{leaders[awayTeamSeasonId].rebounds.lastName}}:</span> {{leaders[awayTeamSeasonId].rebounds.value}}
+            </span>
+          </td>
+          <td>
+            <span ng-hide="leaders[awayTeamSeasonId].assists.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].assists.jerseyNumber}} {{leaders[awayTeamSeasonId].assists.lastName}}:</span> {{leaders[awayTeamSeasonId].assists.value}}
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td><img ng-src="{{homeLogo}}" alt="" class="nfhs-scout-logo" /> {{homeName}}</td>
+          <td>
+            <span ng-hide="leaders[homeTeamSeasonId].points.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].points.jerseyNumber}} {{leaders[homeTeamSeasonId].points.lastName}}:</span> {{leaders[homeTeamSeasonId].points.value}}
+            </span>
+          </td>
+          <td>
+            <span ng-hide="leaders[homeTeamSeasonId].rebounds.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].rebounds.jerseyNumber}} {{leaders[homeTeamSeasonId].rebounds.lastName}}:</span> {{leaders[homeTeamSeasonId].rebounds.value}}
+            </span>
+          </td>
+          <td>
+            <span ng-hide="leaders[homeTeamSeasonId].assists.value == 0">
+              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].assists.jerseyNumber}} {{leaders[homeTeamSeasonId].assists.lastName}}:</span> {{leaders[homeTeamSeasonId].assists.value}}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
