@@ -183,6 +183,7 @@
 .nfhs-scout-shot-chart {
   .nfhs-scout-shot-chart-teams {
     .clearfix;
+    overflow:hidden;
 
     .nfhs-scout-shot-chart-team {
       float: left;
@@ -191,6 +192,9 @@
       box-sizing: border-box;
       color: #fff;
       padding: 10px;
+      /* column height fixing so both teams background stretches when one team word wraps and the other doesn't -- depends on container also having overflow:hidden -- amount of pixels is arbitrary as long as it is more than the longest column's height */
+      padding-bottom: 500px;
+      margin-bottom: -500px;
       .clearfix;
 
       &.nfhs-scout-shot-chart-team-away {
@@ -213,7 +217,9 @@
   .nfhs-scout-shot-chart-container {
     position: relative;
 
-    img.nfhs-scout-basketball-court { width: 100%; }
+    img.nfhs-scout-basketball-court,
+      img.nfhs-scout-volleyball-court
+        { width: 100%; }
     .nfhs-scout-shot-chart-shot {
       width: 16px;
       height: 16px;

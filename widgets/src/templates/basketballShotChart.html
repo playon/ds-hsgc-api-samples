@@ -2,6 +2,9 @@
   <div class="nfhs-scout-period-selector">
     <ul class="nfhs-scout-hidden-sm">
       <li class="nfhs-scout-selector-label">Quarter:</li>
+      <li ng-class="{'nfhs-scout-active': selectedShotChartPeriod === null}">
+        <a href ng-click="selectedShotChartPeriod = null">All</a>
+      </li>
       <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedShotChartPeriod == period.value}">
         <a href ng-click="$parent.selectedShotChartPeriod = period.value">{{period.display}}</a>
       </li>
