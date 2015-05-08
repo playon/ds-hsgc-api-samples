@@ -43,10 +43,21 @@ The high-level view of the system is that grunt compiles the code down into a ha
 
 The bulk of the code you will probably need to modify for development is in less files for styling, the `src/js/directives` or `src/js/filters` for code, and `src/templates` for the HTML templates.
 
-Other important files:
+#### Other important files
 
 * For new sports, update `/src/js/services/hsgc-api.js` and `src/js/directives/datacast.js` to allow the new sport
 * Info about configuration options are available at `src/js/services/hsgcConfig.js`
+* `bower.js` maintains the current JS library dependencies--see the **JavaScript libraries** section below
+
+#### JavaScript libraries
+
+Bower (`npm install -g bower`) is used to maintain the various JS libraries used.
+
+The `bower.js` file maintains which packages and versions are used and allowed to be updated to. (See the official docs of [Ranges](https://github.com/npm/node-semver#ranges) on how to define acceptable version ranges.)
+
+Use `bower update` and `bower install LIBRARY_NAME_HERE --save` to update and install libraries.
+
+Once bower has been run, manually update the build targets in `Gruntfile.js` to compile/include those libraries where appropriate.
 
 #### Debug logging
 
