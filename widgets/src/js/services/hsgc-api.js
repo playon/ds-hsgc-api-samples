@@ -229,33 +229,34 @@ angular.module('hsgc')
 
     var populatePlayerStats = function(boxScore, bs) {
       bs.playerStats = { };
-      if (boxScore.Sport == 'Basketball') {
+      if (boxScore.Sport == 'Basketball' || boxScore.Sport == 'Volleyball') {
         bs.playerStats[boxScore.HomeTeamSeasonId] = boxScore.HomeTeamPlayerStats;
         bs.playerStats[boxScore.AwayTeamSeasonId] = boxScore.AwayTeamPlayerStats;
-        return;
-      }
-      //football
-      bs.playerStats[boxScore.HomeTeamSeasonId] = {
-        passingStats: boxScore.HomeTeamPassingStatistics,
-        rushingStats: boxScore.HomeTeamRushingStatistics,
-        receivingStats: boxScore.HomeTeamReceivingStatistics,
-        defensiveStats: boxScore.HomeTeamDefensiveStatistics,
-        kickingStats: boxScore.HomeTeamKickingStatistics,
-        puntingStats: boxScore.HomeTeamPuntingStatistics,
-        puntReturnStats: boxScore.HomeTeamPuntReturnStatistics,
-        kickReturnStats: boxScore.HomeTeamKickReturnStatistics
-      };
+      } else if (boxScore.Sport == 'Football') {
+        bs.playerStats[boxScore.HomeTeamSeasonId] = {
+          passingStats: boxScore.HomeTeamPassingStatistics,
+          rushingStats: boxScore.HomeTeamRushingStatistics,
+          receivingStats: boxScore.HomeTeamReceivingStatistics,
+          defensiveStats: boxScore.HomeTeamDefensiveStatistics,
+          kickingStats: boxScore.HomeTeamKickingStatistics,
+          puntingStats: boxScore.HomeTeamPuntingStatistics,
+          puntReturnStats: boxScore.HomeTeamPuntReturnStatistics,
+          kickReturnStats: boxScore.HomeTeamKickReturnStatistics
+        };
 
-      bs.playerStats[boxScore.AwayTeamSeasonId] = {
-        passingStats: boxScore.AwayTeamPassingStatistics,
-        rushingStats: boxScore.AwayTeamRushingStatistics,
-        receivingStats: boxScore.AwayTeamReceivingStatistics,
-        defensiveStats: boxScore.AwayTeamDefensiveStatistics,
-        kickingStats: boxScore.AwayTeamKickingStatistics,
-        puntingStats: boxScore.AwayTeamPuntingStatistics,
-        puntReturnStats: boxScore.AwayTeamPuntReturnStatistics,
-        kickReturnStats: boxScore.AwayTeamKickReturnStatistics
-      };
+        bs.playerStats[boxScore.AwayTeamSeasonId] = {
+          passingStats: boxScore.AwayTeamPassingStatistics,
+          rushingStats: boxScore.AwayTeamRushingStatistics,
+          receivingStats: boxScore.AwayTeamReceivingStatistics,
+          defensiveStats: boxScore.AwayTeamDefensiveStatistics,
+          kickingStats: boxScore.AwayTeamKickingStatistics,
+          puntingStats: boxScore.AwayTeamPuntingStatistics,
+          puntReturnStats: boxScore.AwayTeamPuntReturnStatistics,
+          kickReturnStats: boxScore.AwayTeamKickReturnStatistics
+        };
+      } else {
+        $log.debug(boxScore.Sport + ' not implemented so player stats could not be populated');
+      }
     };
 
     var populatePlayers = function(boxScore, bs, $filter) {

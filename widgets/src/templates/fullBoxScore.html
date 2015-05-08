@@ -120,10 +120,8 @@
         </li>
         <li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 4">
-            <!--
             <span class="nfhs-scout-hidden-sm">Hit Chart</span>
             <span class="nfhs-scout-visible-sm">Hits</span>
-          -->
           </a>
         </li>
       </ul>
@@ -131,7 +129,7 @@
         <div volleyball-team-stats ng-show="selectedDetailTab == 1"></div>
         <div volleyball-player-stats ng-show="selectedDetailTab == 2"></div>
         <div volleyball-play-by-play ng-show="selectedDetailTab == 3"></div>
-        <!--<div volleyball-hit-chart ng-show="selectedDetailTab == 4"></div>-->
+        <div volleyball-hit-chart ng-show="selectedDetailTab == 4"></div>
       </div>
     </div>
   </div>

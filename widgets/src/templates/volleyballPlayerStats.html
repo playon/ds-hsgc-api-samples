@@ -1,0 +1,108 @@
+<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
+  <h4 class="nfhs-scout-heading">
+    <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
+    {{awayName}}
+  </h4>
+  <table class="nfhs-scout-table" responsive-table>
+    <thead>
+      <tr>
+        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th title="Games Played">GP</th>
+        <th title="Attack Kills">K</th>
+        <th title="Attack Errors">E</th>
+        <th title="Total Attacks">TA</th>
+        <th title="Attack percentage">PCT</th>
+        <th title="Set Assists">A</th>
+        <th title="Set Attempts">SA</th>
+        <th title="Serves">S</th>
+        <th title="Service Aces">ACE</th>
+        <th title="Service Errors">SE</th>
+        <th title="Reception Errors">RE</th>
+        <th title="Digs">DIG</th>
+        <th title="Block Solos">BS</th>
+        <th title="Block Assists">BA</th>
+        <th title="Ball Handling Errors">BHE</th>
+        <th title="Points">PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
+        <td class="nfhs-scout-player-stats-player-name">
+            {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            <span ng-show="playerStat.IsStarter" class="starter">*</span>
+        </td>
+        <td>{{playerStat.MatchGamesPlayed}}</td>
+        <td>{{playerStat.AttackKills}}</td>
+        <td>{{playerStat.AttackErrors}}</td>
+        <td>{{playerStat.Attacks}}</td>
+        <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
+        <td>{{playerStat.SetAssists}}</td>
+        <td>{{playerStat.Sets}}</td>
+        <td>{{playerStat.Serves}}</td>
+        <td>{{playerStat.ServeAces}}</td>
+        <td>{{playerStat.ServeErrors}}</td>
+        <td>{{playerStat.ReceptionErrors}}</td>
+        <td>{{playerStat.Digs}}</td>
+        <td>{{playerStat.BlockSolos}}</td>
+        <td>{{playerStat.BlockAssists}}</td>
+        <td>{{playerStat.BallHandlingErrors}}</td>
+        <td>{{playerStat.Points}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
+  <h4 class="nfhs-scout-heading">
+    <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
+    {{homeName}}
+  </h4>
+  <table class="nfhs-scout-table" responsive-table>
+    <thead>
+      <tr>
+        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th title="Games Played">GP</th>
+        <th title="Attack Kills">K</th>
+        <th title="Attack Errors">E</th>
+        <th title="Total Attacks">TA</th>
+        <th title="Attack percentage">PCT</th>
+        <th title="Set Assists">A</th>
+        <th title="Set Attempts">SA</th>
+        <th title="Serves">S</th>
+        <th title="Service Aces">ACE</th>
+        <th title="Service Errors">SE</th>
+        <th title="Reception Errors">RE</th>
+        <th title="Digs">DIG</th>
+        <th title="Block Solos">BS</th>
+        <th title="Block Assists">BA</th>
+        <th title="Ball Handling Errors">BHE</th>
+        <th title="Points">PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
+        <td class="nfhs-scout-player-stats-player-name">
+            {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            <span ng-show="playerStat.IsStarter" class="starter">*</span>
+        </td>
+        <td>{{playerStat.MatchGamesPlayed}}</td>
+        <td>{{playerStat.AttackKills}}</td>
+        <td>{{playerStat.AttackErrors}}</td>
+        <td>{{playerStat.Attacks}}</td>
+        <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
+        <td>{{playerStat.SetAssists}}</td>
+        <td>{{playerStat.Sets}}</td>
+        <td>{{playerStat.Serves}}</td>
+        <td>{{playerStat.ServeAces}}</td>
+        <td>{{playerStat.ServeErrors}}</td>
+        <td>{{playerStat.ReceptionErrors}}</td>
+        <td>{{playerStat.Digs}}</td>
+        <td>{{playerStat.BlockSolos}}</td>
+        <td>{{playerStat.BlockAssists}}</td>
+        <td>{{playerStat.BallHandlingErrors}}</td>
+        <td>{{playerStat.Points}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="starter" style="font-size: 0.875em;">* indicates starter</p>
+</div>
