@@ -129,7 +129,7 @@
         <div volleyball-team-stats ng-show="selectedDetailTab == 1"></div>
         <div volleyball-player-stats ng-show="selectedDetailTab == 2"></div>
         <div volleyball-play-by-play ng-show="selectedDetailTab == 3"></div>
-        <div volleyball-hit-chart ng-show="selectedDetailTab == 4"></div>
+        <div volleyball-hit-chart ng-show="selectedDetailTab == 4"><!-- note: tab idx 4 is also $watched in the javascript, so if the order is changed update the JS for this directive as appropriate --></div>
       </div>
     </div>
   </div>

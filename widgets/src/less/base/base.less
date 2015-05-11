@@ -200,11 +200,13 @@
       &.nfhs-scout-shot-chart-team-away {
         background-color: #12294E;
         border-right-width: 2px;
+        >div { margin-bottom: 10px; }
       }
 
       &.nfhs-scout-shot-chart-team-home {
         background-color: #9D0B0E;
         border-left-width: 2px;
+        >div { margin-bottom: 10px; }
       }
 
       @media (min-width: @screen-sm-cutoff) {
@@ -249,7 +251,23 @@
       }
     }
   }
+
+  .nfhs-scout-hit-chart-legend > dl {
+    float: left;
+    font-size: 0.75em;
+    line-height: 20px;
+    margin-bottom: 20px;
+
+    & dt {
+      float: left; width: 160px;
+      clear: left;
+      text-align: right;
+    }
+    & dd {
+      margin-left: 180px;
+    }
   }
+}
 
 /**** Drive Chart ****/
 @drive-chart-height: 357px;

@@ -20,9 +20,18 @@
   <div class="nfhs-scout-shot-chart-teams">
     <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-away">
       <div>{{awayName}}</div>
-      <select ng-model="awayPlayerFilter" ng-options="player.DisplayName for player in players[awayTeamSeasonId]">
-        <option value="">All Players</option>
+      <select ng-model="playerFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="player as player.DisplayName group by player.TeamDisplayName for player in playerFilterList | orderBy: '(PlayerId > 0 ? DisplayName : 0)'">
+        <!--
+        <optgroup label="{{awayName}}">
+          <option value="{{awayTeamSeasonId + '-all'}}">All {{awayName}} players</option>
+          <option ng-repeat="player in players[awayTeamSeasonId]" value="{{awayTeamSeasonId + '-' + player.PlayerId}}">{{player.DisplayName}}</option>
+        </optgroup>
+        <optgroup label="{{homeName}}">
+          <option value="{{homeTeamSeasonId + '-all'}}">All {{homeName}} players</option>
+          <option ng-repeat="player in players[homeTeamSeasonId]" value="{{homeTeamSeasonId + '-' + player.PlayerId}}">{{player.DisplayName}}</option>
+        </optgroup>
       </select>
+    -->
     </div>
     <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-home">
       <div>{{homeName}}</div>
@@ -38,38 +47,34 @@
         <div class="tooltip-inner" ng-bind="tooltip.description"></div>
     </div>
   </div>
-  <div class="nfhs-scout-shot-chart-legend">
-    <div class="span6">
-      <dl class="dl-horizontal">
-        <dt>Dashed line</dt>
-        <dd>Serve</dd>
-        <dt>Color: Blue</dt>
-        <dd style="color: blue;">Float serve</dd>
-        <dt>Color: Green</dt>
-        <dd style="color: green;">Jump serve</dd>
-        <dt>Color: Red</dt>
-        <dd style="color: red;">Top spin serve</dd>
-        <dt>Color: Yellow</dt>
-        <dd style="color: yellow"><span style="background: #777; padding: 1px;">Underhand serve</span></dd>
-        <dt>Solid line</dt>
-        <dd>Attack</dd>
-        <dt>Color: Blue</dt>
-        <dd style="color: blue;">Dump attack</dd>
-        <dt>Color: Green</dt>
-        <dd style="color: green;">Set over</dd>
-        <dt>Color: Red</dt>
-        <dd style="color: red;">Spike</dd>
-        <dt>Color: Yellow</dt>
-        <dd style="color: yellow"><span style="background: #777; padding: 1px;">Tip</span></dd>
-      </dl>
-    </div>
-    <div class="span6">
-      <dl class="dl-horizontal">
-          <dt>&#8226;</dt><dd>Hit origin</dd>
-          <dt>O</dt><dd>Hit destination</dd>
-          <dt style="color: red">&#216;</dt><dd>Service ace/attack kill</dd>
-          <dt style="font-size: 2.5em">&#8226;</dt><dd>Hit error</dd>
-      </dl>
-    </div>
+  <div class="nfhs-scout-hit-chart-legend">
+    <dl class="dl-horizontal">
+      <dt>Dashed line</dt>
+      <dd>Serve</dd>
+      <dt>Color: Blue</dt>
+      <dd style="color: blue;">Float serve</dd>
+      <dt>Color: Green</dt>
+      <dd style="color: green;">Jump serve</dd>
+      <dt>Color: Red</dt>
+      <dd style="color: red;">Top spin serve</dd>
+      <dt>Color: Yellow</dt>
+      <dd style="color: yellow"><span style="background: #777; padding: 1px;">Underhand serve</span></dd>
+      <dt>Solid line</dt>
+      <dd>Attack</dd>
+      <dt>Color: Blue</dt>
+      <dd style="color: blue;">Dump attack</dd>
+      <dt>Color: Green</dt>
+      <dd style="color: green;">Set over</dd>
+      <dt>Color: Red</dt>
+      <dd style="color: red;">Spike</dd>
+      <dt>Color: Yellow</dt>
+      <dd style="color: yellow"><span style="background: #777; padding: 1px;">Tip</span></dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>&#8226;</dt><dd>Hit origin</dd>
+        <dt>O</dt><dd>Hit destination</dd>
+        <dt style="color: red">&#216;</dt><dd>Service ace/attack kill</dd>
+        <dt style="font-size: 2.5em">&#8226;</dt><dd>Hit error</dd>
+    </dl>
   </div>
 </div>
