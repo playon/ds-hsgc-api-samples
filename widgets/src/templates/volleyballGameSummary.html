@@ -1,0 +1,44 @@
+<div ng-show="statsAvailable" class="nfhs-scout-game-summary">
+  <h4 class="nfhs-scout-heading">Game Summary</h4>
+  <table class="nfhs-scout-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>{{awayAcronym}}</th>
+        <th>{{homeAcronym}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kills</td>
+        <td>{{awayStats.AttackKills}}</td>
+        <td>{{homeStats.AttackKills}}</td>
+      </tr>
+      <tr>
+        <td>Total Attempts</td>
+        <td>{{awayStats.Attacks}}</td>
+        <td>{{homeStats.Attacks}}</td>
+      </tr>
+      <tr>
+        <td>Attack Percentage</td>
+        <td>{{awayStats.AttackPercentage | percentage:0:'':'%'}}</td>
+        <td>{{homeStats.AttackPercentage | percentage:0:'':'%'}}</td>
+      </tr>
+      <tr>
+        <td>Total Blocks</td>
+        <td>{{awayStats.BlockSolos + awayStats.BlockAssists}}</td>
+        <td>{{homeStats.BlockSolos + homeStats.BlockAssists}}</td>
+      </tr>
+      <tr>
+        <td>Reception Errors</td>
+        <td>{{awayStats.ReceptionErrors}}</td>
+        <td>{{homeStats.ReceptionErrors}}</td>
+      </tr>
+      <tr>
+        <td>Total Errors</td>
+        <td>{{awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors}}</td>
+        <td>{{homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

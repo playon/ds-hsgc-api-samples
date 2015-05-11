@@ -35,10 +35,10 @@
           <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
           {{awayShortName}}
         </th>
-        <td>{{ awayStats.AttackKills}}</td>
-        <td>{{ awayStats.Attacks}}</td>
+        <td>{{ awayStats.AttackKills }}</td>
+        <td>{{ awayStats.Attacks }}</td>
         <td>{{ awayStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ awayStats.BlockSolos + awayStats.BlockAssists}}</td>
+        <td>{{ awayStats.BlockSolos + awayStats.BlockAssists }}</td>
         <td>{{ awayStats.ReceptionErrors }}</td>
         <td>{{ awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors }}</td>
       </tr>
@@ -47,10 +47,10 @@
           <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
           {{homeShortName}}
         </th>
-        <td>{{ homeStats.AttackKills}}</td>
-        <td>{{ homeStats.Attacks}}</td>
+        <td>{{ homeStats.AttackKills }}</td>
+        <td>{{ homeStats.Attacks }}</td>
         <td>{{ homeStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ homeStats.BlockSolos + homeStats.BlockAssists}}</td>
+        <td>{{ homeStats.BlockSolos + homeStats.BlockAssists }}</td>
         <td>{{ homeStats.ReceptionErrors }}</td>
         <td>{{ homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors }}</td>
       </tr>
