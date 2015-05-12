@@ -2,7 +2,7 @@
 ==================
 
   * Add volleyball support
-  * Minor fixes for the examples
+  * Minor fixes to the NFHS layout and to the example HTML files
 
 1.0.7 / 2014-10-06
 ==================
