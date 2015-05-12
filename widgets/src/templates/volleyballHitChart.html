@@ -16,35 +16,17 @@
       </select>
     </div>
   </div>
-
-  <div class="nfhs-scout-shot-chart-teams">
-    <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-away">
-      <div>{{awayName}}</div>
+  <div class="nfhs-scout-period-selector">
+    <div class="nfhs-scout-period-selector">
+      <label for="nfhs-scout-period-selector">Team and Player</label>
       <select ng-model="playerFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="player as player.DisplayName group by player.TeamDisplayName for player in playerFilterList | orderBy: '(PlayerId > 0 ? DisplayName : 0)'">
-        <!--
-        <optgroup label="{{awayName}}">
-          <option value="{{awayTeamSeasonId + '-all'}}">All {{awayName}} players</option>
-          <option ng-repeat="player in players[awayTeamSeasonId]" value="{{awayTeamSeasonId + '-' + player.PlayerId}}">{{player.DisplayName}}</option>
-        </optgroup>
-        <optgroup label="{{homeName}}">
-          <option value="{{homeTeamSeasonId + '-all'}}">All {{homeName}} players</option>
-          <option ng-repeat="player in players[homeTeamSeasonId]" value="{{homeTeamSeasonId + '-' + player.PlayerId}}">{{player.DisplayName}}</option>
-        </optgroup>
-      </select>
-    -->
-    </div>
-    <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-home">
-      <div>{{homeName}}</div>
-      <select ng-model="homePlayerFilter" ng-options="player.DisplayName for player in players[homeTeamSeasonId]">
-        <option value="">All Players</option>
-      </select>
     </div>
   </div>
   <div class="nfhs-scout-shot-chart-container">
     <canvas volleyball-court resize style="width:100%"></canvas>
-    <div id="js-court-tooltip" class="tooltip in top hidden-print" style="display: none;">
+    <div class="nfhs-scout-short-chart-tooltip-js" class="tooltip in top hidden-print">
         <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner" ng-bind="tooltip.description"></div>
+        <div class="tooltip-inner"></div>
     </div>
   </div>
   <div class="nfhs-scout-hit-chart-legend">

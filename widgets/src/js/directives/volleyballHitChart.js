@@ -12,7 +12,6 @@ angular.module('hsgc')
             // bind template elements that aren't simply bindable to values
             canvasContainer = null,
             bkgImg = null,
-            vballCourtImgWidth = 1024,
             courtPerimeter = { x: 20, y: 10, padding: 5 },
             circleDrawingRadius = 2,
             visiblePeriods = [true, true, true, true, true],
@@ -20,10 +19,20 @@ angular.module('hsgc')
             visibleHitTypeEnum = -1,
             visibleGrade = -1,
             vballCourt = null,
-            vballCourtAnchor = { x: 0, y: 0 }, // where the top-left of the court is anchored in the view
+            vballCourtAnchor = courtPerimeter, // where the top-left of the court is anchored in the view; basically set the padding that exists in the top left corner between the edge of the canvas and the start of the court image
+            vballCourtImgLarge = null,
+            vballCourtImgSmall = null,
             vballCourtImg = null,
+            vballCourtImgWidth = 1280,
             vballCourtTooltip = null,
+            vballCourtTooltipInner = null,
             vballPoints = [];
+
+        scope.$watch('selectedHitChartPeriod', function(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            scope.setSizeOfItemsOnCourt();
+          }
+        })
 
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
           /* 
@@ -34,11 +43,13 @@ angular.module('hsgc')
           // $log.debug('$watch(selectedDetailTab)', newValue, oldValue);
           if (newValue == selectedDetailTabForHitChart && newValue !== oldValue) {
             scope.resize();
+            // resize calls setSizeOfItemsOnCourt() so it doesn't need to be explicitly called here
           }
         });
 
         scope.$on('datacastLoaded', function() {
           if (firstLoad) {
+            $log.debug('Datacast loaded. Initializing canvas...');
             firstLoad = false;
             scope.selectedHitChartPeriod = null;  // default to All Games
             previousPeriod = scope.currentPeriod; // default to current period
@@ -48,13 +59,15 @@ angular.module('hsgc')
             vballCourt = element.find('canvas');
             // $log.debug(canvas);
             // set background image on the canvas
+            vballCourtTooltip = element.parent().find('.nfhs-scout-short-chart-tooltip-js');
+            if (vballCourtTooltip && vballCourtTooltip.length > 0) {
+              vballCourtTooltipInner = $('.tooltip-inner', vballCourtTooltip);
+            }
 
             window.angular.element($window).on('resize', scope.resize);
             scope.$on('$destroy', function() { window.angular.element($window).off('resize', onResize); });  // remove the resize listener from the canvas to prevent memory leak
 
             paper.setup(vballCourt[0]);
-            // call resize now to get the base size to use for the court loading
-            scope.resize();
           }
 
           var i, player, periods = [];
@@ -94,32 +107,63 @@ angular.module('hsgc')
           });
 
           scope.buildHitPoints(scope.playByPlay);
+          scope.resize();
         });
 
         scope.resize = function() {
-          var width = element.parent().width() - (courtPerimeter.x * 2),
-              // scale height to half of the width (court image is always a 2:1 ratio) then add a little padding for the perimeter
-              height = (width / 2) + (courtPerimeter.y * 2);
-          $log.debug(width, height);
-          if (width < 1) {
+          /* 
+            Getting width is tricky; until it is visible, it often doesn't render full size.
+            Therefore, the onClick of the tab also kicks off this resize function. Plus, the 
+            element itself doesn't have a width in CSS until we set it. So here it gets the
+            width from the parent (the tab container)--but it has a CSS padding set which isn't
+            reflected in the result of width(), so it is manually adjusted for that here.
+            Then, to calculate height, we have to take the canvas width, remove our own
+            padding (for hits that are outside the main court, for example serves) to find the 
+            court image width, halve that, then add back on the height padding to get the final 
+            canvas height.
+          */
+
+          var desiredWidth = element.parent().width() - 20 /* hard-coded padding width from the base.less rule ".nfhs-scout-tab-container > div" */,
+              desiredHeight = 0;
+          
+          // $log.debug(width, height);
+          if (desiredWidth < 1) {
             // probably first run, so use default CSS canvas size instead
-            width = vballCourt.width();
-            height = (width / 2) + (courtPerimeter.y * 2);
-          } else if (bkgImg == null) {
-            // copy the appropriately sized volleyball image as a raster to the canvas
-            if (vballCourt.width() >= 1280) {
-              vballCourtImg = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-1280x640.png');
-              vballCourtImgWidth = 1280;
-            } else {
-              vballCourtImg = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-640x320.png');
-              vballCourtImgWidth = 640;
-            }
+            desiredWidth = vballCourt.width();
+          }
+          
+          // scale height to half of the width (court image is always a 2:1 ratio) then add a little padding for the perimeter
+          desiredHeight = ((desiredWidth  - (courtPerimeter.x * 2)) / 2) +  (courtPerimeter.y * 2);
+
+          // switch between the low and high res versions of the court
+          if (desiredWidth > 640) {
+            vballCourtImg = vballCourtImgLarge;
+            vballCourtImgWidth = 1280;
+            vballCourtImgLarge.visible = true;
+            vballCourtImgSmall.visible = false;
+          } else {
+            vballCourtImg = vballCourtImgSmall;
+            vballCourtImgWidth = 640;
+            vballCourtImgLarge.visible = false;
+            vballCourtImgSmall.visible = true;
           }
 
-          vballCourt.height(height);
-          paper.view.viewSize = new paper.Size(width, height);
+          // $log.debug('element.width', element.parent().width(), 'canvas width', vballCourt.width(), 'desiredWidth', desiredWidth, 'desiredHeight', desiredHeight, 'vballCourtImgWidth', vballCourtImgWidth);
+
+          vballCourt.height(desiredHeight);
+          paper.view.viewSize = new paper.Size(desiredWidth, desiredHeight);
+          // $log.debug('adjusted canvas width', vballCourt.width());
 
           scope.setSizeOfItemsOnCourt();
+        }
+
+        scope.clearItems = function() {
+          paper.project.clear();
+          vballPoints = [];
+          vballCourtImgLarge = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-1280x640.png');
+          vballCourtImgSmall = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-640x320.png');
+          vballCourtImg = vballCourtImgLarge;
+          vballCourtImgWidth = 1280;
         }
 
         scope.addItem = function(data) {
@@ -222,24 +266,26 @@ angular.module('hsgc')
           new paper.Group([item.line, item.bulletStart, item.bulletKill1, item.bulletKill2, item.bulletEnd]);
 
           // event handlers
-          /*
-          item.line.onMouseEnter = ShowDeetsEnter;
-          item.line.onMouseLeave = ShowDeetsLeave;
-          item.bulletKill1.onMouseEnter = ShowDeetsEnter;
-          item.bulletKill1.onMouseLeave = ShowDeetsLeave;
-          item.bulletKill2.onMouseEnter = ShowDeetsEnter;
-          item.bulletKill2.onMouseLeave = ShowDeetsLeave;
-          item.bulletStart.onMouseEnter = ShowDeetsEnter;
-          item.bulletStart.onMouseLeave = ShowDeetsLeave;
-          item.bulletEnd.onMouseEnter = ShowDeetsEnter;
-          item.bulletEnd.onMouseLeave = ShowDeetsLeave;
-*/
+          item.line.onMouseEnter = scope.hitOnEnter;
+          item.line.onMouseLeave = scope.hitOnLeave;
+          item.bulletKill1.onMouseEnter = scope.hitOnEnter;
+          item.bulletKill1.onMouseLeave = scope.hitOnLeave;
+          item.bulletKill2.onMouseEnter = scope.hitOnEnter;
+          item.bulletKill2.onMouseLeave = scope.hitOnLeave;
+          item.bulletStart.onMouseEnter = scope.hitOnEnter;
+          item.bulletStart.onMouseLeave = scope.hitOnLeave;
+          item.bulletEnd.onMouseEnter = scope.hitOnEnter;
+          item.bulletEnd.onMouseLeave = scope.hitOnLeave;
+
           // finally add the item to the array
           vballPoints.push(item);
         }
 
         scope.buildHitPoints = function(playByPlay, homeTeasonSeasonId) {
           var i, play;
+
+          scope.clearItems();
+
           for (i = 0; i < playByPlay.length; i++) {
             play = playByPlay[i];
             if (!(play && (play.EventType == 'Serve' || play.EventType == 'Attack') 
@@ -265,13 +311,11 @@ angular.module('hsgc')
         }
 
         scope.setSizeOfItemsOnCourt = function() {
-          // basically set the padding that exists in the top left corner between the edge of the canvas and the start of the court image; must match HTML
-          vballCourtAnchor = courtPerimeter;
-
           var view = paper.view,
               viewWidth = view.viewSize.width,
               courtWidthInView = viewWidth - (vballCourtAnchor.x * 2),
               courtHeightInView = view.viewSize.height - (vballCourtAnchor.y * 2),
+              scale,
               item,
               startLine,
               endLine,
@@ -285,11 +329,15 @@ angular.module('hsgc')
               vballPointsLength = vballPoints.length;
 
           // adjust the background 'court' image scale
-          if (vballCourtImg != null) {
-            vballCourtImg.position = view.center;
-            vballCourtImg.scaling = (paper.view.viewSize.width - (courtPerimeter.x * 2)) / vballCourtImgWidth;
-            vballCourtImg.sendToBack();
+          scale = (paper.view.viewSize.width - (courtPerimeter.x * 2)) / vballCourtImgWidth;
+          vballCourtImg.position = view.center;
+          vballCourtImg.scaling = scale;
+          vballCourtImg.sendToBack();
+          if (scale >= 1) {
+            $log.debug('Not expecting a positive scale of ' + scale + ' based on an image width of ' + vballCourtImgWidth);
           }
+
+          // $log.debug('viewWidth', viewWidth, 'courtWidthInView', courtWidthInView, 'scale', scale, 'vballCourtImgWidth', vballCourtImgWidth);
 
           // set all the points of the items based on the scale
           for (i = 0; i < vballPointsLength; i++) {
@@ -303,7 +351,7 @@ angular.module('hsgc')
               // check if it should be visible or not
 
               // visibility based on period selections
-              if (visiblePeriods[item.data.period - 1] === true) {
+              if (!scope.selectedHitChartPeriod || scope.selectedHitChartPeriod == item.data.period) {
                   item.line.visible = true;
                   item.bulletStart.visible = true;
                   item.bulletEnd.visible = true;
@@ -332,20 +380,6 @@ angular.module('hsgc')
 /*
               // visibility based on hit type selection
               if (visibleHitType == item.data.eventType && (visibleHitTypeEnum == 'All' || visibleHitTypeEnum == item.data.hitType)) {
-                  item.line.visible = true;
-                  item.bulletStart.visible = true;
-                  item.bulletEnd.visible = true;
-              } else {
-                  item.line.visible = false;
-                  item.bulletStart.visible = false;
-                  item.bulletEnd.visible = false;
-                  item.bulletKill1.visible = false;
-                  item.bulletKill2.visible = false;
-                  continue;
-              }
-
-              // visibility based on grade selection
-              if (scope.playerFilter.TeamSeasonId == item.data.teamSeasonId && (visibleGrade < 0 || visibleGrade == item.data.grade)) {
                   item.line.visible = true;
                   item.bulletStart.visible = true;
                   item.bulletEnd.visible = true;
@@ -393,13 +427,26 @@ angular.module('hsgc')
           paper.view.draw();
         };
 
-        scope.getLogo = function(play) {
-          return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeLogo : scope.awayLogo;
+        scope.hitOnEnter = function(evt) {
+          evt.target.parent.strokeWidth = 3;
+          
+          var tgt = evt.target.parent.lastChild,
+              desc = tgt.data.description;
+          // set the data first, to get width dimension set
+          vballCourtTooltipInner.html(desc);
+          vballCourtTooltip
+              .css('top', Math.round(tgt.position.y - 40) + 'px')
+              .css('left', Math.round(tgt.position.x - (vballCourtTooltip.width() / 2)) + 'px')
+              .fadeIn(150);
+        };
+
+        scope.hitOnLeave = function(evt) {
+          vballCourtTooltip.hide();
+          evt.target.parent.strokeWidth = 1;
         };
 
         scope.forceMaxEdges = function(point, maxPoint) {
           // add a little padding since the points are circles
-          $log.debug('forceMaxEdges', point, courtPerimeter.padding);
           if (point.x < courtPerimeter.padding) {
               point.x = courtPerimeter.padding;
           }

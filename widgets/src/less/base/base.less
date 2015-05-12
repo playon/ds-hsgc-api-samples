@@ -267,6 +267,47 @@
       margin-left: 180px;
     }
   }
+
+  .nfhs-scout-short-chart-tooltip-js {
+    display: none;
+
+    /* boostrap copied style */
+    position: absolute;
+    z-index: 1030;
+    font-size: 11px;
+    line-height: 1.4;
+    visibility: visible;
+    /* top positioned tooltip */
+    padding: 5px 0;
+    margin-top: -3px;
+
+    .tooltip-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+
+      /* top positioned tooltip */
+      bottom: 0;
+      left: 50%;
+      margin-left: -5px;
+      border-top-color: #000000;
+      border-width: 5px 5px 0;
+    }
+
+    .tooltip-inner {
+      max-width: 200px;
+      padding: 8px;
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      background-color: #000000;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+  }
 }
 
 /**** Drive Chart ****/
