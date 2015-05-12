@@ -58,8 +58,9 @@ angular.module('hsgc')
             canvasContainer = element.parents('.nfhs-scout-table');
             vballCourt = element.find('canvas');
             // $log.debug(canvas);
-            // set background image on the canvas
-            vballCourtTooltip = element.parent().find('.nfhs-scout-short-chart-tooltip-js');
+            paper.setup(vballCourt[0]);
+
+            vballCourtTooltip = element.parent().find('.nfhs-scout-hit-chart-tooltip-js');
             if (vballCourtTooltip && vballCourtTooltip.length > 0) {
               vballCourtTooltipInner = $('.tooltip-inner', vballCourtTooltip);
             }
@@ -67,7 +68,21 @@ angular.module('hsgc')
             window.angular.element($window).on('resize', scope.resize);
             scope.$on('$destroy', function() { window.angular.element($window).off('resize', onResize); });  // remove the resize listener from the canvas to prevent memory leak
 
-            paper.setup(vballCourt[0]);
+            // initialize the Serve/Attack hit type filter
+            scope.hitTypeFilterList = [
+                { DisplayName: 'All serves', Value: '', EventType: 'Serve' },
+                { DisplayName: 'Float', Value: 'Float', EventType: 'Serve' },
+                { DisplayName: 'Jump', Value: 'Jump', EventType: 'Serve' },
+                { DisplayName: 'Underhand', Value: 'Underhand', EventType: 'Serve' },
+                { DisplayName: 'Top Spin', Value: 'TopSpin', EventType: 'Serve' },
+                { DisplayName: 'All attacks', Value: '', EventType: 'Attack' },
+                { DisplayName: 'Dump', Value: 'Dump', EventType: 'Attack' },
+                { DisplayName: 'Set Over', Value: 'SetOver', EventType: 'Attack' },
+                { DisplayName: 'Spike', Value: 'Spike', EventType: 'Attack' },
+                { DisplayName: 'Tip', Value: 'Tip', EventType: 'Attack' }
+              ];
+            // default to 'All Serves'
+            scope.hitTypeFilter = scope.hitTypeFilterList[0];
           }
 
           var i, player, periods = [];
@@ -253,23 +268,24 @@ angular.module('hsgc')
           }
 
           // draw the end attack cross
-          item.bulletKill1 = new paper.Path.Line(
+          /* item.bulletKill1 = new paper.Path.Line(
               new paper.Point(destination.x - circleDrawingRadius, destination.y - circleDrawingRadius),
               new paper.Point(destination.x + circleDrawingRadius, destination.y + circleDrawingRadius));
           item.bulletKill1.strokeColor = 'red';
+          */
           item.bulletKill2 = new paper.Path.Line(
               new paper.Point(destination.x - circleDrawingRadius, destination.y + circleDrawingRadius),
               new paper.Point(destination.x + circleDrawingRadius, destination.y - circleDrawingRadius));
           item.bulletKill2.strokeColor = 'red';
 
           // put the items together in a group so they hover/glow together
-          new paper.Group([item.line, item.bulletStart, item.bulletKill1, item.bulletKill2, item.bulletEnd]);
+          new paper.Group([item.line, item.bulletStart/*, item.bulletKill1*/, item.bulletKill2, item.bulletEnd]);
 
           // event handlers
           item.line.onMouseEnter = scope.hitOnEnter;
           item.line.onMouseLeave = scope.hitOnLeave;
-          item.bulletKill1.onMouseEnter = scope.hitOnEnter;
-          item.bulletKill1.onMouseLeave = scope.hitOnLeave;
+          // item.bulletKill1.onMouseEnter = scope.hitOnEnter;
+          // item.bulletKill1.onMouseLeave = scope.hitOnLeave;
           item.bulletKill2.onMouseEnter = scope.hitOnEnter;
           item.bulletKill2.onMouseLeave = scope.hitOnLeave;
           item.bulletStart.onMouseEnter = scope.hitOnEnter;
@@ -359,7 +375,7 @@ angular.module('hsgc')
                   item.line.visible = false;
                   item.bulletStart.visible = false;
                   item.bulletEnd.visible = false;
-                  item.bulletKill1.visible = false;
+                  // item.bulletKill1.visible = false;
                   item.bulletKill2.visible = false;
                   continue;
               }
@@ -373,13 +389,13 @@ angular.module('hsgc')
                   item.line.visible = false;
                   item.bulletStart.visible = false;
                   item.bulletEnd.visible = false;
-                  item.bulletKill1.visible = false;
+                  // item.bulletKill1.visible = false;
                   item.bulletKill2.visible = false;
                   continue;
               }
-/*
+
               // visibility based on hit type selection
-              if (visibleHitType == item.data.eventType && (visibleHitTypeEnum == 'All' || visibleHitTypeEnum == item.data.hitType)) {
+              if (scope.hitTypeFilter.EventType == item.data.eventType && (scope.hitTypeFilter.Value == '' || scope.hitTypeFilter.Value == item.data.hitType)) {
                   item.line.visible = true;
                   item.bulletStart.visible = true;
                   item.bulletEnd.visible = true;
@@ -387,11 +403,11 @@ angular.module('hsgc')
                   item.line.visible = false;
                   item.bulletStart.visible = false;
                   item.bulletEnd.visible = false;
-                  item.bulletKill1.visible = false;
+                  // item.bulletKill1.visible = false;
                   item.bulletKill2.visible = false;
                   continue;
               }
-*/
+
               // figure where on the canvas to put the point
               startTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.origin[1]), vballCourtAnchor.y + (courtHeightInView * item.data.origin[0]));
               endTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.destination[1]), vballCourtAnchor.y + (courtHeightInView * item.data.destination[0]));
@@ -401,8 +417,8 @@ angular.module('hsgc')
               // load the current location of the points
               startLine = item.line.segments[0];
               endLine = item.line.segments[1];
-              attack1LineStart = item.bulletKill1.segments[0];
-              attack1LineEnd = item.bulletKill1.segments[1];
+              // attack1LineStart = item.bulletKill1.segments[0];
+              // attack1LineEnd = item.bulletKill1.segments[1];
               attack2LineStart = item.bulletKill2.segments[0];
               attack2LineEnd = item.bulletKill2.segments[1];
 
@@ -411,10 +427,12 @@ angular.module('hsgc')
               startLine.point.y += startTarget.y - startLine.point.y;
               endLine.point.x += endTarget.x - endLine.point.x;
               endLine.point.y += endTarget.y - endLine.point.y;
+              /*
               attack1LineStart.point.x += (endTarget.x - circleDrawingRadius) - attack1LineStart.point.x;
               attack1LineStart.point.y += (endTarget.y - circleDrawingRadius) - attack1LineStart.point.y;
               attack1LineEnd.point.x += (endTarget.x + circleDrawingRadius) - attack1LineEnd.point.x;
               attack1LineEnd.point.y += (endTarget.y + circleDrawingRadius) - attack1LineEnd.point.y;
+              */
               attack2LineStart.point.x += (endTarget.x - circleDrawingRadius) - attack2LineStart.point.x;
               attack2LineStart.point.y += (endTarget.y + circleDrawingRadius) - attack2LineStart.point.y;
               attack2LineEnd.point.x += (endTarget.x + circleDrawingRadius) - attack2LineEnd.point.x;
@@ -431,13 +449,35 @@ angular.module('hsgc')
           evt.target.parent.strokeWidth = 3;
           
           var tgt = evt.target.parent.lastChild,
-              desc = tgt.data.description;
-          // set the data first, to get width dimension set
+              desc = tgt.data.description,
+              halfOfTooltipWidth = 0,
+              topPositionX = 0;
+
           vballCourtTooltipInner.html(desc);
-          vballCourtTooltip
-              .css('top', Math.round(tgt.position.y - 40) + 'px')
-              .css('left', Math.round(tgt.position.x - (vballCourtTooltip.width() / 2)) + 'px')
-              .fadeIn(150);
+          vballCourtTooltip.show();
+          // dependant on the inner tooltip desc being set and shown before calculating the new width
+          halfOfTooltipWidth = (vballCourtTooltip.width() / 2);
+          topPositionX = tgt.position.x - halfOfTooltipWidth;
+
+          // $log.debug('target', evt.target, 'parent', evt.target.parent, 'lastChild', evt.target.parent.lastChild)
+          // set the data first, to get width dimension set
+          // $log.debug('halfOfTooltipWidth', halfOfTooltipWidth, 'topPositionX', topPositionX, 'topPositionX2', tgt.position.x + halfOfTooltipWidth, 'viewSize.width', paper.view.viewSize.width);
+          if (topPositionX - halfOfTooltipWidth < 5) {
+            vballCourtTooltip
+              .removeClass('top left right').addClass('right')
+              .css('top', Math.round(tgt.position.y - (vballCourtTooltip.height() / 2)) + 'px')
+              .css('left', Math.round(tgt.position.x + 5) + 'px');
+          } else if (tgt.position.x + halfOfTooltipWidth > paper.view.viewSize.width - 5) {
+            vballCourtTooltip
+              .removeClass('top left right').addClass('left')
+              .css('top', Math.round(tgt.position.y - (vballCourtTooltip.height() / 2)) + 'px')
+              .css('left', Math.round(tgt.position.x - vballCourtTooltip.width() - 15) + 'px');
+          } else {
+            vballCourtTooltip
+              .removeClass('top left right').addClass('top')
+              .css('top', Math.round(tgt.position.y - vballCourtTooltip.height() - 15) + 'px')
+              .css('left', Math.round(topPositionX) + 'px');
+          }
         };
 
         scope.hitOnLeave = function(evt) {

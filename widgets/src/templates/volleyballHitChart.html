@@ -1,5 +1,5 @@
 <div ng-show="playByPlayAvailable" class="nfhs-scout-shot-chart">
-  <div class="nfhs-scout-period-selector">
+  <div class="nfhs-scout-period-selector nfhs-scout-hit-chart-selector">
     <ul class="nfhs-scout-hidden-sm">
       <li class="nfhs-scout-selector-label">Game:</li>
       <li ng-class="{'nfhs-scout-active': selectedHitChartPeriod == null}">
@@ -10,21 +10,29 @@
       </li>
     </ul>
     <div class="nfhs-scout-visible-sm">
-      <label for="nfhs-scout-period-selector">Game</label>
-      <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
-        <option value="">All Games</option>
-      </select>
+      <label for="nfhs-scout-period-selector">
+        Game
+        <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
+          <option value="">All Games</option>
+        </select>
+      </label>
     </div>
   </div>
-  <div class="nfhs-scout-period-selector">
-    <div class="nfhs-scout-period-selector">
-      <label for="nfhs-scout-period-selector">Team and Player</label>
+  <div class="nfhs-scout-hit-chart-selector">
+    <label>
+      Team and Player
       <select ng-model="playerFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="player as player.DisplayName group by player.TeamDisplayName for player in playerFilterList | orderBy: '(PlayerId > 0 ? DisplayName : 0)'">
-    </div>
+      </label>
+  </div>
+  <div class="nfhs-scout-hit-chart-selector">
+    <label>
+      Serves and Attacks
+      <select ng-model="hitTypeFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="hitType as hitType.DisplayName group by hitType.EventType for hitType in hitTypeFilterList">
+    </label>
   </div>
   <div class="nfhs-scout-shot-chart-container">
     <canvas volleyball-court resize style="width:100%"></canvas>
-    <div class="nfhs-scout-short-chart-tooltip-js" class="tooltip in top hidden-print">
+    <div class="nfhs-scout-hit-chart-tooltip-js" class="tooltip in top hidden-print">
         <div class="tooltip-arrow"></div>
         <div class="tooltip-inner"></div>
     </div>

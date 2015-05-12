@@ -10,25 +10,31 @@
       </li>
     </ul>
     <div class="nfhs-scout-visible-sm">
-      <label for="nfhs-scout-period-selector">Quarter</label>
-      <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedShotChartPeriod" required>
-        <option value="">All Quarters</option>
-      </select>
+      <label for="nfhs-scout-period-selector">
+        Quarter
+        <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedShotChartPeriod" required>
+          <option value="">All Quarters</option>
+        </select>
+      </label>
     </div>
   </div>
 
   <div class="nfhs-scout-shot-chart-teams">
     <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-away">
-      <div>{{awayName}}</div>
-      <select ng-model="awayPlayerFilter" ng-options="player.DisplayName for player in players[awayTeamSeasonId]">
-        <option value="">All Players</option>
-      </select>
+      <label>
+        <div>{{awayName}}</div>
+        <select ng-model="awayPlayerFilter" ng-options="player.DisplayName for player in players[awayTeamSeasonId]">
+          <option value="">All Players</option>
+        </select>
+      </label>
     </div>
     <div class="nfhs-scout-shot-chart-team nfhs-scout-shot-chart-team-home">
-      <div>{{homeName}}</div>
-      <select ng-model="homePlayerFilter" ng-options="player.DisplayName for player in players[homeTeamSeasonId]">
-        <option value="">All Players</option>
-      </select>
+      <label>
+        <div>{{homeName}}</div>
+        <select ng-model="homePlayerFilter" ng-options="player.DisplayName for player in players[homeTeamSeasonId]">
+          <option value="">All Players</option>
+        </select>
+      </label>
     </div>
   </div>
   <div class="nfhs-scout-shot-chart-container">
