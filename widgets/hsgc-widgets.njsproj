@@ -22,6 +22,11 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="src\js\directives\volleyballGameLeaders.js" />
+    <Compile Include="src\js\directives\volleyballHitChart.js" />
+    <Compile Include="src\js\directives\volleyballPlayByPlay.js" />
+    <Compile Include="src\js\directives\volleyballPlayerStats.js" />
+    <Compile Include="src\js\directives\volleyballTeamStats.js" />
     <Compile Include="src\js\services\hsgc-api.js" />
     <Compile Include="src\js\services\hsgcConfig.js" />
     <Content Include="examples\basketball.html" />
@@ -33,6 +38,7 @@
     <Content Include="examples\usa_today.html" />
     <Content Include="examples\usa_today.less" />
     <Content Include="examples\usa_today_redirect.html" />
+    <Content Include="examples\volleyball.html" />
     <Content Include="package.json" />
     <Content Include="readme.md" />
     <Compile Include="Gruntfile.js" />
@@ -47,6 +53,8 @@
     <Content Include="src\img\homeshotmiss.png" />
     <Content Include="src\img\NFHS_logo.png" />
     <Content Include="src\img\triangle.png" />
+    <Content Include="src\img\volleyball-court-1280x640.png" />
+    <Content Include="src\img\volleyball-court-640x320.png" />
     <Content Include="src\less\base\base.less" />
     <Content Include="src\less\base\mixins.less" />
     <Content Include="src\less\base\responsive-utilities.less" />
