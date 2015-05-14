@@ -8,6 +8,7 @@ angular.module('hsgc')
       if ($window.isNaN(input) || !$window.isFinite(input)) {
         return '';
       }
-      return prefix + Math.round(input * Math.pow(10, decimals + 2)) / Math.pow(10, decimals) + suffix
+
+      return prefix + Math.round(input * Math.pow(10, decimals + 2)) / Math.pow(10, decimals) + suffix;
     };
   }]);

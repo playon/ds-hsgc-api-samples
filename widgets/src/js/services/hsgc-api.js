@@ -3,14 +3,19 @@ angular.module('hsgc')
     var populateBaseInfo = function(boxScore) {
       // $log.debug('Populating base info');
 
-      scores = {};
+      var scores = {},
+        unityTeamMapping = {},
+        colors = {},
+        inOverTime = boxScore.Sport !== 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount,
+        homeOTScore = 0,
+        awayOTScore = 0;
+
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
-      unityTeamMapping = {};
 
       unityTeamMapping[safeToLower(boxScore.HomeTeamUnityKey)] = boxScore.HomeTeamSeasonId;
       unityTeamMapping[safeToLower(boxScore.AwayTeamUnityKey)] = boxScore.AwayTeamSeasonId;
-      colors = {};
+
       colors[safeToLower(boxScore.HomeTeamUnityKey)] = {
         primary: boxScore.HomeTeamPrimaryColor,
         secondary: boxScore.HomeTeamSecondaryColor
@@ -20,9 +25,6 @@ angular.module('hsgc')
         secondary: boxScore.AwayTeamSecondaryColor
       };
 
-      inOverTime = boxScore.Sport != 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount;
-      homeOTScore = 0;
-      awayOTScore = 0;
       if (inOverTime) {
         for (var i = boxScore.RegulationPeriodCount; i < boxScore.CurrentPeriod; i++) {
           homeOTScore += boxScore.HomePeriodScores[i].Score;
@@ -31,14 +33,14 @@ angular.module('hsgc')
       }
 
       var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
-      if (boxScore.HomeTeamLogo.indexOf('http') == 0) {
+      if (boxScore.HomeTeamLogo.indexOf('http') === 0) {
         //there's a bug with unity where it sometimes returns double urls
         //see: https://github.com/playon/unity-api/pull/163
         homeLogoCompute = boxScore.HomeTeamLogo.substring(boxScore.HomeTeamLogo.lastIndexOf('http'));
       }
 
       var awayLogoCompute = hsgcConfig.imageRoot + boxScore.AwayTeamLogo;
-      if (boxScore.AwayTeamLogo.indexOf('http') == 0) {
+      if (boxScore.AwayTeamLogo.indexOf('http') === 0) {
         //there's a bug with unity where it sometimes returns double urls
         //see: https://github.com/playon/unity-api/pull/163
         awayLogoCompute = boxScore.AwayTeamLogo.substring(boxScore.AwayTeamLogo.lastIndexOf('http'));
@@ -69,8 +71,8 @@ angular.module('hsgc')
         awayAcronym: boxScore.AwayTeamAcronym,
         homeMascot: boxScore.HomeTeamMascot,
         awayMascot: boxScore.AwayTeamMascot,
-        homeStats: boxScore.Sport == 'Basketball' ? boxScore.HomeTeamTotalStats : boxScore.HomeTeamStatistics,
-        awayStats: boxScore.Sport == 'Basketball' ? boxScore.AwayTeamTotalStats : boxScore.AwayTeamStatistics,
+        homeStats: boxScore.Sport === 'Basketball' ? boxScore.HomeTeamTotalStats : boxScore.HomeTeamStatistics,
+        awayStats: boxScore.Sport === 'Basketball' ? boxScore.AwayTeamTotalStats : boxScore.AwayTeamStatistics,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
         currentPeriod: boxScore.CurrentPeriod,
@@ -109,7 +111,7 @@ angular.module('hsgc')
           }
         },
         isFinal: function() {
-          return this.status == 'Complete';
+          return this.status === 'Complete';
         },
         isWinner: function(teamKey) {
           if (this.isFinal()) {
@@ -122,13 +124,13 @@ angular.module('hsgc')
           }
           return false;
         }
-      }
+      };
     };
 
     var populateLeaderInfo = function(boxScore, bs, $filter) {
       $log.debug('Populating leader info', boxScore);
 
-      if (boxScore.Sport == 'Basketball') {
+      if (boxScore.Sport === 'Basketball') {
         if (bs.statsAvailable) {
           bs.leadersAvailable = true;
           bs.leaders = {};
@@ -243,7 +245,7 @@ angular.module('hsgc')
     };
 
     var safeToLower = function(toLower) {
-      if (typeof(toLower) == "undefined") {
+      if (typeof(toLower) === "undefined") {
         return "";
       } else {
         return toLower.toLowerCase();
@@ -252,10 +254,10 @@ angular.module('hsgc')
 
     var populatePlayerStats = function(boxScore, bs) {
       bs.playerStats = {};
-      if (boxScore.Sport == 'Basketball' || boxScore.Sport == 'Volleyball') {
+      if (boxScore.Sport === 'Basketball' || boxScore.Sport === 'Volleyball') {
         bs.playerStats[boxScore.HomeTeamSeasonId] = boxScore.HomeTeamPlayerStats;
         bs.playerStats[boxScore.AwayTeamSeasonId] = boxScore.AwayTeamPlayerStats;
-      } else if (boxScore.Sport == 'Football') {
+      } else if (boxScore.Sport === 'Football') {
         bs.playerStats[boxScore.HomeTeamSeasonId] = {
           passingStats: boxScore.HomeTeamPassingStatistics,
           rushingStats: boxScore.HomeTeamRushingStatistics,
@@ -293,7 +295,7 @@ angular.module('hsgc')
     };
 
     var getFullBox = function(unityGameKey, publisherKey, sport, options) {
-      if (sport == "Football" || sport == "Basketball" || sport == "Volleyball") {
+      if (sport === "Football" || sport === "Basketball" || sport === "Volleyball") {
         $log.debug('Getting full box for sport: ' + sport);
 
         var config = {
@@ -332,7 +334,7 @@ angular.module('hsgc')
         deferred.resolve();
         return deferred.promise;
       }
-    }
+    };
 
     return {
       getFullBox: getFullBox

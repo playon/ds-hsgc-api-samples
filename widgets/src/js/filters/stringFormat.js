@@ -2,7 +2,7 @@ angular.module('hsgc')
   .filter('stringFormat', function() {
     // function _toFormattedString is based on String.js from http://ajaxcontroltoolkit.codeplex.com/SourceControl/latest#Client/MicrosoftAjax/Extensions/String.js
     // as seen in http://stackoverflow.com/questions/2534803/string-format-in-javascript
-    function toFormattedString(useLocale, format, values) {
+    var toFormattedString = function(useLocale, format, values) {
       var result = '';
 
       for (var i = 0;;) {
@@ -74,6 +74,7 @@ angular.module('hsgc')
       if (!values || !values.length || !template) {
         return template;
       }
+      
       return toFormattedString(false, template, values);
     };
   });

@@ -1,6 +1,5 @@
 angular.module('hsgc')
   .directive('datacast', ['HSGCApi', '$timeout', '$log', 'hsgcConfig', function(HSGCApi, $timeout, $log, config) {
-    var pollingStarted = false;
     return {
       restrict: 'EA',
       transclude: 'element',
@@ -21,10 +20,10 @@ angular.module('hsgc')
         this.getStatsAvailable = function() {
           if (!angular.isUndefined($scope.statsAvailable))
             return $scope.statsAvailable;
-        }
+        };
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {
-        if (scope.sport != 'Football' && scope.sport != 'Basketball' && scope.sport != 'Volleyball') {
+        if (scope.sport !== 'Football' && scope.sport !== 'Basketball' && scope.sport !== 'Volleyball') {
           $log.debug(scope.sport + ' not implemented');
           return;
         }
@@ -52,7 +51,7 @@ angular.module('hsgc')
             .then(
               //success
               function(result) {
-                if (typeof(result) != "undefined") {
+                if (typeof(result) !== "undefined") {
                   angular.extend(scope, result);
                   scope.$emit('datacastLoaded');
                   $timeout(updateBoxScore, 30 * 1000);

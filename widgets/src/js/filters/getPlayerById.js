@@ -27,5 +27,5 @@ angular.module('hsgc')
         JerseyNumber: "",
         DisplayName: ""
       };
-    }
+    };
   });

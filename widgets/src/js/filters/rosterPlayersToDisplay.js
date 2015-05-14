@@ -9,6 +9,7 @@ angular.module('hsgc')
           }
         }
       }
+
       return realPlayers;
-    }
+    };
   });

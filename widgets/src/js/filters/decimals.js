@@ -1,5 +1,5 @@
 angular.module('hsgc')
-    .filter('decimals', ['$window', function($window) {
+    .filter('decimals', function() {
         return function(input, places) {
             if (isNaN(input)) return input;
             // If we want 1 decimal place, we want to mult/div by 10
@@ -8,4 +8,4 @@ angular.module('hsgc')
             var factor = "1" + Array(+(places > 0 && places + 1)).join("0");
             return Math.round(input * factor) / factor;
         };
-    }]);
+    });

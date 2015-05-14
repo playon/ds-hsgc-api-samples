@@ -10,22 +10,18 @@ angular.module('hsgc')
           x: 0,
           y: 0
         };
-        var firstLoad = true,
+        var paper = typeof(window.paper) === 'undefined' ? null : window.paper, // get a local instance of the paper global
+          firstLoad = true,
           selectedDetailTabForHitChart = 4,
           previousPeriod = -1,
           // bind template elements that aren't simply bindable to values
           canvasContainer = null,
-          bkgImg = null,
           courtPerimeter = {
             x: 20,
             y: 10,
             padding: 5
           },
           circleDrawingRadius = 2,
-          visiblePeriods = [true, true, true, true, true],
-          visibleHitType = 'Serve',
-          visibleHitTypeEnum = -1,
-          visibleGrade = -1,
           vballCourt = null,
           vballCourtAnchor = courtPerimeter, // where the top-left of the court is anchored in the view; basically set the padding that exists in the top left corner between the edge of the canvas and the start of the court image
           vballCourtImgLarge = null,
@@ -40,7 +36,7 @@ angular.module('hsgc')
           if (newValue !== oldValue) {
             scope.setSizeOfItemsOnCourt();
           }
-        })
+        });
 
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
           /* 
@@ -49,7 +45,7 @@ angular.module('hsgc')
             appropriately before the DOM was rendered and the CSS widths applied
             */
           // $log.debug('$watch(selectedDetailTab)', newValue, oldValue);
-          if (newValue == selectedDetailTabForHitChart && newValue !== oldValue) {
+          if (newValue === selectedDetailTabForHitChart && newValue !== oldValue) {
             scope.resize();
             // resize calls setSizeOfItemsOnCourt() so it doesn't need to be explicitly called here
           }
@@ -75,7 +71,7 @@ angular.module('hsgc')
 
             window.angular.element($window).on('resize', scope.resize);
             scope.$on('$destroy', function() {
-              window.angular.element($window).off('resize', onResize);
+              window.angular.element($window).off('resize', scope.resize);
             }); // remove the resize listener from the canvas to prevent memory leak
 
             // initialize the Serve/Attack hit type filter
@@ -214,7 +210,7 @@ angular.module('hsgc')
           // $log.debug('adjusted canvas width', vballCourt.width());
 
           scope.setSizeOfItemsOnCourt();
-        }
+        };
 
         scope.clearItems = function() {
           paper.project.clear();
@@ -223,7 +219,7 @@ angular.module('hsgc')
           vballCourtImgSmall = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-640x320.png');
           vballCourtImg = vballCourtImgLarge;
           vballCourtImgWidth = 1280;
-        }
+        };
 
         scope.addItem = function(data) {
           // Create a Paper.js Path to draw a line into it:
@@ -243,7 +239,7 @@ angular.module('hsgc')
           item.line = new paper.Path.Line(origin, destination);
           item.line.strokeColor = 'black';
 
-          if (data.eventType == 'Serve') {
+          if (data.eventType === 'Serve') {
             switch (data.hitType) {
               case 'Float':
               case 0:
@@ -266,7 +262,7 @@ angular.module('hsgc')
                 item.line.strokeColor = 'yellow';
                 break;
             }
-          } else if (data.eventType == 'Attack') {
+          } else if (data.eventType === 'Attack') {
             switch (data.hitType) {
               case 'Dump':
               case 0:
@@ -346,7 +342,7 @@ angular.module('hsgc')
 
           // finally add the item to the array
           vballPoints.push(item);
-        }
+        };
 
         scope.buildHitPoints = function(playByPlay, homeTeasonSeasonId) {
           var i, play;
@@ -355,7 +351,7 @@ angular.module('hsgc')
 
           for (i = 0; i < playByPlay.length; i++) {
             play = playByPlay[i];
-            if (!(play && (play.EventType == 'Serve' || play.EventType == 'Attack') && play.OriginX && play.DestinationY /* lazily assume that if any Origin and Destination coordinate is non-zero, then they all are */ )) {
+            if (!(play && (play.EventType === 'Serve' || play.EventType === 'Attack') && play.OriginX && play.DestinationY /* lazily assume that if any Origin and Destination coordinate is non-zero, then they all are */ )) {
               // wasn't an Attack/Serve with a recorded hit location, so skip
               continue;
             }
@@ -373,7 +369,7 @@ angular.module('hsgc')
               hitType: play.HitType
             });
           }
-        }
+        };
 
         scope.setSizeOfItemsOnCourt = function() {
           var view = paper.view,
@@ -384,8 +380,8 @@ angular.module('hsgc')
             item,
             startLine,
             endLine,
-            attack1LineStart,
-            attack1LineEnd,
+            // attack1LineStart,
+            // attack1LineEnd,
             attack2LineStart,
             attack2LineEnd,
             startTarget,

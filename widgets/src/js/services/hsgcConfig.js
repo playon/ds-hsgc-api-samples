@@ -24,10 +24,10 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   };
 
   this.getHsgcApiRoot = function() {
-    return this.config.env == "prod" ? "http://api.hsgamecenter.com/v1.2/" : this.config.env == "stage" ? "http://api.gray.hsgamecenter.com/v1.2/" : "http://api.gamecenter.dev/";
-  }
+    return this.config.env === "prod" ? "http://api.hsgamecenter.com/v1.2/" : this.config.env === "stage" ? "http://api.gray.hsgamecenter.com/v1.2/" : "http://api.gamecenter.dev/";
+  };
 
   this.getUnityApiRoot = function() {
-    return this.config.env == "prod" ? "http://cfunity.nfhsnetwork.com/v1/" : this.config.env == "stage" ? "http://unity.stage.nfhsnetwork.com/v1/" : "http://localhost:3000/v1/";
-  }
+    return this.config.env === "prod" ? "http://cfunity.nfhsnetwork.com/v1/" : this.config.env === "stage" ? "http://unity.stage.nfhsnetwork.com/v1/" : "http://localhost:3000/v1/";
+  };
 });
