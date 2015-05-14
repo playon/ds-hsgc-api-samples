@@ -3,7 +3,9 @@ angular.module('hsgc')
     return {
       restrict: 'EA',
       require: '^datacast',
-      scope: { teamId: "@" },
+      scope: {
+        teamId: "@"
+      },
       link: function(scope, element, attrs, datacastCtrl) {
         scope.players = {};
 
@@ -16,8 +18,8 @@ angular.module('hsgc')
               sc.playerStats = newValue;
             });
             scope.$watch(function() {
-              return datacastCtrl.getPlayersForTeam(scope.teamId) ;
-            } , function(oldValue, newValue, sc) {
+              return datacastCtrl.getPlayersForTeam(scope.teamId);
+            }, function(oldValue, newValue, sc) {
               sc.players[scope.teamId] = newValue;
             });
 

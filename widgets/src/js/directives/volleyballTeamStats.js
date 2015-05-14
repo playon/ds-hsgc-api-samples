@@ -1,8 +1,8 @@
 angular.module('hsgc')
-  .directive('volleyballTeamStats', [function() {
-    return {
-      restrict: 'EA',
-      require: '^datacast',
-      templateUrl: 'templates/volleyballTeamStats.html'
-    };
-  }]);
+	.directive('volleyballTeamStats', [function() {
+		return {
+			restrict: 'EA',
+			require: '^datacast',
+			templateUrl: 'templates/volleyballTeamStats.html'
+		};
+	}]);

@@ -1,10 +1,10 @@
-var hsgc = angular.module('hsgc', [])  
+var hsgc = angular.module('hsgc', [])
   .config(['$httpProvider', '$sceProvider', '$logProvider', function($httpProvider, $sceProvider, $logProvider) {
-    $httpProvider.defaults.headers.get =  {
-        'Accept': 'application/json',
-        //'HSGC-Client': "hsgc-widget-angular-client",
-        //'HSGC-Client-Version': ""
-      };
+    $httpProvider.defaults.headers.get = {
+      'Accept': 'application/json',
+      //'HSGC-Client': "hsgc-widget-angular-client",
+      //'HSGC-Client-Version': ""
+    };
     //$sceProvider.enabled(false);
 
     // disable debug logging in production; this can be manually enabled here during development, but
@@ -15,8 +15,8 @@ var hsgc = angular.module('hsgc', [])
 hsgcWidgets = {
   init: function(options) {
     hsgc.config(['hsgcConfigProvider', function(hsgcConfig) {
-        hsgcConfig.set(options);
-      }]);
+      hsgcConfig.set(options);
+    }]);
     angular.bootstrap(document, ['hsgc']);
   }
 };
@@ -28,8 +28,8 @@ hsgcWidgets.networkAuthorize = function(gameKey, publisherKey, cb) {
     } else {
       if (!hsgcWidgets.upsold) {
         hsgcWidgets.upsold = true;
-        nfhs.utils.getUnityObject('game', gameKey, function (game) {
-          nfhs.templater.datacastUpsell(game, function (upsellTemplateVars) {
+        nfhs.utils.getUnityObject('game', gameKey, function(game) {
+          nfhs.templater.datacastUpsell(game, function(upsellTemplateVars) {
             if (typeof(upsellTemplateVars != "undefined") && upsellTemplateVars) {
               var html = nfhsplayer.templates.upsell(upsellTemplateVars);
               html = html + "<p></p>";

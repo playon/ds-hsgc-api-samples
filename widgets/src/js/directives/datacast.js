@@ -44,29 +44,29 @@ angular.module('hsgc')
         };
 
         var updateBoxScore = function() {
-          HSGCApi.getFullBox( scope.gameKey,
-                              scope.publisher,
-                              scope.sport,
-                              opts
-                              )
-          .then(
-            //success
-            function(result) {
-              if (typeof(result) != "undefined") {
-                angular.extend(scope, result);
-                scope.$emit('datacastLoaded');
-                $timeout(updateBoxScore, 30*1000);
-              }
-            },
-            //failure
-            function(result) {
-              if (result.status == 402) {
-                scope.paymentRequired = true;
-                angular.extend(scope, result.boxScore);
-                opts = {};
-                $timeout(updateBoxScore, 30*1000);
-              }
-            });
+          HSGCApi.getFullBox(scope.gameKey,
+              scope.publisher,
+              scope.sport,
+              opts
+            )
+            .then(
+              //success
+              function(result) {
+                if (typeof(result) != "undefined") {
+                  angular.extend(scope, result);
+                  scope.$emit('datacastLoaded');
+                  $timeout(updateBoxScore, 30 * 1000);
+                }
+              },
+              //failure
+              function(result) {
+                if (result.status == 402) {
+                  scope.paymentRequired = true;
+                  angular.extend(scope, result.boxScore);
+                  opts = {};
+                  $timeout(updateBoxScore, 30 * 1000);
+                }
+              });
         };
 
         if (!opts.includeLeaders && !opts.includePlayByPlay && !opts.includePlayerStats && !opts.includeTeamAggregates) {

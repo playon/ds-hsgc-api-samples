@@ -26,7 +26,10 @@ angular.module('hsgc')
           }
           var periods = [];
           for (var i = 1; i <= scope.currentPeriod; i++) {
-            periods.push({ value: i, display: i });
+            periods.push({
+              value: i,
+              display: i
+            });
           }
           scope.playByPlayPeriods = periods;
         });

@@ -1,31 +1,37 @@
 angular.module('hsgc')
-  .factory('HSGCApi', [ '$http', '$filter', '$timeout', '$q', '$log', 'hsgcConfig', function($http, $filter, $timeout, $q, $log, hsgcConfig) {
+  .factory('HSGCApi', ['$http', '$filter', '$timeout', '$q', '$log', 'hsgcConfig', function($http, $filter, $timeout, $q, $log, hsgcConfig) {
     var populateBaseInfo = function(boxScore) {
       // $log.debug('Populating base info');
 
-      scores = { };
+      scores = {};
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
-      unityTeamMapping = { };
+      unityTeamMapping = {};
 
       unityTeamMapping[safeToLower(boxScore.HomeTeamUnityKey)] = boxScore.HomeTeamSeasonId;
       unityTeamMapping[safeToLower(boxScore.AwayTeamUnityKey)] = boxScore.AwayTeamSeasonId;
-      colors = { };
-      colors[safeToLower(boxScore.HomeTeamUnityKey)] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
-      colors[safeToLower(boxScore.AwayTeamUnityKey)] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
+      colors = {};
+      colors[safeToLower(boxScore.HomeTeamUnityKey)] = {
+        primary: boxScore.HomeTeamPrimaryColor,
+        secondary: boxScore.HomeTeamSecondaryColor
+      };
+      colors[safeToLower(boxScore.AwayTeamUnityKey)] = {
+        primary: boxScore.AwayTeamPrimaryColor,
+        secondary: boxScore.AwayTeamSecondaryColor
+      };
 
       inOverTime = boxScore.Sport != 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount;
       homeOTScore = 0;
       awayOTScore = 0;
       if (inOverTime) {
-         for (var i = boxScore.RegulationPeriodCount; i < boxScore.CurrentPeriod; i++) {
-            homeOTScore += boxScore.HomePeriodScores[i].Score;
-            awayOTScore += boxScore.AwayPeriodScores[i].Score;
-         }
+        for (var i = boxScore.RegulationPeriodCount; i < boxScore.CurrentPeriod; i++) {
+          homeOTScore += boxScore.HomePeriodScores[i].Score;
+          awayOTScore += boxScore.AwayPeriodScores[i].Score;
+        }
       }
 
       var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
-      if(boxScore.HomeTeamLogo.indexOf('http') == 0){
+      if (boxScore.HomeTeamLogo.indexOf('http') == 0) {
         //there's a bug with unity where it sometimes returns double urls
         //see: https://github.com/playon/unity-api/pull/163
         homeLogoCompute = boxScore.HomeTeamLogo.substring(boxScore.HomeTeamLogo.lastIndexOf('http'));
@@ -89,7 +95,7 @@ angular.module('hsgc')
           return colors[unityKey].primary; //todo: populate color based off api response
         },
         getTeamName: function(unityKey) {
-          if (this.unityTeamMapping[safeToLower(unityKey)] ==this.homeTeamSeasonId) {
+          if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
             return this.homeName;
           } else {
             return this.awayName;
@@ -105,7 +111,7 @@ angular.module('hsgc')
         isFinal: function() {
           return this.status == 'Complete';
         },
-        isWinner: function (teamKey) {
+        isWinner: function(teamKey) {
           if (this.isFinal()) {
             if (this.homeScore > this.awayScore && this.unityTeamMapping[safeToLower(teamKey)] == this.homeTeamSeasonId) {
               return true;
@@ -127,14 +133,26 @@ angular.module('hsgc')
           bs.leadersAvailable = true;
           bs.leaders = {};
           bs.leaders[bs.homeTeamSeasonId] = {
-            points: { value: 0 },
-            rebounds: { value: 0 },
-            assists: { value: 0 }
+            points: {
+              value: 0
+            },
+            rebounds: {
+              value: 0
+            },
+            assists: {
+              value: 0
+            }
           };
           bs.leaders[bs.awayTeamSeasonId] = {
-            points: { value: 0 },
-            rebounds: { value: 0 },
-            assists: { value: 0 }
+            points: {
+              value: 0
+            },
+            rebounds: {
+              value: 0
+            },
+            assists: {
+              value: 0
+            }
           };
 
           boxScore.PlayerStatistics.forEach(function(ps) {
@@ -164,7 +182,7 @@ angular.module('hsgc')
       }
 
       if (bs.leadersAvailable) {
-        bs.leaders = { };
+        bs.leaders = {};
 
         if (boxScore.GameLeaders.HomeTeamPassingLeader) {
           bs.leaders.homePassingLeader = $filter('stringFormat')("{0} {1}-{2}, {3} yds, {4} tds", [
@@ -172,7 +190,8 @@ angular.module('hsgc')
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingCompletions,
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingAttempts,
             boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingYards,
-            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingTouchdowns ]);
+            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingTouchdowns
+          ]);
         }
 
         if (boxScore.GameLeaders.HomeTeamRushingLeader) {
@@ -180,7 +199,8 @@ angular.module('hsgc')
             $filter('getPlayerById')(bs.players, boxScore.GameLeaders.HomeTeamRushingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingYards,
-            boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingTouchdowns]);
+            boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingTouchdowns
+          ]);
         }
 
         if (boxScore.GameLeaders.HomeTeamReceivingLeader) {
@@ -188,7 +208,8 @@ angular.module('hsgc')
             $filter('getPlayerById')(bs.players, boxScore.GameLeaders.HomeTeamReceivingLeader.Item1, boxScore.HomeTeamSeasonId).LastName,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingYards,
-            boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingTouchdowns]);
+            boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingTouchdowns
+          ]);
         }
 
         if (boxScore.GameLeaders.AwayTeamPassingLeader) {
@@ -197,7 +218,8 @@ angular.module('hsgc')
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingCompletions,
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingAttempts,
             boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingYards,
-            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingTouchdowns ]);
+            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingTouchdowns
+          ]);
         }
 
         if (boxScore.GameLeaders.AwayTeamRushingLeader) {
@@ -205,7 +227,8 @@ angular.module('hsgc')
             $filter('getPlayerById')(bs.players, boxScore.GameLeaders.AwayTeamRushingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingAttempts,
             boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingYards,
-            boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingTouchdowns]);
+            boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingTouchdowns
+          ]);
         }
 
         if (boxScore.GameLeaders.AwayTeamReceivingLeader) {
@@ -213,22 +236,22 @@ angular.module('hsgc')
             $filter('getPlayerById')(bs.players, boxScore.GameLeaders.AwayTeamReceivingLeader.Item1, boxScore.AwayTeamSeasonId).LastName,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingCatches,
             boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingYards,
-            boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingTouchdowns]);
+            boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingTouchdowns
+          ]);
         }
       }
     };
 
-    var safeToLower = function(toLower){
-      if(typeof(toLower) == "undefined"){
+    var safeToLower = function(toLower) {
+      if (typeof(toLower) == "undefined") {
         return "";
-      }
-      else{
+      } else {
         return toLower.toLowerCase();
       }
     };
 
     var populatePlayerStats = function(boxScore, bs) {
-      bs.playerStats = { };
+      bs.playerStats = {};
       if (boxScore.Sport == 'Basketball' || boxScore.Sport == 'Volleyball') {
         bs.playerStats[boxScore.HomeTeamSeasonId] = boxScore.HomeTeamPlayerStats;
         bs.playerStats[boxScore.AwayTeamSeasonId] = boxScore.AwayTeamPlayerStats;
@@ -260,16 +283,22 @@ angular.module('hsgc')
     };
 
     var populatePlayers = function(boxScore, bs, $filter) {
-      bs.players = { };
-      bs.players[boxScore.HomeTeamSeasonId] = $filter('filter')(boxScore.Players, { TeamSeasonId: boxScore.HomeTeamSeasonId });
-      bs.players[boxScore.AwayTeamSeasonId] = $filter('filter')(boxScore.Players, { TeamSeasonId: boxScore.AwayTeamSeasonId });
+      bs.players = {};
+      bs.players[boxScore.HomeTeamSeasonId] = $filter('filter')(boxScore.Players, {
+        TeamSeasonId: boxScore.HomeTeamSeasonId
+      });
+      bs.players[boxScore.AwayTeamSeasonId] = $filter('filter')(boxScore.Players, {
+        TeamSeasonId: boxScore.AwayTeamSeasonId
+      });
     };
 
     var getFullBox = function(unityGameKey, publisherKey, sport, options) {
       if (sport == "Football" || sport == "Basketball" || sport == "Volleyball") {
         $log.debug('Getting full box for sport: ' + sport);
 
-        var config = { params: { } };
+        var config = {
+          params: {}
+        };
         angular.extend(config.params, options);
 
         var url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + unityGameKey;
@@ -306,6 +335,6 @@ angular.module('hsgc')
     }
 
     return {
-      getFullBox : getFullBox
+      getFullBox: getFullBox
     };
   }]);

@@ -7,7 +7,7 @@ angular.module('hsgc')
         //$log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
 
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
-        if(config.keyStrategy == "unity") {
+        if (config.keyStrategy == "unity") {
           $http.get(config.unityRoot + 'games/' + scope.gameKey)
             .success(function(data) {
               var videoAndData = false;

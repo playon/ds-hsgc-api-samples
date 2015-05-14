@@ -2,17 +2,23 @@ angular.module('hsgc')
   .directive('gameSummary', function() {
     return {
       restrict: 'AE',
-      scope: { gameKey: "@game", publisherKey:"@publisher", sport: "@" },
-      controller: ['$scope', '$element', 'HSGCApi', '$timeout', 'hsgcConfig',  function($scope, $element, HSGCApi, $timeout, config) {
+      scope: {
+        gameKey: "@game",
+        publisherKey: "@publisher",
+        sport: "@"
+      },
+      controller: ['$scope', '$element', 'HSGCApi', '$timeout', 'hsgcConfig', function($scope, $element, HSGCApi, $timeout, config) {
 
         var updateBoxScore = function() {
-          HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, { includeTeamAggregates: true }).then(function(result) {
+          HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, {
+            includeTeamAggregates: true
+          }).then(function(result) {
             angular.extend($scope, result);
-            $timeout(updateBoxScore, 30*1000);
+            $timeout(updateBoxScore, 30 * 1000);
           });
         };
         config.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {
-            updateBoxScore();
+          updateBoxScore();
         });
       }],
       templateUrl: 'templates/gameSummary.html'

@@ -27,18 +27,36 @@ angular.module('hsgc')
           var periods = [];
           for (var i = 1; i <= scope.currentPeriod; i++) {
             if (i == 1)
-              periods.push({ value: i, display: "1st" });
+              periods.push({
+                value: i,
+                display: "1st"
+              });
             else if (i == 2)
-              periods.push({ value: i, display: "2nd" });
+              periods.push({
+                value: i,
+                display: "2nd"
+              });
             else if (i == 3)
-              periods.push({ value: i, display: "3rd" });
+              periods.push({
+                value: i,
+                display: "3rd"
+              });
             else if (i == 4)
-              periods.push({ value: i, display: "4th" });
+              periods.push({
+                value: i,
+                display: "4th"
+              });
             else {
               if (scope.currentPeriod == 5)
-                periods.push({ value: i, display: "OT" });
+                periods.push({
+                  value: i,
+                  display: "OT"
+                });
               else
-                periods.push({ value: i, display: (i - 4) + " OT" });
+                periods.push({
+                  value: i,
+                  display: (i - 4) + " OT"
+                });
             }
           }
           scope.playByPlayPeriods = periods;

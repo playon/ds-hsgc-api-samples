@@ -7,12 +7,13 @@ angular.module('hsgc')
           TeamSeasonId: teamSeasonId,
           FirstName: "Team",
           LastName: "",
-          JerseyNumber:"",
-          DisplayName:""
+          JerseyNumber: "",
+          DisplayName: ""
         };
       }
-      var i=0, len=players[teamSeasonId].length;
-      for (; i<len; i++) {
+      var i = 0,
+        len = players[teamSeasonId].length;
+      for (; i < len; i++) {
         if (players[teamSeasonId][i].PlayerId == playerId) {
           return players[teamSeasonId][i];
         }
@@ -23,8 +24,8 @@ angular.module('hsgc')
         TeamSeasonId: teamSeasonId,
         FirstName: "Team",
         LastName: "",
-        JerseyNumber:"",
-        DisplayName:""
+        JerseyNumber: "",
+        DisplayName: ""
       };
     }
   });

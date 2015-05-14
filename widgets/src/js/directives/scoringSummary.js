@@ -1,7 +1,7 @@
 angular.module('hsgc')
-  .directive('scoringSummary', function() {
-    return {
-      restrict: 'EA',
-      templateUrl: 'templates/scoringSummary.html'
-    };
-  });
+	.directive('scoringSummary', function() {
+		return {
+			restrict: 'EA',
+			templateUrl: 'templates/scoringSummary.html'
+		};
+	});
