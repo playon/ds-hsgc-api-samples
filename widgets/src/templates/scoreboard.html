@@ -11,16 +11,18 @@
         <th>1</th>
         <th>2</th>
         <th ng-show="regulationPeriodCount >= 3">3</th>
-        <th ng-show="regulationPeriodCount >= 4">4</th>
-         <th ng-show="inOverTime">
-          OT
-        </th>
+        <th ng-show="regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4)">4</th>
+        <th ng-show="!inOverTime && currentPeriod >= 5">5</th>
+        <th ng-show="inOverTime">OT</th>
         <th class="nfhs-scout-final">F</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td ng-class="{'nfhs-scout-winner': isWinner(awayTeamKey)}"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo" /> {{awayName}}</td>
+        <td ng-class="{'nfhs-scout-winner': isWinner(awayTeamKey)}">
+          <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+          {{awayName}}
+        </td>
         <td>{{awayPeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
@@ -28,8 +30,11 @@
         <td ng-show="regulationPeriodCount >= 3">
           <span ng-show="currentPeriod >= 3">{{awayPeriodScores[2].Score}}</span>
         </td>
-        <td ng-show="regulationPeriodCount >= 4">
+        <td ng-show="regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4)">
           <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
+        </td>
+        <td ng-show="!inOverTime && currentPeriod >= 5">
+          <span ng-show="currentPeriod >= 5">{{awayPeriodScores[4].Score}}</span>
         </td>
         <td ng-show="inOverTime">
           <span>{{awayOvertimeScore}}</span>
@@ -37,7 +42,10 @@
         <td class="nfhs-scout-final">{{awayScore}}</td>
       </tr>
       <tr>
-        <td ng-class="{'nfhs-scout-winner': isWinner(homeTeamKey)}"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo" /> {{homeName}}</td>
+        <td ng-class="{'nfhs-scout-winner': isWinner(homeTeamKey)}">
+          <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" /> 
+          {{homeName}}
+        </td>
         <td>{{homePeriodScores[0].Score}}</td>
         <td>
           <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
@@ -45,8 +53,11 @@
         <td ng-show="regulationPeriodCount >= 3">
           <span ng-show="currentPeriod >= 3">{{homePeriodScores[2].Score}}</span>
         </td>
-        <td ng-show="regulationPeriodCount >= 4">
+        <td ng-show="regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4)">
           <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
+        </td>
+        <td ng-show="!inOverTime && currentPeriod >= 5">
+          <span ng-show="currentPeriod >= 5">{{homePeriodScores[4].Score}}</span>
         </td>
         <td ng-show="inOverTime">
           <span>{{homeOvertimeScore}}</span>

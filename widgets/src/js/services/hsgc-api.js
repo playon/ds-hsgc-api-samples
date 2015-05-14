@@ -14,11 +14,11 @@ angular.module('hsgc')
       colors[safeToLower(boxScore.HomeTeamUnityKey)] = { primary: boxScore.HomeTeamPrimaryColor, secondary: boxScore.HomeTeamSecondaryColor };
       colors[safeToLower(boxScore.AwayTeamUnityKey)] = { primary: boxScore.AwayTeamPrimaryColor, secondary: boxScore.AwayTeamSecondaryColor };
 
-      inOverTime = boxScore.CurrentPeriod > 4;
+      inOverTime = boxScore.Sport != 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount;
       homeOTScore = 0;
       awayOTScore = 0;
       if (inOverTime) {
-         for (var i = 4; i < boxScore.CurrentPeriod; i++) {
+         for (var i = boxScore.RegulationPeriodCount; i < boxScore.CurrentPeriod; i++) {
             homeOTScore += boxScore.HomePeriodScores[i].Score;
             awayOTScore += boxScore.AwayPeriodScores[i].Score;
          }
