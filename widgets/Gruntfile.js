@@ -16,6 +16,10 @@ module.exports = function (grunt) {
         },
         less: {
           basicExample: {
+            options: {
+                compress: true,
+                sourceMap: false
+            },
             files: {
                 'build/css/nfhs.css': 'src/less/nfhs.less',
                 'build/usa_today.css': 'examples/usa_today.less',
@@ -31,7 +35,7 @@ module.exports = function (grunt) {
                     mangle: false,
                     ASCIIOnly: true,
                     sourceMap: true,
-                    sourceMapIncludeSources: true,
+                    sourceMapIncludeSources: true
                 },
                 files: {
                     'build/hsgc-widgets.js': [
@@ -60,6 +64,7 @@ module.exports = function (grunt) {
             widget_min: {
                 options: {
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                    compress: true,
                     sourceMap: true,
                     sourceMapIncludeSources: true,
                     ASCIIOnly: true
