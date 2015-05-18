@@ -10,32 +10,44 @@
     </thead>
     <tbody>
       <tr>
-        <td>Kills</td>
+        <td title="Kills">
+          Kills
+        </td>
         <td>{{awayStats.AttackKills}}</td>
         <td>{{homeStats.AttackKills}}</td>
       </tr>
       <tr>
-        <td title="Attack Attemps">Total Attempts</td>
+        <td title="Attack Attemps">
+          Total Attempts
+        </td>
         <td>{{awayStats.Attacks}}</td>
         <td>{{homeStats.Attacks}}</td>
       </tr>
       <tr>
-        <td title="Kills - Attack Errors / Attempts">Attack Percentage</td>
+        <td title="Kills - Attack Errors / Attempts">
+          Attack Percentage
+        </td>
         <td>{{awayStats.AttackPercentage | percentage:0:'':'%'}}</td>
         <td>{{homeStats.AttackPercentage | percentage:0:'':'%'}}</td>
       </tr>
       <tr>
-        <td title="Blocks (Solos + Assists)">Total Blocks</td>
+        <td title="Total Blocks (Solos + Assists)">
+          Total Blocks
+        </td>
         <td>{{awayStats.BlockSolos + awayStats.BlockAssists}}</td>
         <td>{{homeStats.BlockSolos + homeStats.BlockAssists}}</td>
       </tr>
       <tr>
-        <td>Reception Errors</td>
+        <td title="Reception Errors">
+          Reception Errors
+        </td>
         <td>{{awayStats.ReceptionErrors}}</td>
         <td>{{homeStats.ReceptionErrors}}</td>
       </tr>
       <tr>
-        <td title="All total errors of any kind">Total Errors</td>
+        <td title="All total errors of any kind">
+          Total Errors
+        </th>
         <td>{{awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors}}</td>
         <td>{{homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors}}</td>
       </tr>

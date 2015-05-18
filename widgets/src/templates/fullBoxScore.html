@@ -8,28 +8,28 @@
 
     <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
       <ul class="nfhs-scout-tabs">
-        <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 1">
             Team  <span class="nfhs-scout-hidden-sm">Stats</span>
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 2">
             Scoring <span class="nfhs-scout-hidden-sm">Summary</span>
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 3">
             <span class="nfhs-scout-hidden-sm">Play by Play</span>
             <span class="nfhs-scout-visible-sm">Plays</span>
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
+        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
           <a href ng-click="selectedDetailTab = 4">
             Rosters
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" >
+        <li ng-class='{ "active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" >
           <a href ng-click="selectedDetailTab = 5">
             <span class="nfhs-scout-hidden-sm">Drive Chart</span>
             <span class="nfhs-scout-visible-sm">Drive</span>
@@ -45,16 +45,16 @@
       </div>
     </div>
 
-    <div ng-init="selectedPlayerTeam=1" class="nfhs-scout-playerstats" ng-show="statsAvailable">
+    <div ng-init="selectedPlayerTeam = 1" class="nfhs-scout-playerstats" ng-show="statsAvailable">
         <ul class="nfhs-scout-tabs">
-          <li ng-class='{"active": selectedPlayerTeam == 1 }'  ng-click="selectedPlayerTeam = 1">
+          <li ng-class='{ "active": selectedPlayerTeam == 1 }'  ng-click="selectedPlayerTeam = 1">
             <a href ng-click="selectedPlayerTeam = 1">
               <img ng-src="{{awayLogo}}" class="nfhs-scout-logo">
               <span class="nfhs-scout-hidden-sm">{{awayName}}</span>
               <span class="nfhs-scout-visible-sm-inline">{{awayAcronym}}</span>
             </a>
           </li>
-          <li ng-class='{"active": selectedPlayerTeam == 2 }'  ng-click="selectedPlayerTeam = 2">
+          <li ng-class='{ "active": selectedPlayerTeam == 2 }'  ng-click="selectedPlayerTeam = 2">
             <a href ng-click="selectedPlayerTeam = 2">
               <img ng-src="{{homeLogo}}" class="nfhs-scout-logo">
               <span class="nfhs-scout-hidden-sm">{{homeName}}</span>
@@ -69,24 +69,24 @@
     </div>
   </div>
 
-  <div ng-show="sport =='Basketball'">
+  <div ng-show="sport == 'Basketball'">
     <div basketball-game-leaders></div>
 
-    <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+    <div ng-init="selectedDetailTab = 1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
       <ul class="nfhs-scout-tabs">
-        <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 1">Team <span class="nfhs-scout-hidden-sm">Stats</span></a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 2">Player <span class="nfhs-scout-hidden-sm">Stats</span></a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 3">
             <span class="nfhs-scout-hidden-sm">Play by Play</span>
             <span class="nfhs-scout-visible-sm">Plays</span>
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 4">
             <span class="nfhs-scout-hidden-sm">Shot Chart</span>
             <span class="nfhs-scout-visible-sm">Shots</span>
@@ -102,24 +102,24 @@
     </div>
   </div>
 
-  <div ng-show="sport =='Volleyball'">
+  <div ng-show="sport == 'Volleyball'">
     <div volleyball-game-leaders></div>
 
-    <div ng-init="selectedDetailTab=1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+    <div ng-init="selectedDetailTab = 1" class="nfhs-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
       <ul class="nfhs-scout-tabs">
-        <li ng-class='{"active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 1">Team <span class="nfhs-scout-hidden-sm">Stats</span></a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
           <a href ng-click="selectedDetailTab = 2">Player <span class="nfhs-scout-hidden-sm">Stats</span></a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 3">
             <span class="nfhs-scout-hidden-sm">Play by Play</span>
             <span class="nfhs-scout-visible-sm">Plays</span>
           </a>
         </li>
-        <li ng-class='{"active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
+        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
           <a href ng-click="selectedDetailTab = 4">
             <span class="nfhs-scout-hidden-sm">Hit Chart</span>
             <span class="nfhs-scout-visible-sm">Hits</span>

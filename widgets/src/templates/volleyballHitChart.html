@@ -10,9 +10,9 @@
       </li>
     </ul>
     <div class="nfhs-scout-visible-sm">
-      <label for="nfhs-scout-period-selector">
+      <label>
         Game
-        <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
+        <select ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
           <option value="">All Games</option>
         </select>
       </label>
