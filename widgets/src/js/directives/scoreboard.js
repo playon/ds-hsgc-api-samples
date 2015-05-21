@@ -19,6 +19,10 @@ angular.module('hsgc')
                 }
               }
               scope.showStatus = !videoAndData;
+            })
+            .error(function(data, status) {
+              $log.debug('Unity configuration for game', scope.gameKey, 'could not be loaded. Defaulting to "no video" status.');
+              scope.showStatus = true;
             });
         } else {
           scope.showStatus = true;
