@@ -73,6 +73,8 @@ angular.module('hsgc')
         awayMascot: boxScore.AwayTeamMascot,
         homeStats: boxScore.Sport === 'Basketball' ? boxScore.HomeTeamTotalStats : boxScore.HomeTeamStatistics,
         awayStats: boxScore.Sport === 'Basketball' ? boxScore.AwayTeamTotalStats : boxScore.AwayTeamStatistics,
+        homeSlug: boxScore.HomeTeamSlug,
+        awaySlug: boxScore.AwayTeamSlug,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
         currentPeriod: boxScore.CurrentPeriod,
@@ -180,8 +182,63 @@ angular.module('hsgc')
             }
           });
         }
+
         return;
       }
+
+      if (boxScore.Sport === 'Volleyball') {
+        if (bs.statsAvailable) {
+          bs.leadersAvailable = true;
+          bs.leaders = {};
+          bs.leaders[bs.homeTeamSeasonId] = {
+            attackKills: {
+              value: 0
+            },
+            aces: {
+              value: 0
+            },
+            blocks: {
+              value: 0
+            }
+          };
+          bs.leaders[bs.awayTeamSeasonId] = {
+            attackKills: {
+              value: 0
+            },
+            aces: {
+              value: 0
+            },
+            blocks: {
+              value: 0
+            }
+          };
+
+          boxScore.PlayerStatistics.forEach(function(ps) {
+            if (ps.PlayerId > 0) {
+              if (bs.leaders[ps.TeamSeasonId].attackKills.value < ps.AttackKills) {
+                bs.leaders[ps.TeamSeasonId].attackKills.value = ps.AttackKills;
+                bs.leaders[ps.TeamSeasonId].attackKills.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].attackKills.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].attackKills.jerseyNumber = ps.JerseyNumber;
+              }
+              if (bs.leaders[ps.TeamSeasonId].aces.value < ps.ServeAces) {
+                bs.leaders[ps.TeamSeasonId].aces.value = ps.ServeAces;
+                bs.leaders[ps.TeamSeasonId].aces.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].aces.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].aces.jerseyNumber = ps.JerseyNumber;
+              }
+              if (bs.leaders[ps.TeamSeasonId].blocks.value < ps.Assists) {
+                bs.leaders[ps.TeamSeasonId].blocks.value = ps.BlockSolos + ps.BlockAssists /* Math.floor(ps.BlockAssists / 2) */;
+                bs.leaders[ps.TeamSeasonId].blocks.firstName = ps.FirstName;
+                bs.leaders[ps.TeamSeasonId].blocks.lastName = ps.LastName;
+                bs.leaders[ps.TeamSeasonId].blocks.jerseyNumber = ps.JerseyNumber;
+              }
+            }
+          });
+        }
+
+        return;
+      } 
 
       if (bs.leadersAvailable) {
         bs.leaders = {};

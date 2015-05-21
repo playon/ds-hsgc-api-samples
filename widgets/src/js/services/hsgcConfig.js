@@ -4,6 +4,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
     keyStrategy: "unity",
     //apiRoot: "http://api.hsgamecenter.com/v1.2/",
     //unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
+    showTeamLinks: false,
     datacastLoaded: function() {},
     beforeLoadDatacast: function(gameKey, publisherKey, cb) {
       cb();

@@ -32,8 +32,10 @@
     <tbody>
       <tr>
         <th title="{{awayName}}">
-          <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
-          {{awayShortName}}
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+          </a>
         </th>
         <td>{{ awayStats.AttackKills }}</td>
         <td>{{ awayStats.Attacks }}</td>
@@ -44,8 +46,10 @@
       </tr>
       <tr>
         <th title="{{homeName}}">
-          <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
-          {{homeShortName}}
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+          </a>
         </th>
         <td>{{ homeStats.AttackKills }}</td>
         <td>{{ homeStats.Attacks }}</td>

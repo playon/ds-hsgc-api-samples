@@ -5,7 +5,8 @@ angular.module('hsgc')
       scope: {
         unityGameKey: "@game",
         publisherKey: "@publisher",
-        sport: "@sport"
+        sport: "@sport",
+        showTeamLinks: "@showTeamLinks"
       },
       link: function(scope) {
         var listenerUnsubscribe = scope.$on('datacastLoaded', function() {

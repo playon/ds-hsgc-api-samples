@@ -4,6 +4,9 @@ angular.module('hsgc')
       restrict: 'EA',
       templateUrl: 'templates/scoreboard.html',
       link: function(scope) {
+        $log.debug('showTeamLinks', config.showTeamLinks);
+        scope.showTeamLinks = config.showTeamLinks;
+
         //$log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
 
         //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
@@ -21,7 +24,7 @@ angular.module('hsgc')
               scope.showStatus = !videoAndData;
             })
             .error(function(data, status) {
-              $log.debug('Unity configuration for game', scope.gameKey, 'could not be loaded. Defaulting to "no video" status.');
+              $log.debug('Unity configuration for game', scope.gameKey, 'could not be loaded. Defaulting to showing the game status.');
               scope.showStatus = true;
             });
         } else {
