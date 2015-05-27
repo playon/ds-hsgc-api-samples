@@ -1,7 +1,7 @@
 <div ng-show="playByPlayAvailable" class="nfhs-scout-play-by-play">
   <div class="nfhs-scout-period-selector">
     <ul class="nfhs-scout-hidden-sm">
-      <li class="nfhs-scout-selector-label">Game:</li>
+      <li class="nfhs-scout-selector-label">Set:</li>
       <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedPeriod == period.value}">
         <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
       </li>

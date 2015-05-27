@@ -1,7 +1,7 @@
 <div ng-show="playByPlayAvailable" class="nfhs-scout-shot-chart">
   <div class="nfhs-scout-period-selector nfhs-scout-hit-chart-selector">
     <ul class="nfhs-scout-hidden-sm">
-      <li class="nfhs-scout-selector-label">Game:</li>
+      <li class="nfhs-scout-selector-label">Set:</li>
       <li ng-class="{'nfhs-scout-active': selectedHitChartPeriod == null}">
         <a href ng-click="selectedHitChartPeriod = null">All</a>
       </li>
@@ -13,7 +13,7 @@
       <label>
         Game
         <select ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
-          <option value="">All Games</option>
+          <option value="">All Sets</option>
         </select>
       </label>
     </div>
