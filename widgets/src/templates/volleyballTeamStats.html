@@ -15,9 +15,9 @@
           <span class="nfhs-scout-visible-sm">PCT</span>
           <span class="nfhs-scout-hidden-sm">Attack Percentage</span>
         </th>
-        <th title="Total Blocks (Solo + Assist)" class="ng-binding">
+        <th title="Team Blocks (Solo + Assist/2)" class="ng-binding">
           <span class="nfhs-scout-visible-sm">B</span>
-          <span class="nfhs-scout-hidden-sm">Total Blocks</span>
+          <span class="nfhs-scout-hidden-sm">Team Blocks</span>
         </th>
         <th title="Team Reception Errors" class="ng-binding">
           <span class="nfhs-scout-visible-sm">RE</span>
@@ -40,7 +40,7 @@
         <td>{{ awayStats.AttackKills }}</td>
         <td>{{ awayStats.Attacks }}</td>
         <td>{{ awayStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ awayStats.BlockSolos + awayStats.BlockAssists }}</td>
+        <td>{{ awayStats.BlockSolos + (awayStats.BlockAssists / 2) }}</td>
         <td>{{ awayStats.ReceptionErrors }}</td>
         <td>{{ awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors }}</td>
       </tr>
@@ -54,7 +54,7 @@
         <td>{{ homeStats.AttackKills }}</td>
         <td>{{ homeStats.Attacks }}</td>
         <td>{{ homeStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ homeStats.BlockSolos + homeStats.BlockAssists }}</td>
+        <td>{{ homeStats.BlockSolos + (homeStats.BlockAssists / 2) }}</td>
         <td>{{ homeStats.ReceptionErrors }}</td>
         <td>{{ homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors }}</td>
       </tr>

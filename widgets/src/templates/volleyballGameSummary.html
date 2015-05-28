@@ -31,11 +31,11 @@
         <td>{{homeStats.AttackPercentage | percentage:0:'':'%'}}</td>
       </tr>
       <tr>
-        <td title="Total Blocks (Solos + Assists)">
-          Total Blocks
+        <td title="Team Blocks (Solos + Assists/2)">
+          Team Blocks
         </td>
-        <td>{{awayStats.BlockSolos + awayStats.BlockAssists}}</td>
-        <td>{{homeStats.BlockSolos + homeStats.BlockAssists}}</td>
+        <td>{{awayStats.BlockSolos + (awayStats.BlockAssists/2)}}</td>
+        <td>{{homeStats.BlockSolos + (homeStats.BlockAssists/2)}}</td>
       </tr>
       <tr>
         <td title="Reception Errors">
