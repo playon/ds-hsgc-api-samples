@@ -11,7 +11,12 @@
       </thead>
       <tbody>
         <tr>
-          <td><img ng-src="{{awayLogo}}" alt="" class="nfhs-scout-logo" /><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></td>
+          <td>
+            <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></span>
+            <a ng-show="showTeamLinks" href="{{awaySlug}}">
+              <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+            </a>
+          </td>
           <td title="Attack Kills">
             <span ng-hide="leaders[awayTeamSeasonId].attackKills.value == 0">
               <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].attackKills.jerseyNumber}} {{leaders[awayTeamSeasonId].attackKills.lastName}}:</span> {{leaders[awayTeamSeasonId].attackKills.value}}
@@ -29,7 +34,12 @@
           </td>
         </tr>
         <tr>
-          <td><img ng-src="{{homeLogo}}" alt="" class="nfhs-scout-logo" /><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></td>
+          <td>
+            <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></span>
+            <a ng-show="showTeamLinks" href="{{homeSlug}}">
+              <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+            </a>
+        </td>
           <td title="Attack Kills">
             <span ng-hide="leaders[homeTeamSeasonId].attackKills.value == 0">
               <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].attackKills.jerseyNumber}} {{leaders[homeTeamSeasonId].attackKills.lastName}}:</span> {{leaders[homeTeamSeasonId].attackKills.value}}

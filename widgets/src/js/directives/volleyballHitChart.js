@@ -454,8 +454,8 @@ angular.module('hsgc')
             }
 
             // figure where on the canvas to put the point
-            startTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.origin[1]), vballCourtAnchor.y + (courtHeightInView * item.data.origin[0]));
-            endTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.destination[1]), vballCourtAnchor.y + (courtHeightInView * item.data.destination[0]));
+            startTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.origin[0]), vballCourtAnchor.y + (courtHeightInView * item.data.origin[1]));
+            endTarget = new paper.Point(vballCourtAnchor.x + (courtWidthInView * item.data.destination[0]), vballCourtAnchor.y + (courtHeightInView * item.data.destination[1]));
             scope.forceMaxEdges(startTarget, {
               x: viewWidth,
               y: view.viewSize.height
