@@ -25,6 +25,7 @@
             <th>Play</th-->
             <th class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{awayAcronym}}</th>
             <th class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{homeAcronym}}</th>
+            <th>Highlight</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-description">{{play.Description}}</td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{play.AwayScore}}</td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{play.HomeScore}}</td>
+            <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
           </tr>
         </tbody>
       </table>

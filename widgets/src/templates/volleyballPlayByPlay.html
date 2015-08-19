@@ -24,6 +24,7 @@
           <th class="nfhs-scout-play-by-play-team" title="{{homeName}}">
             <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{homeAcronym}}</span><span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{homeName}}</span>
           </th>
+          <th>Highlight</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +36,7 @@
           <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team">
             <span ng-show="play.TeamSeasonId == homeTeamSeasonId">{{play.Description}}</span>
           </td>
+          <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
         </tr>
       </tbody>
     </table>

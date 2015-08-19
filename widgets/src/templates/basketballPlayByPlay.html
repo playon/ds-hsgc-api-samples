@@ -19,6 +19,7 @@
           <th>Description</th>
           <th class="nfhs-scout-play-by-play-time">Time</th>
           <th class="nfhs-scout-play-by-play-score">Score</th>
+          <th>Highlight</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
           <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.Description}}</td>
           <td class="nfhs-scout-play-by-play-time" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
           <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
+          <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
         </tr>
       </tbody>
     </table>
