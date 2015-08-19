@@ -24,13 +24,12 @@
           <th class="nfhs-scout-play-by-play-team" title="{{homeName}}">
             <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{homeAcronym}}</span><span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{homeName}}</span>
           </th>
-          <th>Highlight</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="play in playByPlay | filter:{'GameNumber': selectedPeriod}:true">
           <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team nfhs-scout-play-by-play-team-away">
-            <span ng-show="play.TeamSeasonId == awayTeamSeasonId">{{play.Description}}</span>
+            <span ng-show="play.TeamSeasonId == awayTeamSeasonId" ng-class='{"playLinkDescription": play.Highlight}'>{{play.Description}}</span>
             <a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a>
           </td>
           <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.Score > 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
