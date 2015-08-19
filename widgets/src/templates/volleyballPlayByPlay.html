@@ -31,12 +31,12 @@
         <tr ng-repeat="play in playByPlay | filter:{'GameNumber': selectedPeriod}:true">
           <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team nfhs-scout-play-by-play-team-away">
             <span ng-show="play.TeamSeasonId == awayTeamSeasonId">{{play.Description}}</span>
+            <a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a>
           </td>
           <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.Score > 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
           <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team">
             <span ng-show="play.TeamSeasonId == homeTeamSeasonId">{{play.Description}}</span>
           </td>
-          <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
         </tr>
       </tbody>
     </table>

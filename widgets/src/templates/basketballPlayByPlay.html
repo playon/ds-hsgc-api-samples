@@ -29,10 +29,13 @@
             <span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{getTeamAcronym(play)}}</span>
             <span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{play.TeamName}}</span>
          </td>
-          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.Description}}</td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>
+            {{play.Description}}
+            <a ng-if="play.Highlight" class="playLink" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i></i></a>
+          </td>
           <td class="nfhs-scout-play-by-play-time" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
           <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
-          <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
+          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
         </tr>
       </tbody>
     </table>

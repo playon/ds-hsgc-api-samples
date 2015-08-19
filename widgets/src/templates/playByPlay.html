@@ -32,10 +32,13 @@
           <tr ng-repeat="play in drive">
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-spot nfhs-scout-hidden-sm">{{play.Down}} and {{play.Distance}} at {{getSpot(play)}}</td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
-            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-description">{{play.Description}}</td>
+            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-description">
+              {{play.Description}}
+              <a ng-if="play.Highlight" class="playLink" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i></i></a>
+            </td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{play.AwayScore}}</td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score nfhs-scout-hidden-sm">{{play.HomeScore}}</td>
-            <td ng-if="play.Highlight" ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
+            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
           </tr>
         </tbody>
       </table>
