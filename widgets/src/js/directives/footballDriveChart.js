@@ -31,7 +31,7 @@ angular.module('hsgc')
             firstload = false;
 
             footballFieldCanvas = $(element.find('canvas')[0]);
-            paper.setup(footballFieldCanvas);
+            paper.setup(footballFieldCanvas[0]);
 
             window.angular.element($window).on('resize', scope.resize);
             scope.$on('$destroy', function() {
@@ -80,11 +80,24 @@ angular.module('hsgc')
           var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(fiveYardLines[fiveYardLines.length - 1], 0, endzoneWidth, fieldSize.height));
           homeEndzone.fillColor = "#0000ff";
 
+          var yardLineTextHeight = (fiveYardLines[1] - fiveYardLines[0]) * 0.8;
+          var yardLineTextVerticalPadding = yardLineTextHeight * 0.1;
           for (var i = 0; i < fiveYardLines.length; i++) {
             var line = new paper.Path.Line(new paper.Point(fiveYardLines[i], 0), new paper.Point(fiveYardLines[i], fieldSize.height));
             line.strokeColor = "#ffffff";
             if (i % 2 === 0) {
               line.strokeWidth = 3;
+              if (i !== 0 && i !== fiveYardLines.length - 1) {
+                var yardText = new paper.PointText(new paper.Point(fiveYardLines[i], yardLineTextHeight + yardLineTextVerticalPadding));
+                var yardLine = i * 5;
+                if (yardLine > 50) {
+                  yardLine = 100 - yardLine;
+                }
+                yardText.content = yardLine;
+                yardText.strokeColor = "#ffffff";
+                yardText.fillColor = "#ffffff";
+                yardText.fontSize = yardLineTextHeight + "px";
+              }
             }
           }
         };
