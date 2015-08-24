@@ -23,7 +23,6 @@ angular.module('hsgc')
         });
 
         scope.$on('datacastLoaded', function() {
-          console.log("loaded")
           if (angular.isUndefined(scope.playByPlay))
             return;
 
@@ -46,7 +45,7 @@ angular.module('hsgc')
         });
 
         scope.resize = function() {
-          var desiredWidth = element.parent().width();
+          var desiredWidth = element.parent().width() - 20;
           var desiredHeight = 0;
           if (desiredWidth < 1) {
             desiredWidth = footballFieldCanvas.width();
@@ -60,6 +59,7 @@ angular.module('hsgc')
           });
 
           paper.view.viewSize = new paper.Size(desiredWidth, desiredHeight);
+
           scope.drawDriveChart();
         };
 
@@ -70,36 +70,103 @@ angular.module('hsgc')
 
           var endzoneWidth = fieldSize.width / 12;
           var playingFieldWidth = fieldSize.width - 2 * endzoneWidth;
-          var fiveYardLines = [];
-          for (var i = 0; i <= 20; i++) {
-            fiveYardLines.push(endzoneWidth + i * playingFieldWidth / 20);
+          var yardLines = [];
+          for (var i = 0; i <= 100; i++) {
+            yardLines.push(endzoneWidth + i * playingFieldWidth / 100);
           };
           var awayEndzone = new paper.Path.Rectangle(new paper.Rectangle(0, 0, endzoneWidth, fieldSize.height));
           awayEndzone.fillColor = "#ff0000";
 
-          var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(fiveYardLines[fiveYardLines.length - 1], 0, endzoneWidth, fieldSize.height));
+          var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(yardLines[yardLines.length - 1], 0, endzoneWidth, fieldSize.height));
           homeEndzone.fillColor = "#0000ff";
 
-          var yardLineTextHeight = (fiveYardLines[1] - fiveYardLines[0]) * 0.8;
-          var yardLineTextVerticalPadding = yardLineTextHeight * 0.1;
-          for (var i = 0; i < fiveYardLines.length; i++) {
-            var line = new paper.Path.Line(new paper.Point(fiveYardLines[i], 0), new paper.Point(fiveYardLines[i], fieldSize.height));
-            line.strokeColor = "#ffffff";
-            if (i % 2 === 0) {
-              line.strokeWidth = 3;
-              if (i !== 0 && i !== fiveYardLines.length - 1) {
-                var yardText = new paper.PointText(new paper.Point(fiveYardLines[i], yardLineTextHeight + yardLineTextVerticalPadding));
-                var yardLine = i * 5;
-                if (yardLine > 50) {
-                  yardLine = 100 - yardLine;
+          var textHeight = (yardLines[5] - yardLines[0]) * 0.8;
+          var textSizes = {};
+          var yardNumbers = [1, 2, 3, 4, 5, 0];
+          for (var i = 0; i < yardNumbers.length; i++) {
+            textSizes[yardNumbers[i]] = scope.getTextSize(yardNumbers[i], textHeight);
+          }
+
+          var yardLineTextVerticalPadding = textHeight * 0.1;
+          var yardLineTextHorizontalPadding = 2;
+          var yardLineSpacing = yardLines[1] - yardLines[0];
+          var hashMarkHeight = 10;
+          var hashMarkInset = fieldSize.height / 3;
+          var topMiddleHashMarkY = hashMarkInset;
+          var bottomMiddleHashMarkY = fieldSize.height - hashMarkInset - hashMarkHeight;
+          
+          for (var i = 0; i < yardLines.length; i++) {
+            if (i % 5 === 0) {
+              var line = new paper.Path.Line(new paper.Point(yardLines[i], 0), new paper.Point(yardLines[i], fieldSize.height));
+              line.strokeColor = "#ffffff";
+              if (i % 10 === 0) {
+                var yardLineWidth = 3;
+                line.strokeWidth = yardLineWidth;
+                if (i !== 0 && i !== yardLines.length - 1) {
+                  var yardLine = i;
+                  if (yardLine > 50) {
+                    yardLine = 100 - yardLine;
+                  }
+                  yardLine = yardLine / 10;
+                  var text10DigitSize = textSizes[yardLine];
+                  var topYardText10Digit = new paper.PointText(new paper.Point(yardLines[i] + yardLineTextHorizontalPadding + yardLineWidth, text10DigitSize.height + yardLineTextVerticalPadding));
+                  topYardText10Digit.content = yardLine;
+                  topYardText10Digit.strokeColor = "#ffffff";
+                  topYardText10Digit.fillColor = "#ffffff";
+                  topYardText10Digit.fontSize = text10DigitSize.height + "px";
+                  topYardText10Digit.fontFamily = "sans-serif";
+                  topYardText10Digit.rotate(180);
+
+                  var yardText0DigitSize = textSizes[0];
+                  var topYardText0Digit = new paper.PointText(new paper.Point(yardLines[i] - text10DigitSize.width - yardLineTextHorizontalPadding, yardText0DigitSize.height + yardLineTextVerticalPadding));
+                  topYardText0Digit.content = 0;
+                  topYardText0Digit.strokeColor = "#ffffff";
+                  topYardText0Digit.fillColor = "#ffffff";
+                  topYardText0Digit.fontSize = yardText0DigitSize.height + "px";
+                  topYardText0Digit.fontFamily = "sans-serif";
+                  topYardText0Digit.rotate(180);
+
+                  var text10DigitSize = textSizes[yardLine];
+                  var bottomYardText10Digit = new paper.PointText(new paper.Point(yardLines[i] - text10DigitSize.width - yardLineTextHorizontalPadding, fieldSize.height - text10DigitSize.height / 2 - yardLineTextVerticalPadding));
+                  bottomYardText10Digit.content = yardLine;
+                  bottomYardText10Digit.strokeColor = "#ffffff";
+                  bottomYardText10Digit.fillColor = "#ffffff";
+                  bottomYardText10Digit.fontSize = text10DigitSize.height + "px";
+                  bottomYardText10Digit.fontFamily = "sans-serif";
+
+                  var yardText0DigitSize = textSizes[0];
+                  var bottomYardText0Digit = new paper.PointText(new paper.Point(yardLines[i] + yardLineTextHorizontalPadding + yardLineWidth, fieldSize.height - yardText0DigitSize.height / 2 - yardLineTextVerticalPadding));
+                  bottomYardText0Digit.content = 0;
+                  bottomYardText0Digit.strokeColor = "#ffffff";
+                  bottomYardText0Digit.fillColor = "#ffffff";
+                  bottomYardText0Digit.fontSize = yardText0DigitSize.height + "px";
+                  bottomYardText0Digit.fontFamily = "sans-serif";
                 }
-                yardText.content = yardLine;
-                yardText.strokeColor = "#ffffff";
-                yardText.fillColor = "#ffffff";
-                yardText.fontSize = yardLineTextHeight + "px";
+              }
+            } else {
+              if (yardLineSpacing > 5) {
+                //only draw hashmarks if there is enough space
+                var topMark = new paper.Path.Line(new paper.Point(yardLines[i], 0), new paper.Point(yardLines[i], hashMarkHeight));
+                topMark.strokeColor = "#ffffff";
+                var bottomMark = new paper.Path.Line(new paper.Point(yardLines[i], fieldSize.height - hashMarkHeight), new paper.Point(yardLines[i], fieldSize.height));
+                bottomMark.strokeColor = "#ffffff";
+                var topMiddleMark = new paper.Path.Line(new paper.Point(yardLines[i], topMiddleHashMarkY), new paper.Point(yardLines[i], topMiddleHashMarkY + hashMarkHeight));
+                topMiddleMark.strokeColor = "#ffffff";
+                var bottomMiddleMark = new paper.Path.Line(new paper.Point(yardLines[i], bottomMiddleHashMarkY), new paper.Point(yardLines[i], bottomMiddleHashMarkY + hashMarkHeight));
+                bottomMiddleMark.strokeColor = "#ffffff";
               }
             }
           }
+        };
+
+        scope.getTextSize = function(text, height) {
+          var canvas = footballFieldCanvas[0];
+          var context = canvas.getContext("2d");
+          context.font = height + "px sans-serif";
+          var metrics = context.measureText(text);
+          var width =  metrics.width;
+
+          return { width: width, height: height};
         };
 
         scope.drawDrive = function() {
