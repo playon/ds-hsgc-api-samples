@@ -10,13 +10,9 @@ angular.module('hsgc')
         var paper = typeof(window.paper) === 'undefined' ? null : window.paper;
         var firstload = true;
         var footballFieldCanvas = null;
+        var font = "sans-serif";
 
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
-          /* 
-            whenever the drive chart tab is shown (when it wasn't previously), 
-            run the resize code because the first load couldn't size it 
-            appropriately before the DOM was rendered and the CSS widths applied
-            */
           if (newValue === 5 && newValue !== oldValue) {
             scope.resize();
           }
@@ -60,10 +56,10 @@ angular.module('hsgc')
 
           paper.view.viewSize = new paper.Size(desiredWidth, desiredHeight);
 
-          scope.drawDriveChart();
+          scope.drawDrive();
         };
 
-        scope.drawField = function() {
+        scope.drawDrive = function() {
           var fieldSize = paper.view.viewSize;
           var field = new paper.Path.Rectangle(new paper.Rectangle(new paper.Point(0,0), fieldSize));
           field.fillColor = "#008A2E";
@@ -77,8 +73,27 @@ angular.module('hsgc')
           var awayEndzone = new paper.Path.Rectangle(new paper.Rectangle(0, 0, endzoneWidth, fieldSize.height));
           awayEndzone.fillColor = "#ff0000";
 
+          var endZoneTextHeight = endzoneWidth / 3;
+          var awayTeamNameSize = scope.getTextSize(scope.awayName, endZoneTextHeight);
+          var awayTeamName = new paper.PointText(new paper.Point( (endzoneWidth / 2) - (awayTeamNameSize.width / 2), (fieldSize.height / 2) + (awayTeamNameSize.height / 2)));
+          awayTeamName.content = scope.awayName;
+          awayTeamName.strokeColor = "#ffffff";
+          awayTeamName.fillColor = "#ffffff";
+          awayTeamName.fontSize = awayTeamNameSize.height + "px";
+          awayTeamName.fontFamily = font;
+          awayTeamName.rotate(270);
+
           var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(yardLines[yardLines.length - 1], 0, endzoneWidth, fieldSize.height));
           homeEndzone.fillColor = "#0000ff";
+
+          var homeTeamNameSize = scope.getTextSize(scope.homeName, endZoneTextHeight);
+          var homeTeamName = new paper.PointText(new paper.Point(yardLines[yardLines.length - 1] + (endzoneWidth / 2) - (homeTeamNameSize.width / 2), (fieldSize.height / 2) + (homeTeamNameSize.height / 2)));
+          homeTeamName.content = scope.homeName;
+          homeTeamName.strokeColor = "#ffffff";
+          homeTeamName.fillColor = "#ffffff";
+          homeTeamName.fontSize = awayTeamNameSize.height + "px";
+          homeTeamName.fontFamily = font;
+          homeTeamName.rotate(90);
 
           var textHeight = (yardLines[5] - yardLines[0]) * 0.8;
           var textSizes = {};
@@ -90,10 +105,9 @@ angular.module('hsgc')
           var yardLineTextVerticalPadding = textHeight * 0.1;
           var yardLineTextHorizontalPadding = 2;
           var yardLineSpacing = yardLines[1] - yardLines[0];
-          var hashMarkHeight = 10;
           var hashMarkInset = fieldSize.height / 3;
           var topMiddleHashMarkY = hashMarkInset;
-          var bottomMiddleHashMarkY = fieldSize.height - hashMarkInset - hashMarkHeight;
+          var bottomMiddleHashMarkY = fieldSize.height - hashMarkInset;
           
           for (var i = 0; i < yardLines.length; i++) {
             if (i % 5 === 0) {
@@ -114,7 +128,7 @@ angular.module('hsgc')
                   topYardText10Digit.strokeColor = "#ffffff";
                   topYardText10Digit.fillColor = "#ffffff";
                   topYardText10Digit.fontSize = text10DigitSize.height + "px";
-                  topYardText10Digit.fontFamily = "sans-serif";
+                  topYardText10Digit.fontFamily = font;
                   topYardText10Digit.rotate(180);
 
                   var yardText0DigitSize = textSizes[0];
@@ -123,7 +137,7 @@ angular.module('hsgc')
                   topYardText0Digit.strokeColor = "#ffffff";
                   topYardText0Digit.fillColor = "#ffffff";
                   topYardText0Digit.fontSize = yardText0DigitSize.height + "px";
-                  topYardText0Digit.fontFamily = "sans-serif";
+                  topYardText0Digit.fontFamily = font;
                   topYardText0Digit.rotate(180);
 
                   var text10DigitSize = textSizes[yardLine];
@@ -132,7 +146,7 @@ angular.module('hsgc')
                   bottomYardText10Digit.strokeColor = "#ffffff";
                   bottomYardText10Digit.fillColor = "#ffffff";
                   bottomYardText10Digit.fontSize = text10DigitSize.height + "px";
-                  bottomYardText10Digit.fontFamily = "sans-serif";
+                  bottomYardText10Digit.fontFamily = font;
 
                   var yardText0DigitSize = textSizes[0];
                   var bottomYardText0Digit = new paper.PointText(new paper.Point(yardLines[i] + yardLineTextHorizontalPadding + yardLineWidth, fieldSize.height - yardText0DigitSize.height / 2 - yardLineTextVerticalPadding));
@@ -140,42 +154,65 @@ angular.module('hsgc')
                   bottomYardText0Digit.strokeColor = "#ffffff";
                   bottomYardText0Digit.fillColor = "#ffffff";
                   bottomYardText0Digit.fontSize = yardText0DigitSize.height + "px";
-                  bottomYardText0Digit.fontFamily = "sans-serif";
+                  bottomYardText0Digit.fontFamily = font;
                 }
               }
             } else {
               if (yardLineSpacing > 5) {
                 //only draw hashmarks if there is enough space
-                var topMark = new paper.Path.Line(new paper.Point(yardLines[i], 0), new paper.Point(yardLines[i], hashMarkHeight));
-                topMark.strokeColor = "#ffffff";
-                var bottomMark = new paper.Path.Line(new paper.Point(yardLines[i], fieldSize.height - hashMarkHeight), new paper.Point(yardLines[i], fieldSize.height));
-                bottomMark.strokeColor = "#ffffff";
-                var topMiddleMark = new paper.Path.Line(new paper.Point(yardLines[i], topMiddleHashMarkY), new paper.Point(yardLines[i], topMiddleHashMarkY + hashMarkHeight));
-                topMiddleMark.strokeColor = "#ffffff";
-                var bottomMiddleMark = new paper.Path.Line(new paper.Point(yardLines[i], bottomMiddleHashMarkY), new paper.Point(yardLines[i], bottomMiddleHashMarkY + hashMarkHeight));
-                bottomMiddleMark.strokeColor = "#ffffff";
+                scope.drawHashMark(yardLines[i], 0, true);
+                scope.drawHashMark(yardLines[i], fieldSize.height, false);
+                scope.drawHashMark(yardLines[i], topMiddleHashMarkY, true);
+                scope.drawHashMark(yardLines[i], bottomMiddleHashMarkY, false);
               }
             }
           }
+
+          var scrimmageLineX = yardLines[scope.lastPlay.Spot];
+          var scrimmageLine = new paper.Path.Line(new paper.Point(scrimmageLineX, 0), new paper.Point(scrimmageLineX, fieldSize.height));
+          scrimmageLine.strokeColor = "#ffff00";
+          scrimmageLine.strokeWidth = 5;
+
+          var arrowOffset;
+          var arrowRotation;
+          var triangleRadius = textHeight / 2;
+          var arrowColor;
+          if (scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId) {
+            arrowOffset = triangleRadius;
+            arrowRotation = 270;
+            arrowColor = "#0000ff";
+          } else {
+            arrowOffset = -triangleRadius;
+            arrowRotation = 90;
+            arrowColor = "#ff0000";
+          }
+          var arrow = new paper.Path.RegularPolygon(new paper.Point(scrimmageLineX + arrowOffset, fieldSize.height / 2), 3, triangleRadius);
+          arrow.fillColor = arrowColor;
+          arrow.rotate(arrowRotation);
+
+          var firstDownLineX = yardLines[scope.getGoalLeft(scope.lastPlay)];
+          var firstDownLine = new paper.Path.Line(new paper.Point(firstDownLineX, 0), new paper.Point(firstDownLineX, fieldSize.height));
+          firstDownLine.strokeColor = "#00ffff";
+          firstDownLine.strokeWidth = 5;
+
+          paper.view.draw();
+        };
+
+        scope.drawHashMark = function(x, y, drawTopToBottom) {
+          var hashMarkHeight = 10;
+          var yCoord = drawTopToBottom ? y : y - hashMarkHeight;
+          var mark = new paper.Path.Line(new paper.Point(x, yCoord), new paper.Point(x, yCoord + hashMarkHeight));
+          mark.strokeColor = "#ffffff";
         };
 
         scope.getTextSize = function(text, height) {
           var canvas = footballFieldCanvas[0];
           var context = canvas.getContext("2d");
-          context.font = height + "px sans-serif";
+          context.font = height + "px " + font;
           var metrics = context.measureText(text);
           var width =  metrics.width;
 
           return { width: width, height: height};
-        };
-
-        scope.drawDrive = function() {
-
-        };
-
-        scope.drawDriveChart = function() {
-          scope.drawField();
-          paper.view.draw();
         };
 
         scope.getSpot = function(play) {
@@ -184,14 +221,6 @@ angular.module('hsgc')
 
           return team + ' ' + spot;
         };
-
-        scope.getSpotDirectionClass = function(play) {
-          if (play.TeamSeasonId == scope.homeTeamSeasonId) {
-            return "nfhs-scout-drivechart-homespot";
-          } else {
-            return "nfhs-scout-drivechart-awayspot";
-          }
-        }
 
         scope.getScrimmageLeft = function(play) {
           if (play.TeamSeasonId == scope.homeTeamSeasonId) {
