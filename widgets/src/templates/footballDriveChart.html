@@ -13,5 +13,7 @@
       </td>
     </tr>
   </table>
-  Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+  <div ng-if="hasPreviousPlay">
+    Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+  </div>
 </div>

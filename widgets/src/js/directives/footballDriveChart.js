@@ -7,6 +7,7 @@ angular.module('hsgc')
         scope.selectedPeriod = 0;
         scope.lastPlay = {};
         scope.previousPlay = {};
+        scope.hasPreviousPlay = false;
         var paper = typeof(window.paper) === 'undefined' ? null : window.paper;
         var firstload = true;
         var footballFieldCanvas = null;
@@ -36,6 +37,7 @@ angular.module('hsgc')
 
           scope.lastPlay = scope.playByPlay[scope.playByPlay.length - 1];
           scope.previousPlay = scope.playByPlay[scope.playByPlay.length - 2];
+          scope.hasPreviousPlay = scope.playByPlay.length > 2;
 
           scope.resize();
         });
@@ -190,7 +192,14 @@ angular.module('hsgc')
           arrow.fillColor = arrowColor;
           arrow.rotate(arrowRotation);
 
-          var firstDownLineX = yardLines[scope.getGoalLeft(scope.lastPlay)];
+          var firstDownYardLine;
+          if (scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId) {
+            firstDownYardLine = scope.lastPlay.Spot - scope.lastPlay.Distance;
+          } else {
+            firstDownYardLine = scope.lastPlay.Spot + scope.lastPlay.Distance;
+          }
+
+          var firstDownLineX = yardLines[firstDownYardLine];
           var firstDownLine = new paper.Path.Line(new paper.Point(firstDownLineX, 0), new paper.Point(firstDownLineX, fieldSize.height));
           firstDownLine.strokeColor = "#00ffff";
           firstDownLine.strokeWidth = 5;
@@ -235,6 +244,9 @@ angular.module('hsgc')
           if (play.TeamSeasonId == scope.homeTeamSeasonId) {
             distance_offset = distance_offset * -1;
           }
+
+          console.log(distance_offset)
+          console.log(scope.getScrimmageLeft(play) + distance_offset)
 
           return scope.getScrimmageLeft(play) + distance_offset;
         }
