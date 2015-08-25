@@ -1,28 +1,17 @@
 <div ng-show="playByPlayAvailable" class="nfhs-scout-drivechart">
-    <!--<img class="nfhs-scout-basketball-court" src="img/field.png"/>-->
-    <div class="nfhs-football-drivechart-stadium-container">
-    <div class="nfhs-scout-drivechart-away">{{awayName}}</div>
-    <div class="nfhs-football-drivechart-field-container">
-    <img class="nfhs-scout-football-field" src="http://cdn.hsgamecenter.com/img/field.png" />
-    <img src="http://cdn.hsgamecenter.com/img/triangle.png" class="nfhs-scout-drivechart-spot  {{getSpotDirectionClass(lastPlay)}}" style="top: 50%; left: {{getScrimmageLeft(lastPlay)}}%;" />
-    <div class="nfhs-scout-drivechart-scrimmage" style="left: {{getScrimmageLeft(lastPlay)}}%;">&nbsp;</div>
-    <div class="nfhs-scout-drivechart-goal"  style="left: {{getGoalLeft(lastPlay)}}%;">&nbsp;</div>
-    </div>
-    <div class="nfhs-scout-drivechart-home">{{homeName}}</div>
-  </div>
-</div>
-    <table>
-      <tr>
-        <td>
-          Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
-        </td>
-        <td>
-          Ball on {{getSpot(lastPlay)}}
-        </td>
-        <td>
-          Posession: {{lastPlay.TeamName}}
-        </td>
-      </tr>
-    </table>
-    Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+  <canvas resize></canvas>
+  <table>
+    <tr>
+      <td>
+        Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
+      </td>
+      <td>
+        Ball on {{getSpot(lastPlay)}}
+      </td>
+      <td>
+        Posession: {{lastPlay.TeamName}}
+      </td>
+    </tr>
+  </table>
+  Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
 </div>

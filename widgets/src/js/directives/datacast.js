@@ -54,6 +54,7 @@ angular.module('hsgc')
                 if (typeof(result) !== "undefined") {
                   angular.extend(scope, result);
                   scope.$emit('datacastLoaded');
+                  scope.$broadcast('datacastLoaded');
                   $timeout(updateBoxScore, 30 * 1000);
                 }
               },

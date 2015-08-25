@@ -1,6 +1,5 @@
 {
   "name": "paper",
-  "version": "0.9.22",
   "description": "The Swiss Army Knife of Vector Graphics Scripting",
   "license": "MIT",
   "homepage": "http://paperjs.org",
@@ -44,11 +43,12 @@
     "paper",
     "paper.js"
   ],
-  "_release": "0.9.22",
+  "version": "0.9.23",
+  "_release": "0.9.23",
   "_resolution": {
     "type": "version",
-    "tag": "v0.9.22",
-    "commit": "143e71d8f9b52b7b9fd1a86f7ed05037c9a2f4ea"
+    "tag": "v0.9.23",
+    "commit": "861bef8274ed286591aa42a6c43a7afcd3a907d1"
   },
   "_source": "git://github.com/paperjs/paper.js.git",
   "_target": ">=0.9.22 <1.0.0",
