@@ -57,7 +57,6 @@ angular.module('hsgc')
           });
 
           paper.view.viewSize = new paper.Size(desiredWidth, desiredHeight);
-
           scope.drawDrive();
         };
 
@@ -244,9 +243,6 @@ angular.module('hsgc')
           if (play.TeamSeasonId == scope.homeTeamSeasonId) {
             distance_offset = distance_offset * -1;
           }
-
-          console.log(distance_offset)
-          console.log(scope.getScrimmageLeft(play) + distance_offset)
 
           return scope.getScrimmageLeft(play) + distance_offset;
         }
