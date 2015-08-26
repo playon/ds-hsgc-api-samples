@@ -10,8 +10,8 @@ namespace ApiClient
     {
         private const int PageSize = 2048;
         private const string ApiRoot = "http://api.hsgamecenter.com/v1.2";
-        private const string Username = "bsharp@digitalschoolnetwork.com";
-        private const string Password = "Nomling26@";
+        private const string Username = "";
+        private const string Password = "";
         //this is the identifier that relates seasons together, i.e. the high school 2013 football season
         //it can be obtained from http://api.hsgamecenter.com/json/metadata?op=GetUniversalSeasons
         private const int CurrentUniversalSeasonId = 6;

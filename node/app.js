@@ -1,6 +1,6 @@
 /********************Config*****************/
-var username = 'bsharp@digitalschoolnetwork.com'; //your hsgc username
-var password = 'Nomling26@'; //your hsgc password
+var username = ''; //your hsgc username
+var password = ''; //your hsgc password
 /********************End Config*****************/
 
 var sys = require('util'),    
