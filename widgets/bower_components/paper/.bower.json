@@ -23,7 +23,7 @@
     "test"
   ],
   "devDependencies": {
-    "straps": "~1.7.0",
+    "straps": "~1.7.2",
     "acorn": "~0.4.0",
     "stats.js": "r11"
   },
@@ -43,12 +43,12 @@
     "paper",
     "paper.js"
   ],
-  "version": "0.9.23",
-  "_release": "0.9.23",
+  "version": "0.9.24",
+  "_release": "0.9.24",
   "_resolution": {
     "type": "version",
-    "tag": "v0.9.23",
-    "commit": "861bef8274ed286591aa42a6c43a7afcd3a907d1"
+    "tag": "v0.9.24",
+    "commit": "7d82491cce2823c2bff7934ce30ee8d59044bc52"
   },
   "_source": "git://github.com/paperjs/paper.js.git",
   "_target": ">=0.9.22 <1.0.0",
