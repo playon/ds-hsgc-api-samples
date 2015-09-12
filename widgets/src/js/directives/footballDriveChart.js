@@ -20,7 +20,7 @@ angular.module('hsgc')
         });
 
         scope.$on('datacastLoaded', function() {
-          if (angular.isUndefined(scope.playByPlay))
+          if (angular.isUndefined(scope.playByPlay) || scope.playByPlay.length === 0)
             return;
 
           if (firstload) {
