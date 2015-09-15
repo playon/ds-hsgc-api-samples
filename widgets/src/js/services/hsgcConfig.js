@@ -25,7 +25,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   };
 
   this.getHsgcApiRoot = function() {
-    return this.config.env === "prod" ? "https://dl9smoyg8dwdf.cloudfront.net/v1.2/" : this.config.env === "stage" ? "https://api-stage.digitalscout.com/v1.2/" : "http://api.gamecenter.dev/";
+    return this.config.env === "prod" ? "http://dl9smoyg8dwdf.cloudfront.net/v1.2/" : this.config.env === "stage" ? "https://api-stage.digitalscout.com/v1.2/" : "http://api.gamecenter.dev/";
   };
 
   this.getUnityApiRoot = function() {
