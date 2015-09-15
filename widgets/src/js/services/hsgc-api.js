@@ -54,8 +54,8 @@ angular.module('hsgc')
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
         homeTeamKey: boxScore.HomeTeamUnityKey,
         awayTeamKey: boxScore.AwayTeamUnityKey,
-        homeScore: boxScore.HomeScore,
-        awayScore: boxScore.AwayScore,
+        homeScore: boxScore.FinalScoresInFirstPeriod ? boxScore.HomePeriodScores[0].Score : boxScore.HomeScore,
+        awayScore: boxScore.FinalScoresInFirstPeriod ? boxScore.AwayPeriodScores[0].Score : boxScore.AwayScore,
         periodScores: boxScore.PeriodScores,
         regulationPeriodCount: boxScore.RegulationPeriodCount,
         totalScores: scores,
@@ -90,6 +90,7 @@ angular.module('hsgc')
         awayOvertimeScore: awayOTScore,
         homeOvertimeScore: homeOTScore,
         gameDetailLink: boxScore.GameDetailLink,
+        finalScoresInFirstPeriod: boxScore.FinalScoresInFirstPeriod,
 
         getScore: function(unityKey) {
           var tsId = this.unityTeamMapping[safeToLower(unityKey)];
