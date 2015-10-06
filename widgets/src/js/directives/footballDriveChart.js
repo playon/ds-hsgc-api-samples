@@ -169,7 +169,9 @@ angular.module('hsgc')
             }
           }
 
-          var scrimmageLineX = yardLines[scope.lastPlay.Spot];
+          var homeTeamIsOnOffense = scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId;
+          var scrimmageYardLine = homeTeamIsOnOffense ? 100 - scope.lastPlay.Spot : scope.lastPlay.Spot;
+          var scrimmageLineX = yardLines[scrimmageYardLine];
           var scrimmageLine = new paper.Path.Line(new paper.Point(scrimmageLineX, 0), new paper.Point(scrimmageLineX, fieldSize.height));
           scrimmageLine.strokeColor = "#ffff00";
           scrimmageLine.strokeWidth = 5;
@@ -178,7 +180,7 @@ angular.module('hsgc')
           var arrowRotation;
           var triangleRadius = textHeight / 2;
           var arrowColor;
-          if (scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId) {
+          if (homeTeamIsOnOffense) {
             arrowOffset = triangleRadius;
             arrowRotation = 270;
             arrowColor = "#0000ff";
@@ -192,10 +194,10 @@ angular.module('hsgc')
           arrow.rotate(arrowRotation);
 
           var firstDownYardLine;
-          if (scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId) {
-            firstDownYardLine = scope.lastPlay.Spot - scope.lastPlay.Distance;
+          if (homeTeamIsOnOffense) {
+            firstDownYardLine = scrimmageYardLine - scope.lastPlay.Distance;
           } else {
-            firstDownYardLine = scope.lastPlay.Spot + scope.lastPlay.Distance;
+            firstDownYardLine = scrimmageYardLine + scope.lastPlay.Distance;
           }
 
           var firstDownLineX = yardLines[firstDownYardLine];
