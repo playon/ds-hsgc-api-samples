@@ -70,7 +70,9 @@
     vertical-align:middle;
   }
   .nfhs-scout-play-by-play-spot {
-    min-width: 160px;
+    @media (min-width: @screen-sm-cutoff) {
+      min-width: 160px;
+    }    
   }
   .nfhs-scout-play-by-play-score {
     text-align: center;

@@ -3,8 +3,8 @@
     <thead>
       <tr>
         <th></th>
-        <th><img ng-src="{{awayLogo}}" class="nfhs-scout-logo" /> {{awayShortName}}</th>
-        <th><img ng-src="{{homeLogo}}" class="nfhs-scout-logo" /> {{homeShortName}}</th>
+        <th><img ng-src="{{awayLogo}}" class="nfhs-scout-logo" /> {{awayAcronym}}</th>
+        <th><img ng-src="{{homeLogo}}" class="nfhs-scout-logo" /> {{homeAcronym}}</th>
       </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
       </tr>
       <tr>
         <td>Time of Possession</td>
-        <td>{{awayStats.TimeOfPossession}}</td>
-        <td>{{homeStats.TimeOfPossession}}</td>
+        <td>{{awayStats.TimeOfPossession.replace(timeOfPossessionRegex, '')}}</td>
+        <td>{{homeStats.TimeOfPossession.replace(timeOfPossessionRegex, '')}}</td>
       </tr>
       <tr>
         <td>Rushing Attempts - Yards</td>

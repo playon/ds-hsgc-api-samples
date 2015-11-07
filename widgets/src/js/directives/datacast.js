@@ -42,6 +42,7 @@ angular.module('hsgc')
           includePlayers: angular.isDefined(attrs.includePlayers)
         };
 
+        var firstLoad = true;
         var updateBoxScore = function() {
           HSGCApi.getFullBox(scope.gameKey,
               scope.publisher,
@@ -53,9 +54,26 @@ angular.module('hsgc')
               function(result) {
                 if (typeof(result) !== "undefined") {
                   angular.extend(scope, result);
+                  var refreshIn = 30 * 1000;
+                  if (firstLoad) {
+                    firstLoad = false;
+                    
+                    //some of the stuff doesn't really work well until the second cycle
+                    //hack to fix this stuff is to reload really fast the first time
+                    refreshIn = 1000;
+                    
+                    //this shouldn't be here, but i can't get it to work in the FullBoxScore directive
+                    if (scope.sport === 'Football') {
+                      if (scope.status === 'InProgress') {
+                        scope.selectedDetailTab = 5;                         
+                      } else {
+                        scope.selectedDetailTab = 1;
+                      }
+                    }
+                  }
                   scope.$emit('datacastLoaded');
                   scope.$broadcast('datacastLoaded');
-                  $timeout(updateBoxScore, 30 * 1000);
+                  $timeout(updateBoxScore, refreshIn);
                 }
               },
               //failure

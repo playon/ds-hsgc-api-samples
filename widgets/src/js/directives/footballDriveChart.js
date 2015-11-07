@@ -24,7 +24,7 @@ angular.module('hsgc')
             return;
 
           if (firstload) {
-            firstload = false;
+            firstload = false;                       
 
             footballFieldCanvas = $(element.find('canvas')[0]);
             paper.setup(footballFieldCanvas[0]);
@@ -58,7 +58,7 @@ angular.module('hsgc')
 
           paper.view.viewSize = new paper.Size(desiredWidth, desiredHeight);
           scope.drawDrive();
-        };
+        };       
 
         scope.drawDrive = function() {
           var fieldSize = paper.view.viewSize;
@@ -75,9 +75,9 @@ angular.module('hsgc')
           awayEndzone.fillColor = "#ff0000";
 
           var endZoneTextHeight = endzoneWidth / 3;
-          var awayTeamNameSize = scope.getTextSize(scope.awayName, endZoneTextHeight);
+          var awayTeamNameSize = scope.getTextSize(scope.awayShortName, endZoneTextHeight);
           var awayTeamName = new paper.PointText(new paper.Point( (endzoneWidth / 2) - (awayTeamNameSize.width / 2), (fieldSize.height / 2) + (awayTeamNameSize.height / 2)));
-          awayTeamName.content = scope.awayName;
+          awayTeamName.content = scope.awayShortName;
           awayTeamName.strokeColor = "#ffffff";
           awayTeamName.fillColor = "#ffffff";
           awayTeamName.fontSize = awayTeamNameSize.height + "px";
@@ -87,9 +87,9 @@ angular.module('hsgc')
           var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(yardLines[yardLines.length - 1], 0, endzoneWidth, fieldSize.height));
           homeEndzone.fillColor = "#0000ff";
 
-          var homeTeamNameSize = scope.getTextSize(scope.homeName, endZoneTextHeight);
+          var homeTeamNameSize = scope.getTextSize(scope.homeShortName, endZoneTextHeight);
           var homeTeamName = new paper.PointText(new paper.Point(yardLines[yardLines.length - 1] + (endzoneWidth / 2) - (homeTeamNameSize.width / 2), (fieldSize.height / 2) + (homeTeamNameSize.height / 2)));
-          homeTeamName.content = scope.homeName;
+          homeTeamName.content = scope.homeShortName;
           homeTeamName.strokeColor = "#ffffff";
           homeTeamName.fillColor = "#ffffff";
           homeTeamName.fontSize = awayTeamNameSize.height + "px";

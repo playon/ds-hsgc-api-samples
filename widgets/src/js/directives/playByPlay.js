@@ -69,6 +69,11 @@ angular.module('hsgc')
           var periodPlays = scope.playByPlay.filter(function(play) {
             return play.Quarter == newValue;
           });
+          
+          
+          if (scope.status === 'InProgress') {
+            periodPlays = periodPlays.slice().reverse();
+          }
 
           var drives = [];
           var currentDrive = -1;
