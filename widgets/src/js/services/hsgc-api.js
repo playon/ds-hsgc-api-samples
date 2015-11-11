@@ -109,6 +109,10 @@ angular.module('hsgc')
             return this.awayName;
           }
         },
+        getTeamNameFirstAlphaChar: function(unityKey) {
+          var teamName = this.getTeamName(unityKey);
+          return teamName.charAt(teamName.search(/[A-Za-z]/));
+        },
         getTeamLogo: function(unityKey) {
           if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
             return this.homeLogo;
