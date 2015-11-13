@@ -121,9 +121,9 @@ module.exports = function (grunt) {
                 secret: '<%= aws.secret %>',
                 bucket: 'cdn.hsgamecenter.com',
                 headers: {
-                    // Two Year cache policy (1000 * 60 * 60 * 24 * 730)
-                    "Cache-Control": "max-age=630720000, public",
-                    "Expires": new Date(Date.now() + 63072000000).toUTCString()
+                    // 24 hour cache policy (1000 * 60 * 60 * 24)
+                    "Cache-Control": "max-age=86400000, public",
+                    "Expires": new Date(Date.now() + 86400000).toUTCString()
                 }
             },
             dev: {
