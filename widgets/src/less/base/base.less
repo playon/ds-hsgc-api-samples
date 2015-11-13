@@ -24,6 +24,16 @@
   .nfhs-scout-winner { font-weight: bold; }
 }
 
+.nfhs-scout-tabbed-details {
+  .nfhs-scout-tabs {
+    > li {
+      @media only screen and (max-width: @screen-sm-cutoff) {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
 /**** Team Stats ****/
 .nfhs-scout-team-stats {
   th {
@@ -69,15 +79,23 @@
     height: 24px;
     vertical-align:middle;
   }
-  .nfhs-scout-play-by-play-spot {
-    @media (min-width: @screen-sm-cutoff) {
-      min-width: 160px;
-    }    
+  td.nfhs-scout-play-by-play-spot {      
+      @media (min-width: @screen-sm-cutoff) {
+        min-width: 160px;   
+      }      
+      @media (max-width: @screen-sm-cutoff) {
+        width: 0px;
+        padding: 0;
+      }
   }
-  .nfhs-scout-play-by-play-score {
-    text-align: center;
-    text-transform: uppercase;
+  
+  .nfhs-scout-play-by-play-description {
+    span.nfhs-scout-play-by-play-spot {
+        color: #aaa;
+        font-weight: normal;
+    }
   }
+  
   .nfhs-scout-scoring { font-weight: bold; }
 
   .nfhs-scout-play-by-play-plays {
@@ -104,7 +122,8 @@
           white-space: nowrap;
         }
       }
-
+      
+      td { vertical-align: middle; }
       td.nfhs-scout-play-by-play-team-away,th.nfhs-scout-play-by-play-team-away { text-align: right; white-space: normal; }
     }
   }

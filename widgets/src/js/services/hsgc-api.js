@@ -45,6 +45,17 @@ angular.module('hsgc')
         //see: https://github.com/playon/unity-api/pull/163
         awayLogoCompute = boxScore.AwayTeamLogo.substring(boxScore.AwayTeamLogo.lastIndexOf('http'));
       }
+      
+      var scoringPlaysByPeriod = {};
+			
+			if (boxScore.ScoringPlays) {			
+				boxScore.ScoringPlays.forEach(function(play) {
+					if (!scoringPlaysByPeriod[play.Quarter]) {
+						scoringPlaysByPeriod[play.Quarter] = [];
+					}
+					scoringPlaysByPeriod[play.Quarter].push(play);
+				});
+			}
 
       return {
         hsgcGameId: boxScore.GameId,
@@ -65,10 +76,10 @@ angular.module('hsgc')
         awayLogo: awayLogoCompute,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
-        homeShortName: boxScore.HomeTeamShortName || boxScore.HomeTeamAcronym,
-        awayShortName: boxScore.AwayTeamShortName || boxScore.AwayTeamAcronym,
-        homeAcronym: boxScore.HomeTeamAcronym,
-        awayAcronym: boxScore.AwayTeamAcronym,
+        homeShortName: boxScore.HomeTeamShortName || boxScore.HomeTeamName,
+        awayShortName: boxScore.AwayTeamShortName || boxScore.AwayTeamName,
+        homeAcronym: boxScore.HomeTeamAcronym.toUpperCase(),
+        awayAcronym: boxScore.AwayTeamAcronym.toUpperCase(),
         homeMascot: boxScore.HomeTeamMascot,
         awayMascot: boxScore.AwayTeamMascot,
         homeStats: boxScore.Sport === 'Basketball' ? boxScore.HomeTeamTotalStats : boxScore.HomeTeamStatistics,
@@ -77,6 +88,7 @@ angular.module('hsgc')
         awaySlug: boxScore.AwayTeamSlug,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
+        scoringPlaysByPeriod: scoringPlaysByPeriod,
         currentPeriod: boxScore.CurrentPeriod,
         unityTeamMapping: unityTeamMapping,
         scoresAvailable: boxScore.ScoresAvailable,

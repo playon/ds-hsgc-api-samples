@@ -1,24 +1,30 @@
 <div ng-show="playByPlayAvailable" class="nfhs-scout-scoring-summary">
-  <table class="nfhs-scout-table">
-    <thead>
-      <tr>
-        <th>Team</th>
-        <th>Qtr</th>
-        <th>Time</th>
-        <th>Play</th>
-        <th>{{awayAcronym}}</th>
-        <th>{{homeAcronym}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="play in scoringPlays">
-        <td class="nfhs-scout-team-name">{{play.TeamName}}</td>
-        <td>{{play.Quarter}}</td>
-        <td>{{play.TimeOnClock | timeOnClock }}</td>
-        <td class="nfhs-scout-play-summary">{{play.Description}}</td>
-        <td>{{play.AwayScore}}</td>
-        <td>{{play.HomeScore}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div ng-repeat="(quarter, plays) in scoringPlaysByPeriod">
+    <table class="nfhs-scout-table">
+      <thead>
+        <tr>
+          <th colspan="3">
+            <ng-pluralize count="quarter" when="{
+                '1' : '1st Quarter', 
+                '2' : '2nd Quarter', 
+                '3' : '3rd Quarter',                 
+                '4' : '4th Quarter',                 
+                'other': '{{quarter - 4}} OT'
+               }"> </ng-pluralize>
+          </th>
+          <th>{{awayAcronym}}</th>
+          <th>{{homeAcronym}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="play in plays">
+          <td class="nfhs-scout-team-name">{{play.TeamSeasonId === homeTeamSeasonId ? homeAcronym : awayAcronym}}</td>
+          <td>{{play.TimeOnClock | timeOnClock }}</td>
+          <td class="nfhs-scout-play-summary">{{play.Description}}</td>
+          <td>{{play.AwayScore}}</td>
+          <td>{{play.HomeScore}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
 </div>

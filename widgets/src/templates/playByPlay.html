@@ -21,24 +21,27 @@
               <img ng-src="{{getLogo(drive[0])}}" class="nfhs-scout-logo"/>
               {{drive[0].TeamName}} at {{drive[0].TimeOnClock | timeOnClock }}
             </th>
-            <!--th>Time</th>
-            <th>Play</th-->
-            <th class="nfhs-scout-play-by-play-score">{{awayAcronym}}</th>
-            <th class="nfhs-scout-play-by-play-score">{{homeAcronym}}</th>
             <th></th>
             
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="play in drive">
-            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-spot">{{play.Down}} and {{play.Distance}} at {{getSpot(play)}}</td>
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
+            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-spot">
+              <span class="nfhs-scout-hidden-sm">
+                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th '}"></ng-pluralize> 
+                and {{play.Distance}} at {{getSpot(play)}}
+              </span> 
+            </td>                        
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-description">
-              <span ng-class='{"playLinkDescription": play.Highlight}'>{{play.Description}}</span>
+              <span class="nfhs-scout-play-by-play-spot nfhs-scout-visible-sm-inline">
+                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th '}"></ng-pluralize> and {{play.Distance}} at {{getSpot(play)}}. 
+              </span>
+              <span ng-class='{"playLinkDescription": play.Highlight}'>{{play.Description}}</span>                            
+              <span ng-if="play.IsScoring" class="nfhs-scout-current-score">{{getScoreSummary(play)}}</span>
               <a ng-if="play.Highlight" class="playLink" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i></i></a>
-            </td>
-            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score">{{play.AwayScore}}</td>
-            <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-score">{{play.HomeScore}}</td>
+            </td>            
             <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
           </tr>
         </tbody>

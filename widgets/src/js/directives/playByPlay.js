@@ -97,6 +97,16 @@ angular.module('hsgc')
         scope.getLogo = function(play) {
           return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeLogo : scope.awayLogo;
         };
+        
+        scope.getScoreSummary = function(play) {
+          if (play.HomeScore === play.AwayScore) {
+            return "Tie game at " + play.HomeScore + "-" + play.AwayScore + ".";
+          } else if (play.HomeScore > play.AwayScore) {
+            return scope.homeShortName + " leads " + scope.awayShortName + " " + play.HomeScore + "-" + play.AwayScore + ".";
+          } else {
+            return scope.awayShortName + " leads " + scope.homeShortName + " " + play.AwayScore + "-" + play.HomeScore + ".";
+          }
+        };
       }
     };
   });
