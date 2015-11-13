@@ -1,4 +1,10 @@
 <div ng-show="statsAvailable" class="nfhs-scout-player-stats">
+  <div ng-show="playerStats.passingStats.length + playerStats.rushingStats.length + playerStats.receivingStats.length +
+    playerStats.defensiveStats.length + playerStats.kickingStats.length + playerStats.puntingStats.length + 
+    playerStats.puntReturnStats.length + playerStats.kickReturnStats.length === 0">
+    No player stats available.
+  </div>
+  
   <div ng-show="playerStats.passingStats.length > 0">
     <h4 class="nfhs-scout-heading">Passing Stats</h4>
     <table class="nfhs-scout-table">

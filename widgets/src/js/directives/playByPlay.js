@@ -1,4 +1,14 @@
 angular.module('hsgc')
+  .filter('driveStart', function() {
+    return function(drive) {
+      //sort plays in descending order by time on clock, and return first value
+      return drive.map(function(play) {
+        return play.TimeOnClock;
+      }).sort(function(a,b) {
+        return b - a;
+      })[0];    
+    };
+  })
   .directive('playByPlay', function() {
     return {
       restrict: 'EA',
@@ -7,6 +17,32 @@ angular.module('hsgc')
         scope.selectedPeriod = 0;
         var firstLoad = true;
         var previousPeriod = -1;
+        
+        function updatePlaysToDisplay(period) {
+          if (angular.isUndefined(scope.playByPlay))
+            return;
+            
+          var periodPlays = scope.playByPlay.filter(function(play) {
+            return play.Quarter == (period || scope.selectedPeriod);
+          });
+          
+          
+          if (scope.status === 'InProgress') {
+            periodPlays = periodPlays.slice().reverse();
+          }
+
+          var drives = [];
+          var currentDrive = -1;
+          for (var i = 0; i < periodPlays.length; i++) {
+            if (periodPlays[i].Drive != currentDrive) {
+              drives.push([]);
+              currentDrive = periodPlays[i].Drive;
+            }
+            drives[drives.length - 1].push(periodPlays[i]);
+          }
+          scope.selectedPeriodPlays = drives;
+        }
+        
         scope.$on('datacastLoaded', function() {
           if (firstLoad) {
             firstLoad = false;
@@ -16,6 +52,7 @@ angular.module('hsgc')
               scope.selectedPeriod = 1;
             }
             previousPeriod = scope.currentPeriod;
+            updatePlaysToDisplay();
           } else {
             if (!scope.isFinal()) {
               if (previousPeriod != scope.currentPeriod) {
@@ -60,32 +97,11 @@ angular.module('hsgc')
             }
           }
           scope.playByPlayPeriods = periods;
-        });
-
-        scope.$watch('selectedPeriod', function(newValue) {
-          if (angular.isUndefined(scope.playByPlay))
-            return;
-
-          var periodPlays = scope.playByPlay.filter(function(play) {
-            return play.Quarter == newValue;
-          });
-          
-          
-          if (scope.status === 'InProgress') {
-            periodPlays = periodPlays.slice().reverse();
-          }
-
-          var drives = [];
-          var currentDrive = -1;
-          for (var i = 0; i < periodPlays.length; i++) {
-            if (periodPlays[i].Drive != currentDrive) {
-              drives.push([]);
-              currentDrive = periodPlays[i].Drive;
-            }
-            drives[drives.length - 1].push(periodPlays[i]);
-          }
-          scope.selectedPeriodPlays = drives;
-        });
+          console.log('Plays: ', scope.playByPlay.length);
+          updatePlaysToDisplay();          
+        });        
+        
+        scope.$watch('selectedPeriod', updatePlaysToDisplay);                
 
         scope.getSpot = function(play) {
           var team = (play.TeamSeasonId == scope.homeTeamSeasonId && play.Spot <= 50) || (play.TeamSeasonId == scope.awayTeamSeasonId && play.Spot > 50) ? scope.homeAcronym : scope.awayAcronym;

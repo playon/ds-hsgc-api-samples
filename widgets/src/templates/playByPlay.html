@@ -19,7 +19,7 @@
           <tr>
             <th colspan="3">
               <img ng-src="{{getLogo(drive[0])}}" class="nfhs-scout-logo"/>
-              {{drive[0].TeamName}} at {{drive[0].TimeOnClock | timeOnClock }}
+              Drive by {{drive[0].TeamName}} starting at {{drive | driveStart | timeOnClock }}
             </th>
             <th></th>
             
