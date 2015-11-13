@@ -24,7 +24,7 @@
             <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
           </span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{homeShortName}}
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
           </a>
         </td>
         <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>
@@ -48,7 +48,7 @@
       <tr>
         <td ng-class="{'nfhs-scout-winner': isWinner(homeTeamKey)}">
           <span ng-show="!showTeamLinks">
-            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />{{homeShortName}}
           </span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
             <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />{{homeShortName}}

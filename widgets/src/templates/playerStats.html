@@ -19,7 +19,7 @@
           <td>{{passer.Completions}}</td>
           <td>{{passer.Attempts}}</td>
           <td>{{passer.Yards}}</td>
-          <td>{{passer.CompletionPercentage | number}}%</td>
+          <td>{{passer.CompletionPercentage | decimals:1}}%</td>
           <td>{{passer.Touchdowns}}</td>
           <td>{{passer.Interceptions}}</td>
         </tr>
@@ -43,7 +43,7 @@
           <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
-          <td>{{player.Average | number}}</td>
+          <td>{{player.Average |  decimals:1}}</td>
           <td>{{player.Touchdowns}}</td>
         </tr>
       </tbody>
@@ -66,7 +66,7 @@
           <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Receptions}}</td>
           <td>{{player.Yards}}</td>
-          <td>{{player.Average | number}}</td>
+          <td>{{player.Average |  decimals:1}}</td>
           <td>{{player.Touchdowns }}</td>
         </tr>
       </tbody>
@@ -139,7 +139,7 @@
           <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
-          <td>{{player.Average| number}}</td>
+          <td>{{player.Average |  decimals:1}}</td>
           <td>{{player.Inside20}}</td>
         </tr>
       </tbody>
@@ -162,7 +162,7 @@
           <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
-          <td>{{player.Average| number}}</td>
+          <td>{{player.Average|  decimals:1}}</td>
           <td>{{player.Touchdowns}}</td>
         </tr>
       </tbody>
@@ -185,7 +185,7 @@
           <td class="nfhs-scout-player-stats-player-name">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
-          <td>{{player.Average| number}}</td>
+          <td>{{player.Average|  decimals:1}}</td>
           <td>{{player.Touchdowns}}</td>
         </tr>
       </tbody>
