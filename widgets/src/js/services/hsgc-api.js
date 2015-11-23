@@ -111,6 +111,9 @@ angular.module('hsgc')
         getPrimaryColor: function(unityKey) {
           return colors[unityKey].primary; //todo: populate color based off api response
         },
+        getSecondaryColor: function(unityKey) {
+          return colors[unityKey].secondary; //todo: populate color based off api response
+        },
         getTeamName: function(unityKey) {
           if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
             return this.homeName;
@@ -118,12 +121,24 @@ angular.module('hsgc')
             return this.awayName;
           }
         },
+        getTeamNameFirstAlphaChar: function(unityKey) {
+          var teamName = this.getTeamName(unityKey);
+          return teamName.charAt(teamName.search(/[A-Za-z]/));
+        },
         getTeamLogo: function(unityKey) {
           if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
             return this.homeLogo;
           } else {
             return this.awayLogo;
           }
+        },
+        teamHasRealLogo: function (unityKey) {
+            var logo = this.getTeamLogo(unityKey);
+            var default_logo = '/Default_profile_icon.png';
+            return !this.endsWith(logo, default_logo);
+        },
+        endsWith: function (str, suffix) {
+          return str.indexOf(suffix, str.length - suffix.length) !== -1;
         },
         isFinal: function() {
           return this.status === 'Complete';
