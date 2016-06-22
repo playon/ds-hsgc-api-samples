@@ -114,11 +114,12 @@ module.exports = function (grunt) {
             }
         },
         aws: grunt.file.readJSON('.grunt-aws'),
-        s3: {
+        aws_s3: {
             options: {
+                accessKeyId: '<%= aws.key %>',
+                secretAccessKey: '<%= aws.secret %>',
                 access: 'public-read',
-                key: '<%= aws.key %>',
-                secret: '<%= aws.secret %>',
+                region: 'us-east-1',
                 bucket: 'cdn.hsgamecenter.com',
                 headers: {
                     // 24 hour cache policy (1000 * 60 * 60 * 24)
@@ -127,12 +128,16 @@ module.exports = function (grunt) {
                 }
             },
             dev: {
-                upload: [
-                  {
-                      src: 'build/**',
-                      rel: 'build',
-                      dest: 'js/<%= pkg.name %>/<%= pkg.version.substr(0, pkg.version.indexOf("-") > 0 ? pkg.version.indexOf("-") : pkg.version.length ) %>'
-                  }
+                options: {
+                    debug: false    // set debug: true to see how paths are mapped without actually uploading to S3
+                },
+                files: [
+                    {
+                        expand: true,
+                        src: '**',
+                        cwd: 'build',
+                        dest: 'js/<%= pkg.name %>/<%= pkg.version.substr(0, pkg.version.indexOf("-") > 0 ? pkg.version.indexOf("-") : pkg.version.length ) %>'
+                    }
                 ]
             }
         },
@@ -160,13 +165,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-s3');
+    grunt.loadNpmTasks('grunt-aws-s3');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
     grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy']);
-    grunt.registerTask('deploy', ['build', 's3']);
+    grunt.registerTask('deploy', ['build', 'aws_s3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
