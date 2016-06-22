@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="nfhs-scout-shot-chart-container">
-    <img class="nfhs-scout-basketball-court" src="http://cdn.hsgamecenter.com/img/basketball-court.png"/>
+    <img class="nfhs-scout-basketball-court" src="https://cdn.digitalscout.com/img/basketball-court.png"/>
     <div ng-repeat="shot in playByPlay | filterShots:awayPlayerFilter:homePlayerFilter:selectedShotChartPeriod" title="{{shot.Description}}" style="top: {{getShotTop(shot)}}%; left: {{getShotLeft(shot)}}%;"  class="nfhs-scout-shot-chart-shot {{getShotImageClass(shot)}}"></div>
   </div>
   <div class="nfhs-scout-shot-chart-legend">

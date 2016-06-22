@@ -215,8 +215,8 @@ angular.module('hsgc')
         scope.clearItems = function() {
           paper.project.clear();
           vballPoints = [];
-          vballCourtImgLarge = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-1280x640.png');
-          vballCourtImgSmall = new paper.Raster('http://cdn.hsgamecenter.com/img/volleyball-court-640x320.png');
+          vballCourtImgLarge = new paper.Raster('https://cdn.digitalscout.com/img/volleyball-court-1280x640.png');
+          vballCourtImgSmall = new paper.Raster('https://cdn.digitalscout.com/img/volleyball-court-640x320.png');
           vballCourtImg = vballCourtImgLarge;
           vballCourtImgWidth = 1280;
         };

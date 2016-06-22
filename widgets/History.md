@@ -1,8 +1,24 @@
-1.0.8 / 2015-06-01
+1.1.0 / 2016-06-22
 ==================
 
-  * Add volleyball support
+  * Switch to CloudFront CDN for loading assets
+
+1.0.9 / 2015-06-01
+==================
+
+  * Volleyball
   * Minor fixes to the NFHS layout and to the example HTML files
+  * Compressed CSS files
+  * Show "Highlights" in the play-by-play
+  * Improved drive chart rendering/performance and bug fixes
+  * Support for 'final scores in first period' feature
+  * Enable the use of font logos when appropriate
+
+1.0.8 / 2015-02-18
+==================
+
+  * Basketball
+  * Layout improvements and bug fixes
 
 1.0.7 / 2014-10-06
 ==================

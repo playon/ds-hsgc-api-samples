@@ -1,7 +1,7 @@
 {
   "name": "hsgc-widgets",
-  "version": "1.0.9",
-  "description": "Widgets for hsgamecenter.com",
+  "version": "1.1.0",
+  "description": "Widgets for scores.nfhsnetwork.com",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
