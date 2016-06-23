@@ -2,6 +2,7 @@
 ==================
 
   * Switch to CloudFront CDN for loading assets
+  * Update grunt S3 SDK library to one that is still active
 
 1.0.9 / 2015-06-01
 ==================
