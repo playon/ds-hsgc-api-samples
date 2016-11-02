@@ -2,7 +2,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   this.config = {
     env: "prod",
     keyStrategy: "unity",
-    //apiRoot: "http://api.hsgamecenter.com/v1.2/",
+    //apiRoot: "https://api.digitalscout.com/v1.2/",
     //unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
     showTeamLinks: false,
     datacastLoaded: function() {},
@@ -25,7 +25,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   };
 
   this.getHsgcApiRoot = function() {
-    return this.config.env === "prod" ? "https://api-cf.digitalscout.com/v1.2/" : this.config.env === "stage" ? "https://api-stage.digitalscout.com/v1.2/" : "http://api.gamecenter.dev/";
+    return this.config.env === "prod" ? "https://api-cf.digitalscout.com/v1.2/" : this.config.env === "stage" ? "https://api-stage.digitalscout.com/v1.2/" : "https://api.gamecenter.dev/";
   };
 
   this.getUnityApiRoot = function() {

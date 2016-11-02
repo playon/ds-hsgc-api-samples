@@ -17,13 +17,14 @@ For development in Visual Studio 2012+
 
 ### Running locally
 
-1. Download the repository, and go to the `widgets` directory
-2. Ensure npm is up to date with `npm update -g npm`
-3. Run `npm install` to install the project dependencies
-4. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
-5. To build: run `grunt`.  This will create a minified javascript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
-6. To test: Go to [http://localhost:3001/](http://localhost:3001/) and select an appropriate HTML file to test
-7. To automatically watch for file changes and rebuild, run `grunt watch`.
+1. Download this repository, and navigate to the `widgets` directory
+2. Ensure `nodejs` is installed (preferably by `nvm`)
+3. Ensure npm is up to date with `npm update -g npm`
+4. Run `npm install` to install the project dependencies
+5. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
+6. To build: run `grunt`.  This will create a minified javascript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
+7. To test: Go to [http://localhost:3001/](http://localhost:3001/) and select an appropriate HTML file to test
+8. To automatically watch for file changes and rebuild, run `grunt watch`.
 
 ### Deploying
 1. Create a new file called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret` that have access to the cdn.hsgamecenter.com S3 bucket. Example: `{ "key": "your_key", "secret": "your_secret" }`

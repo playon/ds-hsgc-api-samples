@@ -104,6 +104,7 @@
     <Compile Include="src\js\directives\teamStats.js" />
     <Compile Include="src\js\filters\decimals.js" />
     <Compile Include="src\js\filters\getPlayerById.js" />
+    <Compile Include="src\js\filters\getPlayerShortNameById.js" />
     <Compile Include="src\js\filters\percentage.js" />
     <Compile Include="src\js\filters\rosterPlayersToDisplay.js" />
     <Compile Include="src\js\filters\stringFormat.js" />

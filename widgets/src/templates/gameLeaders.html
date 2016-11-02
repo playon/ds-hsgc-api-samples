@@ -4,20 +4,20 @@
       <thead>
         <tr>
           <th></th>
-          <th>Pass</th>
-          <th>Rush</th>
-          <th>Rec</th>
+          <th title="Passing leader">Pass</th>
+          <th title="Rushing leader">Rush</th>
+          <th title="Receiving leader">Rec</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><img ng-src="{{awayLogo}}" alt="" class="nfhs-scout-logo" /> {{awayShortName}}</td>
+          <td><img ng-src="{{awayLogo}}" alt="{{awayShortName}} logo" class="nfhs-scout-logo" /><br />{{awayShortName}}</td>
           <td>{{leaders.awayPassingLeader}}</td>
           <td>{{leaders.awayRushingLeader}}</td>
           <td>{{leaders.awayReceivingLeader}}</td>
         </tr>
         <tr>
-          <td><img ng-src="{{homeLogo}}" alt="" class="nfhs-scout-logo" /> {{homeShortName}}</td>
+          <td><img ng-src="{{homeLogo}}" alt="{{homeShortName}} logo" class="nfhs-scout-logo" /><br />{{homeShortName}}</td>
           <td>{{leaders.homePassingLeader}}</td>
           <td>{{leaders.homeRushingLeader}}</td>
           <td>{{leaders.homeReceivingLeader}}</td>

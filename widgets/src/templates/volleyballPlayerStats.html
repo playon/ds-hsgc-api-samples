@@ -1,8 +1,12 @@
 <div ng-show="statsAvailable" class="nfhs-scout-player-stats">
   <h4 class="nfhs-scout-heading">
-    <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></span>
+    <span ng-show="!showTeamLinks">
+      <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
+      <span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+    </span>
     <a ng-show="showTeamLinks" href="{{awaySlug}}">
-      <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+      <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
+      <span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
     </a>
   </h4>
   <table class="nfhs-scout-table" responsive-table>
@@ -55,9 +59,13 @@
 </div>
 <div ng-show="statsAvailable" class="nfhs-scout-player-stats">
   <h4 class="nfhs-scout-heading">
-    <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></span>
+    <span ng-show="!showTeamLinks">
+      <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
+      <span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+    </span>
     <a ng-show="showTeamLinks" href="{{homeSlug}}">
-      <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+      <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
+      <span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
     </a>
   </h4>
   <table class="nfhs-scout-table" responsive-table>

@@ -32,22 +32,27 @@ table.nfhs-scout-table {
   >li {
     line-height: 24px;
     font-size: 12px;
-    margin-right:0;
+    margin-right: 0;
+    height: 1px;  /* tiny so it stretches the whole row based on child content */
+    background-color: #00255c;
 
     a {
-      height: 35px;
-      padding: 15px 10px 0;
-      background-color: #00255c;
+      padding: 15px 10px;
+      /* combined with height:1px and display:table-cell of the li, height:100% gives a uniform height for all a tags so the .active:after with top:100% will anchor correctly */
+      height: 100%; 
       color: #fff;
+      background-color: inherit;
       text-transform: uppercase;
       font-weight: 700;
       border: none;
     }
 
     &.active {
+      background-color: #4685bd;
+
       a, a:hover, a:focus {
-        background-color: #4685bd;
         color: #fff;
+        background-color: inherit;
         border: none;
 
         &:after {
@@ -73,4 +78,8 @@ table.nfhs-scout-table {
   >div {
     border: none;
   }
+}
+
+.nfhs-scout-heading img.nfhs-scout-logo {
+  margin-bottom: 4px;
 }
