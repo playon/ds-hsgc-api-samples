@@ -1,5 +1,7 @@
 # Digital Scout Widgets
 
+[![Build Status](http://build.digitalscout.com:8080/buildStatus/icon?job=GameCenterWidgetsBuild)](http://build.digitalscout.com:8080/job/GameCenterWidgetsBuild)
+
 ### [CHANGELOG](https://github.com/playon/ds-hsgc-api-samples/blob/master/widgets/History.md)
 
 ## Requirements

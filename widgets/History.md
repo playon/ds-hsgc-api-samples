@@ -4,6 +4,12 @@
   * Switch to CloudFront CDN for loading assets
   * Update grunt S3 SDK library to one that is still active
 
+*Hot patch to 1.1.0 on 2016-11-2:*
+
+  * "Full box" view tab height looks better when text wraps (for example, the "Scoring Summary" football tab)
+  * Various Football "Game Leaders" formatting improvements
+  * Consistent "period" column width on the "Scoreboard"
+
 1.0.9 / 2015-06-01
 ==================
 
