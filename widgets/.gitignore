@@ -1,4 +1,6 @@
 node_modules
+.grunt-aws
+build
 *.cache
 *.suo
 obj
