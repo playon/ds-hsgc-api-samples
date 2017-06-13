@@ -29,6 +29,6 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   };
 
   this.getUnityApiRoot = function() {
-    return this.config.env === "prod" ? "http://cfunity.nfhsnetwork.com/v1/" : this.config.env === "stage" ? "http://unity.stage.nfhsnetwork.com/v1/" : "http://localhost:3000/v1/";
+    return this.config.env === "prod" ? "https://cfunity.nfhsnetwork.com/v1/" : this.config.env === "stage" ? "https://unity.stage.nfhsnetwork.com/v1/" : "http://localhost:3000/v1/";
   };
 });
