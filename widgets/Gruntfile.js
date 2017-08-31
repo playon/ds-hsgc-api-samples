@@ -1,7 +1,11 @@
+var fs = require('fs');
 var tmp = require('temporary');
 
 module.exports = function (grunt) {
-    var tmpTemplateFile = new tmp.File();
+    var aws = {}, tmpTemplateFile = new tmp.File();
+    if (fs.existsSync('.grunt-aws')) {
+        aws = grunt.file.readJSON('.grunt-aws');
+    }
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -113,7 +117,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        aws: grunt.file.readJSON('.grunt-aws'),
+        aws: aws,
         aws_s3: {
             options: {
                 accessKeyId: '<%= aws.key %>',
