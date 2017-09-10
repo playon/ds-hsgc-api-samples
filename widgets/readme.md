@@ -2,45 +2,45 @@
 
 [![Build Status](http://build.digitalscout.com:8080/buildStatus/icon?job=GameCenterWidgetsBuild)](http://build.digitalscout.com:8080/job/GameCenterWidgetsBuild)
 
-### [CHANGELOG](https://github.com/playon/ds-hsgc-api-samples/blob/master/widgets/History.md)
+## [CHANGELOG](https://github.com/playon/ds-hsgc-api-samples/blob/master/widgets/History.md)
 
 ## Requirements
 
 1. **nodejs**
-2. **npm**
-3. **grunt** (`npm install -g grunt-cli`)
+1. **npm**
+1. **grunt** (`npm install -g grunt-cli`)
 
 For development in Visual Studio 2012+
 
 1. Visual Studio 2012+
-2. [Node.js Tools for Visual Studio](https://nodejstools.codeplex.com/wikipage?title=Projects)
+1. [Node.js Tools for Visual Studio](https://nodejstools.codeplex.com/wikipage?title=Projects)
 
 ## Usage
 
 ### Running locally
 
 1. Download this repository, and navigate to the `widgets` directory
-2. Ensure `nodejs` is installed (preferably by `nvm`)
-3. Ensure npm is up to date with `npm update -g npm`
-4. Install `grunt` globally: `npm install grunt -g`
-4. Run `npm install` to install the project dependencies
-5. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
-6. To build: run `grunt`.  This will create a minified javascript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
-7. To test: Go to [http://localhost:3001/](http://localhost:3001/) and select an appropriate HTML file to test
-8. To automatically watch for file changes and rebuild, run `grunt watch`.
+1. Ensure `nodejs` is installed (preferably by `nvm`)
+1. Ensure npm is up to date with `npm update -g npm`
+1. Install `grunt` globally: `npm install grunt -g`
+1. Run `npm install` to install the project dependencies
+1. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
+1. To build: run `grunt`.  This will create a minified javascript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
+1. To test: Go to [https://localhost:3001/](https://localhost:3001/) and select an appropriate HTML file to test. (You will have to accept the self-signed certificate.)
+1. To automatically watch for file changes and rebuild, run `grunt watch`.
 
 ### Deploying
+
 1. Create a new file called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret` that have access to the cdn.hsgamecenter.com S3 bucket. Example: `{ "key": "your_key", "secret": "your_secret" }`
-2. Run `grunt deploy`.  This will copy all files from the build directory to the cdn.hsgamecenter.com S3 bucket with the path `/js/ds-widgets/{version from package.json}/`. The assets in this bucket should then be accessed via the CloudFront cache of that bucket via
-`https://cdn.digitalscout.com/js/ds-widgets/{version from package.json}/...`.
+1. Run `grunt deploy`.  This will copy all files from the build directory to the cdn.hsgamecenter.com S3 bucket with the path `/js/ds-widgets/{version from package.json}/`. The assets in this bucket should then be accessed via the CloudFront cache of that bucket via `https://cdn.digitalscout.com/js/ds-widgets/{version from package.json}/...`.
 
 ### Development
 
-#### Setup for Visual Studio 2012+:
+#### Setup for Visual Studio 2012+
 
 1. Install [Node.js Tools for Visual Studio](https://nodejstools.codeplex.com/wikipage?title=Projects)
-2. Open `hsgc-widgets.sln`
-3. Note: Building/running from VS on Windows still doesn't work because of the ongoing Path Too Long problem node has when running on Windows. But you can still use VS as an editor. Or switch to [Sublime](http://www.sublimetext.com/).
+1. Open `hsgc-widgets.sln`
+1. Note: Building/running from VS on Windows still doesn't work because of the ongoing Path Too Long problem node has when running on Windows. But you can still use VS as an editor. Or switch to [Sublime](http://www.sublimetext.com/).
 
 #### Architecture
 
@@ -66,7 +66,7 @@ Once bower has been run, manually update the build targets in `Gruntfile.js` to 
 
 #### Debug logging
 
-AngularJS provides the `$logProvider` for logging purposes. Inject `'$log'` into a directive/service/etc and use `$log.debug('message ' + obj.someValue)` which will then output to the standard `console.log`. 
+AngularJS provides the `$logProvider` for logging purposes. Inject `'$log'` into a directive/service/etc and use `$log.debug('message ' + obj.someValue)` which will then output to the standard `console.log`.
 
 Other levels can be used (info, error, warn) but are generally discouraged since they will be put in the console in production. Why won't DEBUG level? Because the HSGC widget `app.js` file configures DEBUG messages to not display.
 
