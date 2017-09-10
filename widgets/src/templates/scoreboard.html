@@ -75,3 +75,36 @@
     </tbody>
   </table>
 </div>
+<!-- game hasn't started yet -->
+<div ng-hide="scoresAvailable" class="nfhs-scout-scoreboard">
+  <div attribution class="nfhs-scout-attribution"></div>
+  <span class="nfhs-scout-game-status">Scheduled</span>
+  <h4 class="nfhs-scout-heading">{{statusDisplay}}</h4>
+  <table class="nfhs-scout-table">
+    <tbody>
+      <tr>
+        <td style="width: 49%">
+          <span ng-show="!showTeamLinks">
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+            {{awayShortName}}
+          </span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+            {{awayShortName}}
+          </a>
+        </td>
+        <td style="width: 1%">@</td>
+        <td style="width: 49%; text-align: right;">
+          <span ng-show="!showTeamLinks">
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
+            {{homeShortName}}
+          </span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
+            {{homeShortName}}
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

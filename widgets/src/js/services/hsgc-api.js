@@ -370,11 +370,18 @@ angular.module('hsgc')
     };
 
     var populatePlayers = function(boxScore, bs, $filter) {
+      var players = boxScore.Players;
+
+      // generate a URL to the player page
+      angular.forEach(players, function(value, key) {
+        value.PlayerSlug = hsgcConfig.statsRoot + 'player/' + value.PlayerId + '/' + boxScore.Sport.toLowerCase() + '/' + value.TeamSeasonId;
+      });
+
       bs.players = {};
-      bs.players[boxScore.HomeTeamSeasonId] = $filter('filter')(boxScore.Players, {
+      bs.players[boxScore.HomeTeamSeasonId] = $filter('filter')(players, {
         TeamSeasonId: boxScore.HomeTeamSeasonId
       });
-      bs.players[boxScore.AwayTeamSeasonId] = $filter('filter')(boxScore.Players, {
+      bs.players[boxScore.AwayTeamSeasonId] = $filter('filter')(players, {
         TeamSeasonId: boxScore.AwayTeamSeasonId
       });
     };
@@ -383,35 +390,64 @@ angular.module('hsgc')
       if (sport === "Football" || sport === "Basketball" || sport === "Volleyball") {
         $log.debug('Getting full box for sport: ' + sport);
 
-        var config = {
-          params: {}
-        };
+        var url = '', 
+          config = {
+            params: {}
+          };
         angular.extend(config.params, options);
 
-        var url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + unityGameKey;
-        return $http.get(url, config).then(
-          //success
-          function(boxScore) {
-            var bs = populateBaseInfo(boxScore.data);
-            populatePlayers(boxScore.data, bs, $filter);
-            populateLeaderInfo(boxScore.data, bs, $filter);
-            populatePlayerStats(boxScore.data, bs);
-            return bs;
-          },
-          //error
-          function(response) {
-            hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
-            var result = {
-              status: response.status,
-              statusText: response.statusText
-            };
+        if (hsgcConfig.keyStrategy === "unity") {
+          url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + unityGameKey;
+          return $http.get(url, config).then(
+            //success
+            function(boxScore) {
+              var bs = populateBaseInfo(boxScore.data);
+              populatePlayers(boxScore.data, bs, $filter);
+              populateLeaderInfo(boxScore.data, bs, $filter);
+              populatePlayerStats(boxScore.data, bs);
+              return bs;
+            },
+            //error
+            function(response) {
+              hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
+              var result = {
+                status: response.status,
+                statusText: response.statusText
+              };
 
-            if (response.status == 402) {
-              result.boxScore = populateBaseInfo(response.data);
-              hsgcConfig.datacastPaymentRequired(response.data);
-            }
-            return $q.reject(result);
-          });
+              if (response.status == 402) {
+                result.boxScore = populateBaseInfo(response.data);
+                hsgcConfig.datacastPaymentRequired(response.data);
+              }
+              return $q.reject(result);
+            });
+        } else {
+          // hsgc code
+          url = hsgcConfig.apiRoot + 'games/' + unityGameKey;
+          return $http.get(url, config).then(
+            //success
+            function(boxScore) {
+              var bs = populateBaseInfo(boxScore.data);
+              populatePlayers(boxScore.data, bs, $filter);
+              populateLeaderInfo(boxScore.data, bs, $filter);
+              populatePlayerStats(boxScore.data, bs);
+              return bs;
+            },
+            //error
+            function(response) {
+              hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
+              var result = {
+                status: response.status,
+                statusText: response.statusText
+              };
+
+              if (response.status == 402) {
+                result.boxScore = populateBaseInfo(response.data);
+                hsgcConfig.datacastPaymentRequired(response.data);
+              }
+              return $q.reject(result);
+            });
+        }
       } else {
         $log.debug(sport + ' not implemented');
         //I don't know how to return an empty promise

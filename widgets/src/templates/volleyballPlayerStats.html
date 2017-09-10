@@ -34,7 +34,10 @@
     <tbody>
       <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
         <td class="nfhs-scout-player-stats-player-name">
-            {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            <a ng-show="false" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+              {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            </a>
+            <span ng-show="true">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
             <span ng-show="playerStat.IsStarter" class="starter">*</span>
         </td>
         <td>{{playerStat.MatchGamesPlayed}}</td>
@@ -93,7 +96,10 @@
     <tbody>
       <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
         <td class="nfhs-scout-player-stats-player-name">
-            {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            <a ng-show="false" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+              {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+            </a>
+            <span ng-show="true">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
             <span ng-show="playerStat.IsStarter" class="starter">*</span>
         </td>
         <td>{{playerStat.MatchGamesPlayed}}</td>

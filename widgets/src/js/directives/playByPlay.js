@@ -9,7 +9,7 @@ angular.module('hsgc')
       })[0];    
     };
   })
-  .directive('playByPlay', function() {
+  .directive('playByPlay', ['$log', function($log) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/playByPlay.html',
@@ -97,7 +97,7 @@ angular.module('hsgc')
             }
           }
           scope.playByPlayPeriods = periods;
-          console.log('Plays: ', scope.playByPlay.length);
+          $log.debug('Plays: ', scope.playByPlay.length);
           updatePlaysToDisplay();          
         });        
         
@@ -125,4 +125,4 @@ angular.module('hsgc')
         };
       }
     };
-  });
+  }]);
