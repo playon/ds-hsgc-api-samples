@@ -158,6 +158,9 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 3001,
+                    protocol: 'https',
+                    key: grunt.file.read('development.key').toString(),
+                    cert: grunt.file.read('development.crt').toString(),
                     base: './build',
                     livereload: true
                 }
