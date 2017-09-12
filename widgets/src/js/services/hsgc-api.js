@@ -8,7 +8,8 @@ angular.module('hsgc')
         colors = {},
         inOverTime = boxScore.Sport !== 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount,
         homeOTScore = 0,
-        awayOTScore = 0;
+        awayOTScore = 0,
+        startTime = new Date(boxScore.LocalStartTime);
 
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
@@ -23,6 +24,14 @@ angular.module('hsgc')
       colors[safeToLower(boxScore.AwayTeamUnityKey)] = {
         primary: boxScore.AwayTeamPrimaryColor,
         secondary: boxScore.AwayTeamSecondaryColor
+      };
+      colors[boxScore.HomeTeamSeasonId] = {
+        primary: '#' + boxScore.HomeTeamPrimaryColor,
+        secondary: '#' + boxScore.HomeTeamSecondaryColor
+      };
+      colors[boxScore.AwayTeamSeasonId] = {
+        primary: '#' + boxScore.AwayTeamPrimaryColor,
+        secondary: '#' + boxScore.AwayTeamSecondaryColor
       };
 
       if (inOverTime) {
@@ -97,22 +106,26 @@ angular.module('hsgc')
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
+        year: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy'),
         colors: colors,
         inOverTime: inOverTime,
         awayOvertimeScore: awayOTScore,
         homeOvertimeScore: homeOTScore,
         gameDetailLink: boxScore.GameDetailLink,
+        gameType: boxScore.GameType === "RegularSeason" ? "Regular Season" : boxScore.GameType,
+        gender: boxScore.Gender,
         finalScoresInFirstPeriod: boxScore.FinalScoresInFirstPeriod,
+        sport: boxScore.Sport,
 
         getScore: function(unityKey) {
           var tsId = this.unityTeamMapping[safeToLower(unityKey)];
           return this.totalScores[tsId];
         },
-        getPrimaryColor: function(unityKey) {
-          return colors[unityKey].primary; //todo: populate color based off api response
+        getPrimaryColor: function(key) {
+          return colors[key].primary;
         },
-        getSecondaryColor: function(unityKey) {
-          return colors[unityKey].secondary; //todo: populate color based off api response
+        getSecondaryColor: function(key) {
+          return colors[key].secondary;
         },
         getTeamName: function(unityKey) {
           if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {

@@ -1,3 +1,45 @@
+<div class="nfhs-scout-scoreboard card">
+  <div class="details">
+    <div class="dataonly">
+      <div class="left pointer">
+        <div class="score">{{awayScore}}</div>
+        <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
+          <span ng-hide="showTeamLinks">
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+          </span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+          </a>
+        </div>
+        <p class="name">
+          {{awayName}} {{awayMascot}}
+        </p>
+      </div>
+      <div class="right pointer">
+        <div class="score">{{homeScore}}</div>
+        <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
+          <span ng-hide="showTeamLinks">
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
+          </span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
+          </a>
+        </div>
+        <p class="name">
+          {{homeName}} {{homeMascot}}
+        </p>
+      </div>
+    </div>
+    <div class="cardContent">
+      <span class="type">{{status}}</span>
+      <h3>{{statusDisplay}}</h3>
+      <h4>{{gender}} {{sport}}</h4>
+      <span class="description">{{gameType}}</span>
+      <span class="date">{{year}}</span>
+    </div>
+  </div>  
+</div>
+
 <div ng-show="scoresAvailable" class="nfhs-scout-scoreboard">
   <div attribution class="nfhs-scout-attribution"></div>
   <span class="nfhs-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
@@ -21,10 +63,12 @@
       <tr>
         <td ng-class="{'nfhs-scout-winner': isWinner(awayTeamKey)}">
           <span ng-show="!showTeamLinks">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+            {{awayShortName}}
           </span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
+            {{awayShortName}}
           </a>
         </td>
         <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>
@@ -71,39 +115,6 @@
           <span>{{homeOvertimeScore}}</span>
         </td>
         <td class="nfhs-scout-final">{{homeScore}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<!-- game hasn't started yet -->
-<div ng-hide="scoresAvailable" class="nfhs-scout-scoreboard">
-  <div attribution class="nfhs-scout-attribution"></div>
-  <span class="nfhs-scout-game-status">Scheduled</span>
-  <h4 class="nfhs-scout-heading">{{statusDisplay}}</h4>
-  <table class="nfhs-scout-table">
-    <tbody>
-      <tr>
-        <td style="width: 49%">
-          <span ng-show="!showTeamLinks">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
-            {{awayShortName}}
-          </span>
-          <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
-            {{awayShortName}}
-          </a>
-        </td>
-        <td style="width: 1%">@</td>
-        <td style="width: 49%; text-align: right;">
-          <span ng-show="!showTeamLinks">
-            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
-            {{homeShortName}}
-          </span>
-          <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" />
-            {{homeShortName}}
-          </a>
-        </td>
       </tr>
     </tbody>
   </table>
