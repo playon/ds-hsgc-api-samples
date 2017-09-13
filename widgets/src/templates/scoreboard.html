@@ -1,4 +1,4 @@
-<div class="nfhs-scout-scoreboard card">
+<div ng-cloak class="nfhs-scout-scoreboard card">
   <div class="details">
     <div class="dataonly">
       <div class="left pointer">
@@ -40,7 +40,7 @@
   </div>  
 </div>
 
-<div ng-show="scoresAvailable" class="nfhs-scout-scoreboard">
+<div ng-cloak ng-show="scoresAvailable" class="nfhs-scout-scoreboard">
   <div attribution class="nfhs-scout-attribution"></div>
   <span class="nfhs-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
   <h4 class="nfhs-scout-heading">
