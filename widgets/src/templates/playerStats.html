@@ -20,18 +20,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="passer in playerStats.passingStats">
+        <tr ng-repeat="player in playerStats.passingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:passer.PlayerId:teamId).DisplayName}}
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
-          <td>{{passer.Completions}}</td>
-          <td>{{passer.Attempts}}</td>
-          <td>{{passer.Yards}}</td>
-          <td>{{passer.CompletionPercentage | decimals:1}}%</td>
-          <td>{{passer.Touchdowns}}</td>
-          <td>{{passer.Interceptions}}</td>
+          <td>{{player.Completions}}</td>
+          <td>{{player.Attempts}}</td>
+          <td>{{player.Yards}}</td>
+          <td>{{player.CompletionPercentage | decimals:1}}%</td>
+          <td>{{player.Touchdowns}}</td>
+          <td>{{player.Interceptions}}</td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +51,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.rushingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -78,7 +78,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.receivingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -107,7 +107,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.defensiveStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -136,7 +136,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.kickingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -163,7 +163,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.puntingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -190,7 +190,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.puntReturnStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
@@ -217,7 +217,7 @@
       <tbody>
         <tr ng-repeat="player in playerStats.kickReturnStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
           </td>
