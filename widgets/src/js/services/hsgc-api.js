@@ -399,7 +399,7 @@ angular.module('hsgc')
       });
     };
 
-    var getFullBox = function(unityGameKey, publisherKey, sport, options) {
+    var getFullBox = function(key, publisherKey, sport, options) {
       if (sport === "Football" || sport === "Basketball" || sport === "Volleyball") {
         $log.debug('Getting full box for sport: ' + sport);
 
@@ -410,7 +410,7 @@ angular.module('hsgc')
         angular.extend(config.params, options);
 
         if (hsgcConfig.keyStrategy === "unity") {
-          url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + unityGameKey;
+          url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + key;
           return $http.get(url, config).then(
             //success
             function(boxScore) {
@@ -436,7 +436,7 @@ angular.module('hsgc')
             });
         } else {
           // hsgc code
-          url = hsgcConfig.apiRoot + 'games/' + unityGameKey;
+          url = hsgcConfig.apiRoot + 'games/' + key;
           return $http.get(url, config).then(
             //success
             function(boxScore) {
@@ -462,7 +462,7 @@ angular.module('hsgc')
             });
         }
       } else {
-        $log.debug(sport + ' not implemented');
+        $log.error(sport + ' not implemented');
         //I don't know how to return an empty promise
         var deferred = $q.defer();
         deferred.resolve();

@@ -11,7 +11,12 @@ angular.module('hsgc')
 
         var updateBoxScore = function() {
           HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, {
-            includeTeamAggregates: true
+            includeTeamAggregates: true,
+            // temporary fix to match datacast so browser caching can be used
+            includeLeaders: true,
+            includePlayByPlay: true,
+            includePlayerStats: true,
+            includePlayers: true
           }).then(function(result) {
             // success
             angular.extend($scope, result);
