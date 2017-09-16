@@ -1,9 +1,14 @@
 <!doctype html>
 <html>
   <head>
+    <title>Football</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="hsgc-widgets.min.js"></script>
+    <script src="hsgc-widgets.js"></script>
+    <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
+    <link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet" type="text/css">
     <link rel="icon" href="">
   </head>
   <body>
@@ -15,7 +20,8 @@
       hsgcWidgets.init({
         env: 'prod',
         keyStrategy: 'hsgc',
-        showTeamLinks: true
+        showTeamLinks: true,
+        imageRoot: 'https://stats.digitalscout.com/'
       });
     </script>
   </body>

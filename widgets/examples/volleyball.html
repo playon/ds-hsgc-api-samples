@@ -1,89 +1,26 @@
 <html>
   <head>
+    <title>Volleyball</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="hsgc-widgets.js"></script>
-    <link href="http://www.nfhsnetwork.com/sites/all/themes/nfhs/css/layout.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/nfhs.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <style>
-      .container { padding-top: 40px; }
-      @media only screen and (max-device-width: 960px) {
-        nav#navigation {
-          display: none;
-        }
-        body #page { margin-left: 0; }
-      }
-    </style>
+    <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
+    <link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="icon" href="">
   </head>
   <body class="page-events">
-    <header id="header">
-    </header>
+    <div class="container">
+      <div class="left two-thirds column alpha">
 
-    <nav role="navigation" id="navigation" class="open">
-    </nav>
+        <div full-box-score sport="Volleyball" game="8267306"></div>
 
-    <div id="page">
-      <div id="main-content">
-        <div id="content" class="clearfix">
-          <div id="block-system-main" class="block block-system">
-            <div class="content">
-              <div class="top">
-              </div>
-              <div class="container">
-                <div class="left eight columns alpha">
-                  <div class="eventdetails"></div>
+      </div>
 
-                  <!--<div full-box-score sport="Volleyball" game="a8f268b5d8" publisher=""></div>-->
-                  <div full-box-score sport="Volleyball" game="a8f268b5d9" publisher=""></div>
+      <div class="right one-third column omega">
 
-                  <!--div class="cards" style="">
-                    <div class="card">
-                      <div class="details">
-                        <div class="cardplaybtn"></div>
-                        <div class="dataonly" datacast="4333373" publisher="" sport="Volleyball">
-                          <div class="left">
-                            <div class="score">{{getScore('0cab7a7072')}}</div>
-                            <div class="logo" style="background-color: #546376; background-image: url(http://s3.amazonaws.com/unity-school-logos/Default_profile_icon.png)">
-                            </div>
-                            <p class="name">{{getTeamName('0cab7a7072')}}</p>
-                          </div>
-                          <div class="right">
-                            <div class="score">{{getScore('e48af049bd')}}</div>
-                            <div class="logo" style="background-color: #546376; background-image: url(http://s3.amazonaws.com/unity-school-logos/Default_profile_icon.png)">
-                            </div>
-                            <p class="name">{{getTeamName('e48af049bd')}}</p>
-                          </div>
-                        </div>
+        <div game-summary game="8267306" sport="Volleyball"></div>
 
-                        <div class="cardContent">
-                          <span class="type">Stats</span>
-                          <h3>Football</h3>
-                          <h4>Freshman Football</h4>
-                          <span class="description">Mississinewa High School vs. Madison-Grant...</span>
-                          <span class="date" id="foo">Oct 07 | 7:00 PM EDT | Location TBA</span>
-                        </div>
-                      </div>
-                      <ul class="actions game_06265f6b94" data-eid="game_06265f6b94">
-                        <li onclick="nfhs.nfhs_app.members.card_clickEvent('reminder', 'game', '06265f6b94' );" class="reminder"><a>Watch Later</a></li>
-                        <li onclick="nfhs.nfhs_app.members.card_clickEvent('favorite', 'game', '06265f6b94' );" class="favorite"><a>Favorite</a></li>
-                        <li class="share"><a>Share</a></li>
-                        <div class="cardSocial" style="display: none;">
-                          <div class="sharethis-wrapper"></div>
-                        </div>
-                      </ul>
-                    </div>
-                  </div-->
-                </div>
-                <div class="right four columns omega">
-                  <div class="nfhs-scout-game-summary">
-                    <!--<div game-summary game="a8f268b5d8" sport="Volleyball" publisher="no pub"></div>-->
-                    <div game-summary game="a8f268b5d9" sport="Volleyball" publisher="no pub"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -114,6 +51,7 @@
           }
         }
       };
+
       nfhsplayer = {
         templates: {
           upsell: function(vars) {
@@ -124,9 +62,9 @@
 
       hsgcWidgets.init({
         env: 'prod',
-        imageRoot: 'http://www.hsgamecenter.com/',
-        keyStrategy: 'unity',
-        showTeamLinks: false,
+        imageRoot: 'https://stats.digitalscout.com/',
+        keyStrategy: 'hsgc',
+        showTeamLinks: true,
         //beforeLoadDatacast: hsgcWidgets.networkAuthorize,
         //fullBoxScoreFirstLoaded: function() { nfhs.analytics.sendPageView('data'); }
       });

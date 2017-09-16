@@ -12,7 +12,7 @@ angular.module('hsgc')
         var updateBoxScore = function() {
           HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, {
             includeTeamAggregates: true,
-            // temporary fix to match datacast so browser caching can be used
+            // TODO: remove this temporary fix to match datacast so browser caching can be used, once they share a datacast update/refresh handler and/or observer
             includeLeaders: true,
             includePlayByPlay: true,
             includePlayerStats: true,

@@ -12,6 +12,9 @@ angular.module('hsgc')
             firstLoad = false;
             scope.selectedShotChartPeriod = null;
             previousPeriod = scope.currentPeriod;
+
+            // set the court image, so that for non-basketball sports it only loads at first load
+            angular.element('.nfhs-scout-basketball-court').attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
           }
 
           var periods = [];
@@ -90,7 +93,7 @@ angular.module('hsgc')
               return "nfhs-scout-shot-chart-shot-missed-away";
             }
           }
-        }
+        };
       }
     };
   })

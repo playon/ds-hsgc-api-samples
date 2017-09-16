@@ -2,7 +2,7 @@
   <head>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="hsgc-widgets.js"></script>
-    <link href="http://www.nfhsnetwork.com/sites/all/themes/nfhs/css/layout.css" rel="stylesheet">
+    <link href="https://www.nfhsnetwork.com/sites/all/themes/nfhs/css/layout.css" rel="stylesheet">
     <link rel="stylesheet" href="css/nfhs.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <style>
@@ -33,7 +33,7 @@
                   <div class="left eight columns alpha">
                     <div class="eventdetails"></div>
 
-                    <div full-box-score sport="Basketball" game="2222" publisher=""></div>
+                    <div full-box-score sport="Basketball" game="c88ec8e8a5" publisher="no pub"></div>
 
                     <!--div class="cards" style="">
                       <div class="card">
@@ -75,7 +75,7 @@
                   </div>
                   <div class="right four columns omega">
                     <div class="nfhs-scout-game-summary">
-                      <div game-summary game="2222" sport="Basketball" publisher="no pub"></div>
+                      <div game-summary game="c88ec8e8a5" sport="Basketball" publisher="no pub"></div>
                     </div>
                   </div>
                 </div>
@@ -121,9 +121,9 @@
       };
 
       hsgcWidgets.init({
-        env: 'stage',
-        imageRoot: 'http://www.hsgamecenter.com/',
-        keyStrategy: 'usa_today',
+        env: 'prod',
+        imageRoot: 'https://stats.digitalscout.com/',
+        keyStrategy: 'unity',
         //beforeLoadDatacast: hsgcWidgets.networkAuthorize,
         //fullBoxScoreFirstLoaded: function() { nfhs.analytics.sendPageView('data'); }
       });
