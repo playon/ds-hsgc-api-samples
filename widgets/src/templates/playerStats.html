@@ -22,9 +22,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.passingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Completions}}</td>
           <td>{{player.Attempts}}</td>
@@ -51,9 +52,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.rushingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
@@ -78,9 +80,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.receivingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Receptions}}</td>
           <td>{{player.Yards}}</td>
@@ -107,9 +110,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.defensiveStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Tackles}}</td>
           <td>{{player.Solos}}</td>
@@ -136,9 +140,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.kickingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.FieldGoals}}</td>
           <td>{{player.FieldGoalAttempts}}</td>
@@ -163,9 +168,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.puntingStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
@@ -190,9 +196,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.puntReturnStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>
@@ -217,9 +224,10 @@
       <tbody>
         <tr ng-repeat="player in playerStats.kickReturnStats">
           <td class="nfhs-scout-player-stats-player-name">
-            <a href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
+            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
+            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
           </td>
           <td>{{player.Attempts}}</td>
           <td>{{player.Yards}}</td>

@@ -13,7 +13,7 @@ angular.module('hsgc')
             scope.selectedShotChartPeriod = null;
             previousPeriod = scope.currentPeriod;
 
-            // set the court image, so that for non-basketball sports it only loads at first load
+            // set the court image, so it doesn't load over the network for non-basketball sports
             angular.element('.nfhs-scout-basketball-court').attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
           }
 
