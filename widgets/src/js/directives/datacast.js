@@ -29,7 +29,6 @@ angular.module('hsgc')
         }
 
         transcludeFn(scope, function(clonedContent) {
-          //clonedContent.addClass('test');
           element = element.replaceWith(clonedContent);
           element = clonedContent;
         });
@@ -40,6 +39,10 @@ angular.module('hsgc')
           includePlayerStats: angular.isDefined(attrs.includePlayerStats),
           includeTeamAggregates: angular.isDefined(attrs.includeTeamStats),
           includePlayers: angular.isDefined(attrs.includePlayers)
+        };
+
+        var setNextUpdate = function(refreshIn) {
+          $timeout(updateBoxScore, refreshIn);
         };
 
         var firstLoad = true;
@@ -73,25 +76,34 @@ angular.module('hsgc')
                   }
                   scope.$emit('datacastLoaded');
                   scope.$broadcast('datacastLoaded');
-                  $timeout(updateBoxScore, refreshIn);
+
+                  // stop refreshing once game is complete; may miss edits, but those are rare so, meh
+                  if (scope.status !== 'Complete') {
+                    setNextUpdate(refreshIn);
+                  } else {
+                    $log.debug('Game complete. Stopping auto-refresh.');
+                  }
                 }
               },
               //failure
               function(result) {
                 if (result.status == 402) {
+                  // need to pay; will likely need to navigate away anyway, so just stop trying to refresh, and show upsell
                   scope.paymentRequired = true;
                   angular.extend(scope, result.boxScore);
                   opts = {};
-                  $timeout(updateBoxScore, 30 * 1000);
+                } else {
+                  // not sure what went wrong; try again in a little while
+                  setNextUpdate(120 * 1000);
                 }
               });
         };
 
         if (!opts.includeLeaders && !opts.includePlayByPlay && !opts.includePlayerStats && !opts.includeTeamAggregates) {
-          updateBoxScore();
+          return updateBoxScore();
         } else {
           config.beforeLoadDatacast(scope.gameKey, scope.publisherKey, function() {
-            updateBoxScore();
+            return updateBoxScore();
           });
         }
       }

@@ -23,7 +23,7 @@ angular.module('hsgc')
             $timeout(updateBoxScore, 30 * 1000);
           }, function(result) {
             // error
-            $timeout(updateBoxScore, 60 * 1000);
+            $timeout(updateBoxScore, 120 * 1000);
           });
         };
         config.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {

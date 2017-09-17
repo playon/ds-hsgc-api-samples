@@ -105,6 +105,7 @@ angular.module('hsgc')
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
+        statusPretty: boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "No Data" : boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
         year: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy'),
         colors: colors,
