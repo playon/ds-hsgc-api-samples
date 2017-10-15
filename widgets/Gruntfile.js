@@ -125,6 +125,9 @@ module.exports = function (grunt) {
                 access: 'public-read',
                 region: 'us-east-1',
                 bucket: 'cdn.hsgamecenter.com',
+                sslEnabled: true,
+                progress: 'progressBar',
+                uploadConcurrency: 5,
                 headers: {
                     // 24 hour cache policy (1000 * 60 * 60 * 24)
                     "Cache-Control": "max-age=86400000, public",
