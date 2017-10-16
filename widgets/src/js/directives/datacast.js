@@ -74,6 +74,7 @@ angular.module('hsgc')
                       }
                     }
                   }
+
                   scope.$emit('datacastLoaded');
                   scope.$broadcast('datacastLoaded');
 

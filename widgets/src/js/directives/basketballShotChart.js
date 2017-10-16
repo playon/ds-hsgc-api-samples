@@ -55,7 +55,6 @@ angular.module('hsgc')
           scope.shotChartPeriods = periods;
         });
 
-
         scope.getLogo = function(play) {
           return play.TeamSeasonId == scope.homeTeamSeasonId ? scope.homeLogo : scope.awayLogo;
         };

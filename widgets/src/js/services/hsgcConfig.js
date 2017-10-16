@@ -2,6 +2,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
   this.config = {
     env: "prod",
     keyStrategy: "unity",
+    gaTracker: "UA-27695189-2", // Google Analytics tracker code
     //if apiRoot set here, overrides the versions that are usually loaded based on "env"
     //apiRoot: "https://api.digitalscout.com/v1.2/",
     //unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
