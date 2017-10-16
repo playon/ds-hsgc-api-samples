@@ -107,6 +107,7 @@ angular.module('hsgc')
         status: boxScore.Status,
         statusPretty: boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "No Data" : boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
+        localStartTime: startTime,
         year: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy'),
         colors: colors,
         inOverTime: inOverTime,

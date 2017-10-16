@@ -1,13 +1,22 @@
 angular.module('hsgc')
-  .directive('basketballShotChart', function() {
+  .directive('basketballShotChart', ['$log', function($log) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/basketballShotChart.html',
       link: function(scope) {
         scope.selectedShotChartPeriod = 0;
+        scope.publicAvailability = scope.playByPlayAvailable;
         var firstLoad = true;
         var previousPeriod = -1;
         scope.$on('datacastLoaded', function() {
+          var twentyForHoursFromStart = new Date(),
+              periods = [], i;
+
+          // since this is start time, assume an hour of playtime so we don't have to check for the actual End event time stamp, so guesss 25 hours
+          twentyForHoursFromStart.setTime(scope.localStartTime.getTime() + (25*60*60*1000)); 
+          scope.publicAvailability = scope.playByPlayAvailable && twentyForHoursFromStart > new Date();
+          $log.debug('Is basketball box score publicly availabile still?', scope.publicAvailability);
+              
           if (firstLoad) {
             firstLoad = false;
             scope.selectedShotChartPeriod = null;
@@ -17,8 +26,7 @@ angular.module('hsgc')
             angular.element('.nfhs-scout-basketball-court').attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
           }
 
-          var periods = [];
-          for (var i = 1; i <= scope.currentPeriod; i++) {
+          for (i = 1; i <= scope.currentPeriod; i++) {
             if (i == 1)
               periods.push({
                 value: i,
@@ -95,7 +103,7 @@ angular.module('hsgc')
         };
       }
     };
-  })
+  }])
   .filter('filterShots', function() {
     return function(plays, awayPlayerFilter, homePlayerFilter, period, includeMade, includeMissed) {
       var shots = [];

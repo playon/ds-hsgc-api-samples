@@ -11,6 +11,10 @@
 * No longer stops polling if any API response returns an error
 * Library updates
 
+*Hot patch to 1.2.0 on 2017-10-16:*
+
+* Basketball shot chart friendly message when shot chart not available for business reasons
+
 ## 1.1.1 / 2016-11-02
 
 * Better tab layouts for small screen devices

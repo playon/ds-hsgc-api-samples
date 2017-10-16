@@ -50,7 +50,7 @@ The bulk of the code you will probably need to modify for development is in less
 
 #### Other important files
 
-* For new sports, update `src/js/services/hsgc-api.js`, `src/templates/gameSummary.html`, `src/js/templates/fullBoxScore.html`, and `src/js/directives/datacast.js` to allow and implement the new sport, in addition to any new directives and templates required for that sport
+* For new sports, update `src/js/directives/datacast.js`, `src/js/services/hsgc-api.js`, `src/templates/gameSummary.html`, and `src/templates/fullBoxScore.html` to allow and implement the new sport, in addition to any new directives and templates required for that sport
 * Info about configuration options are available at `src/js/services/hsgcConfig.js`
 * `bower.js` maintains the current JS library dependencies--see the **JavaScript libraries** section below
 

@@ -1,4 +1,4 @@
-<div ng-show="playByPlayAvailable" class="nfhs-scout-shot-chart">
+<div ng-show="publicAvailability" class="nfhs-scout-shot-chart">
   <div class="nfhs-scout-period-selector">
     <ul class="nfhs-scout-hidden-sm">
       <li class="nfhs-scout-selector-label">Quarter:</li>
@@ -45,4 +45,9 @@
     <span class="nfhs-scout-shot-chart-shot-made">Made</span>
     <span class="nfhs-scout-shot-chart-shot-missed">Miss</span>
   </div>
+</div>
+
+<div ng-show="!publicAvailability && playByPlayAvailable" class="nfhs-scout-shot-chart shot-chart-not-available">
+    <h4>Shot Chart Unavailable</h4>
+    <p>Shot charts are only available for 24 hours after a basketball game has completed.</p>
 </div>
