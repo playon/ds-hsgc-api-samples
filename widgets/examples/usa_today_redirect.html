@@ -1,15 +1,34 @@
 <!doctype html>
 <html>
   <head>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="hsgc-widgets.min.js"></script>
-    <!--script src="http://localhost:35729/livereload.js"></script-->
+    <!-- general browser meta data, may be customized but if in an IFRAME, doesn't really matter -->
+    <title>USA Today Football example</title>
+    <link rel="icon" href="">
+
+
+    <!-- required elements, leave these alone for the most part -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet" type="text/css">
+    <script>
+        (function(i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    </script>
+
+
+    <!-- when implementing this elsewhere, point these links to the latest version on https://cdn.digitalscout.com/ -->
+    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/hsgc-widgets.js for example -->
+    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/css/base.css for example -->
+
+    <!-- put your custom stylesheet here, to override the base.css with your own prefered layouts, styles, and colors -->
     <link rel="stylesheet" href="usa_today.css">
     <style>
       .container {
         width: 1170px;
       }
     </style>
+
+    <!-- various development helpers, not necessary for use elsewhere -->
+    <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
   </head>
   <body>
     <div class="container">
@@ -39,7 +58,7 @@
       hsgcWidgets.init({
         env: 'stage',
         keyStrategy: 'usa_today',
-        imageRoot: 'http://www.hsgamecenter.com/'
+        imageRoot: 'https://stats.digitalscout.com/'
       });
     </script>
   </body>
