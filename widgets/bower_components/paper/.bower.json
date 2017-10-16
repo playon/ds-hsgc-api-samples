@@ -41,12 +41,12 @@
     "paper.js",
     "paperjs"
   ],
-  "version": "0.11.4",
-  "_release": "0.11.4",
+  "version": "0.11.5",
+  "_release": "0.11.5",
   "_resolution": {
     "type": "version",
-    "tag": "v0.11.4",
-    "commit": "6a01323e2f116b1eff0fffbab8645f5212f9fb72"
+    "tag": "v0.11.5",
+    "commit": "8581d7976c69026c35f32117372a1f0a4c65370f"
   },
   "_source": "https://github.com/paperjs/paper.js.git",
   "_target": ">=0.9.22 <1.0.0",
