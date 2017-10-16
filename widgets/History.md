@@ -13,6 +13,7 @@
 
 *Hot patch to 1.2.0 on 2017-10-16:*
 
+* Library updates
 * Basketball shot chart friendly message when shot chart not available for business reasons
 
 ## 1.1.1 / 2016-11-02
