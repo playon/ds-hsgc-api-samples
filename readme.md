@@ -1,4 +1,12 @@
-# Sample HSGC API Client Usage
+# Sample Digital Scout API Client Usage
+
+Sample/example code for how to access the Digital Scout (formerly HSGC or GameCenter) API and to display the resulting box scores.
+
+## License
+
+This code is released under the [MIT license](http://www.opensource.org/licenses/MIT). But keep in mind, that is for the source code in this repository and its use and distribution. However, this code doesn't do much without access to the Digital Scout API and data. Access to that API falls under separate agreements per the terms of use at www.digitalscout.com and through your written agreements with Digital Sscout, LLC. Contact support@digitalscout.com with questions or for requesting access to the API.
+
+## Usage
 
 ### *node.js*
 1. Requires: **[nodejs](https://nodejs.org/), npm**
