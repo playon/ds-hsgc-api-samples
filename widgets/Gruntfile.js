@@ -117,6 +117,22 @@ module.exports = function (grunt) {
                 }
             }
         },
+        imagemin: {
+            dynamic: {
+                options: {
+                    optimizationLevel: 5,
+                    progressive: true,
+                    interlaced: true,
+                    svgoPlugins: [{removeUselessStrokeAndFill: false}]
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['**/*.{png,jpg,gif,svg}'],
+                    dest: 'src/'
+                }]
+            }
+        },
         aws: aws,
         aws_s3: {
             options: {
@@ -183,10 +199,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-aws-s3');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
     grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy']);
+    grunt.registerTask('optimize', ['imagemin']);
     grunt.registerTask('deploy', ['build', 'aws_s3']);
     grunt.registerTask('default', ['build', 'connect', 'watch']);
 };
