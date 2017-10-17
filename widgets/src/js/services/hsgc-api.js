@@ -173,7 +173,7 @@ angular.module('hsgc')
     };
 
     var populateLeaderInfo = function(boxScore, bs, $filter) {
-      $log.debug('Populating leader info', boxScore);
+      $log.debug('Populating leader info');
 
       if (boxScore.Sport === 'Basketball') {
         if (bs.statsAvailable) {
@@ -204,23 +204,33 @@ angular.module('hsgc')
 
           boxScore.PlayerStatistics.forEach(function(ps) {
             if (ps.PlayerId > 0) {
+              var player = $filter('getPlayerById')(bs.players, ps.PlayerId, ps.TeamSeasonId);
+
               if (bs.leaders[ps.TeamSeasonId].points.value < ps.TotalPoints) {
                 bs.leaders[ps.TeamSeasonId].points.value = ps.TotalPoints;
                 bs.leaders[ps.TeamSeasonId].points.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].points.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].points.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].points.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].points.playerSlug = player.PlayerSlug;
               }
+
               if (bs.leaders[ps.TeamSeasonId].rebounds.value < ps.TotalRebounds) {
                 bs.leaders[ps.TeamSeasonId].rebounds.value = ps.TotalRebounds;
                 bs.leaders[ps.TeamSeasonId].rebounds.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].rebounds.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].rebounds.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].rebounds.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].rebounds.playerSlug = player.PlayerSlug;
               }
+
               if (bs.leaders[ps.TeamSeasonId].assists.value < ps.Assists) {
                 bs.leaders[ps.TeamSeasonId].assists.value = ps.Assists;
                 bs.leaders[ps.TeamSeasonId].assists.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].assists.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].assists.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].assists.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].assists.playerSlug = player.PlayerSlug;
               }
             }
           });
@@ -258,23 +268,31 @@ angular.module('hsgc')
 
           boxScore.PlayerStatistics.forEach(function(ps) {
             if (ps.PlayerId > 0) {
+              var player = $filter('getPlayerById')(bs.players, ps.PlayerId, ps.TeamSeasonId);
+
               if (bs.leaders[ps.TeamSeasonId].attackKills.value < ps.AttackKills) {
                 bs.leaders[ps.TeamSeasonId].attackKills.value = ps.AttackKills;
                 bs.leaders[ps.TeamSeasonId].attackKills.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].attackKills.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].attackKills.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].attackKills.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].attackKills.playerSlug = player.PlayerSlug;
               }
               if (bs.leaders[ps.TeamSeasonId].aces.value < ps.ServeAces) {
                 bs.leaders[ps.TeamSeasonId].aces.value = ps.ServeAces;
                 bs.leaders[ps.TeamSeasonId].aces.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].aces.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].aces.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].aces.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].aces.playerSlug = player.PlayerSlug;
               }
               if (bs.leaders[ps.TeamSeasonId].blocks.value < ps.Assists) {
                 bs.leaders[ps.TeamSeasonId].blocks.value = ps.BlockSolos + ps.BlockAssists /* Math.floor(ps.BlockAssists / 2) */;
                 bs.leaders[ps.TeamSeasonId].blocks.firstName = ps.FirstName;
                 bs.leaders[ps.TeamSeasonId].blocks.lastName = ps.LastName;
                 bs.leaders[ps.TeamSeasonId].blocks.jerseyNumber = ps.JerseyNumber;
+                bs.leaders[ps.TeamSeasonId].blocks.displayName = player.DisplayName;
+                bs.leaders[ps.TeamSeasonId].blocks.playerSlug = player.PlayerSlug;
               }
             }
           });
@@ -285,60 +303,85 @@ angular.module('hsgc')
 
       if (bs.leadersAvailable) {
         bs.leaders = {};
+        var playerId, currentStat, currentTeamSeasonId;
 
         if (boxScore.GameLeaders.AwayTeamPassingLeader) {
+          playerId = boxScore.GameLeaders.AwayTeamPassingLeader.Item1;
+          currentStat = boxScore.GameLeaders.AwayTeamPassingLeader.Item2;
+          currentTeamSeasonId = boxScore.AwayTeamSeasonId;
+          bs.leaders.awayPassingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.awayPassingLeader = $filter('stringFormat')("{0}: {1}-{2}, {3} yds, {4} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.AwayTeamPassingLeader.Item1, boxScore.AwayTeamSeasonId),
-            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingCompletions,
-            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingAttempts,
-            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingYards,
-            boxScore.GameLeaders.AwayTeamPassingLeader.Item2.PassingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.PassingCompletions,
+            currentStat.PassingAttempts,
+            currentStat.PassingYards,
+            currentStat.PassingTouchdowns
           ]);
         }
 
         if (boxScore.GameLeaders.AwayTeamRushingLeader) {
+          playerId = boxScore.GameLeaders.AwayTeamRushingLeader.Item1;
+          currentStat = boxScore.GameLeaders.AwayTeamRushingLeader.Item2;
+          currentTeamSeasonId = boxScore.AwayTeamSeasonId;
+          bs.leaders.awayRushingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.awayRushingLeader = $filter('stringFormat')("{0}: {1} car, {2} yds, {3} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.AwayTeamRushingLeader.Item1, boxScore.AwayTeamSeasonId),
-            boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingAttempts,
-            boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingYards,
-            boxScore.GameLeaders.AwayTeamRushingLeader.Item2.RushingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.RushingAttempts,
+            currentStat.RushingYards,
+            currentStat.RushingTouchdowns
           ]);
         }
 
         if (boxScore.GameLeaders.AwayTeamReceivingLeader) {
+          playerId = boxScore.GameLeaders.AwayTeamReceivingLeader.Item1;
+          currentStat = boxScore.GameLeaders.AwayTeamReceivingLeader.Item2;
+          currentTeamSeasonId = boxScore.AwayTeamSeasonId;
+          bs.leaders.awayReceivingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.awayReceivingLeader = $filter('stringFormat')("{0}: {1} rec, {2} yds, {3} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.AwayTeamReceivingLeader.Item1, boxScore.AwayTeamSeasonId),
-            boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingCatches,
-            boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingYards,
-            boxScore.GameLeaders.AwayTeamReceivingLeader.Item2.ReceivingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.ReceivingCatches,
+            currentStat.ReceivingYards,
+            currentStat.ReceivingTouchdowns
           ]);
         }
 
         if (boxScore.GameLeaders.HomeTeamPassingLeader) {
+          playerId = boxScore.GameLeaders.HomeTeamPassingLeader.Item1;
+          currentStat = boxScore.GameLeaders.HomeTeamPassingLeader.Item2;
+          currentTeamSeasonId = boxScore.HomeTeamSeasonId;
+          bs.leaders.homePassingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.homePassingLeader = $filter('stringFormat')("{0}: {1}-{2}, {3} yds, {4} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.HomeTeamPassingLeader.Item1, boxScore.HomeTeamSeasonId),
-            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingCompletions,
-            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingAttempts,
-            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingYards,
-            boxScore.GameLeaders.HomeTeamPassingLeader.Item2.PassingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.PassingCompletions,
+            currentStat.PassingAttempts,
+            currentStat.PassingYards,
+            currentStat.PassingTouchdowns
           ]);
         }
 
         if (boxScore.GameLeaders.HomeTeamRushingLeader) {
+          playerId = boxScore.GameLeaders.HomeTeamRushingLeader.Item1;
+          currentStat = boxScore.GameLeaders.HomeTeamRushingLeader.Item2;
+          currentTeamSeasonId = boxScore.HomeTeamSeasonId;
+          bs.leaders.homeRushingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.homeRushingLeader = $filter('stringFormat')("{0}: {1} car, {2} yds, {3} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.HomeTeamRushingLeader.Item1, boxScore.HomeTeamSeasonId),
-            boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingAttempts,
-            boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingYards,
-            boxScore.GameLeaders.HomeTeamRushingLeader.Item2.RushingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.RushingAttempts,
+            currentStat.RushingYards,
+            currentStat.RushingTouchdowns
           ]);
         }
 
         if (boxScore.GameLeaders.HomeTeamReceivingLeader) {
+          playerId = boxScore.GameLeaders.HomeTeamReceivingLeader.Item1;
+          currentStat = boxScore.GameLeaders.HomeTeamReceivingLeader.Item2;
+          currentTeamSeasonId = boxScore.HomeTeamSeasonId;
+          bs.leaders.homeReceivingLeaderSlug = playerId > 0 ? $filter('getPlayerById')(bs.players, playerId, currentTeamSeasonId).PlayerSlug : null;
           bs.leaders.homeReceivingLeader = $filter('stringFormat')("{0}: {1} rec, {2} yds, {3} tds", [
-            $filter('getPlayerShortNameById')(bs.players, boxScore.GameLeaders.HomeTeamReceivingLeader.Item1, boxScore.HomeTeamSeasonId),
-            boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingCatches,
-            boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingYards,
-            boxScore.GameLeaders.HomeTeamReceivingLeader.Item2.ReceivingTouchdowns
+            $filter('getPlayerShortNameById')(bs.players, playerId, currentTeamSeasonId),
+            currentStat.ReceivingCatches,
+            currentStat.ReceivingYards,
+            currentStat.ReceivingTouchdowns
           ]);
         }
       }

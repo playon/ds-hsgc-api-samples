@@ -4,8 +4,8 @@
     <thead>
       <tr>
         <th></th>
-        <th>{{awayAcronym}}</th>
-        <th>{{homeAcronym}}</th>
+        <th ng-attr-title="{{awayName}} {{awayMascot}}">{{awayAcronym}}</th>
+        <th ng-attr-title="{{homeName}} {{homeMascot}}">{{homeAcronym}}</th>
       </tr>
     </thead>
     <tbody>
@@ -15,7 +15,7 @@
         <td>{{homeStats.TotalPoints}}</td>
       </tr>
       <tr>
-        <td>Rebounds (Off-Total)</td>
+        <td title="Offensive Rebounds-Total Rebounds">Rebounds (Off.-Total)</td>
         <td>{{awayStats.OffensiveRebounds}}-{{awayStats.TotalRebounds}}</td>
         <td>{{homeStats.OffensiveRebounds}}-{{homeStats.TotalRebounds}}</td>
       </tr>

@@ -7,7 +7,10 @@ angular.module('hsgc')
         publisherKey: "@publisher",
         sport: "@"
       },
-      controller: ['$scope', '$element', 'HSGCApi', '$timeout', 'hsgcConfig', function($scope, $element, HSGCApi, $timeout, config) {
+      controller: ['$scope', '$element', 'HSGCApi', '$log', '$timeout', 'hsgcConfig', function($scope, $element, HSGCApi, $log, $timeout, config) {
+        var setNextUpdate = function(refreshIn) {
+          $timeout(updateBoxScore, refreshIn);
+        };
 
         var updateBoxScore = function() {
           HSGCApi.getFullBox($scope.gameKey, $scope.publisherKey, $scope.sport, {
@@ -18,14 +21,33 @@ angular.module('hsgc')
             includePlayerStats: true,
             includePlayers: true
           }).then(function(result) {
-            // success
-            angular.extend($scope, result);
-            $timeout(updateBoxScore, 30 * 1000);
+            if (typeof(result) !== "undefined") {
+              // success
+              angular.extend($scope, result);
+
+              // stop refreshing once game is complete; may miss edits, but those are rare so, meh
+              if (result.status !== 'Complete') {
+                setNextUpdate(30 * 1000);
+              } else {
+                $log.debug('Game complete. Stopping auto-refresh.');
+              }
+            }
           }, function(result) {
             // error
-            $timeout(updateBoxScore, 120 * 1000);
+            if (result.status == 402) {
+              // need to pay; will likely need to navigate away anyway, so just stop trying to refresh, and show upsell
+              $log.warning('402 Payment Required');
+              $scope.paymentRequired = true;
+              angular.extend(scope, result.boxScore);
+              opts = {};
+            } else {
+              // not sure what went wrong; try again in a little while
+              $log.error('Datacast could not be loaded. Will try again. Status code:', result.status, result);
+              setNextUpdate(120 * 1000);
+            }
           });
         };
+
         config.beforeLoadDatacast($scope.gameKey, $scope.publisherKey, function() {
           updateBoxScore();
         });

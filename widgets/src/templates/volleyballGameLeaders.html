@@ -19,17 +19,26 @@
           </td>
           <td title="Attack Kills">
             <span ng-hide="leaders[awayTeamSeasonId].attackKills.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].attackKills.jerseyNumber}} {{leaders[awayTeamSeasonId].attackKills.lastName}}:</span> {{leaders[awayTeamSeasonId].attackKills.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[awayTeamSeasonId].attackKills.displayName}}:</span> {{leaders[awayTeamSeasonId].attackKills.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].attackKills.playerSlug}}"
+                title="Go to this player's profile">{{leaders[awayTeamSeasonId].attackKills.displayName}}</a>:
+              {{leaders[awayTeamSeasonId].attackKills.value}}-->
             </span>
           </td>
           <td title="Service Aces">
             <span ng-hide="leaders[awayTeamSeasonId].aces.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].aces.jerseyNumber}} {{leaders[awayTeamSeasonId].aces.lastName}}:</span> {{leaders[awayTeamSeasonId].aces.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[awayTeamSeasonId].aces.displayName}}:</span> {{leaders[awayTeamSeasonId].aces.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].aces.playerSlug}}"
+                title="Go to this player's profile">{{leaders[awayTeamSeasonId].aces.displayName}}</a>:
+              {{leaders[awayTeamSeasonId].aces.value}}-->
             </span>
           </td>
           <td title="Block Solos + Block Assists">
             <span ng-hide="leaders[awayTeamSeasonId].blocks.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[awayTeamSeasonId].blocks.jerseyNumber}} {{leaders[awayTeamSeasonId].blocks.lastName}}:</span> {{leaders[awayTeamSeasonId].blocks.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[awayTeamSeasonId].blocks.displayName}}:</span> {{leaders[awayTeamSeasonId].blocks.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].blocks.playerSlug}}"
+                title="Go to this player's profile">{{leaders[awayTeamSeasonId].blocks.displayName}}</a>:
+              {{leaders[awayTeamSeasonId].blocks.value}}-->
             </span>
           </td>
         </tr>
@@ -42,17 +51,26 @@
         </td>
           <td title="Attack Kills">
             <span ng-hide="leaders[homeTeamSeasonId].attackKills.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].attackKills.jerseyNumber}} {{leaders[homeTeamSeasonId].attackKills.lastName}}:</span> {{leaders[homeTeamSeasonId].attackKills.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[homeTeamSeasonId].attackKills.displayName}}:</span> {{leaders[homeTeamSeasonId].attackKills.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].attackKills.playerSlug}}"
+                title="Go to this player's profile">{{leaders[homeTeamSeasonId].attackKills.displayName}}</a>:
+              {{leaders[homeTeamSeasonId].attackKills.value}}-->
             </span>
           </td>
           <td title="Service Aces">
             <span ng-hide="leaders[homeTeamSeasonId].aces.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].aces.jerseyNumber}} {{leaders[homeTeamSeasonId].aces.lastName}}:</span> {{leaders[homeTeamSeasonId].aces.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[homeTeamSeasonId].aces.displayName}}:</span> {{leaders[homeTeamSeasonId].aces.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].aces.playerSlug}}"
+                title="Go to this player's profile">{{leaders[homeTeamSeasonId].aces.displayName}}</a>:
+              {{leaders[homeTeamSeasonId].aces.value}}-->
             </span>
           </td>
           <td title="Block Solos + Block Assists">
             <span ng-hide="leaders[homeTeamSeasonId].blocks.value == 0">
-              <span class="nfhs-scout-leader-name">#{{leaders[homeTeamSeasonId].blocks.jerseyNumber}} {{leaders[homeTeamSeasonId].blocks.lastName}}:</span> {{leaders[homeTeamSeasonId].blocks.value}}
+              <span class="nfhs-scout-leader-name">{{leaders[homeTeamSeasonId].blocks.displayName}}:</span> {{leaders[homeTeamSeasonId].blocks.value}}
+              <!--<a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].blocks.playerSlug}}"
+                title="Go to this player's profile">{{leaders[homeTeamSeasonId].blocks.displayName}}</a>:
+              {{leaders[homeTeamSeasonId].blocks.value}}-->
             </span>
           </td>
         </tr>
