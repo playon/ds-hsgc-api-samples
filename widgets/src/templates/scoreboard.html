@@ -1,7 +1,7 @@
 <div ng-cloak class="nfhs-scout-scoreboard card">
   <div class="details">
     <div class="dataonly">
-      <div class="left pointer">
+      <div class="left">
         <div class="score">{{awayScore}}</div>
         <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
           <span ng-hide="showTeamLinks">
@@ -12,10 +12,15 @@
           </a>
         </div>
         <p class="name">
-          {{awayName}} {{awayMascot}}
+          <span ng-hide="showTeamLinks">
+            {{awayName}} {{awayMascot}}
+          </span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            {{awayName}} {{awayMascot}}
+          </a>
         </p>
       </div>
-      <div class="right pointer">
+      <div class="right">
         <div class="score">{{homeScore}}</div>
         <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
           <span ng-hide="showTeamLinks">
@@ -26,7 +31,12 @@
           </a>
         </div>
         <p class="name">
-          {{homeName}} {{homeMascot}}
+          <span ng-hide="showTeamLinks">
+            {{homeName}} {{homeMascot}}
+          </span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            {{homeName}} {{homeMascot}}
+          </a>
         </p>
       </div>
     </div>
@@ -63,12 +73,10 @@
       <tr>
         <td ng-class="{'nfhs-scout-winner': isWinner(awayTeamKey)}">
           <span ng-show="!showTeamLinks">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
-            {{awayShortName}}
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
           </span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />
-            {{awayShortName}}
+            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" />{{awayShortName}}
           </a>
         </td>
         <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>

@@ -14,6 +14,7 @@ angular.module('hsgc')
         var fontTeams = "Graduate, sans-serif";
         var fontYards = "Open Sans, sans-serif";
         var yardLineWidth = 3;
+        var maxEndzoneTextCharacters = 22;
 
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
           if (newValue === 5 && newValue !== oldValue) {
@@ -87,9 +88,10 @@ angular.module('hsgc')
           awayEndzone.fillColor = "#ff0000";
 
           var endZoneTextHeight = endzoneWidth / 3;
-          var awayTeamNameSize = scope.getTextSize(scope.awayShortName, endZoneTextHeight, fontTeams);
+          var awayTeamNameToUse = scope.awayAcronym && scope.awayAcronym.length > 1 && scope.awayShortName.length >= maxEndzoneTextCharacters ? scope.awayAcronym : scope.awayShortName;
+          var awayTeamNameSize = scope.getTextSize(awayTeamNameToUse, endZoneTextHeight, fontTeams);
           var awayTeamName = new paper.PointText(new paper.Point( (endzoneWidth / 2) - (awayTeamNameSize.width / 2), (fieldSize.height / 2) + (awayTeamNameSize.height / 2)));
-          awayTeamName.content = scope.awayShortName;
+          awayTeamName.content = awayTeamNameToUse;
           awayTeamName.strokeColor = "#ffffff";
           awayTeamName.fillColor = "#ffffff";
           awayTeamName.fontSize = awayTeamNameSize.height + "px";
@@ -99,9 +101,10 @@ angular.module('hsgc')
           var homeEndzone = new paper.Path.Rectangle(new paper.Rectangle(yardLines[yardLines.length - 1], 0, endzoneWidth, fieldSize.height));
           homeEndzone.fillColor = "#0000ff";
 
-          var homeTeamNameSize = scope.getTextSize(scope.homeShortName, endZoneTextHeight, fontTeams);
+          var homeTeamNameToUse = scope.homeAcronym && scope.homeAcronym.length > 1 && scope.homeShortName.length >= maxEndzoneTextCharacters ? scope.homeAcronym : scope.homeShortName;
+          var homeTeamNameSize = scope.getTextSize(homeTeamNameToUse, endZoneTextHeight, fontTeams);
           var homeTeamName = new paper.PointText(new paper.Point(yardLines[yardLines.length - 1] + (endzoneWidth / 2) - (homeTeamNameSize.width / 2), (fieldSize.height / 2) + (homeTeamNameSize.height / 2)));
-          homeTeamName.content = scope.homeShortName;
+          homeTeamName.content = homeTeamNameToUse;
           homeTeamName.strokeColor = "#ffffff";
           homeTeamName.fillColor = "#ffffff";
           homeTeamName.fontSize = awayTeamNameSize.height + "px";
@@ -225,13 +228,11 @@ angular.module('hsgc')
         };
 
         scope.getTextSize = function(text, height, font) {
-          var canvas = footballFieldCanvas[0];
-          var context = canvas.getContext("2d");
-          context.font = height + "px " + font;
-          var metrics = context.measureText(text);
-          var width =  metrics.width;
+          var context = footballFieldCanvas[0].getContext("2d");
 
-          return { width: width, height: height};
+          context.font = height + "px " + font;
+
+          return { width: context.measureText(text).width, height: height};
         };
 
         scope.getSpot = function(play) {

@@ -4,7 +4,7 @@ angular.module('hsgc')
       restrict: 'EA',
       templateUrl: 'templates/scoreboard.html',
       link: function(scope) {
-        $log.debug('showTeamLinks', config.showTeamLinks);
+        $log.debug('Show Team Links:', config.showTeamLinks);
         scope.showTeamLinks = config.showTeamLinks;
 
         //$log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
