@@ -51,9 +51,8 @@ angular.module('hsgc')
               scope.publisher,
               scope.sport,
               opts
-            )
-            .then(
-              //success
+            ).then(
+              // success
               function(result) {
                 if (typeof(result) !== "undefined") {
                   angular.extend(scope, result);
@@ -86,15 +85,17 @@ angular.module('hsgc')
                   }
                 }
               },
-              //failure
               function(result) {
+                // error
                 if (result.status == 402) {
                   // need to pay; will likely need to navigate away anyway, so just stop trying to refresh, and show upsell
+                  $log('402 Payment Required');
                   scope.paymentRequired = true;
                   angular.extend(scope, result.boxScore);
                   opts = {};
                 } else {
                   // not sure what went wrong; try again in a little while
+                  $log('Datacast could not be loaded. Will try again. Status code:', result.status);
                   setNextUpdate(120 * 1000);
                 }
               });

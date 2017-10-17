@@ -4,7 +4,17 @@
 
 ## [CHANGELOG](https://github.com/playon/ds-hsgc-api-samples/blob/master/widgets/History.md)
 
-## Requirements
+## Examples
+
+See the `examples` directory for what kind of code you would need to use to embed these widgets in an `IFRAME` anywhere on the web.
+
+The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/basic.html`](https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/basic.html)
+
+## License
+
+This code is licensed under the MIT license (see the README at the top level of this repository for more info) but access to the API data requires a separate license. So use and modify this code as allowed in the MIT license, but don't load any data from **api.digitalscout.com** without a written agreement with Digital Scout, LLC.
+
+## Development Requirements
 
 1. **nodejs**
 1. **npm**
@@ -25,9 +35,10 @@ For development in Visual Studio 2012+
 1. Install `grunt` globally: `npm install grunt -g`
 1. Run `npm install` to install the project dependencies
 1. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
-1. To build: run `grunt`.  This will create a minified javascript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
-1. To test: Go to [https://localhost:3001/](https://localhost:3001/) and select an appropriate HTML file to test. (You will have to accept the self-signed certificate.)
-1. To automatically watch for file changes and rebuild, run `grunt watch`.
+1. To build: run `grunt`
+This will create a minified JavaScript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
+1. To test, go to [`https://localhost:3001/`](https://localhost:3001/) and select an appropriate HTML file to test—you will have to accept the self-signed certificate in your browser
+1. To automatically watch for file changes and rebuild, run `grunt watch` (or use the default `grunt` task which calls the same `watch` task)
 
 ### Deploying
 

@@ -1,7 +1,7 @@
 angular.module('hsgc')
   .factory('HSGCApi', ['$http', '$filter', '$timeout', '$q', '$log', 'hsgcConfig', function($http, $filter, $timeout, $q, $log, hsgcConfig) {
     var populateBaseInfo = function(boxScore) {
-      // $log.debug('Populating base info');
+      $log.debug('Populating base info');
 
       var scores = {},
         unityTeamMapping = {},
@@ -414,16 +414,16 @@ angular.module('hsgc')
         if (hsgcConfig.keyStrategy === "unity") {
           url = hsgcConfig.apiRoot + 'games/thirdparty/' + hsgcConfig.keyStrategy + '/' + key;
           return $http.get(url, config).then(
-            //success
             function(boxScore) {
+              // success
               var bs = populateBaseInfo(boxScore.data);
               populatePlayers(boxScore.data, bs, $filter);
               populateLeaderInfo(boxScore.data, bs, $filter);
               populatePlayerStats(boxScore.data, bs);
               return bs;
             },
-            //error
             function(response) {
+              // error
               hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
               var result = {
                 status: response.status,
@@ -434,22 +434,23 @@ angular.module('hsgc')
                 result.boxScore = populateBaseInfo(response.data);
                 hsgcConfig.datacastPaymentRequired(response.data);
               }
+
               return $q.reject(result);
             });
         } else {
           // hsgc code
           url = hsgcConfig.apiRoot + 'games/' + key;
           return $http.get(url, config).then(
-            //success
             function(boxScore) {
+              // success
               var bs = populateBaseInfo(boxScore.data);
               populatePlayers(boxScore.data, bs, $filter);
               populateLeaderInfo(boxScore.data, bs, $filter);
               populatePlayerStats(boxScore.data, bs);
               return bs;
             },
-            //error
             function(response) {
+              // error
               hsgcConfig.datacastLoadError(response.data, response.status, response.statusText);
               var result = {
                 status: response.status,
@@ -460,6 +461,7 @@ angular.module('hsgc')
                 result.boxScore = populateBaseInfo(response.data);
                 hsgcConfig.datacastPaymentRequired(response.data);
               }
+
               return $q.reject(result);
             });
         }
