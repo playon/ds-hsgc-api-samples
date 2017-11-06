@@ -23,19 +23,24 @@ angular.module('hsgc')
         });
 
         scope.$on('datacastLoaded', function() {
-          if (angular.isUndefined(scope.playByPlay) || scope.playByPlay.length === 0)
+          if (angular.isUndefined(scope.playByPlay) || scope.playByPlay.length === 0) {
+            // can only show drive chart if play-by-play is available; otherwise, abandon
             return;
+          }
 
           if (firstload) {
             firstload = false;                       
 
             footballFieldCanvas = $(element.find('canvas')[0]);
-            paper.setup(footballFieldCanvas[0]);
+            if (footballFieldCanvas) {
+              // if play-by-play not available, canvas won't be loaded; but when it is, set it all up:
+              paper.setup(footballFieldCanvas[0]);
 
-            window.angular.element($window).on('resize', scope.resize);
-            scope.$on('$destroy', function() {
-              window.angular.element($window).off('resize', scope.resize);
-            }); // remove the resize listener from the canvas to prevent memory leak
+              window.angular.element($window).on('resize', scope.resize);
+              scope.$on('$destroy', function() {
+                window.angular.element($window).off('resize', scope.resize);
+              }); // remove the resize listener from the canvas to prevent memory leak
+            }
           }
 
           scope.lastPlay = scope.playByPlay[scope.playByPlay.length - 1];
@@ -46,6 +51,13 @@ angular.module('hsgc')
         });
 
         scope.resize = function(forceRedraw) {
+          // canvas won't be found if play-by-play not available
+          if (!footballFieldCanvas) {
+            $log.debug('canvas element for the drive chart not available; play-by-play probably not available, which is fine', element);
+            return;
+          }
+            
+          // calculate the drive chart size
           var desiredWidth = element.parent().width() - 20;
           var desiredHeight = 0;
           if (desiredWidth < 1) {
@@ -57,7 +69,7 @@ angular.module('hsgc')
 
           // only redraw if the size actually changed
           if (forceRedraw === true ||
-            (element.is(':visible') && (footballFieldCanvas.width() != desiredWidth || footballFieldCanvas.height() != desiredHeight))) {
+            (element.is(':visible') && footballFieldCanvas && (footballFieldCanvas.width() != desiredWidth || footballFieldCanvas.height() != desiredHeight))) {
             $log.debug('Drive Chart size changed, redrawing', footballFieldCanvas.width(), footballFieldCanvas.height(), desiredWidth, desiredHeight);
             footballFieldCanvas.prop({
               width: desiredWidth,
@@ -248,7 +260,7 @@ angular.module('hsgc')
           } else if (play.TeamSeasonId == scope.awayTeamSeasonId) {
             return play.Spot;
           }
-        }
+        };
 
         scope.getGoalLeft = function(play) {
           var distance_offset = play.Distance;
@@ -257,7 +269,7 @@ angular.module('hsgc')
           }
 
           return scope.getScrimmageLeft(play) + distance_offset;
-        }
+        };
 
         scope.downEmbelish = function(number) {
           if (number == 1) {
@@ -269,7 +281,7 @@ angular.module('hsgc')
           } else if (number == 4) {
             return "4th";
           }
-        }
+        };
       }
     };
   }]);

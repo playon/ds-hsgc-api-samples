@@ -21,3 +21,6 @@
     Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
   </div>
 </div>
+<div ng-show="!playByPlayAvailable" class="nfhs-scout-drivechart">
+  <em>The drive chart is only available when the statistician has entered play-by-play information.</em>
+</div>

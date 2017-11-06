@@ -16,6 +16,10 @@
 * Library updates
 * Basketball shot chart friendly message when shot chart not available for business reasons
 
+*Hot patch to 1.2.0 on 2017-11-06:*
+
+* Hide Football Drive Chart tab when data not available
+
 ## 1.1.1 / 2016-11-02
 
 * Better tab layouts for small screen devices
