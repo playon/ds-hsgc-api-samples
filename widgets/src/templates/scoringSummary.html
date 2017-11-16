@@ -27,7 +27,7 @@
       </tbody>
     </table>
   </div>
-  <div ng-hide="scoringPlaysByPeriod && scoringPlaysByPeriod.length" class="digital-scout-scoring-summary-not-available">
+  <div ng-show="!scoringPlaysByPeriod || scoringPlaysByPeriod.length == 0" class="digital-scout-scoring-summary-not-available">
     <p>There are no scoring plays yet.</p>
   </div> 
 </div>

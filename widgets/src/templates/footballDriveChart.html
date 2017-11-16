@@ -32,10 +32,12 @@
       </tr>
     </table>
     <div class="digital-scout-drivechart-last-play">
-      Current Play: {{previousPlay.Description}}
+      Current Play: {{lastPlay.Description}}
     </div>
     <div class="digital-scout-drivechart-previous-play">
-      Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+      Previous Play:
+      <span ng-show="previousPlay.Down > 0">{{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, </span>
+       {{previousPlay.Description}}
     </div>
     </div>
   <div ng-show="!playByPlayAvailable" class="digital-scout-drivechart">

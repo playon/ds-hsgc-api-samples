@@ -29,7 +29,7 @@
             Rosters
           </a>
         </li>
-        <li ng-class='{ "active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" ng-show="playByPlayAvailable && !isFinal">
+        <li ng-class='{ "active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" ng-show="playByPlayAvailable && !isFinal()">
           <a href ng-click="selectedDetailTab = 5" title="Drive Chart">
             <span class="digital-scout-hidden-sm">Drive Chart</span>
             <span class="digital-scout-visible-sm-inline">Drive</span>
