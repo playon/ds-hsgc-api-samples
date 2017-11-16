@@ -1,4 +1,10 @@
-.nfhs-scout-visible-sm {
+.digital-scout-hidden-sm {
+  @media (max-width: @screen-sm-cutoff) {
+    display: none !important;
+  }
+}
+
+.digital-scout-visible-sm {
   display:none !important;
 
   @media (max-width: @screen-sm-cutoff) {
@@ -6,16 +12,18 @@
   }
 }
 
-.nfhs-scout-hidden-sm {
-  @media (max-width: @screen-sm-cutoff) {
-    display: none !important;
-  }
-}
-
-.nfhs-scout-visible-sm-inline {
+.digital-scout-visible-sm-inline {
   display:none !important;
 
   @media (max-width: @screen-sm-cutoff) {
     display: inline !important;
+  }
+}
+
+.digital-scout-visible-sm-table {
+  display:none !important;
+
+  @media (max-width: @screen-sm-cutoff) {
+    display: table !important;
   }
 }

@@ -59,12 +59,12 @@ angular.module('hsgc')
             previousPeriod = scope.currentPeriod; // default to current period
 
             // find the wrapping table since it is always visible, that way the canvas can be sized from that
-            canvasContainer = element.parents('.nfhs-scout-table');
+            canvasContainer = element.parents('.digital-scout-table');
             vballCourt = element.find('canvas');
             // $log.debug(canvas);
             paper.setup(vballCourt[0]);
 
-            vballCourtTooltip = element.parent().find('.nfhs-scout-hit-chart-tooltip-js');
+            vballCourtTooltip = element.parent().find('.digital-scout-hit-chart-tooltip-js');
             if (vballCourtTooltip && vballCourtTooltip.length > 0) {
               vballCourtTooltipInner = $('.tooltip-inner', vballCourtTooltip);
             }
@@ -178,7 +178,7 @@ angular.module('hsgc')
             canvas height.
           */
 
-          var desiredWidth = element.parent().width() - 20 /* hard-coded padding width from the base.less rule ".nfhs-scout-tab-container > div" */ ,
+          var desiredWidth = element.parent().width() - 20 /* hard-coded padding width from the base.less rule ".digital-scout-tab-container > div" */ ,
             desiredHeight = 0;
 
           // $log.debug(width, height);

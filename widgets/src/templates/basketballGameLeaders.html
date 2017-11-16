@@ -1,72 +1,138 @@
-<div ng-show="leadersAvailable" class="nfhs-scout-game-leaders nfhs-scout-leaders">
-    <h4 class="nfhs-scout-heading">Game Leaders</h4>
-    <table class="nfhs-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Points</th>
-          <th>Rebounds</th>
-          <th>Assists</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></span>
-            <a ng-show="showTeamLinks" href="{{awaySlug}}">
-              <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
-            </a>
-          </td>
-          <td>
-            <span ng-hide="leaders[awayTeamSeasonId].points.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].points.playerSlug}}"
-                title="Go to this player's profile">{{leaders[awayTeamSeasonId].points.displayName}}</a>:
-              {{leaders[awayTeamSeasonId].points.value}}
-          </td>
-          <td>
-            <span ng-hide="leaders[awayTeamSeasonId].rebounds.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].rebounds.playerSlug}}"
-                title="Go to this player's profile">{{leaders[awayTeamSeasonId].rebounds.displayName}}</a>:
-              {{leaders[awayTeamSeasonId].rebounds.value}}
-            </span>
-          </td>
-          <td>
-            <span ng-hide="leaders[awayTeamSeasonId].assists.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].assists.playerSlug}}"
-                title="Go to this player's profile">{{leaders[awayTeamSeasonId].assists.displayName}}</a>:
-              {{leaders[awayTeamSeasonId].assists.value}}
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></span>
-            <a ng-show="showTeamLinks" href="{{homeSlug}}">
-              <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
-            </a>
-          </td>
-          <td>
-            <span ng-hide="leaders[homeTeamSeasonId].points.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].points.playerSlug}}"
-                title="Go to this player's profile">{{leaders[homeTeamSeasonId].points.displayName}}</a>:
-              {{leaders[homeTeamSeasonId].points.value}}
-            </span>
-          </td>
-          <td>
-            <span ng-hide="leaders[homeTeamSeasonId].rebounds.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].rebounds.playerSlug}}"
-                title="Go to this player's profile">{{leaders[homeTeamSeasonId].rebounds.displayName}}</a>:
-                {{leaders[homeTeamSeasonId].rebounds.value}}
-            </span>
-          </td>
-          <td>
-            <span ng-hide="leaders[homeTeamSeasonId].assists.value === 0">
-              <a class="nfhs-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].assists.playerSlug}}"
-                title="Go to this player's profile">{{leaders[homeTeamSeasonId].assists.displayName}}</a>:
-              {{leaders[homeTeamSeasonId].assists.value}}
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div ng-show="leadersAvailable" class="digital-scout-game-leaders digital-scout-leaders">
+  <h3 class="digital-scout-heading">Game Leaders</h3>
+  <table class="digital-scout-table digital-scout-hidden-sm">
+    <thead>
+      <tr>
+        <th title="Team"></th>
+        <th>Points</th>
+        <th>Rebounds</th>
+        <th>Assists</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+            {{awayName}}</span>
+          </a>
+        </td>
+        <td>
+          <span ng-hide="leaders[awayTeamSeasonId].points.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].points.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].points.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].points.value}}
+        </td>
+        <td>
+          <span ng-hide="leaders[awayTeamSeasonId].rebounds.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].rebounds.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].rebounds.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].rebounds.value}}
+          </span>
+        </td>
+        <td>
+          <span ng-hide="leaders[awayTeamSeasonId].assists.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].assists.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].assists.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].assists.value}}
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>{{homeName}}
+          </a>
+        </td>
+        <td>
+          <span ng-hide="leaders[homeTeamSeasonId].points.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].points.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].points.displayName}}</a>:
+            {{leaders[homeTeamSeasonId].points.value}}
+          </span>
+        </td>
+        <td>
+          <span ng-hide="leaders[homeTeamSeasonId].rebounds.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].rebounds.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].rebounds.displayName}}</a>:
+              {{leaders[homeTeamSeasonId].rebounds.value}}
+          </span>
+        </td>
+        <td>
+          <span ng-hide="leaders[homeTeamSeasonId].assists.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].assists.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].assists.displayName}}</a>:
+            {{leaders[homeTeamSeasonId].assists.value}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- mobile often breaks width with even the slightest long names; can't stick 4 columns -->
+  <table class="digital-scout-table digital-scout-visible-sm-table">
+    <tbody>
+      <tr>
+        <td>
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+            {{awayShortName}}
+          </a>
+          <br>
+          <span title="Points">Pts:</span>
+          <span ng-hide="leaders[awayTeamSeasonId].points.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].points.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].points.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].points.value}}
+          <br>
+          <span title="Rebounds">Reb:</span>
+          <span ng-hide="leaders[awayTeamSeasonId].rebounds.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].rebounds.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].rebounds.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].rebounds.value}}
+          </span>
+          <br>
+          <span title="Assists">Ast:</span>
+          <span ng-hide="leaders[awayTeamSeasonId].assists.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].assists.playerSlug}}"
+              title="Go to this player's profile">{{leaders[awayTeamSeasonId].assists.displayName}}</a>:
+            {{leaders[awayTeamSeasonId].assists.value}}
+          </span>
+          <br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
+          <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+            {{homeShortName}}
+          </a>
+          <br>
+          <span title="Points">Pts:</span>
+          <span ng-hide="leaders[homeTeamSeasonId].points.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].points.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].points.displayName}}</a>:
+            {{leaders[homeTeamSeasonId].points.value}}
+          </span>
+          <br>
+          <span title="Rebounds">Reb:</span>
+          <span ng-hide="leaders[homeTeamSeasonId].rebounds.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].rebounds.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].rebounds.displayName}}</a>:
+              {{leaders[homeTeamSeasonId].rebounds.value}}
+          </span>
+          <br>
+          <span title="Assists">Ast:</span>
+          <span ng-hide="leaders[homeTeamSeasonId].assists.value === 0">
+            <a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].assists.playerSlug}}"
+              title="Go to this player's profile">{{leaders[homeTeamSeasonId].assists.displayName}}</a>:
+            {{leaders[homeTeamSeasonId].assists.value}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -16,14 +16,18 @@
 
 
     <!-- when implementing this elsewhere, point these links to the latest version on https://cdn.digitalscout.com/ -->
-    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/hsgc-widgets.js for example -->
-    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/css/base.css for example -->
+    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/hsgc-widgets.js for example -->
+    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/css/base.css for example -->
 
     <!-- put your custom stylesheet here, to override the base.css with your own prefered layouts, styles, and colors -->
-    <link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" />
+    <!-- <link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" /> -->
 
-    <!-- various development helpers, not necessary for use elsewhere -->
-    <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
+    <!-- development helpers, not necessary for use elsewhere -->
+    <script type="text/javascript">
+      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") { 
+        $('head').append('<script language="javascript" src="//localhost:35729/livereload.js?snipver=1" async="async" defer="defer"><'+'/script>');
+      }
+    </script>
   </head>
   <body>
     <div class="container">

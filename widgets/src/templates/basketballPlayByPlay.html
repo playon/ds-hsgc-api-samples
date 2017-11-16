@@ -1,40 +1,44 @@
-<div ng-show="playByPlayAvailable" class="nfhs-scout-play-by-play">
-  <div class="nfhs-scout-period-selector">
-    <ul class="nfhs-scout-hidden-sm">
-      <li class="nfhs-scout-selector-label">Quarter:</li>
-      <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedPeriod == period.value}">
+<div ng-show="playByPlayAvailable" class="digital-scout-play-by-play">
+  <div class="digital-scout-period-selector">
+    <ul class="digital-scout-hidden-sm">
+      <li class="digital-scout-selector-label">Quarter:</li>
+      <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedPeriod == period.value}">
         <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
       </li>
     </ul>
-    <div class="nfhs-scout-visible-sm">
-      <label for="nfhs-scout-period-selector">Quarter</label>
-      <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedPeriod" required></select>
+    <div class="digital-scout-visible-sm">
+      <label for="digital-scout-period-selector">
+        Quarter
+        <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedPeriod" required></select>
+    </label>
     </div>
   </div>
-  <div class="nfhs-scout-play-by-play-plays">
-    <table class="nfhs-scout-table">
+  <div class="digital-scout-play-by-play-plays">
+    <table class="digital-scout-table">
       <thead>
         <tr>
-          <th class="nfhs-scout-play-by-play-team">Team</th>
+          <th class="digital-scout-play-by-play-team">Team</th>
           <th>Description</th>
-          <th class="nfhs-scout-play-by-play-time">Time</th>
-          <th class="nfhs-scout-play-by-play-score">Score</th>
+          <th class="digital-scout-play-by-play-time">Time</th>
+          <th class="digital-scout-play-by-play-score">Score</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="play in playByPlay | filter:{'Quarter': selectedPeriod}:true">
-          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }' class="nfhs-scout-play-by-play-team">
-            <img ng-src="{{getLogo(play)}}" class="nfhs-scout-logo"/>
-            <span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{getTeamAcronym(play)}}</span>
-            <span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{play.TeamName}}</span>
-         </td>
-          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'>
-            <span ng-class='{"playLinkDescription": play.Highlight}'>{{play.Description}}</span>
-            <a ng-if="play.Highlight" class="playLink" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i></i></a>
+          <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-team": true }'>
+            <img ng-src="{{getLogo(play)}}" class="digital-scout-logo"/>
+            <span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm">{{getTeamAcronym(play)}}</span>
+            <span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{play.TeamName}}</span>
           </td>
-          <td class="nfhs-scout-play-by-play-time" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.TimeOnClock | timeOnClock }}</td>
-          <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.IsScoring }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
-          <td ng-class='{"nfhs-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
+          <td ng-class='{"digital-scout-scoring": play.IsScoring }'>
+            <span ng-class='{"digital-scout-play-by-play-description": play.Highlight}'>{{play.Description}}</span>
+            <a ng-if="play.Highlight && play.Highlight.LinkToHighlight" class="digital-scout-play-by-play-link" href='{{play.Highlight.LinkToHighlight}}' target="_blank"><i></i></a>
+          </td>
+          <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-time": true }'>{{play.TimeOnClock | timeOnClock }}</td>
+          <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-score": true }'>{{play.AwayScore}}-{{play.HomeScore}}</td>
+          <!--
+          <td ng-class='{"digital-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight && play.Highlight.LinkToHighlight" href='{{play.Highlight.play.Highlight.LinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td>
+          -->
         </tr>
       </tbody>
     </table>

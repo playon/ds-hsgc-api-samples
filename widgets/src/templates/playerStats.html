@@ -1,13 +1,15 @@
-<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
-  <div ng-show="playerStats.passingStats.length + playerStats.rushingStats.length + playerStats.receivingStats.length +
+<div ng-show="statsAvailable" class="digital-scout-player-stats">
+
+  <div class="player-stats-not-available"
+    ng-show="playerStats.passingStats.length + playerStats.rushingStats.length + playerStats.receivingStats.length +
     playerStats.defensiveStats.length + playerStats.kickingStats.length + playerStats.puntingStats.length + 
     playerStats.puntReturnStats.length + playerStats.kickReturnStats.length === 0">
-    No player stats available.
+    <p>No player stats available at this time.</p>
   </div>
   
   <div ng-show="playerStats.passingStats.length > 0">
-    <h4 class="nfhs-scout-heading">Passing Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Passing Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -21,7 +23,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.passingStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -38,8 +40,8 @@
     </table>
   </div>
   <div ng-show="playerStats.rushingStats.length > 0">
-    <h4 class="nfhs-scout-heading">Rushing Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Rushing Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -51,7 +53,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.rushingStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -66,8 +68,8 @@
     </table>
   </div>
   <div ng-show="playerStats.receivingStats.length > 0">
-    <h4 class="nfhs-scout-heading">Receiving Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Receiving Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -79,7 +81,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.receivingStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -94,8 +96,8 @@
     </table>
   </div>
   <div ng-show="playerStats.defensiveStats.length > 0">
-    <h4 class="nfhs-scout-heading">Defensive Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Defensive Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -109,7 +111,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.defensiveStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -126,8 +128,8 @@
     </table>
   </div>
   <div ng-show="playerStats.kickingStats.length > 0">
-    <h4 class="nfhs-scout-heading">Kicking Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Kicking Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -139,7 +141,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.kickingStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -154,8 +156,8 @@
     </table>
   </div>
   <div ng-show="playerStats.puntingStats.length > 0">
-    <h4 class="nfhs-scout-heading">Punting Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Punting Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -167,7 +169,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.puntingStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -182,8 +184,8 @@
     </table>
   </div>
   <div ng-show="playerStats.puntReturnStats.length > 0">
-    <h4 class="nfhs-scout-heading">Punt Return Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Punt Return Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -195,7 +197,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.puntReturnStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>
@@ -210,8 +212,8 @@
     </table>
   </div>
   <div ng-show="playerStats.kickReturnStats.length > 0">
-    <h4 class="nfhs-scout-heading">Kick Return Stats</h4>
-    <table class="nfhs-scout-table">
+    <h3 class="digital-scout-heading">Kick Return Stats</h3>
+    <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
@@ -223,7 +225,7 @@
       </thead>
       <tbody>
         <tr ng-repeat="player in playerStats.kickReturnStats">
-          <td class="nfhs-scout-player-stats-player-name">
+          <td class="digital-scout-player-stats-player-name">
             <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
             </a>

@@ -16,8 +16,8 @@
 
 
     <!-- when implementing this elsewhere, point these links to the latest version on https://cdn.digitalscout.com/ -->
-    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/hsgc-widgets.js for example -->
-    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/1.2.0/css/base.css for example -->
+    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/hsgc-widgets.js for example -->
+    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/css/base.css for example -->
 
     <!-- put your custom stylesheet here, to override the base.css with your own prefered layouts, styles, and colors -->
     <!--<link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" /> -->
@@ -27,23 +27,14 @@
   </head>
   <body>
     <div class="container">
+      <h1>Sample Basketball mini box score</h1>
+      <div mini-box-score compressDisplay sport="Basketball" game="7637787" ></div>
 
-      <!--div datacast="0f214114ce">
-        <ul>
-          <li>{{getScore('5f2f7aed32')}}</li>
-          <li>{{getTeamName('5f2f7aed32')}}</li>
-          <li>{{getTeamLogo('5f2f7aed32')}}</li>
-          <li>{{isFinal()}}</li>
-          <li>{{isWinner('5f2f7aed32')}}</li>
-        </ul>
-      </div>
-      <hr /-->
+      <h1>Sample Football mini box score</h1>
+      <div mini-box-score compressDisplay sport="Football" game="8271517" ></div>
 
-      <h1>Sample Football mini box</h1>
-      <div mini-box-score compressDisplay sport="Football" game="32e996f8e7" ></div>
-
-      <h1>Sample Volleyball mini box</h1>
-      <div mini-box-score compressDisplay sport="Volleyball" game="a8f268b5d8" ></div>
+      <h1>Sample Volleyball mini box score</h1>
+      <div mini-box-score compressDisplay sport="Volleyball" game="8267306" ></div>
     </div>
     <script>
       $(function() {
@@ -61,7 +52,7 @@
       });
       hsgcWidgets.init({
         env: 'prod',
-        keyStrategy: 'unity'
+        keyStrategy: 'hsgc'
       });
     </script>
   </body>

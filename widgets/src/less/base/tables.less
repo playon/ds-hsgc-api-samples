@@ -1,6 +1,7 @@
-table.nfhs-scout-table {
+table.digital-scout-table {
   width: 100%;
-  border: @table-border-width solid @table-border-color;
+  border-top: @table-border-width solid @table-border-color;
+  border-bottom: none;
   max-width: 100%;
   background-color: transparent;
   border-collapse: collapse;
@@ -17,6 +18,10 @@ table.nfhs-scout-table {
         padding: 8px;
         vertical-align: top;
         border: @table-border-width solid @table-border-color;
+
+        img {
+          margin-right: 10px;
+        }
       }
     }
   }
@@ -26,6 +31,14 @@ table.nfhs-scout-table {
     > td {
       vertical-align: bottom;
       border-bottom-width: (@table-border-width * 2);
+    }
+
+    :first-child {
+      border-left: none;
+    }
+
+    :last-child {
+      border-right: none;
     }
   }
 
@@ -38,15 +51,20 @@ table.nfhs-scout-table {
   }
 }
 
-//responsive tables css converted to less & namespaced from https://github.com/zurb/responsive-tables
+// responsive tables css converted to less & namespaced from https://github.com/zurb/responsive-tables
+
+.digital-scout-responsive-table-wrapper  .digital-scout-table-scrollable {
+  padding-right: 1px; /* fix some borders trigger horizontal overflow in some unnecessary situations */
+}
+
 @media (min-width: (@screen-sm-cutoff + 1)) {
-  .nfhs-scout-table-pinned {
+  .digital-scout-table-pinned {
     display: none;
   }
 }
 
 @media only screen and (max-width: @screen-sm-cutoff) {
-  .nfhs-scout-table-responsive {
+  .digital-scout-table-responsive {
     margin-bottom: 0;
     td, th {
       position: relative;
@@ -59,21 +77,20 @@ table.nfhs-scout-table {
     }
   }
 
-  div.nfhs-scout-responsive-table-wrapper {
+  .digital-scout-responsive-table-wrapper {
     position: relative;
     margin-bottom: 20px;
     overflow-x: hidden;
     border-right: 1px solid transparent;
 
-
-    div.nfhs-scout-table-scrollable {
+    .digital-scout-table-scrollable {
       margin-left: 40%;
       overflow: scroll;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
     }
 
-    .nfhs-scout-table-pinned {
+    .digital-scout-table-pinned {
       position: absolute;
       left: 0;
       top: 0;

@@ -89,15 +89,15 @@ angular.module('hsgc')
         scope.getShotImageClass = function(shot) {
           if (shot.TeamSeasonId == scope.homeTeamSeasonId) {
             if (shot.IsScoring) {
-              return "nfhs-scout-shot-chart-shot-made-home";
+              return "digital-scout-shot-chart-shot-made-home";
             } else {
-              return "nfhs-scout-shot-chart-shot-missed-home";
+              return "digital-scout-shot-chart-shot-missed-home";
             }
           } else {
             if (shot.IsScoring) {
-              return "nfhs-scout-shot-chart-shot-made-away";
+              return "digital-scout-shot-chart-shot-made-away";
             } else {
-              return "nfhs-scout-shot-chart-shot-missed-away";
+              return "digital-scout-shot-chart-shot-missed-away";
             }
           }
         };

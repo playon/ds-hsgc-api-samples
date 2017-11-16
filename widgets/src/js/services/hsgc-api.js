@@ -41,19 +41,8 @@ angular.module('hsgc')
         }
       }
 
-      var homeLogoCompute = hsgcConfig.imageRoot + boxScore.HomeTeamLogo;
-      if (boxScore.HomeTeamLogo.indexOf('http') === 0) {
-        //there's a bug with unity where it sometimes returns double urls
-        //see: https://github.com/playon/unity-api/pull/163
-        homeLogoCompute = boxScore.HomeTeamLogo.substring(boxScore.HomeTeamLogo.lastIndexOf('http'));
-      }
-
-      var awayLogoCompute = hsgcConfig.imageRoot + boxScore.AwayTeamLogo;
-      if (boxScore.AwayTeamLogo.indexOf('http') === 0) {
-        //there's a bug with unity where it sometimes returns double urls
-        //see: https://github.com/playon/unity-api/pull/163
-        awayLogoCompute = boxScore.AwayTeamLogo.substring(boxScore.AwayTeamLogo.lastIndexOf('http'));
-      }
+      var homeLogoNormalized = (boxScore.HomeTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.HomeTeamLogo + "?width=" + hsgcConfig.logoMaximumHighResWidth + "&height=" + hsgcConfig.logoMaximumHighResHeight;
+      var awayLogoNormalized = (boxScore.AwayTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.AwayTeamLogo + "?width=" + hsgcConfig.logoMaximumHighResWidth + "&height=" + hsgcConfig.logoMaximumHighResHeight;
       
       var scoringPlaysByPeriod = {};
 			
@@ -81,8 +70,8 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: homeLogoCompute,
-        awayLogo: awayLogoCompute,
+        homeLogo: homeLogoNormalized,
+        awayLogo: awayLogoNormalized,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeShortName: boxScore.HomeTeamShortName || boxScore.HomeTeamName,
@@ -105,10 +94,10 @@ angular.module('hsgc')
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
-        statusPretty: boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "No Data" : boxScore.Status,
+        statusPretty: boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "Connection Lost" : boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
         localStartTime: startTime,
-        year: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy'),
+        longDateTimeDisplay: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy h:mm a') /* time zone acronym is need instead of long version of boxScore.TimeZone*/,
         colors: colors,
         inOverTime: inOverTime,
         awayOvertimeScore: awayOTScore,

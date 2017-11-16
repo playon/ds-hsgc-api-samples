@@ -1,6 +1,6 @@
 {
   "name": "hsgc-widgets",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Widgets for digitalscout.com",
   "dependencies": {},

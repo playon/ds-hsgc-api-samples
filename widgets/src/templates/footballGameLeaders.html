@@ -1,0 +1,80 @@
+<div ng-show="leadersAvailable" class="digital-scout-game-leaders digital-scout-leaders">
+    <h3 class="digital-scout-heading">Game Leaders</h3>
+    <table class="digital-scout-table digital-scout-hidden-sm">
+      <thead>
+        <tr>
+          <th title="Team"></th>
+          <th title="Passing leader">Pass</th>
+          <th title="Rushing leader">Rush</th>
+          <th title="Receiving leader">Rec</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img ng-src="{{awayLogo}}" alt="{{awayShortName}} logo" class="digital-scout-logo" />
+            {{awayShortName}}
+          </td>
+          <td>
+            <span ng-hide="leaders.awayPassingLeaderSlug">{{leaders.awayPassingLeader}}</span>
+            <a ng-show="leaders.awayPassingLeaderSlug" ng-href="{{leaders.awayPassingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayPassingLeader}}</a>
+          </td>
+          <td>
+            <span ng-hide="leaders.awayRushingLeaderSlug">{{leaders.awayRushingLeader}}</span>
+            <a ng-show="leaders.awayRushingLeaderSlug" ng-href="{{leaders.awayRushingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayRushingLeader}}</a>
+          </td>
+          <td>
+            <span ng-hide="leaders.awayReceivingLeaderSlug">{{leaders.awayReceivingLeader}}</span>
+            <a ng-show="leaders.awayReceivingLeaderSlug" ng-href="{{leaders.awayReceivingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayReceivingLeader}}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img ng-src="{{homeLogo}}" alt="{{homeShortName}} logo" class="digital-scout-logo" />
+            {{homeShortName}}
+          </td>
+          <td>
+            <span ng-hide="leaders.homePassingLeaderSlug">{{leaders.homePassingLeader}}</span>
+            <a ng-show="leaders.homePassingLeaderSlug" ng-href="{{leaders.homePassingLeaderSlug}}" title="Go to this player's profile">{{leaders.homePassingLeader}}</a>
+          </td>
+          <td>
+            <span ng-hide="leaders.homeRushingLeaderSlug">{{leaders.homeRushingLeader}}</span>
+            <a ng-show="leaders.homeRushingLeaderSlug" ng-href="{{leaders.homeRushingLeaderSlug}}" title="Go to this player's profile">{{leaders.homeRushingLeader}}</a>
+          </td>
+          <td>
+            <span ng-hide="leaders.homeReceivingLeaderSlug">{{leaders.homeReceivingLeader}}</span>
+            <a ng-show="leaders.homeReceivingLeaderSlug" ng-href="{{leaders.homeReceivingLeaderSlug}}" title="Go to this player's profile">{{leaders.homeReceivingLeader}}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- mobile often breaks width with even the slightest long names; can't stick 4 columns -->
+    <table class="digital-scout-table digital-scout-visible-sm-table">
+      <tbody>
+        <tr>
+          <td>
+            <img ng-src="{{awayLogo}}" alt="{{awayShortName}} logo" class="digital-scout-logo" />
+            {{awayShortName}}<br>
+            <span title="Passing leader">Pass: </span><span ng-hide="leaders.awayPassingLeaderSlug">{{leaders.awayPassingLeader}}</span>
+            <a ng-show="leaders.awayPassingLeaderSlug" ng-href="{{leaders.awayPassingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayPassingLeader}}</a><br>
+            <span title="Rushing leader">Rush: </span><span ng-hide="leaders.awayRushingLeaderSlug">{{leaders.awayRushingLeader}}</span>
+            <a ng-show="leaders.awayRushingLeaderSlug" ng-href="{{leaders.awayRushingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayRushingLeader}}</a><br>
+            <span title="Receiving leader">Rec: </span><span ng-hide="leaders.awayReceivingLeaderSlug">{{leaders.awayReceivingLeader}}</span>
+            <a ng-show="leaders.awayReceivingLeaderSlug" ng-href="{{leaders.awayReceivingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayReceivingLeader}}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img ng-src="{{homeLogo}}" alt="{{homeShortName}} logo" class="digital-scout-logo" />
+            {{homeShortName}}<br>
+            <span title="Passing leader">Pass: </span><span ng-hide="leaders.homePassingLeaderSlug">{{leaders.homePassingLeader}}</span>
+            <a ng-show="leaders.homePassingLeaderSlug" ng-href="{{leaders.homePassingLeaderSlug}}" title="Go to this player's profile">{{leaders.homePassingLeader}}</a><br>
+            <span title="Rushing leader">Rush: </span><span ng-hide="leaders.homeRushingLeaderSlug">{{leaders.homeRushingLeader}}</span>
+            <a ng-show="leaders.homeRushingLeaderSlug" ng-href="{{leaders.homeRushingLeaderSlug}}" title="Go to this player's profile">{{leaders.homeRushingLeader}}</a><br>
+            <span title="Receiving leader">Rec: </span><span ng-hide="leaders.homeReceivingLeaderSlug">{{leaders.homeReceivingLeader}}</span>
+            <a ng-show="leaders.homeReceivingLeaderSlug" ng-href="{{leaders.homeReceivingLeaderSlug}}" title="Go to this player's profile">{{leaders.homeReceivingLeader}}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

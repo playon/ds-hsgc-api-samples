@@ -1,42 +1,42 @@
-<div ng-show="statsAvailable" class="details nfhs-scout-team-stats">
-  <table class="nfhs-scout-table">
+<div ng-show="statsAvailable" class="details digital-scout-team-stats">
+  <table class="digital-scout-table">
     <thead>
       <tr>
         <th></th>
         <th title="Kills" class="ng-binding">
-          <span class="nfhs-scout-visible-sm">K</span>
-          <span class="nfhs-scout-hidden-sm">Kills</span>
+          <span class="digital-scout-visible-sm-inline">K</span>
+          <span class="digital-scout-hidden-sm">Kills</span>
         </th>
         <th title="Total Attempts" class="ng-binding">
-          <span class="nfhs-scout-visible-sm">TA</span>
-          <span class="nfhs-scout-hidden-sm">Total Attempts</span>
+          <span class="digital-scout-visible-sm-inline">TA</span>
+          <span class="digital-scout-hidden-sm">Total Attempts</span>
         </th>
         <th title="Attack Percentage (Kills - Errors / Attempts)" class="ng-binding">
-          <span class="nfhs-scout-visible-sm">PCT</span>
-          <span class="nfhs-scout-hidden-sm">Attack Percentage</span>
+          <span class="digital-scout-visible-sm-inline">PCT</span>
+          <span class="digital-scout-hidden-sm">Attack Percentage</span>
         </th>
         <th title="Team Blocks (Solo + Assist/2)" class="ng-binding">
-          <span class="nfhs-scout-visible-sm">B</span>
-          <span class="nfhs-scout-hidden-sm">Team Blocks</span>
+          <span class="digital-scout-visible-sm-inline">B</span>
+          <span class="digital-scout-hidden-sm">Team Blocks</span>
         </th>
         <th title="Team Reception Errors" class="ng-binding">
-          <span class="nfhs-scout-visible-sm">RE</span>
-          <span class="nfhs-scout-hidden-sm">Reception Errors</span>
+          <span class="digital-scout-visible-sm-inline">RE</span>
+          <span class="digital-scout-hidden-sm">Reception Errors</span>
         </th>
         <th title="Total Errors">
-          <span class="nfhs-scout-visible-sm" class="ng-binding">TE</span>
-          <span class="nfhs-scout-hidden-sm">Total Errors</span>
+          <span class="digital-scout-visible-sm-inline" class="ng-binding">TE</span>
+          <span class="digital-scout-hidden-sm">Total Errors</span>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th title="{{awayName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span></span>
+        <td title="{{awayName}}">
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo" style="display: inline-block; margin-right: 20px;"/><span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
           </a>
-        </th>
+        </td>
         <td>{{ awayStats.AttackKills }}</td>
         <td>{{ awayStats.Attacks }}</td>
         <td>{{ awayStats.AttackPercentage | percentage:0:'':'%' }}</td>
@@ -45,12 +45,12 @@
         <td>{{ awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors }}</td>
       </tr>
       <tr>
-        <th title="{{homeName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span></span>
+        <td title="{{homeName}}">
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo" style="display: inline-block; margin-right: 20px;" /><span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+            <img ng-src="{{homeLogo}}" class="digital-scout-logo" /><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
           </a>
-        </th>
+        </td>
         <td>{{ homeStats.AttackKills }}</td>
         <td>{{ homeStats.Attacks }}</td>
         <td>{{ homeStats.AttackPercentage | percentage:0:'':'%' }}</td>

@@ -1,39 +1,39 @@
-<div ng-show="playByPlayAvailable" class="nfhs-scout-play-by-play">
-  <div class="nfhs-scout-period-selector">
-    <ul class="nfhs-scout-hidden-sm">
-      <li class="nfhs-scout-selector-label">Set:</li>
-      <li ng-repeat="period in playByPlayPeriods" ng-class="{'nfhs-scout-active': selectedPeriod == period.value}">
+<div ng-show="playByPlayAvailable" class="digital-scout-play-by-play">
+  <div class="digital-scout-period-selector">
+    <ul class="digital-scout-hidden-sm">
+      <li class="digital-scout-selector-label">Set:</li>
+      <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedPeriod == period.value}">
         <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
       </li>
     </ul>
-    <div class="nfhs-scout-visible-sm">
+    <div class="digital-scout-visible-sm">
       <label>
         Set
-        <select name="nfhs-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedPeriod" required></select>
+        <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedPeriod" required></select>
       </label>
     </div>
   </div>
-  <div class="nfhs-scout-play-by-play-plays">
-    <table class="nfhs-scout-table">
+  <div class="digital-scout-play-by-play-plays">
+    <table class="digital-scout-table">
       <thead>
         <tr>
-          <th class="nfhs-scout-play-by-play-team nfhs-scout-play-by-play-team-away" title="{{awayName}}">
-            <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{awayAcronym}}</span><span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{awayName}}</span>
+          <th class="digital-scout-play-by-play-team digital-scout-play-by-play-team-away" title="{{awayName}}">
+            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm-inline">{{awayAcronym}}</span><span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{awayName}}</span>
           </th>
-          <th class="nfhs-scout-play-by-play-score">Score</th>
-          <th class="nfhs-scout-play-by-play-team" title="{{homeName}}">
-            <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/><span class="nfhs-scout-play-by-play-team-acronym nfhs-scout-visible-sm">{{homeAcronym}}</span><span class="nfhs-scout-play-by-play-team-name nfhs-scout-hidden-sm">{{homeName}}</span>
+          <th class="digital-scout-play-by-play-score">Score</th>
+          <th class="digital-scout-play-by-play-team" title="{{homeName}}">
+            <img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm-inline">{{homeAcronym}}</span><span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{homeName}}</span>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="play in playByPlay | filter:{'GameNumber': selectedPeriod}:true">
-          <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team nfhs-scout-play-by-play-team-away">
-            <span ng-show="play.TeamSeasonId == awayTeamSeasonId" ng-class='{"playLinkDescription": play.Highlight}'>{{play.Description}}</span>
-            <a ng-if="play.Highlight" href='{{play.Highlight.NfhsLinkToHighlight}}' target="_blank"><i class="playIcon"></i></a>
+          <td ng-class='{"digital-scout-scoring": play.Score > 0, "digital-scout-play-by-play-team": true, "digital-scout-play-by-play-team-away": true }'>
+            <span ng-show="play.TeamSeasonId == awayTeamSeasonId" ng-class='{"digital-scout-play-by-play-description": play.Highlight}'>{{play.Description}}</span>
+            <a ng-if="play.Highlight" href='{{play.Highlight.LinkToHighlight}}' target="_blank"><i class="playIcon"></i></a>
           </td>
-          <td class="nfhs-scout-play-by-play-score" ng-class='{"nfhs-scout-scoring": play.Score > 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
-          <td ng-class='{"nfhs-scout-scoring": play.Score > 0 }' class="nfhs-scout-play-by-play-team">
+          <td class="digital-scout-play-by-play-score" ng-class='{"digital-scout-scoring": play.Score > 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
+          <td ng-class='{"digital-scout-scoring": play.Score > 0, "digital-scout-play-by-play-team": true }'>
             <span ng-show="play.TeamSeasonId == homeTeamSeasonId">{{play.Description}}</span>
           </td>
         </tr>

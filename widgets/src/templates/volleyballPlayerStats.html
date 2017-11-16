@@ -1,18 +1,18 @@
-<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
-  <h4 class="nfhs-scout-heading">
+<div ng-show="statsAvailable" class="digital-scout-player-stats">
+  <h3 class="digital-scout-heading">
     <span ng-show="!showTeamLinks">
-      <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
-      <span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+      <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+      <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
     </span>
     <a ng-show="showTeamLinks" href="{{awaySlug}}">
-      <img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/>
-      <span class="nfhs-scout-hidden-sm">{{awayName}}</span><span class="nfhs-scout-visible-sm">{{awayShortName}}</span>
+      <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+      <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
     </a>
-  </h4>
-  <table class="nfhs-scout-table" responsive-table>
+  </h3>
+  <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>
-        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th class="digital-scout-player-stats-player-name">Player</th>
         <th title="Sets Played">SP</th>
         <th title="Attack Kills">K</th>
         <th title="Attack Errors">E</th>
@@ -33,7 +33,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
-        <td class="nfhs-scout-player-stats-player-name">
+        <td class="digital-scout-player-stats-player-name">
             <a ng-show="false && playerStat.PlayerId > 0" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
             </a>
@@ -60,21 +60,21 @@
     </tbody>
   </table>
 </div>
-<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
-  <h4 class="nfhs-scout-heading">
+<div ng-show="statsAvailable" class="digital-scout-player-stats">
+  <h3 class="digital-scout-heading">
     <span ng-show="!showTeamLinks">
-      <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
-      <span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+      <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+      <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
     </span>
     <a ng-show="showTeamLinks" href="{{homeSlug}}">
-      <img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/>
-      <span class="nfhs-scout-hidden-sm">{{homeName}}</span><span class="nfhs-scout-visible-sm">{{homeShortName}}</span>
+      <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+      <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
     </a>
-  </h4>
-  <table class="nfhs-scout-table" responsive-table>
+  </h3>
+  <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>
-        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th class="digital-scout-player-stats-player-name">Player</th>
         <th title="Sets Played">SP</th>
         <th title="Attack Kills">K</th>
         <th title="Attack Errors">E</th>
@@ -95,7 +95,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
-        <td class="nfhs-scout-player-stats-player-name">
+        <td class="digital-scout-player-stats-player-name">
             <a ng-show="false" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
               {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
             </a>
@@ -121,7 +121,7 @@
       </tr>
     </tbody>
   </table>
-  <div class="nfhs-scout-hit-chart-legend">
+  <div class="digital-scout-hit-chart-legend">
     <dl>
       <dt>*</dt>
       <dd>indicates starter</dd>

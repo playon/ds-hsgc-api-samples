@@ -7,9 +7,9 @@ angular.module('hsgc')
         $log.debug('Show Team Links:', config.showTeamLinks);
         scope.showTeamLinks = config.showTeamLinks;
 
-        //$log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
+        $log.debug('Scoreboard key strategy set to: "'+ config.keyStrategy + '"');
 
-        //todo: this really is very nfhs-network specific - should probably move this outside the core widget code
+        //todo: this really is very NFHS Network specific—should probably move this outside the core widget code
         if (config.keyStrategy === "unity") {
           $http.get(config.unityRoot + 'games/' + scope.gameKey)
             .success(function(data) {

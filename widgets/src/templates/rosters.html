@@ -1,7 +1,7 @@
-<div class="nfhs-scout-rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
-  <div class="nfhs-scout-roster">
-    <h4 class="nfhs-scout-heading">{{awayName}}</h4>
-    <table class="nfhs-scout-table">
+<div class="digital-scout-rosters" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
+  <div class="digital-scout-roster">
+    <h3 class="digital-scout-heading">{{awayName}}</h3>
+    <table class="digital-scout-table">
       <tr ng-repeat="player in players[awayTeamSeasonId] | rosterPlayersToDisplay">
         <td>
           <a href="{{player.PlayerSlug}}" title="Go to this player's profile" target="_blank">
@@ -11,9 +11,9 @@
       </tr>
     </table>
   </div>
-  <div class="nfhs-scout-roster">
-    <h4 class="nfhs-scout-heading">{{homeName}}</h4>
-    <table class="nfhs-scout-table">
+  <div class="digital-scout-roster">
+    <h3 class="digital-scout-heading">{{homeName}}</h3>
+    <table class="digital-scout-table">
       <tr ng-repeat="player in players[homeTeamSeasonId] | rosterPlayersToDisplay">
         <td>
           <a href="{{player.PlayerSlug}}" title="Go to this player's profile" target="_blank">

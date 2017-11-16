@@ -1,26 +1,44 @@
-<div ng-show="playByPlayAvailable" class="nfhs-scout-drivechart">
-  <canvas resize style="width: 100%;"></canvas>
-  <table>
-    <tr>
-      <td>
-        Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Ball on {{getSpot(lastPlay)}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Posession: {{lastPlay.TeamName}}
-      </td>
-    </tr>
-  </table>
-  <div ng-if="hasPreviousPlay">
-    Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+<div ng-show="playByPlayAvailable" class="digital-scout-drivechart">
+  <canvas resize class="digital-scout-drivechart-canvas"></canvas>
+  <div class="digital-scout-drivechart-info">
+    <table class="digital-scout-hidden-sm">
+      <tr>
+        <td>
+          Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
+        </td>
+        <td>
+          Ball on {{getSpot(lastPlay)}}
+        </td>
+        <td>
+          Posession: {{lastPlay.TeamName}}
+        </td>
+      </tr>
+    </table>
+    <table class="digital-scout-visible-sm-table">
+      <tr>
+        <td>
+          Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Ball on {{getSpot(lastPlay)}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Posession: {{lastPlay.TeamName}}
+        </td>
+      </tr>
+    </table>
+    <div class="digital-scout-drivechart-last-play">
+      Current Play: {{previousPlay.Description}}
+    </div>
+    <div class="digital-scout-drivechart-previous-play">
+      Previous Play: {{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, {{previousPlay.Description}}
+    </div>
+    </div>
+  <div ng-show="!playByPlayAvailable" class="digital-scout-drivechart">
+    <em>The drive chart is only available when the statistician has entered play-by-play information.</em>
   </div>
-</div>
-<div ng-show="!playByPlayAvailable" class="nfhs-scout-drivechart">
-  <em>The drive chart is only available when the statistician has entered play-by-play information.</em>
 </div>

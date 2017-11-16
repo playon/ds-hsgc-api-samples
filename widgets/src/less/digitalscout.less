@@ -1,0 +1,52 @@
+@import 'base/base.less';
+
+@table-border-width: 0px;
+
+.digital-scout-datacast {
+  margin-bottom: 90px;
+}
+
+table.digital-scout-table {
+  > tbody > tr {
+    background-color: #fbfbfb;
+
+    &:nth-child(even) {
+      background-color: #f2f5f7;
+    }
+  }
+}
+
+.digital-scout-tabs {
+  > li {
+    font-size: 12px;
+    line-height: 18px;
+    
+    a {
+      padding: 15px 10px;
+      /* combined with height:1px and display:table-cell of the li, height:100% gives a uniform height for all a tags so the .active:after with top:100% will anchor correctly */
+      height: 100%; 
+    }
+
+    &.active {
+      a, a:hover, a:focus {
+        border: none;
+
+        &:after {
+          top: 100%;
+          left: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+          border-color: #fff;
+          // border-top-color must match @highlight-color-2;
+          border-top-color: #00255c;
+          border-width: 5px 5px;
+          margin-left: -10px;
+        }
+      }
+    }
+  }
+}

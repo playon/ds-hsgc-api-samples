@@ -8,53 +8,264 @@
   display: none !important;
 }
 
-.nfhs-scout-logo {
+.digital-scout-datacast a, .digital-scout-game-summary a {
+  text-decoration: none;
+  color: @link-color-default;
+}
+
+.digital-scout-datacast a:hover, .digital-scout-game-summary a:hover {
+  text-decoration: underline;
+  color: @link-color-hover;
+}
+
+.digital-scout-datacast a:visited, .digital-scout-game-summary a:visited {
+  color: @link-color-visisted;
+  outline: 0;
+}
+
+.digital-scout-datacast p, .digital-scout-game-summary p { 
+  margin: 1em 0;
+}
+
+.digital-scout-datacast select, .digital-scout-game-summary select { 
+  margin-left: 5px;
+}
+
+.digital-scout-logo {
   .widget-logo-medium
 }
 
-/**** Scoreboard ****/
-.nfhs-scout-scoreboard {
-  .nfhs-scout-game-status {
-    float:right;
-  }
-
-  th, td { text-align: center; }
-  td:first-child { text-align: left; }
-
-  .nfhs-scout-winner { font-weight: bold; }
+.digital-scout-datacast, .digital-scout-game-summary {
+  font-family: @font-family-default;
+  font-size: @font-size-default;
+  line-height: @font-size-default * 1.5;
 }
 
-.nfhs-scout-tabbed-details {
-  .nfhs-scout-tabs {
+.digital-scout-heading,
+.digital-scout-datacast h1, .digital-scout-game-summary h1,
+.digital-scout-datacast h2, .digital-scout-game-summary h2,
+.digital-scout-datacast h3, .digital-scout-game-summary h3,
+.digital-scout-datacast h4, .digital-scout-game-summary h4,
+.digital-scout-datacast h5, .digital-scout-game-summary h5,
+.digital-scout-datacast h6, .digital-scout-game-summary h6 {
+  margin: 1em 0;
+  font-family: @font-family-headers;
+  font-weight: normal;
+  color: @color-headers;
+  text-transform: uppercase;
+}
+
+label { cursor: pointer; }
+
+/**** Info card ****/
+.digital-scout-info-card {
+  width: 99%;
+  border: 1px solid #cbcbcb;
+  overflow: hidden;
+  margin: 0 auto 20px auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  
+  .type {
+    background-color: #484848;
+    color: #fff;
+    border: 3px solid #fff;
+    padding: 4px 17px;
+    text-transform: uppercase
+  }
+  
+  .digital-scout-scoreboard-details-teams {
+    background: @highlight-color-1;
+    padding-bottom: 10px;
+
+    .name {
+      padding-top: 10px;
+      clear: both;
+      text-transform: uppercase;
+      font-family: @font-family-scoreboard-team-name;
+      font-weight: bold;
+      font-size: 1.25em;
+      line-height: 1.5em;
+      .clearfix;
+      
+      a, a:hover {        
+        color: #fff;
+      }
+    }
+    
+    @media (max-width: @screen-sm-cutoff) {
+      .name {
+          font-size: 1.0em;
+          line-height: 1.25em;
+      }
+    }
+    
+    .score {
+      background: #fcfcfc;
+      border: 1px solid #eee;
+      color: #222;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+      -webkit-box-shadow: 3px 3px 1px #000;
+      -moz-box-shadow: 3px 3px 1px #000;
+      box-shadow: 3px 3px 1px #000;
+      min-width: 30px
+    }
+    
+    .logo {
+      -webkit-box-shadow: 3px 3px 1px #000;
+      -moz-box-shadow: 3px 3px 1px #000;
+      box-shadow: 3px 3px 1px #000;
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 5px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      
+      img {
+        .widget-logo-large;        
+      }
+    }
+
+    .left {
+      .score {
+        float: left;
+        margin-left: 10px;
+        margin-right: -5px;
+      }
+      
+      .logo {
+        float: left;
+      }
+      
+      .name { text-align: left; padding-left: 10px; }
+    }
+    
+    .right {
+        .score {
+        float: right;
+        margin-right: 10px;
+        margin-left: -5px;
+      }
+      
+      .logo {
+        float: right
+      }
+      
+      .name { text-align: right; padding-right: 5px; }
+    }
+  
+    table {
+      width: 100%;
+
+      td {
+        width: 50%;
+        padding-top: 20px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .digital-scout-scoreboard-details-status {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    position: relative;
+
+    h3 {
+      font-size: 24px;
+      line-height: 36px;
+      margin: 10px 0 0 0;
+      padding: 0 10px;
+    }
+  
+    h4 {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-transform: none
+    }  
+
+    span.description, span.date, span.location {
+        display: block;
+        font-size: 12px;
+        padding: 3px 10px;
+        line-height: 1.3em
+    }
+
+    span.date {
+        font-style: italic
+    }
+
+    span.location {
+        font-weight: bold
+    }
+  }
+}
+
+/**** Scoreboard ****/
+.digital-scout-scoreboard {
+  th, td { text-align: center; }
+  td:first-child { text-align: left; }
+  border: 1px solid #cbcbcb;
+  overflow: hidden;
+  margin: 0 auto 20px auto;
+  position: relative;
+  vertical-align: middle;
+
+  h3 {
+    font-size: 24px;
+    margin: 7px 0 0 0;
+    line-height: 1.15em;
+    padding: 10px;
+  }
+
+  .digital-scout-game-status {
+    float: right;
+    font-size: 1.125em;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  
+  .digital-scout-winner span span:before, .digital-scout-winner a span:before { content: '☆ '; }
+}
+
+.digital-scout-tabbed-details {
+  .digital-scout-tabs {
     > li {
       @media only screen and (max-width: @screen-sm-cutoff) {
         font-size: 10px;
+        line-height: 15px;
       }
     }
   }
 }
 
-.card {
-  .nfhs-scout-logo {
-    width: 50px;
-    height: 50px;
-  }
-}
-
 
 /**** Team Stats ****/
-.nfhs-scout-team-stats {
-  th {
-    img { display: block; margin: 0 auto; }
-  }
+/*
+.digital-scout-team-stats {
+  // defaults are all pretty good here
 }
+*/
 
 /**** Player Stats ****/
-.nfhs-scout-player-stats {
+.digital-scout-player-stats {
+  h3 {
+    font-size: 24px;
+    line-height: 36px;
+    margin: 10px 0 0 0;
+    padding: 0 10px;
+  }
+  
   th, td {
     text-align: center;
 
-    &.nfhs-scout-player-stats-player-name {
+    &.digital-scout-player-stats-player-name {
       text-align: left;
     }
   }
@@ -62,10 +273,16 @@
   .starter {
     color: #999;
   }
+
+  > .player-stats-not-available > p {
+    font-style: italic;
+    font-size: 0.875em;
+    padding: 0 10px;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 1189px) {
-  .nfhs-scout-player-stats div.nfhs-scout-responsive-table-wrapper div.nfhs-scout-table-scrollable {
+  .digital-scout-player-stats div.digital-scout-responsive-table-wrapper div.digital-scout-table-scrollable {
     overflow: scroll;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -73,46 +290,66 @@
 }
 
 /**** Leaders ****/
-.nfhs-scout-game-leaders {
-  .nfhs-scout-leader-name {
-    font-weight: bold;
+.digital-scout-game-leaders {
+  border: 1px solid #cbcbcb;
+  margin-bottom: 20px;
+
+  h3 {
+    font-size: 24px;
+    line-height: 36px;
+    margin: 10px 0 0 0;
+    padding: 10px;
   }
 }
 
 /**** Play by Play ****/
-.nfhs-scout-play-by-play {
-
-  .nfhs-scout-logo {
-    width: 24px;
-    height: 24px;
+.digital-scout-play-by-play {
+  .digital-scout-logo {
+    .widget-logo-medium;
     vertical-align:middle;
   }
-  td.nfhs-scout-play-by-play-spot {      
+
+  .digital-scout-play-by-play-time {
+    text-align: right;
+  }
+
+  .digital-scout-play-by-play-spot {      
       @media (min-width: @screen-sm-cutoff) {
         min-width: 160px;   
       }      
       @media (max-width: @screen-sm-cutoff) {
-        width: 0px;
+        width: 0;
         padding: 0;
       }
   }
   
-  .nfhs-scout-play-by-play-description {
-    span.nfhs-scout-play-by-play-spot {
+  .digital-scout-play-by-play-description {
+    .digital-scout-play-by-play-spot {
         color: #aaa;
         font-weight: normal;
     }
   }
   
-  .nfhs-scout-scoring { font-weight: bold; }
+  .digital-scout-scoring { font-weight: bold; }
 
-  .nfhs-scout-play-by-play-plays {
+  .digital-scout-scoring-summary-not-available > p {
+    padding: 0 10px;
+    font-style: italic;
+    font-size: 0.875em;
+  }
+
+  .digital-scout-play-by-play-plays {
     table {
       border-top: 1px solid #ddd;
       clear:both;
       padding-top: 10px;
       margin-top:20px;
 
+      .digital-scout-play-by-play-score {
+        vertical-align: middle;
+        text-align: center;
+      }
+    
       th {
         background-color: @highlight-color-1;
         color: #fff;
@@ -121,41 +358,50 @@
       }
 
       th, td {
-        &.nfhs-scout-play-by-play-team {
-          img.nfhs-scout-logo { margin-right: 5px; }
-          .nfhs-scout-play-by-play-team-acronym { display: none; }
+        &.digital-scout-play-by-play-team {
+          img.digital-scout-logo { margin-right: 5px; }
+          .digital-scout-play-by-play-team-acronym { display: none; }
           white-space: nowrap;
         }
       }
       
       td { vertical-align: middle; }
-      td.nfhs-scout-play-by-play-team-away,th.nfhs-scout-play-by-play-team-away { text-align: right; white-space: normal; }
+      .digital-scout-play-by-play-team-away { text-align: right; white-space: normal; }
     }
   }
-}
 
-.playLinkDescription {
-  width: 90%;
-  display: inline-block;
-}
-
-.playLink {
-  float: right;
-  margin-left: 10px;
-  i {
-    background: url(../img/playIcon.svg) no-repeat top left;
-    height: 20px;
-    width: 20px;
-    background-size: contain;
-    display: block;
+  .digital-scout-play-by-play-description {
+    width: 90%;
   }
-  :after {
-    clear: both;
-  }
+  
+  .digital-scout-play-by-play-link {
+    float: right;
+    margin-left: 10px;
+    i {
+      background: url(../img/playIcon.svg) no-repeat top left;
+      height: 20px;
+      width: 20px;
+      background-size: contain;
+      display: block;
+    }
+    :after {
+      clear: both;
+    }
+  }  
 }
 
 /**** Game Summary ****/
-.nfhs-scout-game-summary {
+.digital-scout-game-summary {
+  border: 1px solid #cbcbcb;
+  margin-bottom: 25px;
+
+  h3 {
+    font-size: 24px;
+    line-height: 36px;
+    margin: 10px 0 0 0;
+    padding: 10px;
+  }
+
   th, td {
     text-align: center;
     &:first-child {
@@ -164,11 +410,15 @@
   }
 }
 
-.nfhs-scout-period-selector {
+.digital-scout-period-selector {
+  padding-left: 10px;
+  padding-top: 10px;
+
   ul {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
+    margin-top: 0;
 
     li {
       display: inline-block;
@@ -187,7 +437,7 @@
         a { color: #fff; }
       }
 
-      &.nfhs-scout-active {
+      &.digital-scout-active {
         &, &:hover, &:focus {
           background-color: @highlight-color-2;
           a { color: #fff; }
@@ -197,7 +447,7 @@
         a { cursor: default; }
       }
 
-      &.nfhs-scout-selector-label {
+      &.digital-scout-selector-label {
         border: none;
         font-weight:bold;
         text-transform: uppercase;
@@ -209,24 +459,35 @@
 
 
 /**** Attribution ****/
-.nfhs-scout-attribution {
-  float:right;
-  height:44px;
+.digital-scout-attribution {
+  position: absolute;
+  margin-left: 15px;
+  bottom: -10px;
+  right: 15px;
+  width: 128px;
+  font-size: 0.875em;
+  text-align: center;
+}
 
-  a {
-    &:hover{
-      text-decoration:none;
-    }
+@media only screen and (max-width: @screen-sm-cutoff) {
+  .digital-scout-attribution {
+    position: inherit;
+    bottom: 0;
+    right: inherit;
+    margin: 15px auto;
+    width: 128px;
+    text-align: center;
   }
 }
 
 /**** Rosters ****/
-.nfhs-scout-rosters {
+.digital-scout-rosters {
+  padding: 0 10px;
 
   @media (min-width: @screen-sm-cutoff) {
     .clearfix;
 
-    .nfhs-scout-roster {
+    .digital-scout-roster {
       float: left;
       width: 50%;
     }
@@ -234,12 +495,12 @@
 }
 
 /**** Shot Chart ****/
-.nfhs-scout-shot-chart {
-  .nfhs-scout-shot-chart-teams {
+.digital-scout-shot-chart {
+  .digital-scout-shot-chart-teams {
     .clearfix;
     overflow:hidden;
 
-    .nfhs-scout-shot-chart-team {
+    .digital-scout-shot-chart-team {
       float: left;
       width: 50%;
       border: 0px solid #fff;
@@ -251,13 +512,13 @@
       margin-bottom: -500px;
       .clearfix;
 
-      &.nfhs-scout-shot-chart-team-away {
+      &.digital-scout-shot-chart-team-away {
         background-color: #12294E;
         border-right-width: 2px;
         >label { margin-bottom: 10px; }
       }
 
-      &.nfhs-scout-shot-chart-team-home {
+      &.digital-scout-shot-chart-team-home {
         background-color: #9D0B0E;
         border-left-width: 2px;
         >label>div { margin-bottom: 10px; }
@@ -276,27 +537,27 @@
     }
   }
 
-  .nfhs-scout-shot-chart-container {
+  .digital-scout-shot-chart-container {
     position: relative;
     clear: both;
 
-    img.nfhs-scout-basketball-court,
-      img.nfhs-scout-volleyball-court
+    img.digital-scout-basketball-court,
+      img.digital-scout-volleyball-court
         { width: 100%; }
-    .nfhs-scout-shot-chart-shot {
+    .digital-scout-shot-chart-shot {
       width: 16px;
       height: 16px;
       position:absolute;
       margin: -8px;
 
-      &.nfhs-scout-shot-chart-shot-made-home { background-image: url(../img/homeshotmade.png); }
-      &.nfhs-scout-shot-chart-shot-made-away { background-image: url(../img/awayshotmade.png); }
-      &.nfhs-scout-shot-chart-shot-missed-home { background-image: url(../img/homeshotmiss.png); }
-      &.nfhs-scout-shot-chart-shot-missed-away { background-image: url(../img/awayshotmiss.png); }
+      &.digital-scout-shot-chart-shot-made-home { background-image: url(../img/homeshotmade.png); }
+      &.digital-scout-shot-chart-shot-made-away { background-image: url(../img/awayshotmade.png); }
+      &.digital-scout-shot-chart-shot-missed-home { background-image: url(../img/homeshotmiss.png); }
+      &.digital-scout-shot-chart-shot-missed-away { background-image: url(../img/awayshotmiss.png); }
     }
   }
 
-  .nfhs-scout-shot-chart-legend {
+  .digital-scout-shot-chart-legend {
     text-align: right;
 
     > span {
@@ -304,24 +565,28 @@
       background-position: left center;
       padding-left: 20px;
 
-      &.nfhs-scout-shot-chart-shot-made {
+      &.digital-scout-shot-chart-shot-made {
         background-image: url(../img/awayshotmade.png);
       }
-      &.nfhs-scout-shot-chart-shot-missed {
+      &.digital-scout-shot-chart-shot-missed {
         background-image: url(../img/awayshotmiss.png);
       }
     }
+  }
+
+  + .shot-chart-not-available {
+    padding: 0 10px;
   }
 }
 
 /**** Hit Chart ****/
 
-.nfhs-scout-hit-chart-selector {
+.digital-scout-hit-chart-selector {
   float: left;
   margin: 0 10px 10px 10px;
 }
 
-.nfhs-scout-hit-chart-tooltip-js {
+.digital-scout-hit-chart-tooltip-js {
   display: none;
 
   /* boostrap copied style */
@@ -352,12 +617,12 @@
   }
 }
 
-.nfhs-scout-hit-chart-tooltip-js.top {
+.digital-scout-hit-chart-tooltip-js.top {
   padding: 5px 0;
   margin-top: -3px;
 }
 
-.nfhs-scout-hit-chart-tooltip-js.top .tooltip-arrow {
+.digital-scout-hit-chart-tooltip-js.top .tooltip-arrow {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
@@ -365,12 +630,12 @@
   border-width: 5px 5px 0;
 }
 
-.nfhs-scout-hit-chart-tooltip-js.right {
+.digital-scout-hit-chart-tooltip-js.right {
   padding: 0 5px;
   margin-left: 3px;
 }
 
-.nfhs-scout-hit-chart-tooltip-js.right .tooltip-arrow {
+.digital-scout-hit-chart-tooltip-js.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
@@ -378,12 +643,12 @@
   border-width: 5px 5px 5px 0;
 }
 
-.nfhs-scout-hit-chart-tooltip-js.left {
+.digital-scout-hit-chart-tooltip-js.left {
   padding: 0 5px;
   margin-left: -3px;
 }
 
-.nfhs-scout-hit-chart-tooltip-js.left .tooltip-arrow {
+.digital-scout-hit-chart-tooltip-js.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
@@ -392,7 +657,7 @@
 }
 
 
-.nfhs-scout-hit-chart-legend {
+.digital-scout-hit-chart-legend {
   padding-bottom: 20px;
 
   > dl {
@@ -413,7 +678,32 @@
 
 
 /**** Drive Chart ****/
-.nfhs-scout-drivechart em {
+.digital-scout-drivechart > canvas {
+  margin-top: 10px;
+}
+
+.digital-scout-drivechart-info {
+  padding: 10px;
+}
+
+.digital-scout-drivechart-info > table {
+  width: 100%;
+  margin-bottom: 10px;
+
+  + .digital-scout-hidden-sm td {
+    text-align: center;
+  }
+}
+
+.digital-scout-drivechart-info > .digital-scout-hidden-sm {
+    text-align: center;
+}
+
+.digital-scout-drivechart-last-play, .digital-scout-drivechart-previous-play {
+  padding: 0 2px;
+}
+
+.digital-scout-drivechart em {
   display: block;
   text-align: center;
   margin: 30px;

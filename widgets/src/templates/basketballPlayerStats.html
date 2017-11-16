@@ -1,9 +1,9 @@
-<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
-  <h4 class="nfhs-scout-heading"><img ng-src="{{awayLogo}}" class="nfhs-scout-logo"/> {{awayName}}</h4>
-  <table class="nfhs-scout-table" responsive-table>
+<div ng-show="statsAvailable" class="digital-scout-player-stats">
+  <h3 class="digital-scout-heading"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/> {{awayName}}</h3>
+  <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>
-        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th class="digital-scout-player-stats-player-name">Player</th>
         <th title="Field Goals Made">FGM</th>
         <th title="Three Point Shots Made">3PM</th>
         <th title="Free Throws Made">FTM</th>
@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
-        <td class="nfhs-scout-player-stats-player-name">
+        <td class="digital-scout-player-stats-player-name">
           <a ng-show="playerStat.PlayerId > 0" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
             {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
           </a>
@@ -44,12 +44,12 @@
     </tbody>
   </table>
 </div>
-<div ng-show="statsAvailable" class="nfhs-scout-player-stats">
-  <h4 class="nfhs-scout-heading"><img ng-src="{{homeLogo}}" class="nfhs-scout-logo"/> {{homeName}}</h4>
-  <table class="nfhs-scout-table" responsive-table>
+<div ng-show="statsAvailable" class="digital-scout-player-stats">
+  <h3 class="digital-scout-heading"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/> {{homeName}}</h3>
+  <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>
-        <th class="nfhs-scout-player-stats-player-name">Player</th>
+        <th class="digital-scout-player-stats-player-name">Player</th>
         <th title="Field Goals Made">FGM</th>
         <th title="Three Point Shots Made">3PM</th>
         <th title="Free Throws Made">FTM</th>
@@ -66,7 +66,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
-        <td class="nfhs-scout-player-stats-player-name">
+        <td class="digital-scout-player-stats-player-name">
           <a ng-show="playerStat.PlayerId > 0" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
             {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
           </a>

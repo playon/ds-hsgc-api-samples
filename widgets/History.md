@@ -1,5 +1,13 @@
 # History
 
+## 2.0.0 / 2017-11-12
+
+* Clean up CSS (includes breaking changes)
+  * Rename CSS class prefixes from `nfhs-scout` to `digital-scout`
+  * More consistent use of CSS prefixes
+  * Restructure some HTML
+  * New default styling/layout example: `less/digitalscout.less`
+
 ## 1.2.0 / 2017-09-16
 
 * Enable SSL mode in development to better reflect final environment
