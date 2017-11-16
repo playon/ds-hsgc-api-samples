@@ -18,6 +18,7 @@ module.exports = function (grunt) {
                 },
             },
         },
+        clean: [ 'build' ],
         less: {
           basicExample: {
             options: {
@@ -102,6 +103,14 @@ module.exports = function (grunt) {
                     cwd: "src/img",
                     src: "**.*",
                     dest: 'build/img',
+                    expand: true
+                }]
+            },
+            /* copy source files into the build directory so the local dev server can see them for use in JavaScript source map debugging */
+            withDebugSrc: {
+                files: [{
+                    src: "src/js/**/*.js",
+                    dest: 'build/',
                     expand: true
                 }]
             }
@@ -197,14 +206,21 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-aws-s3');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
     grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy']);
+
+    // optimize destructively (but losslessly) minifies all images
     grunt.registerTask('optimize', ['imagemin']);
-    grunt.registerTask('deploy', ['build', 'aws_s3']);
-    grunt.registerTask('default', ['build', 'connect', 'watch']);
+
+    // deploy deletes the /build directory, compiles, and pushes to S3 with the configured package.json version prefix
+    grunt.registerTask('deploy', ['clean', 'build', 'aws_s3']);
+
+    // default of course builds, but also starts a local web server for debugging (check port in 'connect' config above)
+    grunt.registerTask('default', ['build', 'copy:withDebugSrc', 'connect', 'watch']);
 };
