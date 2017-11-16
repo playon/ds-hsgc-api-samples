@@ -213,7 +213,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-string-replace');
 
-    grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy']);
+    grunt.registerTask('build', ['checkDependencies','ngtemplates', 'less', 'uglify', 'copy:examples']);
 
     // optimize destructively (but losslessly) minifies all images
     grunt.registerTask('optimize', ['imagemin']);
