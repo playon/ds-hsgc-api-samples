@@ -4,7 +4,7 @@ angular.module('hsgc')
       $log.debug('Populating base info');
 
       var scores = {},
-        unityTeamMapping = {},
+        teamIdMapping = {},
         colors = {},
         inOverTime = boxScore.Sport !== 'Volleyball' && boxScore.CurrentPeriod > boxScore.RegulationPeriodCount,
         homeOTScore = 0,
@@ -14,8 +14,11 @@ angular.module('hsgc')
       scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
       scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
 
-      unityTeamMapping[safeToLower(boxScore.HomeTeamUnityKey)] = boxScore.HomeTeamSeasonId;
-      unityTeamMapping[safeToLower(boxScore.AwayTeamUnityKey)] = boxScore.AwayTeamSeasonId;
+      // map all the known keys so the final HSGC ids can be used; include originals to simplify lookup code later
+      teamIdMapping[boxScore.HomeTeamSeasonId] = boxScore.HomeTeamSeasonId;
+      teamIdMapping[boxScore.AwayTeamSeasonId] = boxScore.AwayTeamSeasonId;
+      teamIdMapping[safeToLower(boxScore.HomeTeamUnityKey)] = boxScore.HomeTeamSeasonId;
+      teamIdMapping[safeToLower(boxScore.AwayTeamUnityKey)] = boxScore.AwayTeamSeasonId;
 
       colors[safeToLower(boxScore.HomeTeamUnityKey)] = {
         primary: boxScore.HomeTeamPrimaryColor,
@@ -59,6 +62,7 @@ angular.module('hsgc')
         hsgcGameId: boxScore.GameId,
         hsgcHomeSchoolId: boxScore.HomeSchoolId,
         hsgcAwaySchoolId: boxScore.AwaySchoolId,
+        teamIdMapping: teamIdMapping,
         homeTeamSeasonId: boxScore.HomeTeamSeasonId,
         awayTeamSeasonId: boxScore.AwayTeamSeasonId,
         homeTeamKey: boxScore.HomeTeamUnityKey,
@@ -84,11 +88,12 @@ angular.module('hsgc')
         awayStats: boxScore.Sport === 'Basketball' ? boxScore.AwayTeamTotalStats : boxScore.AwayTeamStatistics,
         homeSlug: boxScore.HomeTeamSlug,
         awaySlug: boxScore.AwayTeamSlug,
+        homeAsReportedBy: boxScore.HomeTeamAsReportedBy,
+        awayAsReportedBy: boxScore.AwayTeamAsReportedBy,
         playByPlay: boxScore.PlaysInGame,
         scoringPlays: boxScore.ScoringPlays,
         scoringPlaysByPeriod: scoringPlaysByPeriod,
         currentPeriod: boxScore.CurrentPeriod,
-        unityTeamMapping: unityTeamMapping,
         scoresAvailable: boxScore.ScoresAvailable,
         statsAvailable: boxScore.StatsAvailable,
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
@@ -108,8 +113,8 @@ angular.module('hsgc')
         finalScoresInFirstPeriod: boxScore.FinalScoresInFirstPeriod,
         sport: boxScore.Sport,
 
-        getScore: function(unityKey) {
-          var tsId = this.unityTeamMapping[safeToLower(unityKey)];
+        getScore: function(key) {
+          var tsId = this.teamIdMapping[safeToLower(key)];
           return this.totalScores[tsId];
         },
         getPrimaryColor: function(key) {
@@ -118,26 +123,26 @@ angular.module('hsgc')
         getSecondaryColor: function(key) {
           return colors[key].secondary;
         },
-        getTeamName: function(unityKey) {
-          if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
+        getTeamName: function(key) {
+          if (this.teamIdMapping[safeToLower(key)] == this.homeTeamSeasonId) {
             return this.homeName;
           } else {
             return this.awayName;
           }
         },
-        getTeamNameFirstAlphaChar: function(unityKey) {
-          var teamName = this.getTeamName(unityKey);
+        getTeamNameFirstAlphaChar: function(key) {
+          var teamName = this.getTeamName(key);
           return teamName.charAt(teamName.search(/[A-Za-z]/));
         },
-        getTeamLogo: function(unityKey) {
-          if (this.unityTeamMapping[safeToLower(unityKey)] == this.homeTeamSeasonId) {
+        getTeamLogo: function(key) {
+          if (this.teamIdMapping[safeToLower(key)] == this.homeTeamSeasonId) {
             return this.homeLogo;
           } else {
             return this.awayLogo;
           }
         },
-        teamHasRealLogo: function (unityKey) {
-            var logo = this.getTeamLogo(unityKey);
+        teamHasRealLogo: function (key) {
+            var logo = this.getTeamLogo(key);
             var default_logo = '/Default_profile_icon.png';
             return !this.endsWith(logo, default_logo);
         },
@@ -149,14 +154,21 @@ angular.module('hsgc')
         },
         isWinner: function(teamKey) {
           if (this.isFinal()) {
-            if (this.homeScore > this.awayScore && this.unityTeamMapping[safeToLower(teamKey)] == this.homeTeamSeasonId) {
+            if (this.homeScore > this.awayScore && this.teamIdMapping[safeToLower(teamKey)] == this.homeTeamSeasonId) {
               return true;
             }
-            if (this.homeScore < this.awayScore && this.unityTeamMapping[safeToLower(teamKey)] == this.awayTeamSeasonId) {
+            if (this.homeScore < this.awayScore && this.teamIdMapping[safeToLower(teamKey)] == this.awayTeamSeasonId) {
               return true;
             }
           }
           return false;
+        },
+        asReportedBy: function(teamKey) {
+          if (this.teamIdMapping[safeToLower(teamKey)] == this.homeTeamSeasonId) {
+            return this.homeAsReportedBy;
+          }
+          
+          return this.awayAsReportedBy;
         }
       };
     };

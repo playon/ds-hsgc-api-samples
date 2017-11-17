@@ -1,4 +1,4 @@
-<div ng-show="playByPlayAvailable" class="digital-scout-scoring-summary">
+<div ng-show="playByPlayAvailable" class="digital-scout-scoring-summary details">
   <div ng-repeat="(quarter, plays) in scoringPlaysByPeriod">
     <table class="digital-scout-table">
       <thead>
@@ -9,16 +9,18 @@
                 '2' : '2nd Quarter', 
                 '3' : '3rd Quarter',                 
                 '4' : '4th Quarter',                 
-                'other': '{{quarter - 4}} OT'
+                'other': 'Overtime {{quarter - 4}}'
                }"> </ng-pluralize>
           </th>
-          <th>{{awayAcronym}}</th>
-          <th>{{homeAcronym}}</th>
+          <th title="{{awayName}}">{{awayAcronym}}</th>
+          <th title="{{homeName}}">{{homeAcronym}}</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="play in plays" ng-show="plays.length">
-          <td class="digital-scout-team-name">{{play.TeamSeasonId === homeTeamSeasonId ? homeAcronym : awayAcronym}}</td>
+          <td class="digital-scout-team-name" title="{{play.TeamSeasonId === homeTeamSeasonId ? homeName : awayName}}">
+            {{play.TeamSeasonId === homeTeamSeasonId ? homeAcronym : awayAcronym}}
+          </td>
           <td>{{play.TimeOnClock | timeOnClock }}</td>
           <td class="digital-scout-play-summary">{{play.Description}}</td>
           <td>{{play.AwayScore}}</td>

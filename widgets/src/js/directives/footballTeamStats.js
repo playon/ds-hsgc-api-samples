@@ -1,8 +1,8 @@
 angular.module('hsgc')
-	.directive('teamStats', function() {
+	.directive('footballTeamStats', function() {
 		return {
 			restrict: 'EA',
-			templateUrl: 'templates/teamStatistics.html',
+			templateUrl: 'templates/footballTeamStats.html',
 			link: function(scope, element, attrs) {
 				scope.timeOfPossessionRegex = /^00:/;
 			}

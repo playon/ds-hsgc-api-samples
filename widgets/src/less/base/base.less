@@ -35,7 +35,7 @@
   .widget-logo-medium
 }
 
-.digital-scout-datacast, .digital-scout-game-summary {
+.digital-scout-datacast, .digital-scout-datacast .digital-scout-table, .digital-scout-game-summary {
   font-family: @font-family-default;
   font-size: @font-size-default;
   line-height: @font-size-default * 1.5;
@@ -56,6 +56,23 @@
 }
 
 label { cursor: pointer; }
+
+.digital-scout-tabbed-details {
+  margin-bottom: 15px;
+
+  .digital-scout-tabs {
+    > li {
+      @media only screen and (max-width: @screen-sm-cutoff) {
+        font-size: 10px;
+        line-height: 15px;
+      }
+    }
+  }
+
+  .details .ng-binding {
+    text-align: center;
+  }
+}
 
 /**** Info card ****/
 .digital-scout-info-card {
@@ -234,18 +251,6 @@ label { cursor: pointer; }
   .digital-scout-winner span span:before, .digital-scout-winner a span:before { content: '☆ '; }
 }
 
-.digital-scout-tabbed-details {
-  .digital-scout-tabs {
-    > li {
-      @media only screen and (max-width: @screen-sm-cutoff) {
-        font-size: 10px;
-        line-height: 15px;
-      }
-    }
-  }
-}
-
-
 /**** Team Stats ****/
 /*
 .digital-scout-team-stats {
@@ -255,6 +260,8 @@ label { cursor: pointer; }
 
 /**** Player Stats ****/
 .digital-scout-player-stats {
+  margin: 15px 0;
+
   h3 {
     font-size: 24px;
     line-height: 36px;
@@ -289,6 +296,18 @@ label { cursor: pointer; }
   }
 }
 
+.digital-scout-datacast .digital-scout-player-stats-as-reported-by-row td {
+  padding-top: 30px;
+  border: 0;
+}
+
+.digital-scout-datacast .digital-scout-player-stats-as-reported-by {
+  padding: 15px;
+  font-style: italic;
+  font-size: 0.75em;
+  opacity: 0.9;
+}
+
 /**** Leaders ****/
 .digital-scout-game-leaders {
   border: 1px solid #cbcbcb;
@@ -303,6 +322,10 @@ label { cursor: pointer; }
 }
 
 /**** Scoring Summary ****/
+.digital-scout-tabbed-details .digital-scout-scoring-summary .digital-scout-play-summary {
+  text-align: left;
+}
+
 .digital-scout-scoring-summary-not-available {
   padding: 0 10px;
   font-style: italic;

@@ -10,16 +10,22 @@ angular.module('hsgc')
       },
       controller: ["$scope", function($scope) {
         this.getPlayersForTeam = function(teamId) {
-          if (!angular.isUndefined($scope.players))
+          if (!angular.isUndefined($scope.players)) {
             return $scope.players[teamId];
+          }
         };
         this.getPlayerStatsForTeam = function(teamId) {
-          if (!angular.isUndefined($scope.playerStats))
+          if (!angular.isUndefined($scope.playerStats)) {
             return $scope.playerStats[teamId];
+          }
         };
         this.getStatsAvailable = function() {
-          if (!angular.isUndefined($scope.statsAvailable))
+          if (!angular.isUndefined($scope.statsAvailable)) {
             return $scope.statsAvailable;
+          }
+        };
+        this.getAsReportedBy = function(teamId) {
+          return $scope.asReportedBy(teamId);
         };
       }],
       link: function(scope, element, attrs, ctrlr, transcludeFn) {

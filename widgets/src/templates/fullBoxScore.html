@@ -37,15 +37,15 @@
         </li>
       </ul>
       <div class="digital-scout-tab-container">
-        <div team-stats ng-show="selectedDetailTab == 1"></div>
-        <div scoring-summary ng-show="selectedDetailTab == 2"></div>
+        <div football-team-stats ng-show="selectedDetailTab == 1"></div>
+        <div football-scoring-summary ng-show="selectedDetailTab == 2"></div>
         <div play-by-play ng-show="selectedDetailTab == 3" class="digital-scout-tab-no-scroll"></div>
         <div rosters ng-show="selectedDetailTab == 4"></div>
         <div football-drive-chart ng-show="selectedDetailTab == 5"></div>
       </div>
     </div>
 
-    <div ng-init="selectedPlayerTeam = 1" class="digital-scout-playerstats" ng-show="statsAvailable">
+    <div ng-init="selectedPlayerTeam = 1" class="digital-scout-player-stats" ng-show="statsAvailable">
       <ul class="digital-scout-tabs">
         <li ng-class='{ "active": selectedPlayerTeam == 1 }' ng-click="selectedPlayerTeam = 1">
           <a href ng-click="selectedPlayerTeam = 1">
@@ -63,8 +63,8 @@
         </li>
       </ul>
       <div class="digital-scout-tab-container">
-        <div player-stats team-id="{{awayTeamSeasonId}}" ng-show="selectedPlayerTeam == 1"></div>
-        <div player-stats team-id="{{homeTeamSeasonId}}" ng-show="selectedPlayerTeam == 2"></div>
+        <div football-player-stats team-id="{{awayTeamSeasonId}}" ng-show="selectedPlayerTeam == 1"></div>
+        <div football-player-stats team-id="{{homeTeamSeasonId}}" ng-show="selectedPlayerTeam == 2"></div>
       </div>
     </div>
   </div>

@@ -7,6 +7,8 @@
   * More consistent use of CSS prefixes
   * Restructure some HTML
   * New default styling/layout example: `less/digitalscout.less`
+* Significant performance improvements for the football drive chart during live games
+* Show the "As Reported By" fields to the user
 
 ## 1.2.0 / 2017-09-16
 

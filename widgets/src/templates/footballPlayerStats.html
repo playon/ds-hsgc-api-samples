@@ -1,24 +1,24 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-
   <div class="player-stats-not-available"
-    ng-show="playerStats.passingStats.length + playerStats.rushingStats.length + playerStats.receivingStats.length +
-    playerStats.defensiveStats.length + playerStats.kickingStats.length + playerStats.puntingStats.length + 
-    playerStats.puntReturnStats.length + playerStats.kickReturnStats.length === 0">
+    ng-show="!anyPlayerStatsAvailable">
     <p>No player stats available at this time.</p>
   </div>
-  
+  <div ng-show="anyPlayerStatsAvailable" class="digital-scout-player-stats-as-reported-by">
+    As reported by 
+    <span ng-repeat="reporter in asReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+  </div>
   <div ng-show="playerStats.passingStats.length > 0">
     <h3 class="digital-scout-heading">Passing Stats</h3>
     <table class="digital-scout-table">
       <thead>
         <tr>
           <th></th>
-          <th>Cmp</th>
-          <th>Att</th>
-          <th>Yds</th>
-          <th>Cmp%</th>
-          <th>TD</th>
-          <th>Int</th>
+          <th title="Completions">Cmp</th>
+          <th title="Attempts">Att</th>
+          <th title="Yards">Yds</th>
+          <th title="Completion percentage">Cmp%</th>
+          <th title="Touchdowns">TD</th>
+          <th title="Interceptions">Int</th>
         </tr>
       </thead>
       <tbody>

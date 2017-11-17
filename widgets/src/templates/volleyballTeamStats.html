@@ -36,6 +36,9 @@
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
             <img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
           </a>
+          <div class="digital-scout-player-stats-as-reported-by">
+              As reported by: <span ng-repeat="reporter in awayAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+          </div>
         </td>
         <td>{{ awayStats.AttackKills }}</td>
         <td>{{ awayStats.Attacks }}</td>
@@ -50,6 +53,9 @@
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
             <img ng-src="{{homeLogo}}" class="digital-scout-logo" /><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
           </a>
+          <div class="digital-scout-player-stats-as-reported-by">
+              As reported by: <span ng-repeat="reporter in homeAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+          </div>
         </td>
         <td>{{ homeStats.AttackKills }}</td>
         <td>{{ homeStats.Attacks }}</td>

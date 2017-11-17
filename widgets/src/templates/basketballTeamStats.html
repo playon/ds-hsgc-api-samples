@@ -75,5 +75,16 @@
         <td>{{homeStats.Deflections}}</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr class="digital-scout-player-stats-as-reported-by-row">
+        <td class="digital-scout-player-stats-as-reported-by">As reported by:</td>
+        <td class="digital-scout-player-stats-as-reported-by" ng-repeat="reporter in awayAsReportedBy">
+            {{reporter}}{{$last ? '' : ', '}}
+        </td>
+        <td class="digital-scout-player-stats-as-reported-by" ng-repeat="reporter in homeAsReportedBy">
+            {{reporter}}{{$last ? '' : ', '}}
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
