@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         watch: {
             files: {
                 files: ['src/js/**/*.js', 'src/templates/*.html', 'examples/*.*', 'src/less/**/*.less'],
-                tasks: ['build'],
+                tasks: ['build', 'copy:withDebugSrc'],
                 options: {
                     livereload: {
                         port: 35729,
