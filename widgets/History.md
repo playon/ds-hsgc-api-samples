@@ -1,6 +1,6 @@
 # History
 
-## 2.0.0 / 2017-11-12
+## 2.0.0 / 2017-11-17
 
 * Clean up CSS (includes breaking changes)
   * Rename CSS class prefixes from `nfhs-scout` to `digital-scout`
