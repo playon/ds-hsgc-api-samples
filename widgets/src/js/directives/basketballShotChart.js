@@ -10,20 +10,22 @@ angular.module('hsgc')
         var previousPeriod = -1;
         scope.$on('datacastLoaded', function() {
           var twentyForHoursFromStart = new Date(),
+              shotChartBackgroundImageElement = angular.element('.digital-scout-basketball-court'),
               periods = [], i;
 
           // since this is start time, assume an hour of playtime so we don't have to check for the actual End event time stamp, so guesss 25 hours
           twentyForHoursFromStart.setTime(scope.localStartTime.getTime() + (25*60*60*1000)); 
           scope.publicAvailability = scope.playByPlayAvailable && twentyForHoursFromStart > new Date();
           $log.debug('Is basketball box score publicly availabile still?', scope.publicAvailability);
+          if (scope.publicAvailability === true && shotChartBackgroundImageElement && shotChartBackgroundImageElement.attr('src') === '') {
+            // only set the court image when needed, so it doesn't load over the network when not
+            shotChartBackgroundImageElement.attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
+          }
               
           if (firstLoad) {
             firstLoad = false;
             scope.selectedShotChartPeriod = null;
             previousPeriod = scope.currentPeriod;
-
-            // set the court image, so it doesn't load over the network for non-basketball sports
-            angular.element('.nfhs-scout-basketball-court').attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
           }
 
           for (i = 1; i <= scope.currentPeriod; i++) {
