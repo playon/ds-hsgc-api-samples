@@ -12,9 +12,9 @@
     <tbody>
       <tr>
         <td>
-          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
             {{awayName}}</span>
           </a>
         </td>
@@ -41,9 +41,9 @@
       </tr>
       <tr>
         <td>
-          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>{{homeName}}
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>{{homeName}}
           </a>
         </td>
         <td>
@@ -75,9 +75,9 @@
     <tbody>
       <tr>
         <td>
-          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
             {{awayShortName}}
           </a>
           <br>
@@ -105,9 +105,9 @@
       </tr>
       <tr>
         <td>
-          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
             {{homeShortName}}
           </a>
           <br>

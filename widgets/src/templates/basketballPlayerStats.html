@@ -1,5 +1,5 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-  <h3 class="digital-scout-heading"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/> {{awayName}}</h3>
+  <h3 class="digital-scout-heading"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/> {{awayName}}</h3>
   <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>
@@ -45,7 +45,7 @@
   </table>
 </div>
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-  <h3 class="digital-scout-heading"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/> {{homeName}}</h3>
+  <h3 class="digital-scout-heading"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/> {{homeName}}</h3>
   <table class="digital-scout-table" responsive-table>
     <thead>
       <tr>

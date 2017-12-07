@@ -1,11 +1,11 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
   <h3 class="digital-scout-heading">
     <span ng-show="!showTeamLinks">
-      <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+      <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
       <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
     </span>
     <a ng-show="showTeamLinks" href="{{awaySlug}}">
-      <img ng-src="{{awayLogo}}" class="digital-scout-logo"/>
+      <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
       <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
     </a>
   </h3>
@@ -63,11 +63,11 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
   <h3 class="digital-scout-heading">
     <span ng-show="!showTeamLinks">
-      <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+      <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
       <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
     </span>
     <a ng-show="showTeamLinks" href="{{homeSlug}}">
-      <img ng-src="{{homeLogo}}" class="digital-scout-logo"/>
+      <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
       <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
     </a>
   </h3>

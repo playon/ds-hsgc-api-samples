@@ -8,10 +8,10 @@
               <div class="score">{{awayScore}}</div>
               <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
                 <span ng-hide="showTeamLinks">
-                  <img ng-src="{{awayLogo}}" class="digital-scout-logo" />
+                  <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
                 </span>
                 <a ng-show="showTeamLinks" href="{{awaySlug}}">
-                  <img ng-src="{{awayLogo}}" class="digital-scout-logo" />
+                  <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
                 </a>
               </div>
               <p class="name">
@@ -27,10 +27,10 @@
               <div class="score">{{homeScore}}</div>
               <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
                 <span ng-hide="showTeamLinks">
-                  <img ng-src="{{homeLogo}}" class="digital-scout-logo" />
+                  <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
                 </span>
                 <a ng-show="showTeamLinks" href="{{homeSlug}}">
-                  <img ng-src="{{homeLogo}}" class="digital-scout-logo" />
+                  <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
                 </a>
               </div>
               <p class="name">
@@ -79,10 +79,10 @@
       <tr>
         <td ng-class="{'digital-scout-winner': isWinner(awayTeamKey)}">
           <span ng-show="!showTeamLinks">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo" /><span>{{awayShortName}}</span>
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" /><span>{{awayShortName}}</span>
           </span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo" /><span>{{awayShortName}}</span>
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" /><span>{{awayShortName}}</span>
           </a>
         </td>
         <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>
@@ -106,10 +106,10 @@
       <tr>
         <td ng-class="{'digital-scout-winner': isWinner(homeTeamKey)}">
           <span ng-show="!showTeamLinks">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo" /><span>{{homeShortName}}</span>
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span>{{homeShortName}}</span>
           </span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo" /><span>{{homeShortName}}</span>
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span>{{homeShortName}}</span>
           </a>
         </td>
         <td ng-show="!finalScoresInFirstPeriod">{{homePeriodScores[0].Score}}</td>

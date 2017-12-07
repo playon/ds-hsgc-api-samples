@@ -49,14 +49,14 @@
       <ul class="digital-scout-tabs">
         <li ng-class='{ "active": selectedPlayerTeam == 1 }' ng-click="selectedPlayerTeam = 1">
           <a href ng-click="selectedPlayerTeam = 1">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo">
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo">
             <span class="digital-scout-hidden-sm">{{awayShortName}}</span>
             <span class="digital-scout-visible-sm-inline">{{awayAcronym}}</span>
           </a>
         </li>
         <li ng-class='{ "active": selectedPlayerTeam == 2 }' ng-click="selectedPlayerTeam = 2">
           <a href ng-click="selectedPlayerTeam = 2">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo">
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo">
             <span class="digital-scout-hidden-sm">{{homeShortName}}</span>
             <span class="digital-scout-visible-sm-inline">{{homeAcronym}}</span>
           </a>

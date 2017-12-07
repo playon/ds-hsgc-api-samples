@@ -50,7 +50,7 @@
 .digital-scout-datacast h6, .digital-scout-game-summary h6 {
   margin: 1em 0;
   font-family: @font-family-headers;
-  font-weight: normal;
+  font-weight: @font-weight-headers;
   color: @color-headers;
   text-transform: uppercase;
 }
@@ -101,13 +101,15 @@ label { cursor: pointer; }
       clear: both;
       text-transform: uppercase;
       font-family: @font-family-scoreboard-team-name;
-      font-weight: bold;
-      font-size: 1.25em;
-      line-height: 1.5em;
+      font-weight: @font-weight-scoreboard-team-name;
+      font-size: @font-size-scoreboard-team-name;
+      line-height: @line-height-scoreboard-team-name;
+      letter-spacing: @letter-spacing-scoreboard-team-name;
       .clearfix;
       
       a, a:hover {        
         color: #fff;
+        text-shadow: 2px 2px black;
       }
     }
     

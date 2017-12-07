@@ -44,8 +44,8 @@ angular.module('hsgc')
         }
       }
 
-      var homeLogoNormalized = (boxScore.HomeTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.HomeTeamLogo + "?width=" + hsgcConfig.logoMaximumHighResWidth + "&height=" + hsgcConfig.logoMaximumHighResHeight;
-      var awayLogoNormalized = (boxScore.AwayTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.AwayTeamLogo + "?width=" + hsgcConfig.logoMaximumHighResWidth + "&height=" + hsgcConfig.logoMaximumHighResHeight;
+      var homeLogoNormalized = (boxScore.HomeTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.HomeTeamLogo;
+      var awayLogoNormalized = (boxScore.AwayTeamLogo.indexOf('http') === 0 ? '' : hsgcConfig.imageRoot) + boxScore.AwayTeamLogo;
       
       var scoringPlaysByPeriod = {};
 			
@@ -74,8 +74,10 @@ angular.module('hsgc')
         totalScores: scores,
         awayPeriodScores: boxScore.AwayPeriodScores,
         homePeriodScores: boxScore.HomePeriodScores,
-        homeLogo: homeLogoNormalized,
-        awayLogo: awayLogoNormalized,
+        homeLogo: homeLogoNormalized + "?width=" + hsgcConfig.logoStdResWidth + "&height=" + hsgcConfig.logoStdResHeight,
+        awayLogo: awayLogoNormalized + "?width=" + hsgcConfig.logoStdResWidth + "&height=" + hsgcConfig.logoStdResHeight,
+        homeLogoHigh: homeLogoNormalized + "?width=" + hsgcConfig.logoHighResWidth + "&height=" + hsgcConfig.logoHighResHeight,
+        awayLogoHigh: awayLogoNormalized + "?width=" + hsgcConfig.logoHighResWidth + "&height=" + hsgcConfig.logoHighResHeight,
         homeName: boxScore.HomeTeamName,
         awayName: boxScore.AwayTeamName,
         homeShortName: boxScore.HomeTeamShortName || boxScore.HomeTeamName,
@@ -99,7 +101,7 @@ angular.module('hsgc')
         playByPlayAvailable: boxScore.PlayByPlayAvailable,
         leadersAvailable: boxScore.LeadersAvailable,
         status: boxScore.Status,
-        statusPretty: boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "Connection Lost" : boxScore.Status,
+        statusPretty: boxScore.Status === "Complete" ? "Final" : boxScore.Status === "InProgress" ? "In Progress" : boxScore.Status === "NoData" ? "Connection Lost" : boxScore.Status,
         statusDisplay: boxScore.StatusDisplay,
         localStartTime: startTime,
         longDateTimeDisplay: startTime.getFullYear() === new Date().getFullYear() ? '' : $filter('date')(startTime, 'MMMM d, yyyy h:mm a') /* time zone acronym is need instead of long version of boxScore.TimeZone*/,

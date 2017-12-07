@@ -32,9 +32,9 @@
     <tbody>
       <tr>
         <td title="{{awayName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
           </a>
           <div class="digital-scout-player-stats-as-reported-by">
               As reported by: <span ng-repeat="reporter in awayAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
@@ -49,9 +49,9 @@
       </tr>
       <tr>
         <td title="{{homeName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
+          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
           <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" class="digital-scout-logo" /><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
           </a>
           <div class="digital-scout-player-stats-as-reported-by">
               As reported by: <span ng-repeat="reporter in homeAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>

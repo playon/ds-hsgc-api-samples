@@ -12,7 +12,7 @@
       <tbody>
         <tr>
           <td>
-            <img ng-src="{{awayLogo}}" alt="{{awayShortName}} logo" class="digital-scout-logo" />
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" alt="{{awayShortName}} logo" class="digital-scout-logo" />
             {{awayShortName}}
           </td>
           <td>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <td>
-            <img ng-src="{{homeLogo}}" alt="{{homeShortName}} logo" class="digital-scout-logo" />
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" alt="{{homeShortName}} logo" class="digital-scout-logo" />
             {{homeShortName}}
           </td>
           <td>
@@ -53,7 +53,7 @@
       <tbody>
         <tr>
           <td>
-            <img ng-src="{{awayLogo}}" alt="{{awayShortName}} logo" class="digital-scout-logo" />
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" alt="{{awayShortName}} logo" class="digital-scout-logo" />
             {{awayShortName}}<br>
             <span title="Passing leader">Pass: </span><span ng-hide="leaders.awayPassingLeaderSlug">{{leaders.awayPassingLeader}}</span>
             <a ng-show="leaders.awayPassingLeaderSlug" ng-href="{{leaders.awayPassingLeaderSlug}}" title="Go to this player's profile">{{leaders.awayPassingLeader}}</a><br>
@@ -65,7 +65,7 @@
         </tr>
         <tr>
           <td>
-            <img ng-src="{{homeLogo}}" alt="{{homeShortName}} logo" class="digital-scout-logo" />
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" alt="{{homeShortName}} logo" class="digital-scout-logo" />
             {{homeShortName}}<br>
             <span title="Passing leader">Pass: </span><span ng-hide="leaders.homePassingLeaderSlug">{{leaders.homePassingLeader}}</span>
             <a ng-show="leaders.homePassingLeaderSlug" ng-href="{{leaders.homePassingLeaderSlug}}" title="Go to this player's profile">{{leaders.homePassingLeader}}</a><br>

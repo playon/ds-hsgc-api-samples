@@ -6,8 +6,10 @@ angular.module('hsgc').provider('hsgcConfig', function() {
     //if apiRoot set here, overrides the versions that are usually loaded based on "env"
     //apiRoot: "https://api.digitalscout.com/v1.2/",
     //unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
-    logoMaximumHighResWidth: 96,
-    logoMaximumHighResHeight: 96,
+    logoStdResWidth: 60,  // must be updated here and in `mixins.less: .widget-logo-large`
+    logoStdResHeight: 60, // must be updated here and in `mixins.less: .widget-logo-large`
+    logoHighResWidth: 120,  // must be logoStdResWidth * 2
+    logoHighResHeight: 120, // must be logoStdResHeight * 2
     showTeamLinks: true,
     datacastLoaded: function() {},
     beforeLoadDatacast: function(gameKey, publisherKey, cb) {
