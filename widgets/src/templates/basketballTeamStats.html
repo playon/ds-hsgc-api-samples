@@ -2,75 +2,113 @@
   <table class="digital-scout-table">
     <thead>
       <tr>
-        <th></th>
+        <th>&nbsp;</th>
         <th>
           <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
-          {{awayShortName}}
+          <span class="digital-scout-hidden-sm">{{awayShortName}}</span>
+          <span class="digital-scout-visible-sm-inline">{{awayAcronym}}</span>
         </th>
         <th>
           <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
-          {{homeShortName}}
+          <span class="digital-scout-hidden-sm">{{homeShortName}}</span>
+          <span class="digital-scout-visible-sm-inline">{{homeAcronym}}</span>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Points</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Points</span>
+          <span class="digital-scout-visible-sm-inline" title="Points">PTS</span>
+        </td>
         <td>{{awayStats.TotalPoints}}</td>
         <td>{{homeStats.TotalPoints}}</td>
       </tr>
       <tr>
-        <td>Field Goals Made-Attempted</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Field Goals Made-Attempted</span>
+          <span class="digital-scout-visible-sm-inline" title="Field Goals made, attempted, and the percentage made">FGM-A</span>
+        </td>
         <td>{{awayStats.ShotsMade}}-{{awayStats.ShotsAttempted}} {{awayStats.ShotsMade/awayStats.ShotsAttempted | percentage:0:'(':'%)' }}</td>
         <td>{{homeStats.ShotsMade}}-{{homeStats.ShotsAttempted}} {{homeStats.ShotsMade/homeStats.ShotsAttempted | percentage:0:'(':'%)' }}</td>
       </tr>
       <tr>
-        <td>3 Point Field Goals Made-Attempted</td>
+        <td>
+          <span class="digital-scout-hidden-sm">3 Point Field Goals Made-Attempted</span>
+          <span class="digital-scout-visible-sm-inline" title="3 Point Field Goals made, attempted, and the percentage made">3PTM-A</span>
+        </td>
         <td>{{awayStats.ThreePointShotsMade}}-{{awayStats.ThreePointShotsAttempted}} {{awayStats.ThreePointShotsMade/awayStats.ThreePointShotsAttempted | percentage:0:'(':'%)' }}</td>
         <td>{{homeStats.ThreePointShotsMade}}-{{homeStats.ThreePointShotsAttempted}} {{homeStats.ThreePointShotsMade/homeStats.ThreePointShotsAttempted | percentage:0:'(':'%)' }}</td>
       </tr>
       <tr>
-        <td>Free Throws Made-Attempted</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Free Throws Made-Attempted</span>
+          <span class="digital-scout-visible-sm-inline" title="Free Throws made, aAttempted, and the percentage made">FTM-A</span>
+        </td>
         <td>{{awayStats.FreeThrowsMade}}-{{awayStats.FreeThrowsAttempted}} {{awayStats.FreeThrowsMade/awayStats.FreeThrowsAttempted | percentage:0:'(':'%)' }}</td>
         <td>{{homeStats.FreeThrowsMade}}-{{homeStats.FreeThrowsAttempted}} {{homeStats.FreeThrowsMade/homeStats.FreeThrowsAttempted | percentage:0:'(':'%)' }}</td>
       </tr>
       <tr>
-        <td>Rebounds (Offensive/Defensive)</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Rebounds (Offensive/Defensive)</span>
+          <span class="digital-scout-visible-sm-inline" title="Total Rebounds, a sum of the Offensive/Defensive rebounds">REB (OFF/DEF)</span>
+        </td>
         <td>{{awayStats.TotalRebounds}} ({{awayStats.OffensiveRebounds}}/{{awayStats.DefensiveRebounds}})</td>
         <td>{{homeStats.TotalRebounds}} ({{homeStats.OffensiveRebounds}}/{{homeStats.DefensiveRebounds}})</td>
       </tr>
       <tr>
-        <td>Assists</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Assists</span>
+          <span class="digital-scout-visible-sm-inline" title="Assists">AST</span>
+        </td>
         <td>{{awayStats.Assists}}</td>
         <td>{{homeStats.Assists}}</td>
       </tr>
       <tr>
-        <td>Steals</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Steals</span>
+          <span class="digital-scout-visible-sm-inline" title="Steals">STL</span>
+        </td>
         <td>{{awayStats.Steals}}</td>
         <td>{{homeStats.Steals}}</td>
       </tr>
       <tr>
-        <td>Blocks</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Blocks</span>
+          <span class="digital-scout-visible-sm-inline" title="Blocks">BLK</span>
+        </td>
         <td>{{awayStats.Blocks}}</td>
         <td>{{homeStats.Blocks}}</td>
       </tr>
       <tr>
-        <td>Turnovers</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Turnovers</span>
+          <span class="digital-scout-visible-sm-inline" title="Turnovers">TO</span>
+        </td>
         <td>{{awayStats.Turnovers}}</td>
         <td>{{homeStats.Turnovers}}</td>
       </tr>
       <tr>
-        <td>Personal Fouls</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Personal Fouls</span>
+          <span class="digital-scout-visible-sm-inline" title="Personal Fouls">PF</span>
+        </td>
         <td>{{awayStats.PersonalFouls}}</td>
         <td>{{homeStats.PersonalFouls}}</td>
       </tr>
       <tr>
-        <td>Charges Taken</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Charges Taken</span>
+          <span class="digital-scout-visible-sm-inline" title="Charges Taken">CHG</span>
+        </td>
         <td>{{awayStats.ChargesTaken}}</td>
         <td>{{homeStats.ChargesTaken}}</td>
       </tr>
       <tr>
-        <td>Deflections</td>
+        <td>
+          <span class="digital-scout-hidden-sm">Deflections</span>
+          <span class="digital-scout-visible-sm-inline" title="Deflections">DEF</span>
+        </td>
         <td>{{awayStats.Deflections}}</td>
         <td>{{homeStats.Deflections}}</td>
       </tr>
