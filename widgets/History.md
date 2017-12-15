@@ -10,6 +10,10 @@
 * Significant performance improvements for the football drive chart during live games
 * Show the "As Reported By" fields to the user
 
+*Hot patch to 2.0.0 on 2017-12-12:*
+
+* Various layout cleanups, especially for small screen devices
+
 ## 1.2.0 / 2017-09-16
 
 * Enable SSL mode in development to better reflect final environment
