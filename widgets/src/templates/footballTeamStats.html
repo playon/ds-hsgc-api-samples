@@ -75,13 +75,29 @@
       </tr>
       <tr>
         <td>Third Down Conversions/Attempts</td>
-        <td>{{awayStats.ThirdDownConversions}}/{{awayStats.ThirdDownAttempts}} ({{awayStats.ThirdDownConversionPercentage | decimals:1}}%)</td>
-        <td>{{homeStats.ThirdDownConversions}}/{{homeStats.ThirdDownAttempts}} ({{homeStats.ThirdDownConversionPercentage | decimals:1}}%)</td>
+        <td>
+          <span ng-show="awayStats.ThirdDownAttempts > 0">
+            {{awayStats.ThirdDownConversions}}/{{awayStats.ThirdDownAttempts}} ({{awayStats.ThirdDownConversionPercentage | decimals:1}}%)
+          </span>
+        </td>
+        <td>
+          <span ng-show="homeStats.ThirdDownAttempts > 0">
+            {{homeStats.ThirdDownConversions}}/{{homeStats.ThirdDownAttempts}} ({{homeStats.ThirdDownConversionPercentage | decimals:1}}%)
+          </span>
+        </td>
       </tr>
       <tr>
         <td>Fourth Down Conversions/Attempts</td>
-        <td>{{awayStats.FourthDownConversions}}/{{awayStats.FourthDownAttempts}} ({{awayStats.FourthDownConversionPercentage | decimals:1}}%)</td>
-        <td>{{homeStats.FourthDownConversions}}/{{homeStats.FourthDownAttempts}} ({{homeStats.FourthDownConversionPercentage | decimals:1}}%)</td>
+        <td>
+          <span ng-show="awayStats.FourthDownAttempts > 0">
+            {{awayStats.FourthDownConversions}}/{{awayStats.FourthDownAttempts}} ({{awayStats.FourthDownConversionPercentage | decimals:1}}%)
+          </span>
+        </td>
+        <td>
+          <span ng-show="homeStats.FourthDownAttempts > 0">
+            {{homeStats.FourthDownConversions}}/{{homeStats.FourthDownAttempts}} ({{homeStats.FourthDownConversionPercentage | decimals:1}}%)
+          </span>
+        </td>
       </tr>
       <tr>
         <td>Penalties - Yards</td>
