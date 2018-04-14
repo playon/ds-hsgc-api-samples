@@ -1,69 +1,85 @@
 <div ng-show="statsAvailable" class="details digital-scout-team-stats">
-  <table class="digital-scout-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th title="Kills" class="ng-binding">
-          <span class="digital-scout-visible-sm-inline">K</span>
-          <span class="digital-scout-hidden-sm">Kills</span>
-        </th>
-        <th title="Total Attempts" class="ng-binding">
-          <span class="digital-scout-visible-sm-inline">TA</span>
-          <span class="digital-scout-hidden-sm">Total Attempts</span>
-        </th>
-        <th title="Attack Percentage (Kills - Errors / Attempts)" class="ng-binding">
-          <span class="digital-scout-visible-sm-inline">PCT</span>
-          <span class="digital-scout-hidden-sm">Attack Percentage</span>
-        </th>
-        <th title="Team Blocks (Solo + Assist/2)" class="ng-binding">
-          <span class="digital-scout-visible-sm-inline">B</span>
-          <span class="digital-scout-hidden-sm">Team Blocks</span>
-        </th>
-        <th title="Team Reception Errors" class="ng-binding">
-          <span class="digital-scout-visible-sm-inline">RE</span>
-          <span class="digital-scout-hidden-sm">Reception Errors</span>
-        </th>
-        <th title="Total Errors">
-          <span class="digital-scout-visible-sm-inline" class="ng-binding">TE</span>
-          <span class="digital-scout-hidden-sm">Total Errors</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td title="{{awayName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
-          <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
-          </a>
-          <div class="digital-scout-player-stats-as-reported-by">
-              As reported by: <span ng-repeat="reporter in awayAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
-          </div>
-        </td>
-        <td>{{ awayStats.AttackKills }}</td>
-        <td>{{ awayStats.Attacks }}</td>
-        <td>{{ awayStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ awayStats.BlockSolos + (awayStats.BlockAssists / 2) }}</td>
-        <td>{{ awayStats.ReceptionErrors }}</td>
-        <td>{{ awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors }}</td>
-      </tr>
-      <tr>
-        <td title="{{homeName}}">
-          <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
-          <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
-          </a>
-          <div class="digital-scout-player-stats-as-reported-by">
-              As reported by: <span ng-repeat="reporter in homeAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
-          </div>
-        </td>
-        <td>{{ homeStats.AttackKills }}</td>
-        <td>{{ homeStats.Attacks }}</td>
-        <td>{{ homeStats.AttackPercentage | percentage:0:'':'%' }}</td>
-        <td>{{ homeStats.BlockSolos + (homeStats.BlockAssists / 2) }}</td>
-        <td>{{ homeStats.ReceptionErrors }}</td>
-        <td>{{ homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="digital-scout-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th title="Kills" class="ng-binding">
+                    <span class="digital-scout-visible-sm-inline">K</span>
+                    <span class="digital-scout-hidden-sm">Kills</span>
+                </th>
+                <th title="Total Attempts" class="ng-binding">
+                    <span class="digital-scout-visible-sm-inline">TA</span>
+                    <span class="digital-scout-hidden-sm">Total Attempts</span>
+                </th>
+                <th title="Attack Percentage (Kills - Errors / Attempts)" class="ng-binding">
+                    <span class="digital-scout-visible-sm-inline">PCT</span>
+                    <span class="digital-scout-hidden-sm">Attack Percentage</span>
+                </th>
+                <th title="Team Blocks (Solo + Assist/2)" class="ng-binding">
+                    <span class="digital-scout-visible-sm-inline">B</span>
+                    <span class="digital-scout-hidden-sm">Team Blocks</span>
+                </th>
+                <th title="Team Reception Errors" class="ng-binding">
+                    <span class="digital-scout-visible-sm-inline">RE</span>
+                    <span class="digital-scout-hidden-sm">Reception Errors</span>
+                </th>
+                <th title="Total Errors">
+                    <span class="digital-scout-visible-sm-inline" class="ng-binding">TE</span>
+                    <span class="digital-scout-hidden-sm">Total Errors</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td title="{{awayName}}">
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{awayName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{awaySlug}}">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{awayName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+                    </a>
+                    <div class="digital-scout-player-stats-as-reported-by">
+                        As reported by:
+                        <span ng-repeat="reporter in awayAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+                    </div>
+                </td>
+                <td>{{ awayStats.AttackKills }}</td>
+                <td>{{ awayStats.Attacks }}</td>
+                <td>{{ awayStats.AttackPercentage | percentage:0:'':'%' }}</td>
+                <td>{{ awayStats.BlockSolos + (awayStats.BlockAssists / 2) }}</td>
+                <td>{{ awayStats.ReceptionErrors }}</td>
+                <td>{{ awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors
+                    }}</td>
+            </tr>
+            <tr>
+                <td title="{{homeName}}">
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{homeName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{homeSlug}}">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{homeName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+                    </a>
+                    <div class="digital-scout-player-stats-as-reported-by">
+                        As reported by:
+                        <span ng-repeat="reporter in homeAsReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+                    </div>
+                </td>
+                <td>{{ homeStats.AttackKills }}</td>
+                <td>{{ homeStats.Attacks }}</td>
+                <td>{{ homeStats.AttackPercentage | percentage:0:'':'%' }}</td>
+                <td>{{ homeStats.BlockSolos + (homeStats.BlockAssists / 2) }}</td>
+                <td>{{ homeStats.ReceptionErrors }}</td>
+                <td>{{ homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors
+                    }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

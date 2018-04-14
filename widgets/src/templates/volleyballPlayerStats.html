@@ -1,167 +1,173 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-  <h3 class="digital-scout-heading">
-    <span ng-show="!showTeamLinks">
-      <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
-      <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
-    </span>
-    <a ng-show="showTeamLinks" href="{{awaySlug}}">
-      <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/>
-      <span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
-    </a>
-  </h3>
-  <table class="digital-scout-table" responsive-table>
-    <thead>
-      <tr>
-        <th class="digital-scout-player-stats-player-name">Player</th>
-        <th title="Sets Played">SP</th>
-        <th title="Attack Kills">K</th>
-        <th title="Attack Errors">E</th>
-        <th title="Total Attacks">TA</th>
-        <th title="Attack percentage">PCT</th>
-        <th title="Set Assists">A</th>
-        <th title="Set Attempts">SA</th>
-        <th title="Serves">S</th>
-        <th title="Service Aces">ACE</th>
-        <th title="Service Errors">SE</th>
-        <th title="Reception Errors">RE</th>
-        <th title="Digs">DIG</th>
-        <th title="Block Solos">BS</th>
-        <th title="Block Assists">BA</th>
-        <th title="Ball Handling Errors">BHE</th>
-        <th title="Points">PTS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
-        <td class="digital-scout-player-stats-player-name">
-            <a ng-show="false && playerStat.PlayerId > 0" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
-            </a>
-            <span ng-show="true || playerStat.PlayerId == 0">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
-            <span ng-show="playerStat.IsStarter" class="starter">*</span>
-        </td>
-        <td>{{playerStat.MatchGamesPlayed}}</td>
-        <td>{{playerStat.AttackKills}}</td>
-        <td>{{playerStat.AttackErrors}}</td>
-        <td>{{playerStat.Attacks}}</td>
-        <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
-        <td>{{playerStat.SetAssists}}</td>
-        <td>{{playerStat.Sets}}</td>
-        <td>{{playerStat.Serves}}</td>
-        <td>{{playerStat.ServeAces}}</td>
-        <td>{{playerStat.ServeErrors}}</td>
-        <td>{{playerStat.ReceptionErrors}}</td>
-        <td>{{playerStat.Digs}}</td>
-        <td>{{playerStat.BlockSolos}}</td>
-        <td>{{playerStat.BlockAssists}}</td>
-        <td>{{playerStat.BallHandlingErrors}}</td>
-        <td>{{playerStat.Points}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 class="digital-scout-heading">
+        <span ng-show="!showTeamLinks">
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+            <span class="digital-scout-hidden-sm">{{awayName}}</span>
+            <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+        </span>
+        <a ng-show="showTeamLinks" href="{{awaySlug}}">
+            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+            <span class="digital-scout-hidden-sm">{{awayName}}</span>
+            <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+        </a>
+    </h3>
+    <table class="digital-scout-table" responsive-table>
+        <thead>
+            <tr>
+                <th class="digital-scout-player-stats-player-name">Player</th>
+                <th title="Sets Played">SP</th>
+                <th title="Attack Kills">K</th>
+                <th title="Attack Errors">E</th>
+                <th title="Total Attacks">TA</th>
+                <th title="Attack percentage">PCT</th>
+                <th title="Set Assists">A</th>
+                <th title="Set Attempts">SA</th>
+                <th title="Serves">S</th>
+                <th title="Service Aces">ACE</th>
+                <th title="Service Errors">SE</th>
+                <th title="Reception Errors">RE</th>
+                <th title="Digs">DIG</th>
+                <th title="Block Solos">BS</th>
+                <th title="Block Assists">BA</th>
+                <th title="Ball Handling Errors">BHE</th>
+                <th title="Points">PTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="playerStat in playerStats[awayTeamSeasonId]">
+                <td class="digital-scout-player-stats-player-name">
+                    <a ng-show="false && playerStat.PlayerId > 0" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}"
+                        title="Go to this player's profile" target="_blank">
+                        {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+                    </a>
+                    <span ng-show="true || playerStat.PlayerId == 0">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
+                    <span ng-show="playerStat.IsStarter" class="starter">*</span>
+                </td>
+                <td>{{playerStat.MatchGamesPlayed}}</td>
+                <td>{{playerStat.AttackKills}}</td>
+                <td>{{playerStat.AttackErrors}}</td>
+                <td>{{playerStat.Attacks}}</td>
+                <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
+                <td>{{playerStat.SetAssists}}</td>
+                <td>{{playerStat.Sets}}</td>
+                <td>{{playerStat.Serves}}</td>
+                <td>{{playerStat.ServeAces}}</td>
+                <td>{{playerStat.ServeErrors}}</td>
+                <td>{{playerStat.ReceptionErrors}}</td>
+                <td>{{playerStat.Digs}}</td>
+                <td>{{playerStat.BlockSolos}}</td>
+                <td>{{playerStat.BlockAssists}}</td>
+                <td>{{playerStat.BallHandlingErrors}}</td>
+                <td>{{playerStat.Points}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-  <h3 class="digital-scout-heading">
-    <span ng-show="!showTeamLinks">
-      <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
-      <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
-    </span>
-    <a ng-show="showTeamLinks" href="{{homeSlug}}">
-      <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/>
-      <span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
-    </a>
-  </h3>
-  <table class="digital-scout-table" responsive-table>
-    <thead>
-      <tr>
-        <th class="digital-scout-player-stats-player-name">Player</th>
-        <th title="Sets Played">SP</th>
-        <th title="Attack Kills">K</th>
-        <th title="Attack Errors">E</th>
-        <th title="Total Attacks">TA</th>
-        <th title="Attack percentage">PCT</th>
-        <th title="Set Assists">A</th>
-        <th title="Set Attempts">SA</th>
-        <th title="Serves">S</th>
-        <th title="Service Aces">ACE</th>
-        <th title="Service Errors">SE</th>
-        <th title="Reception Errors">RE</th>
-        <th title="Digs">DIG</th>
-        <th title="Block Solos">BS</th>
-        <th title="Block Assists">BA</th>
-        <th title="Ball Handling Errors">BHE</th>
-        <th title="Points">PTS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
-        <td class="digital-scout-player-stats-player-name">
-            <a ng-show="false" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
-            </a>
-            <span ng-show="true || playerStat.PlayerId == 0">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
-            <span ng-show="playerStat.IsStarter" class="starter">*</span>
-        </td>
-        <td>{{playerStat.MatchGamesPlayed}}</td>
-        <td>{{playerStat.AttackKills}}</td>
-        <td>{{playerStat.AttackErrors}}</td>
-        <td>{{playerStat.Attacks}}</td>
-        <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
-        <td>{{playerStat.SetAssists}}</td>
-        <td>{{playerStat.Sets}}</td>
-        <td>{{playerStat.Serves}}</td>
-        <td>{{playerStat.ServeAces}}</td>
-        <td>{{playerStat.ServeErrors}}</td>
-        <td>{{playerStat.ReceptionErrors}}</td>
-        <td>{{playerStat.Digs}}</td>
-        <td>{{playerStat.BlockSolos}}</td>
-        <td>{{playerStat.BlockAssists}}</td>
-        <td>{{playerStat.BallHandlingErrors}}</td>
-        <td>{{playerStat.Points}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="digital-scout-hit-chart-legend">
-    <dl>
-      <dt>*</dt>
-      <dd>indicates starter</dd>
-      <dt>SP</dt>
-      <dd>sets played</dd>
-      <dt>K</dt>
-      <dd>Attack kills</dd>
-      <dt>E</dt>
-      <dd>Attack errors</dd>
-      <dt>TA</dt>
-      <dd>Total attacks</dd>
-      <dt>PCT</dt>
-      <dd>Attack percentage</dd>
-    </dl>
-    <dl>
-      <dt>A</dt>
-      <dd>Set assists</dd>
-      <dt>SA</dt>
-      <dd>Set attempts</dd>
-      <dt>S</dt>
-      <dd>Serves</dd>
-      <dt>ACE</dt>
-      <dd>Service aces</dd>
-      <dt>SE</dt>
-      <dd>Service errors</dd>
-      <dt>RE</dt>
-      <dd>Reception errors</dd>
-    </dl>
-    <dl>
-      <dt>DIG</dt>
-      <dd>Digs</dd>
-      <dt>BS</dt>
-      <dd>Block solos</dd>
-      <dt>BA</dt>
-      <dd>Block assists</dd>
-      <dt>BHE</dt>
-      <dd>Ball handling errors</dd>
-      <dt>PTS</dt>
-      <dd>Points</dd>
-    </dl>
-    <br style="clear:both" />
-  </div>
+    <h3 class="digital-scout-heading">
+        <span ng-show="!showTeamLinks">
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+            <span class="digital-scout-hidden-sm">{{homeName}}</span>
+            <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+        </span>
+        <a ng-show="showTeamLinks" href="{{homeSlug}}">
+            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+            <span class="digital-scout-hidden-sm">{{homeName}}</span>
+            <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+        </a>
+    </h3>
+    <table class="digital-scout-table" responsive-table>
+        <thead>
+            <tr>
+                <th class="digital-scout-player-stats-player-name">Player</th>
+                <th title="Sets Played">SP</th>
+                <th title="Attack Kills">K</th>
+                <th title="Attack Errors">E</th>
+                <th title="Total Attacks">TA</th>
+                <th title="Attack percentage">PCT</th>
+                <th title="Set Assists">A</th>
+                <th title="Set Attempts">SA</th>
+                <th title="Serves">S</th>
+                <th title="Service Aces">ACE</th>
+                <th title="Service Errors">SE</th>
+                <th title="Reception Errors">RE</th>
+                <th title="Digs">DIG</th>
+                <th title="Block Solos">BS</th>
+                <th title="Block Assists">BA</th>
+                <th title="Ball Handling Errors">BHE</th>
+                <th title="Points">PTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="playerStat in playerStats[homeTeamSeasonId]">
+                <td class="digital-scout-player-stats-player-name">
+                    <a ng-show="false" href="{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).PlayerSlug}}" title="Go to this player's profile"
+                        target="_blank">
+                        {{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}
+                    </a>
+                    <span ng-show="true || playerStat.PlayerId == 0">{{(players|getPlayerById:playerStat.PlayerId:playerStat.TeamSeasonId).DisplayName}}</span>
+                    <span ng-show="playerStat.IsStarter" class="starter">*</span>
+                </td>
+                <td>{{playerStat.MatchGamesPlayed}}</td>
+                <td>{{playerStat.AttackKills}}</td>
+                <td>{{playerStat.AttackErrors}}</td>
+                <td>{{playerStat.Attacks}}</td>
+                <td>{{playerStat.AttackPercentage | percentage:0:'':'%'}}</td>
+                <td>{{playerStat.SetAssists}}</td>
+                <td>{{playerStat.Sets}}</td>
+                <td>{{playerStat.Serves}}</td>
+                <td>{{playerStat.ServeAces}}</td>
+                <td>{{playerStat.ServeErrors}}</td>
+                <td>{{playerStat.ReceptionErrors}}</td>
+                <td>{{playerStat.Digs}}</td>
+                <td>{{playerStat.BlockSolos}}</td>
+                <td>{{playerStat.BlockAssists}}</td>
+                <td>{{playerStat.BallHandlingErrors}}</td>
+                <td>{{playerStat.Points}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="digital-scout-hit-chart-legend">
+        <dl>
+            <dt>*</dt>
+            <dd>indicates starter</dd>
+            <dt>SP</dt>
+            <dd>sets played</dd>
+            <dt>K</dt>
+            <dd>Attack kills</dd>
+            <dt>E</dt>
+            <dd>Attack errors</dd>
+            <dt>TA</dt>
+            <dd>Total attacks</dd>
+            <dt>PCT</dt>
+            <dd>Attack percentage</dd>
+        </dl>
+        <dl>
+            <dt>A</dt>
+            <dd>Set assists</dd>
+            <dt>SA</dt>
+            <dd>Set attempts</dd>
+            <dt>S</dt>
+            <dd>Serves</dd>
+            <dt>ACE</dt>
+            <dd>Service aces</dd>
+            <dt>SE</dt>
+            <dd>Service errors</dd>
+            <dt>RE</dt>
+            <dd>Reception errors</dd>
+        </dl>
+        <dl>
+            <dt>DIG</dt>
+            <dd>Digs</dd>
+            <dt>BS</dt>
+            <dd>Block solos</dd>
+            <dt>BA</dt>
+            <dd>Block assists</dd>
+            <dt>BHE</dt>
+            <dd>Ball handling errors</dd>
+            <dt>PTS</dt>
+            <dd>Points</dd>
+        </dl>
+        <br style="clear:both" />
+    </div>
 </div>

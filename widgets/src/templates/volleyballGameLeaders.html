@@ -1,79 +1,91 @@
 <div ng-show="leadersAvailable" class="digital-scout-game-leaders digital-scout-leaders">
     <h3 class="digital-scout-heading">Game Leaders</h3>
     <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th title="Attack Kills">Kills</th>
-          <th title="Service Aces">Aces</th>
-          <th title="Block Solos + Block Assists">Blocks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <span ng-show="!showTeamLinks"><img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span></span>
-            <a ng-show="showTeamLinks" href="{{awaySlug}}">
-              <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{awayName}}</span><span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
-            </a>
-          </td>
-          <td title="Attack Kills">
-            <span ng-hide="leaders[awayTeamSeasonId].attackKills.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].attackKills.displayName}}:</span> {{leaders[awayTeamSeasonId].attackKills.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].attackKills.playerSlug}}"
+        <thead>
+            <tr>
+                <th></th>
+                <th title="Attack Kills">Kills</th>
+                <th title="Service Aces">Aces</th>
+                <th title="Block Solos + Block Assists">Blocks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{awayName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{awaySlug}}">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{awayName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{awayShortName}}</span>
+                    </a>
+                </td>
+                <td title="Attack Kills">
+                    <span ng-hide="leaders[awayTeamSeasonId].attackKills.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].attackKills.displayName}}:</span> {{leaders[awayTeamSeasonId].attackKills.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].attackKills.playerSlug}}"
                 title="Go to this player's profile">{{leaders[awayTeamSeasonId].attackKills.displayName}}</a>:
               {{leaders[awayTeamSeasonId].attackKills.value}}-->
-            </span>
-          </td>
-          <td title="Service Aces">
-            <span ng-hide="leaders[awayTeamSeasonId].aces.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].aces.displayName}}:</span> {{leaders[awayTeamSeasonId].aces.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].aces.playerSlug}}"
+                    </span>
+                </td>
+                <td title="Service Aces">
+                    <span ng-hide="leaders[awayTeamSeasonId].aces.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].aces.displayName}}:</span> {{leaders[awayTeamSeasonId].aces.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].aces.playerSlug}}"
                 title="Go to this player's profile">{{leaders[awayTeamSeasonId].aces.displayName}}</a>:
               {{leaders[awayTeamSeasonId].aces.value}}-->
-            </span>
-          </td>
-          <td title="Block Solos + Block Assists">
-            <span ng-hide="leaders[awayTeamSeasonId].blocks.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].blocks.displayName}}:</span> {{leaders[awayTeamSeasonId].blocks.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].blocks.playerSlug}}"
+                    </span>
+                </td>
+                <td title="Block Solos + Block Assists">
+                    <span ng-hide="leaders[awayTeamSeasonId].blocks.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[awayTeamSeasonId].blocks.displayName}}:</span> {{leaders[awayTeamSeasonId].blocks.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[awayTeamSeasonId].blocks.playerSlug}}"
                 title="Go to this player's profile">{{leaders[awayTeamSeasonId].blocks.displayName}}</a>:
               {{leaders[awayTeamSeasonId].blocks.value}}-->
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <span ng-show="!showTeamLinks"><img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span></span>
-            <a ng-show="showTeamLinks" href="{{homeSlug}}">
-              <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo"/><span class="digital-scout-hidden-sm">{{homeName}}</span><span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
-            </a>
-        </td>
-          <td title="Attack Kills">
-            <span ng-hide="leaders[homeTeamSeasonId].attackKills.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].attackKills.displayName}}:</span> {{leaders[homeTeamSeasonId].attackKills.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].attackKills.playerSlug}}"
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{homeName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{homeSlug}}">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span class="digital-scout-hidden-sm">{{homeName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{homeShortName}}</span>
+                    </a>
+                </td>
+                <td title="Attack Kills">
+                    <span ng-hide="leaders[homeTeamSeasonId].attackKills.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].attackKills.displayName}}:</span> {{leaders[homeTeamSeasonId].attackKills.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].attackKills.playerSlug}}"
                 title="Go to this player's profile">{{leaders[homeTeamSeasonId].attackKills.displayName}}</a>:
               {{leaders[homeTeamSeasonId].attackKills.value}}-->
-            </span>
-          </td>
-          <td title="Service Aces">
-            <span ng-hide="leaders[homeTeamSeasonId].aces.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].aces.displayName}}:</span> {{leaders[homeTeamSeasonId].aces.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].aces.playerSlug}}"
+                    </span>
+                </td>
+                <td title="Service Aces">
+                    <span ng-hide="leaders[homeTeamSeasonId].aces.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].aces.displayName}}:</span> {{leaders[homeTeamSeasonId].aces.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].aces.playerSlug}}"
                 title="Go to this player's profile">{{leaders[homeTeamSeasonId].aces.displayName}}</a>:
               {{leaders[homeTeamSeasonId].aces.value}}-->
-            </span>
-          </td>
-          <td title="Block Solos + Block Assists">
-            <span ng-hide="leaders[homeTeamSeasonId].blocks.value == 0">
-              <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].blocks.displayName}}:</span> {{leaders[homeTeamSeasonId].blocks.value}}
-              <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].blocks.playerSlug}}"
+                    </span>
+                </td>
+                <td title="Block Solos + Block Assists">
+                    <span ng-hide="leaders[homeTeamSeasonId].blocks.value == 0">
+                        <span class="digital-scout-leader-name">{{leaders[homeTeamSeasonId].blocks.displayName}}:</span> {{leaders[homeTeamSeasonId].blocks.value}}
+                        <!--<a class="digital-scout-leader-name" ng-href="{{leaders[homeTeamSeasonId].blocks.playerSlug}}"
                 title="Go to this player's profile">{{leaders[homeTeamSeasonId].blocks.displayName}}</a>:
               {{leaders[homeTeamSeasonId].blocks.value}}-->
-            </span>
-          </td>
-        </tr>
-      </tbody>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

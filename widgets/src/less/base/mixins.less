@@ -1,42 +1,42 @@
 .clearfix {
-  display: block;
-  zoom: 1;
-
-  &:after {
-    content: " ";
     display: block;
-    font-size: 0;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-  }
+    zoom: 1;
+
+    &:after {
+        content: ' ';
+        display: block;
+        font-size: 0;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
 }
 
 .widget-logo-large {
-  /* sizes must be matched with hsgcConfig.js logoStdResWidth/logoStdResHeight */
-  width: 60px;
-  height: 60px;
-  vertical-align: middle;
+    /* sizes must be matched with hsgcConfig.js logoStdResWidth/logoStdResHeight */
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
 }
 .widget-logo-medium {
-  /* should be evenly divisible by .widget-logo-large */
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
+    /* should be evenly divisible by .widget-logo-large */
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .scrollable-lg {
-  @media (min-width: @screen-sm-cutoff) {
-    max-height: 60vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+    @media (min-width: @screen-sm-cutoff) {
+        max-height: 60vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 .scrollable-sm {
-  @media (max-width: @screen-sm-cutoff) {
-    max-height: 60vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+    @media (max-width: @screen-sm-cutoff) {
+        max-height: 60vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }

@@ -1,55 +1,56 @@
 <div ng-show="playByPlayAvailable" class="digital-scout-play-by-play">
-  <div class="digital-scout-period-selector">
-    <ul class="digital-scout-hidden-sm">
-      <li class="digital-scout-selector-label">Quarter:</li>
-      <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedPeriod == period.value}">
-        <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
-      </li>
-    </ul>
-    <div class="digital-scout-visible-sm">
-      <label for="digital-scout-period-selector">
-        Quarter
-        <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedPeriod" required></select>
-      </label>
+    <div class="digital-scout-period-selector">
+        <ul class="digital-scout-hidden-sm">
+            <li class="digital-scout-selector-label">Quarter:</li>
+            <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedPeriod == period.value}">
+                <a href ng-click="$parent.selectedPeriod = period.value">{{period.display}}</a>
+            </li>
+        </ul>
+        <div class="digital-scout-visible-sm">
+            <label for="digital-scout-period-selector">
+                Quarter
+                <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods"
+                    ng-model="selectedPeriod" required></select>
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="digital-scout-play-by-play-plays">
-    <div ng-repeat="drive in selectedPeriodPlays" class="digital-scout-play-by-play-drive">
-      <table class="digital-scout-table">
-        <thead>
-          <tr>
-            <th colspan="3">
-              <img ng-src="{{getLogo(drive[0])}}" class="digital-scout-logo"/>
-              Drive by {{drive[0].TeamName}} starting at {{drive | driveStart | timeOnClock }}
-            </th>
-            <!-- <th></th> -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="play in drive">
-            <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-time": true }'>{{play.TimeOnClock | timeOnClock }}</td>
-            <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-spot": true, "digital-scout-hidden-sm": true }'>
-              <span ng-show="play.Down > 0">
-                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th ', 'other': '- '}"></ng-pluralize> 
-              and {{play.Distance}} at {{getSpot(play)}}
-            </span>
-            </td>
-            <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-description": true }'>
-              <span class="digital-scout-play-by-play-spot digital-scout-visible-sm-inline"
-              ng-show="play.Down > 0">
-                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th ', 'other': '- '}"></ng-pluralize>
-                and {{play.Distance}} at {{getSpot(play)}}.
-              </span>
-              <span ng-class='{"digital-scout-play-by-play-description": play.Highlight}'>{{play.Description}}</span>
-              <span ng-if="play.IsScoring" class="digital-scout-current-score">{{getScoreSummary(play)}}</span>
-              <a ng-if="play.Highlight" class="digital-scout-play-by-play-link" href='{{play.Highlight.LinkToHighlight}}' target="_blank"><i></i></a>
-            </td>            
-            <!-- <td ng-class='{"digital-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.LinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td> -->
-          </tr>
-        </tbody>
-      </table>
+    <div class="digital-scout-play-by-play-plays">
+        <div ng-repeat="drive in selectedPeriodPlays" class="digital-scout-play-by-play-drive">
+            <table class="digital-scout-table">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <img ng-src="{{getLogo(drive[0])}}" class="digital-scout-logo" /> Drive by {{drive[0].TeamName}} starting at {{drive | driveStart | timeOnClock }}
+                        </th>
+                        <!-- <th></th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="play in drive">
+                        <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-time": true }'>{{play.TimeOnClock | timeOnClock }}</td>
+                        <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-spot": true, "digital-scout-hidden-sm": true }'>
+                            <span ng-show="play.Down > 0">
+                                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th ', 'other': '- '}"></ng-pluralize>
+                                and {{play.Distance}} at {{getSpot(play)}}
+                            </span>
+                        </td>
+                        <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-description": true }'>
+                            <span class="digital-scout-play-by-play-spot digital-scout-visible-sm-inline" ng-show="play.Down > 0">
+                                <ng-pluralize count="play.Down" when="{'1' : '1st ','2' : '2nd ','3' : '3rd ','4' : '4th ', 'other': '- '}"></ng-pluralize>
+                                and {{play.Distance}} at {{getSpot(play)}}.
+                            </span>
+                            <span ng-class='{"digital-scout-play-by-play-description": play.Highlight}'>{{play.Description}}</span>
+                            <span ng-if="play.IsScoring" class="digital-scout-current-score">{{getScoreSummary(play)}}</span>
+                            <a ng-if="play.Highlight" class="digital-scout-play-by-play-link" href='{{play.Highlight.LinkToHighlight}}' target="_blank">
+                                <i></i>
+                            </a>
+                        </td>
+                        <!-- <td ng-class='{"digital-scout-scoring": play.IsScoring }'><a ng-if="play.Highlight" href='{{play.Highlight.LinkToHighlight}}' target="_blank"><i class="playIcon"></i></a></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 
 </div>

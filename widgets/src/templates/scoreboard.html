@@ -1,135 +1,139 @@
 <div ng-cloak class="digital-scout-info-card">
-  <div class="digital-scout-scoreboard-details">
-    <div class="digital-scout-scoreboard-details-teams">
-      <table>
-        <tbody>
-          <tr>
-            <td class="left">
-              <div class="score">{{awayScore}}</div>
-              <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
-                <span ng-hide="showTeamLinks">
-                  <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
-                </span>
-                <a ng-show="showTeamLinks" href="{{awaySlug}}">
-                  <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
-                </a>
-              </div>
-              <p class="name">
-                <span ng-hide="showTeamLinks">
-                  {{awayName}} {{awayMascot}}
-                </span>
-                <a ng-show="showTeamLinks" href="{{awaySlug}}">
-                  {{awayName}} {{awayMascot}}
-                </a>
-              </p>
-            </td>
-            <td class="right">
-              <div class="score">{{homeScore}}</div>
-              <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
-                <span ng-hide="showTeamLinks">
-                  <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
-                </span>
-                <a ng-show="showTeamLinks" href="{{homeSlug}}">
-                  <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
-                </a>
-              </div>
-              <p class="name">
-                <span ng-hide="showTeamLinks">
-                  {{homeName}} {{homeMascot}}
-                </span>
-                <a ng-show="showTeamLinks" href="{{homeSlug}}">
-                  {{homeName}} {{homeMascot}}
-                </a>
-              </p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="digital-scout-scoreboard-details">
+        <div class="digital-scout-scoreboard-details-teams">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="left">
+                            <div class="score">{{awayScore}}</div>
+                            <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
+                                <span ng-hide="showTeamLinks">
+                                    <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                                </span>
+                                <a ng-show="showTeamLinks" href="{{awaySlug}}">
+                                    <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                                </a>
+                            </div>
+                            <p class="name">
+                                <span ng-hide="showTeamLinks">
+                                    {{awayName}} {{awayMascot}}
+                                </span>
+                                <a ng-show="showTeamLinks" href="{{awaySlug}}">
+                                    {{awayName}} {{awayMascot}}
+                                </a>
+                            </p>
+                        </td>
+                        <td class="right">
+                            <div class="score">{{homeScore}}</div>
+                            <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
+                                <span ng-hide="showTeamLinks">
+                                    <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                                </span>
+                                <a ng-show="showTeamLinks" href="{{homeSlug}}">
+                                    <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                                </a>
+                            </div>
+                            <p class="name">
+                                <span ng-hide="showTeamLinks">
+                                    {{homeName}} {{homeMascot}}
+                                </span>
+                                <a ng-show="showTeamLinks" href="{{homeSlug}}">
+                                    {{homeName}} {{homeMascot}}
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="digital-scout-scoreboard-details-status">
+            <div>
+                <span class="type">{{statusPretty}}</span>
+                <h3>{{statusDisplay}}</h3>
+                <h4>{{gender}} {{sport}}</h4>
+                <span class="description">{{gameType}}</span>
+                <span class="date">{{longDateTimeDisplay}}</span>
+            </div>
+            <div attribution class="digital-scout-attribution"></div>
+        </div>
     </div>
-    <div class="digital-scout-scoreboard-details-status">
-      <div>
-        <span class="type">{{statusPretty}}</span>
-        <h3>{{statusDisplay}}</h3>
-        <h4>{{gender}} {{sport}}</h4>
-        <span class="description">{{gameType}}</span>
-        <span class="date">{{longDateTimeDisplay}}</span>
-      </div>
-      <div attribution class="digital-scout-attribution"></div>
-    </div>
-  </div>  
 </div>
 
 <div ng-cloak ng-show="scoresAvailable" class="digital-scout-scoreboard">
-  <span class="digital-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
-  <h3 class="digital-scout-heading">Scoreboard</h3>
-  <table class="digital-scout-table">
-    <thead>
-      <tr>
-        <th style="width: 99%;"></th>
-        <th ng-show="!finalScoresInFirstPeriod">1</th>
-        <th ng-show="!finalScoresInFirstPeriod">2</th>
-        <th ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">3</th>
-        <th ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">4</th>
-        <th ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">5</th>
-        <th ng-show="!finalScoresInFirstPeriod && inOverTime">OT</th>
-        <th class="digital-scout-final">F</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td ng-class="{'digital-scout-winner': isWinner(awayTeamKey)}">
-          <span ng-show="!showTeamLinks">
-            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" /><span>{{awayShortName}}</span>
-          </span>
-          <a ng-show="showTeamLinks" href="{{awaySlug}}">
-            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" /><span>{{awayShortName}}</span>
-          </a>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>
-        <td ng-show="!finalScoresInFirstPeriod">
-          <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">
-          <span ng-show="currentPeriod >= 3">{{awayPeriodScores[2].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">
-          <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">
-          <span ng-show="currentPeriod >= 5">{{awayPeriodScores[4].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && inOverTime">
-          <span>{{awayOvertimeScore}}</span>
-        </td>
-        <td class="digital-scout-final">{{awayScore}}</td>
-      </tr>
-      <tr>
-        <td ng-class="{'digital-scout-winner': isWinner(homeTeamKey)}">
-          <span ng-show="!showTeamLinks">
-            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span>{{homeShortName}}</span>
-          </span>
-          <a ng-show="showTeamLinks" href="{{homeSlug}}">
-            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" /><span>{{homeShortName}}</span>
-          </a>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod">{{homePeriodScores[0].Score}}</td>
-        <td ng-show="!finalScoresInFirstPeriod">
-          <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">
-          <span ng-show="currentPeriod >= 3">{{homePeriodScores[2].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">
-          <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">
-          <span ng-show="currentPeriod >= 5">{{homePeriodScores[4].Score}}</span>
-        </td>
-        <td ng-show="!finalScoresInFirstPeriod && inOverTime">
-          <span>{{homeOvertimeScore}}</span>
-        </td>
-        <td class="digital-scout-final">{{homeScore}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <span class="digital-scout-game-status" ng-show="showStatus">{{statusDisplay}}</span>
+    <h3 class="digital-scout-heading">Scoreboard</h3>
+    <table class="digital-scout-table">
+        <thead>
+            <tr>
+                <th style="width: 99%;"></th>
+                <th ng-show="!finalScoresInFirstPeriod">1</th>
+                <th ng-show="!finalScoresInFirstPeriod">2</th>
+                <th ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">3</th>
+                <th ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">4</th>
+                <th ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">5</th>
+                <th ng-show="!finalScoresInFirstPeriod && inOverTime">OT</th>
+                <th class="digital-scout-final">F</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td ng-class="{'digital-scout-winner': isWinner(awayTeamKey)}">
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span>{{awayShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{awaySlug}}">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span>{{awayShortName}}</span>
+                    </a>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod">{{awayPeriodScores[0].Score}}</td>
+                <td ng-show="!finalScoresInFirstPeriod">
+                    <span ng-show="currentPeriod >= 2">{{awayPeriodScores[1].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">
+                    <span ng-show="currentPeriod >= 3">{{awayPeriodScores[2].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">
+                    <span ng-show="currentPeriod >= 4">{{awayPeriodScores[3].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">
+                    <span ng-show="currentPeriod >= 5">{{awayPeriodScores[4].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && inOverTime">
+                    <span>{{awayOvertimeScore}}</span>
+                </td>
+                <td class="digital-scout-final">{{awayScore}}</td>
+            </tr>
+            <tr>
+                <td ng-class="{'digital-scout-winner': isWinner(homeTeamKey)}">
+                    <span ng-show="!showTeamLinks">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span>{{homeShortName}}</span>
+                    </span>
+                    <a ng-show="showTeamLinks" href="{{homeSlug}}">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
+                        <span>{{homeShortName}}</span>
+                    </a>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod">{{homePeriodScores[0].Score}}</td>
+                <td ng-show="!finalScoresInFirstPeriod">
+                    <span ng-show="currentPeriod >= 2">{{homePeriodScores[1].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && regulationPeriodCount >= 3">
+                    <span ng-show="currentPeriod >= 3">{{homePeriodScores[2].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && (regulationPeriodCount >= 4 || (!inOverTime && currentPeriod >= 4))">
+                    <span ng-show="currentPeriod >= 4">{{homePeriodScores[3].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && !inOverTime && currentPeriod >= 5">
+                    <span ng-show="currentPeriod >= 5">{{homePeriodScores[4].Score}}</span>
+                </td>
+                <td ng-show="!finalScoresInFirstPeriod && inOverTime">
+                    <span>{{homeOvertimeScore}}</span>
+                </td>
+                <td class="digital-scout-final">{{homeScore}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

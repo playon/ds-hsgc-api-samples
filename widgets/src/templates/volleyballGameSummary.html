@@ -1,56 +1,56 @@
 <div ng-show="statsAvailable" class="digital-scout-game-summary">
-  <h3 class="digital-scout-heading">Match Summary</h3>
-  <table class="digital-scout-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th title="{{awayName}}">{{awayAcronym}}</th>
-        <th title="{{homeName}}">{{homeAcronym}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td title="Kills">
-          Kills
-        </td>
-        <td>{{awayStats.AttackKills}}</td>
-        <td>{{homeStats.AttackKills}}</td>
-      </tr>
-      <tr>
-        <td title="Attack Attemps">
-          Total Attempts
-        </td>
-        <td>{{awayStats.Attacks}}</td>
-        <td>{{homeStats.Attacks}}</td>
-      </tr>
-      <tr>
-        <td title="Kills - Attack Errors / Attempts">
-          Attack Percentage
-        </td>
-        <td>{{awayStats.AttackPercentage | percentage:0:'':'%'}}</td>
-        <td>{{homeStats.AttackPercentage | percentage:0:'':'%'}}</td>
-      </tr>
-      <tr>
-        <td title="Team Blocks (Solos + Assists/2)">
-          Team Blocks
-        </td>
-        <td>{{awayStats.BlockSolos + (awayStats.BlockAssists/2)}}</td>
-        <td>{{homeStats.BlockSolos + (homeStats.BlockAssists/2)}}</td>
-      </tr>
-      <tr>
-        <td title="Reception Errors">
-          Reception Errors
-        </td>
-        <td>{{awayStats.ReceptionErrors}}</td>
-        <td>{{homeStats.ReceptionErrors}}</td>
-      </tr>
-      <tr>
-        <td title="All total errors of any kind">
-          Total Errors
-        </th>
-        <td>{{awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors}}</td>
-        <td>{{homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 class="digital-scout-heading">Match Summary</h3>
+    <table class="digital-scout-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th title="{{awayName}}">{{awayAcronym}}</th>
+                <th title="{{homeName}}">{{homeAcronym}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td title="Kills">
+                    Kills
+                </td>
+                <td>{{awayStats.AttackKills}}</td>
+                <td>{{homeStats.AttackKills}}</td>
+            </tr>
+            <tr>
+                <td title="Attack Attempts">
+                    Total Attempts
+                </td>
+                <td>{{awayStats.Attacks}}</td>
+                <td>{{homeStats.Attacks}}</td>
+            </tr>
+            <tr>
+                <td title="Kills - Attack Errors / Attempts">
+                    Attack Percentage
+                </td>
+                <td>{{awayStats.AttackPercentage | percentage:0:'':'%'}}</td>
+                <td>{{homeStats.AttackPercentage | percentage:0:'':'%'}}</td>
+            </tr>
+            <tr>
+                <td title="Team Blocks (Solos + Assists/2)">
+                    Team Blocks
+                </td>
+                <td>{{awayStats.BlockSolos + (awayStats.BlockAssists/2)}}</td>
+                <td>{{homeStats.BlockSolos + (homeStats.BlockAssists/2)}}</td>
+            </tr>
+            <tr>
+                <td title="Reception Errors">
+                    Reception Errors
+                </td>
+                <td>{{awayStats.ReceptionErrors}}</td>
+                <td>{{homeStats.ReceptionErrors}}</td>
+            </tr>
+            <tr>
+                <td title="All total errors of any kind">
+                    Total Errors
+                    </th>
+                    <td>{{awayStats.BlockErrors + awayStats.ReceptionErrors + awayStats.ServeErrors + awayStats.SetErrors + awayStats.AttackErrors}}</td>
+                    <td>{{homeStats.BlockErrors + homeStats.ReceptionErrors + homeStats.ServeErrors + homeStats.SetErrors + homeStats.AttackErrors}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

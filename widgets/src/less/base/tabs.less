@@ -1,45 +1,48 @@
 @import 'variables.less';
 
 .digital-scout-tabs {
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style: none;
-  width: 100%;
-  display: table;
-  table-layout: fixed;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    width: 100%;
+    display: table;
+    table-layout: fixed;
 
-  > li {
-    margin-right: 2px;
-    margin-bottom: -1px;
-    display: table-cell;
+    > li {
+        margin-right: 2px;
+        margin-bottom: -1px;
+        display: table-cell;
 
-    a, a:visited {
-      position: relative;
-      color: @highlight-inverse;
-      background-color: @highlight-color-1;
-      border: none;
-      display: block;
-      text-decoration:none;
-      text-transform: uppercase;
-      padding: 10px 15px;
-      text-align: center;
-      font-weight: 500;
+        a,
+        a:visited {
+            position: relative;
+            color: @highlight-inverse;
+            background-color: @highlight-color-1;
+            border: none;
+            display: block;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 10px 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        &.active {
+            a,
+            a:hover,
+            a:focus {
+                color: @highlight-inverse;
+                cursor: default;
+                background-color: @highlight-color-2;
+            }
+        }
     }
-
-    &.active {
-      a, a:hover, a:focus {
-        color: @highlight-inverse;
-        cursor: default;
-        background-color: @highlight-color-2;
-      }
-    }
-  }
 }
 
 .digital-scout-tab-container {
-  > div {
-    border: 1px solid #dddddd;
-    clear:both;
-  }
+    > div {
+        border: 1px solid #dddddd;
+        clear: both;
+    }
 }

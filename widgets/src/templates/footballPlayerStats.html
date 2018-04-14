@@ -1,242 +1,249 @@
 <div ng-show="statsAvailable" class="digital-scout-player-stats">
-  <div class="player-stats-not-available"
-    ng-show="!anyPlayerStatsAvailable">
-    <p>No player stats available at this time.</p>
-  </div>
-  <div ng-show="anyPlayerStatsAvailable" class="digital-scout-player-stats-as-reported-by">
-    As reported by 
-    <span ng-repeat="reporter in asReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
-  </div>
-  <div ng-show="playerStats.passingStats.length > 0">
-    <h3 class="digital-scout-heading">Passing Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th title="Completions">Cmp</th>
-          <th title="Attempts">Att</th>
-          <th title="Yards">Yds</th>
-          <th title="Completion percentage">Cmp%</th>
-          <th title="Touchdowns">TD</th>
-          <th title="Interceptions">Int</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.passingStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Completions}}</td>
-          <td>{{player.Attempts}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.CompletionPercentage | decimals:1}}%</td>
-          <td>{{player.Touchdowns}}</td>
-          <td>{{player.Interceptions}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.rushingStats.length > 0">
-    <h3 class="digital-scout-heading">Rushing Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Att</th>
-          <th>Yds</th>
-          <th>Avg</th>
-          <th>TD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.rushingStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Attempts}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.Average |  decimals:1}}</td>
-          <td>{{player.Touchdowns}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.receivingStats.length > 0">
-    <h3 class="digital-scout-heading">Receiving Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Rec</th>
-          <th>Yds</th>
-          <th>Avg</th>
-          <th>TD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.receivingStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Receptions}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.Average |  decimals:1}}</td>
-          <td>{{player.Touchdowns }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.defensiveStats.length > 0">
-    <h3 class="digital-scout-heading">Defensive Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Tkl</th>
-          <th>Solo</th>
-          <th>Ast</th>
-          <th>Sac</th>
-          <th>TFL</th>
-          <th>Int</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.defensiveStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Tackles}}</td>
-          <td>{{player.Solos}}</td>
-          <td>{{player.Assists}}</td>
-          <td>{{player.Sacks}}</td>
-          <td>{{player.TacklesForLoss}}</td>
-          <td>{{player.Interceptions}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.kickingStats.length > 0">
-    <h3 class="digital-scout-heading">Kicking Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>FG</th>
-          <th>FGA</th>
-          <th>XP</th>
-          <th>Pts</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.kickingStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.FieldGoals}}</td>
-          <td>{{player.FieldGoalAttempts}}</td>
-          <td>{{player.ExtraPoints}}</td>
-          <td>{{player.Points}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.puntingStats.length > 0">
-    <h3 class="digital-scout-heading">Punting Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Att</th>
-          <th>Yds</th>
-          <th>Avg</th>
-          <th>I20</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.puntingStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Attempts}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.Average |  decimals:1}}</td>
-          <td>{{player.Inside20}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.puntReturnStats.length > 0">
-    <h3 class="digital-scout-heading">Punt Return Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Att</th>
-          <th>Yds</th>
-          <th>Avg</th>
-          <th>TD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.puntReturnStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Attempts}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.Average|  decimals:1}}</td>
-          <td>{{player.Touchdowns}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="playerStats.kickReturnStats.length > 0">
-    <h3 class="digital-scout-heading">Kick Return Stats</h3>
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Att</th>
-          <th>Yds</th>
-          <th>Avg</th>
-          <th>TD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="player in playerStats.kickReturnStats">
-          <td class="digital-scout-player-stats-player-name">
-            <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile" target="_blank">
-              {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
-            </a>
-            <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
-          </td>
-          <td>{{player.Attempts}}</td>
-          <td>{{player.Yards}}</td>
-          <td>{{player.Average|  decimals:1}}</td>
-          <td>{{player.Touchdowns}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="player-stats-not-available" ng-show="!anyPlayerStatsAvailable">
+        <p>No player stats available at this time.</p>
+    </div>
+    <div ng-show="anyPlayerStatsAvailable" class="digital-scout-player-stats-as-reported-by">
+        As reported by
+        <span ng-repeat="reporter in asReportedBy">{{reporter}}{{$last ? '' : ', '}}</span>
+    </div>
+    <div ng-show="playerStats.passingStats.length > 0">
+        <h3 class="digital-scout-heading">Passing Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th title="Completions">Cmp</th>
+                    <th title="Attempts">Att</th>
+                    <th title="Yards">Yds</th>
+                    <th title="Completion percentage">Cmp%</th>
+                    <th title="Touchdowns">TD</th>
+                    <th title="Interceptions">Int</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.passingStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Completions}}</td>
+                    <td>{{player.Attempts}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.CompletionPercentage | decimals:1}}%</td>
+                    <td>{{player.Touchdowns}}</td>
+                    <td>{{player.Interceptions}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.rushingStats.length > 0">
+        <h3 class="digital-scout-heading">Rushing Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Att</th>
+                    <th>Yds</th>
+                    <th>Avg</th>
+                    <th>TD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.rushingStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Attempts}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.Average | decimals:1}}</td>
+                    <td>{{player.Touchdowns}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.receivingStats.length > 0">
+        <h3 class="digital-scout-heading">Receiving Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Rec</th>
+                    <th>Yds</th>
+                    <th>Avg</th>
+                    <th>TD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.receivingStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Receptions}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.Average | decimals:1}}</td>
+                    <td>{{player.Touchdowns }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.defensiveStats.length > 0">
+        <h3 class="digital-scout-heading">Defensive Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Tkl</th>
+                    <th>Solo</th>
+                    <th>Ast</th>
+                    <th>Sac</th>
+                    <th>TFL</th>
+                    <th>Int</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.defensiveStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Tackles}}</td>
+                    <td>{{player.Solos}}</td>
+                    <td>{{player.Assists}}</td>
+                    <td>{{player.Sacks}}</td>
+                    <td>{{player.TacklesForLoss}}</td>
+                    <td>{{player.Interceptions}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.kickingStats.length > 0">
+        <h3 class="digital-scout-heading">Kicking Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>FG</th>
+                    <th>FGA</th>
+                    <th>XP</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.kickingStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.FieldGoals}}</td>
+                    <td>{{player.FieldGoalAttempts}}</td>
+                    <td>{{player.ExtraPoints}}</td>
+                    <td>{{player.Points}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.puntingStats.length > 0">
+        <h3 class="digital-scout-heading">Punting Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Att</th>
+                    <th>Yds</th>
+                    <th>Avg</th>
+                    <th>I20</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.puntingStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:passer.player:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Attempts}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.Average | decimals:1}}</td>
+                    <td>{{player.Inside20}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.puntReturnStats.length > 0">
+        <h3 class="digital-scout-heading">Punt Return Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Att</th>
+                    <th>Yds</th>
+                    <th>Avg</th>
+                    <th>TD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.puntReturnStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Attempts}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.Average| decimals:1}}</td>
+                    <td>{{player.Touchdowns}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="playerStats.kickReturnStats.length > 0">
+        <h3 class="digital-scout-heading">Kick Return Stats</h3>
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Att</th>
+                    <th>Yds</th>
+                    <th>Avg</th>
+                    <th>TD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in playerStats.kickReturnStats">
+                    <td class="digital-scout-player-stats-player-name">
+                        <a ng-show="player.PlayerId > 0" href="{{(players|getPlayerById:player.PlayerId:teamId).PlayerSlug}}" title="Go to this player's profile"
+                            target="_blank">
+                            {{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}
+                        </a>
+                        <span ng-hide="player.PlayerId > 0">{{(players|getPlayerById:player.PlayerId:teamId).DisplayName}}</span>
+                    </td>
+                    <td>{{player.Attempts}}</td>
+                    <td>{{player.Yards}}</td>
+                    <td>{{player.Average| decimals:1}}</td>
+                    <td>{{player.Touchdowns}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

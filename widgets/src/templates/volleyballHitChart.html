@@ -1,71 +1,79 @@
 <div ng-show="playByPlayAvailable" class="digital-scout-shot-chart">
-  <div class="digital-scout-period-selector digital-scout-hit-chart-selector">
-    <ul class="digital-scout-hidden-sm">
-      <li class="digital-scout-selector-label">Set:</li>
-      <li ng-class="{'digital-scout-active': selectedHitChartPeriod == null}">
-        <a href ng-click="selectedHitChartPeriod = null">All</a>
-      </li>
-      <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedHitChartPeriod == period.value}">
-        <a href ng-click="$parent.selectedHitChartPeriod = period.value">{{period.display}}</a>
-      </li>
-    </ul>
-    <div class="digital-scout-visible-sm">
-      <label>
-        Set
-        <select ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
-          <option value="">All Sets</option>
-        </select>
-      </label>
+    <div class="digital-scout-period-selector digital-scout-hit-chart-selector">
+        <ul class="digital-scout-hidden-sm">
+            <li class="digital-scout-selector-label">Set:</li>
+            <li ng-class="{'digital-scout-active': selectedHitChartPeriod == null}">
+                <a href ng-click="selectedHitChartPeriod = null">All</a>
+            </li>
+            <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedHitChartPeriod == period.value}">
+                <a href ng-click="$parent.selectedHitChartPeriod = period.value">{{period.display}}</a>
+            </li>
+        </ul>
+        <div class="digital-scout-visible-sm">
+            <label>
+                Set
+                <select ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedHitChartPeriod" required>
+                    <option value="">All Sets</option>
+                </select>
+            </label>
+        </div>
     </div>
-  </div>
-  <div class="digital-scout-hit-chart-selector">
-    <label>
-      Team and Player
-      <select ng-model="playerFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="player as player.DisplayName group by player.TeamDisplayName for player in playerFilterList | orderBy: '(PlayerId > 0 ? DisplayName : 0)'">
-      </label>
-  </div>
-  <div class="digital-scout-hit-chart-selector">
-    <label>
-      Serves and Attacks
-      <select ng-model="hitTypeFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="hitType as hitType.DisplayName group by hitType.EventType for hitType in hitTypeFilterList">
-    </label>
-  </div>
-  <div class="digital-scout-shot-chart-container">
-    <canvas volleyball-court resize style="width:100%"></canvas>
-    <div class="digital-scout-hit-chart-tooltip-js" class="tooltip in top hidden-print">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner"></div>
+    <div class="digital-scout-hit-chart-selector">
+        <label>
+            Team and Player
+            <select ng-model="playerFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="player as player.DisplayName group by player.TeamDisplayName for player in playerFilterList | orderBy: '(PlayerId > 0 ? DisplayName : 0)'">
+        </label>
     </div>
-  </div>
-  <div class="digital-scout-hit-chart-legend">
-    <dl>
-      <dt>Dashed line</dt>
-      <dd>Serve</dd>
-      <dt>Color: Blue</dt>
-      <dd style="color: blue;">Float serve</dd>
-      <dt>Color: Green</dt>
-      <dd style="color: green;">Jump serve</dd>
-      <dt>Color: Red</dt>
-      <dd style="color: red;">Top spin serve</dd>
-      <dt>Color: Yellow</dt>
-      <dd style="color: yellow"><span style="background: #777; padding: 1px;">Underhand serve</span></dd>
-      <dt>Solid line</dt>
-      <dd>Attack</dd>
-      <dt>Color: Blue</dt>
-      <dd style="color: blue;">Dump attack</dd>
-      <dt>Color: Green</dt>
-      <dd style="color: green;">Set over</dd>
-      <dt>Color: Red</dt>
-      <dd style="color: red;">Spike</dd>
-      <dt>Color: Yellow</dt>
-      <dd style="color: yellow"><span style="background: #777; padding: 1px;">Tip</span></dd>
-    </dl>
-    <dl>
-        <dt>&#8226;</dt><dd>Hit origin</dd>
-        <dt>O</dt><dd>Hit destination</dd>
-        <dt style="color: red">&#216;</dt><dd>Service ace/attack kill</dd>
-        <dt style="font-size: 2.5em">&#8226;</dt><dd>Hit error</dd>
-    </dl>
-    <br style="clear:both" />
-  </div>
+    <div class="digital-scout-hit-chart-selector">
+        <label>
+            Serves and Attacks
+            <select ng-model="hitTypeFilter" ng-change="setSizeOfItemsOnCourt()" ng-options="hitType as hitType.DisplayName group by hitType.EventType for hitType in hitTypeFilterList">
+        </label>
+    </div>
+    <div class="digital-scout-shot-chart-container">
+        <canvas volleyball-court resize style="width:100%"></canvas>
+        <div class="digital-scout-hit-chart-tooltip-js" class="tooltip in top hidden-print">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-inner"></div>
+        </div>
+    </div>
+    <div class="digital-scout-hit-chart-legend">
+        <dl>
+            <dt>Dashed line</dt>
+            <dd>Serve</dd>
+            <dt>Color: Blue</dt>
+            <dd style="color: blue;">Float serve</dd>
+            <dt>Color: Green</dt>
+            <dd style="color: green;">Jump serve</dd>
+            <dt>Color: Red</dt>
+            <dd style="color: red;">Top spin serve</dd>
+            <dt>Color: Yellow</dt>
+            <dd style="color: yellow">
+                <span style="background: #777; padding: 1px;">Underhand serve</span>
+            </dd>
+            <dt>Solid line</dt>
+            <dd>Attack</dd>
+            <dt>Color: Blue</dt>
+            <dd style="color: blue;">Dump attack</dd>
+            <dt>Color: Green</dt>
+            <dd style="color: green;">Set over</dd>
+            <dt>Color: Red</dt>
+            <dd style="color: red;">Spike</dd>
+            <dt>Color: Yellow</dt>
+            <dd style="color: yellow">
+                <span style="background: #777; padding: 1px;">Tip</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>&#8226;</dt>
+            <dd>Hit origin</dd>
+            <dt>O</dt>
+            <dd>Hit destination</dd>
+            <dt style="color: red">&#216;</dt>
+            <dd>Service ace/attack kill</dd>
+            <dt style="font-size: 2.5em">&#8226;</dt>
+            <dd>Hit error</dd>
+        </dl>
+        <br style="clear:both" />
+    </div>
 </div>

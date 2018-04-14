@@ -1,53 +1,52 @@
 <div ng-show="publicAvailability" class="digital-scout-shot-chart">
-  <div class="digital-scout-period-selector">
-    <ul class="digital-scout-hidden-sm">
-      <li class="digital-scout-selector-label">Quarter:</li>
-      <li ng-class="{'digital-scout-active': selectedShotChartPeriod === null}">
-        <a href ng-click="selectedShotChartPeriod = null">All</a>
-      </li>
-      <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedShotChartPeriod == period.value}">
-        <a href ng-click="$parent.selectedShotChartPeriod = period.value">{{period.display}}</a>
-      </li>
-    </ul>
-    <div class="digital-scout-visible-sm">
-      <label for="digital-scout-period-selector">
-        Quarter
-        <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods" ng-model="selectedShotChartPeriod" required>
-          <option value="">All Quarters</option>
-        </select>
-      </label>
+    <div class="digital-scout-period-selector">
+        <ul class="digital-scout-hidden-sm">
+            <li class="digital-scout-selector-label">Quarter:</li>
+            <li ng-class="{'digital-scout-active': selectedShotChartPeriod === null}">
+                <a href ng-click="selectedShotChartPeriod = null">All</a>
+            </li>
+            <li ng-repeat="period in playByPlayPeriods" ng-class="{'digital-scout-active': selectedShotChartPeriod == period.value}">
+                <a href ng-click="$parent.selectedShotChartPeriod = period.value">{{period.display}}</a>
+            </li>
+        </ul>
+        <div class="digital-scout-visible-sm">
+            <label for="digital-scout-period-selector">
+                Quarter
+                <select name="digital-scout-period-selector" ng-options="period.value as period.display for period in playByPlayPeriods"
+                    ng-model="selectedShotChartPeriod" required>
+                    <option value="">All Quarters</option>
+                </select>
+            </label>
+        </div>
     </div>
-  </div>
 
-  <div class="digital-scout-shot-chart-teams">
-    <div class="digital-scout-shot-chart-team digital-scout-shot-chart-team-away">
-      <label>
-        <div>{{awayName}}</div>
-        <select ng-model="awayPlayerFilter" ng-options="player.DisplayName for player in players[awayTeamSeasonId]">
-          <option value="">All Players</option>
-        </select>
-      </label>
+    <div class="digital-scout-shot-chart-teams">
+        <div class="digital-scout-shot-chart-team digital-scout-shot-chart-team-away">
+            <label>
+                <div>{{awayName}}</div>
+                <select ng-model="awayPlayerFilter" ng-options="player.DisplayName for player in players[awayTeamSeasonId]">
+                    <option value="">All Players</option>
+                </select>
+            </label>
+        </div>
+        <div class="digital-scout-shot-chart-team digital-scout-shot-chart-team-home">
+            <label>
+                <div>{{homeName}}</div>
+                <select ng-model="homePlayerFilter" ng-options="player.DisplayName for player in players[homeTeamSeasonId]">
+                    <option value="">All Players</option>
+                </select>
+            </label>
+        </div>
     </div>
-    <div class="digital-scout-shot-chart-team digital-scout-shot-chart-team-home">
-      <label>
-        <div>{{homeName}}</div>
-        <select ng-model="homePlayerFilter" ng-options="player.DisplayName for player in players[homeTeamSeasonId]">
-          <option value="">All Players</option>
-        </select>
-      </label>
+    <div class="digital-scout-shot-chart-container">
+        <img class="digital-scout-basketball-court" src="" />
+        <div ng-repeat="shot in playByPlay | filterShots:awayPlayerFilter:homePlayerFilter:selectedShotChartPeriod" title="{{shot.Description}}"
+            ng-style="{top: getShotTop(shot) + '%', left: getShotLeft(shot) + '%'}" class="digital-scout-shot-chart-shot {{getShotImageClass(shot)}}"></div>
     </div>
-  </div>
-  <div class="digital-scout-shot-chart-container">
-    <img class="digital-scout-basketball-court" src=""/>
-    <div ng-repeat="shot in playByPlay | filterShots:awayPlayerFilter:homePlayerFilter:selectedShotChartPeriod"
-        title="{{shot.Description}}"
-        ng-style="{top: getShotTop(shot) + '%', left: getShotLeft(shot) + '%'}"
-        class="digital-scout-shot-chart-shot {{getShotImageClass(shot)}}"></div>
-  </div>
-  <div class="digital-scout-shot-chart-legend">
-    <span class="digital-scout-shot-chart-shot-made">Made</span>
-    <span class="digital-scout-shot-chart-shot-missed">Miss</span>
-  </div>
+    <div class="digital-scout-shot-chart-legend">
+        <span class="digital-scout-shot-chart-shot-made">Made</span>
+        <span class="digital-scout-shot-chart-shot-missed">Miss</span>
+    </div>
 </div>
 
 <div ng-show="!publicAvailability && playByPlayAvailable" class="digital-scout-shot-chart shot-chart-not-available">

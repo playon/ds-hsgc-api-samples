@@ -1,134 +1,139 @@
 .digital-scout-table {
-  width: 100%;
-  border-top: @table-border-width solid @table-border-color;
-  border-bottom: none;
-  max-width: 100%;
-  background-color: transparent;
-  border-collapse: collapse;
-  border-spacing: 0;
+    width: 100%;
+    border-top: @table-border-width solid @table-border-color;
+    border-bottom: none;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
 
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      border-width: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            border-width: 0;
 
-      > th,
-      > td {
-        padding: 8px;
-        vertical-align: top;
-        border: @table-border-width solid @table-border-color;
+            > th,
+            > td {
+                padding: 8px;
+                vertical-align: top;
+                border: @table-border-width solid @table-border-color;
 
-        img {
-          margin-right: 10px;
+                img {
+                    margin-right: 10px;
+                }
+            }
+
+            @media only screen and (max-width: @screen-sm-cutoff) {
+                > th,
+                > td {
+                    padding: 4px;
+                }
+            }
         }
-      }
-
-      @media only screen and (max-width: @screen-sm-cutoff) {
+    }
+    > thead > tr {
         > th,
         > td {
-          padding: 4px;
+            vertical-align: bottom;
+            border-bottom-width: (@table-border-width * 2);
         }
-      }
-    }
-  }
-  > thead > tr {
 
-    > th,
-    > td {
-      vertical-align: bottom;
-      border-bottom-width: (@table-border-width * 2);
-    }
+        :first-child {
+            border-left: none;
+        }
 
-    :first-child {
-      border-left: none;
+        :last-child {
+            border-right: none;
+        }
     }
 
-    :last-child {
-      border-right: none;
+    tbody > tr:nth-child(odd) > td {
+        background-color: @table-bg-accent-1;
     }
-  }
 
-  tbody > tr:nth-child(odd) >  td {
-    background-color: @table-bg-accent-1;
-  }
+    tbody > tr:nth-child(even) > td {
+        background-color: @table-bg-accent-2;
+    }
 
-  tbody > tr:nth-child(even) >  td {
-    background-color: @table-bg-accent-2;
-  }
-
-  thead:first-child > tr:first-child > th,td {
-    border-top: 0;
-  }
+    thead:first-child > tr:first-child > th,
+    td {
+        border-top: 0;
+    }
 }
 
 // responsive tables css converted to less & namespaced from https://github.com/zurb/responsive-tables
 
-.digital-scout-responsive-table-wrapper  .digital-scout-table-scrollable {
-  padding-right: 1px; /* fix some borders trigger horizontal overflow in some unnecessary situations */
+.digital-scout-responsive-table-wrapper .digital-scout-table-scrollable {
+    padding-right: 1px; /* fix some borders trigger horizontal overflow in some unnecessary situations */
 }
 
 @media (min-width: (@screen-sm-cutoff + 1)) {
-  .digital-scout-table-pinned {
-    display: none;
-  }
+    .digital-scout-table-pinned {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: @screen-sm-cutoff) {
-  .digital-scout-table-responsive {
-    margin-bottom: 0;
-    td, th {
-      position: relative;
-      white-space: nowrap;
-      overflow: hidden;
-
-      &:first-child, &td.pinned {
-        display: none;
-      }
-    }
-  }
-
-  .digital-scout-responsive-table-wrapper {
-    position: relative;
-    margin-bottom: 20px;
-    overflow-x: hidden;
-    border-right: 1px solid transparent;
-
-    .digital-scout-table-scrollable {
-      margin-left: 40%;
-      overflow: scroll;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .digital-scout-table-pinned {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 40%;
-      overflow: hidden;
-      overflow-x: auto;
-      border-right: 2px solid #ccc;
-
-      table {
-        border-right: none;
-        border-left: none;
-        width: 100%;
+    .digital-scout-table-responsive {
         margin-bottom: 0;
+        td,
+        th {
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
 
-        th, td {
-          white-space: nowrap;
-          display: none;
-
-          &:first-child {
-            display: table-cell;
-          }
+            &:first-child,
+            &td.pinned {
+                display: none;
+            }
         }
-      }
-
-      td {
-        &:last-child { border-bottom: 0; }
-      }
     }
-  }
+
+    .digital-scout-responsive-table-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+        overflow-x: hidden;
+        border-right: 1px solid transparent;
+
+        .digital-scout-table-scrollable {
+            margin-left: 40%;
+            overflow: scroll;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .digital-scout-table-pinned {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40%;
+            overflow: hidden;
+            overflow-x: auto;
+            border-right: 2px solid #ccc;
+
+            table {
+                border-right: none;
+                border-left: none;
+                width: 100%;
+                margin-bottom: 0;
+
+                th,
+                td {
+                    white-space: nowrap;
+                    display: none;
+
+                    &:first-child {
+                        display: table-cell;
+                    }
+                }
+            }
+
+            td {
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
 }

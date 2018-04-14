@@ -1,35 +1,35 @@
 <div ng-show="playByPlayAvailable" class="digital-scout-scoring-summary details">
-  <div ng-repeat="(quarter, plays) in scoringPlaysByPeriod">
-    <table class="digital-scout-table">
-      <thead>
-        <tr>
-          <th colspan="3">
-            <ng-pluralize count="quarter" when="{
-                '1' : '1st Quarter', 
-                '2' : '2nd Quarter', 
-                '3' : '3rd Quarter',                 
-                '4' : '4th Quarter',                 
+    <div ng-repeat="(quarter, plays) in scoringPlaysByPeriod">
+        <table class="digital-scout-table">
+            <thead>
+                <tr>
+                    <th colspan="3">
+                        <ng-pluralize count="quarter" when="{
+                '1' : '1st Quarter',
+                '2' : '2nd Quarter',
+                '3' : '3rd Quarter',
+                '4' : '4th Quarter',
                 'other': 'Overtime {{quarter - 4}}'
                }"> </ng-pluralize>
-          </th>
-          <th title="{{awayName}}">{{awayAcronym}}</th>
-          <th title="{{homeName}}">{{homeAcronym}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="play in plays" ng-show="plays.length">
-          <td class="digital-scout-team-name" title="{{play.TeamSeasonId === homeTeamSeasonId ? homeName : awayName}}">
-            {{play.TeamSeasonId === homeTeamSeasonId ? homeAcronym : awayAcronym}}
-          </td>
-          <td>{{play.TimeOnClock | timeOnClock }}</td>
-          <td class="digital-scout-play-summary">{{play.Description}}</td>
-          <td>{{play.AwayScore}}</td>
-          <td>{{play.HomeScore}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div ng-show="!scoringPlaysByPeriod || scoringPlaysByPeriod.length == 0" class="digital-scout-scoring-summary-not-available">
-    <p>There are no scoring plays yet.</p>
-  </div> 
+                    </th>
+                    <th title="{{awayName}}">{{awayAcronym}}</th>
+                    <th title="{{homeName}}">{{homeAcronym}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="play in plays" ng-show="plays.length">
+                    <td class="digital-scout-team-name" title="{{play.TeamSeasonId === homeTeamSeasonId ? homeName : awayName}}">
+                        {{play.TeamSeasonId === homeTeamSeasonId ? homeAcronym : awayAcronym}}
+                    </td>
+                    <td>{{play.TimeOnClock | timeOnClock }}</td>
+                    <td class="digital-scout-play-summary">{{play.Description}}</td>
+                    <td>{{play.AwayScore}}</td>
+                    <td>{{play.HomeScore}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="!scoringPlaysByPeriod || scoringPlaysByPeriod.length == 0" class="digital-scout-scoring-summary-not-available">
+        <p>There are no scoring plays yet.</p>
+    </div>
 </div>

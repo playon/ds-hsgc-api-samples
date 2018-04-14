@@ -4,253 +4,291 @@
 @import 'tabs.less';
 @import 'responsive-utilities.less';
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
 }
 
-.digital-scout-datacast a, .digital-scout-game-summary a {
-  text-decoration: none;
-  color: @link-color-default;
+.digital-scout-datacast a,
+.digital-scout-game-summary a {
+    text-decoration: none;
+    color: @link-color-default;
 }
 
-.digital-scout-datacast a:hover, .digital-scout-game-summary a:hover {
-  text-decoration: underline;
-  color: @link-color-hover;
+.digital-scout-datacast a:hover,
+.digital-scout-game-summary a:hover {
+    text-decoration: underline;
+    color: @link-color-hover;
 }
 
-.digital-scout-datacast a:visited, .digital-scout-game-summary a:visited {
-  color: @link-color-visited;
-  outline: 0;
+.digital-scout-datacast a:visited,
+.digital-scout-game-summary a:visited {
+    color: @link-color-visited;
+    outline: 0;
 }
 
-.digital-scout-datacast p, .digital-scout-game-summary p {
-  margin: 1em 0;
+.digital-scout-datacast p,
+.digital-scout-game-summary p {
+    margin: 1em 0;
 }
 
-.digital-scout-datacast select, .digital-scout-game-summary select {
-  margin-left: 5px;
+.digital-scout-datacast select,
+.digital-scout-game-summary select {
+    margin-left: 5px;
 }
 
 .digital-scout-logo {
-  .widget-logo-medium
+    .widget-logo-medium;
 }
 
-.digital-scout-datacast, .digital-scout-datacast .digital-scout-table, .digital-scout-game-summary {
-  font-family: @font-family-default;
-  font-size: @font-size-default;
-  line-height: @font-size-default * 1.5;
+.digital-scout-datacast,
+.digital-scout-datacast .digital-scout-table,
+.digital-scout-game-summary {
+    font-family: @font-family-default;
+    font-size: @font-size-default;
+    line-height: @font-size-default * 1.5;
 }
 
 .digital-scout-heading,
-.digital-scout-datacast h1, .digital-scout-game-summary h1,
-.digital-scout-datacast h2, .digital-scout-game-summary h2,
-.digital-scout-datacast h3, .digital-scout-game-summary h3,
-.digital-scout-datacast h4, .digital-scout-game-summary h4,
-.digital-scout-datacast h5, .digital-scout-game-summary h5,
-.digital-scout-datacast h6, .digital-scout-game-summary h6 {
-  margin: 1em 0;
-  font-family: @font-family-headers;
-  font-weight: @font-weight-headers;
-  color: @color-headers;
-  text-transform: uppercase;
+.digital-scout-datacast h1,
+.digital-scout-game-summary h1,
+.digital-scout-datacast h2,
+.digital-scout-game-summary h2,
+.digital-scout-datacast h3,
+.digital-scout-game-summary h3,
+.digital-scout-datacast h4,
+.digital-scout-game-summary h4,
+.digital-scout-datacast h5,
+.digital-scout-game-summary h5,
+.digital-scout-datacast h6,
+.digital-scout-game-summary h6 {
+    margin: 1em 0;
+    font-family: @font-family-headers;
+    font-weight: @font-weight-headers;
+    color: @color-headers;
+    text-transform: uppercase;
 }
 
-label { cursor: pointer; }
+label {
+    cursor: pointer;
+}
 
 .digital-scout-tabbed-details {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 
-  .digital-scout-tabs {
-    > li {
-      @media only screen and (max-width: @screen-sm-cutoff) {
-        font-size: 10px;
-        line-height: 15px;
-      }
+    .digital-scout-tabs {
+        > li {
+            @media only screen and (max-width: @screen-sm-cutoff) {
+                font-size: 10px;
+                line-height: 15px;
+            }
+        }
     }
-  }
 
-  .details .ng-binding {
-    text-align: center;
-  }
+    .details .ng-binding {
+        text-align: center;
+    }
 }
 
 /**** Info card ****/
 .digital-scout-info-card {
-  width: 99%;
-  border: 1px solid #cbcbcb;
-  overflow: hidden;
-  margin: 0 auto 20px auto;
-  padding: 0;
-  position: relative;
-  text-align: center;
-
-  .type {
-    background-color: #484848;
-    color: #fff;
-    border: 3px solid #fff;
-    padding: 4px 17px;
-    text-transform: uppercase
-  }
-
-  .digital-scout-scoreboard-details-teams {
-    background: @highlight-color-1;
-    padding-bottom: 10px;
-
-    .name {
-      padding-top: 10px;
-      clear: both;
-      text-transform: uppercase;
-      font-family: @font-family-scoreboard-team-name;
-      font-weight: @font-weight-scoreboard-team-name;
-      font-size: @font-size-scoreboard-team-name;
-      line-height: @line-height-scoreboard-team-name;
-      letter-spacing: @letter-spacing-scoreboard-team-name;
-      .clearfix;
-
-      a, a:hover {
-        color: #fff;
-        text-shadow: 2px 2px black;
-      }
-    }
-
-    @media (max-width: @screen-sm-cutoff) {
-      .name {
-          font-size: 1.0em;
-          line-height: 1.25em;
-      }
-    }
-
-    .score {
-      background: #fcfcfc;
-      border: 1px solid #eee;
-      color: #222;
-      padding: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-      -webkit-box-shadow: 3px 3px 1px #000;
-      -moz-box-shadow: 3px 3px 1px #000;
-      box-shadow: 3px 3px 1px #000;
-      min-width: 30px
-    }
-
-    .logo {
-      -webkit-box-shadow: 3px 3px 1px #000;
-      -moz-box-shadow: 3px 3px 1px #000;
-      box-shadow: 3px 3px 1px #000;
-      border: 1px solid #ddd;
-      background: #fff;
-      padding: 5px;
-      background-size: 100%;
-      background-repeat: no-repeat;
-
-      img {
-        .widget-logo-large;
-      }
-    }
-
-    .left {
-      .score {
-        float: left;
-        margin-left: 10px;
-        margin-right: -5px;
-      }
-
-      .logo {
-        float: left;
-      }
-
-      .name { text-align: left; padding-left: 10px; }
-    }
-
-    .right {
-        .score {
-        float: right;
-        margin-right: 10px;
-        margin-left: -5px;
-      }
-
-      .logo {
-        float: right
-      }
-
-      .name { text-align: right; padding-right: 5px; }
-    }
-
-    table {
-      width: 100%;
-
-      td {
-        width: 50%;
-        padding-top: 20px;
-        vertical-align: top;
-      }
-    }
-  }
-
-  .digital-scout-scoreboard-details-status {
-    margin-top: -10px;
-    margin-bottom: 10px;
+    width: 99%;
+    border: 1px solid #cbcbcb;
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    padding: 0;
     position: relative;
+    text-align: center;
 
-    h3 {
-      font-size: 24px;
-      line-height: 36px;
-      margin: 10px 0 0 0;
-      padding: 0 10px;
+    .type {
+        background-color: #484848;
+        color: #fff;
+        border: 3px solid #fff;
+        padding: 4px 17px;
+        text-transform: uppercase;
     }
 
-    h4 {
-        font-size: 16px;
-        line-height: 24px;
-        margin: 0;
-        padding: 0;
-        border: none;
-        text-transform: none
+    .digital-scout-scoreboard-details-teams {
+        background: @highlight-color-1;
+        padding-bottom: 10px;
+
+        .name {
+            padding-top: 10px;
+            clear: both;
+            text-transform: uppercase;
+            font-family: @font-family-scoreboard-team-name;
+            font-weight: @font-weight-scoreboard-team-name;
+            font-size: @font-size-scoreboard-team-name;
+            line-height: @line-height-scoreboard-team-name;
+            letter-spacing: @letter-spacing-scoreboard-team-name;
+            .clearfix;
+
+            a,
+            a:hover {
+                color: #fff;
+                text-shadow: 2px 2px black;
+            }
+        }
+
+        @media (max-width: @screen-sm-cutoff) {
+            .name {
+                font-size: 1em;
+                line-height: 1.25em;
+            }
+        }
+
+        .score {
+            text-align: center;
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            color: #222;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            -webkit-box-shadow: 3px 3px 1px #000;
+            -moz-box-shadow: 3px 3px 1px #000;
+            box-shadow: 3px 3px 1px #000;
+            min-width: 30px;
+        }
+
+        .logo {
+            -webkit-box-shadow: 3px 3px 1px #000;
+            -moz-box-shadow: 3px 3px 1px #000;
+            box-shadow: 3px 3px 1px #000;
+            border: 1px solid #ddd;
+            background: #fff;
+            padding: 5px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+            img {
+                .widget-logo-large;
+            }
+        }
+
+        .left {
+            .score {
+                float: left;
+                margin-left: 10px;
+                margin-right: -5px;
+            }
+
+            .logo {
+                float: left;
+            }
+
+            .name {
+                text-align: left;
+                padding-left: 10px;
+            }
+        }
+
+        .right {
+            .score {
+                float: right;
+                margin-right: 10px;
+                margin-left: -5px;
+            }
+
+            .logo {
+                float: right;
+            }
+
+            .name {
+                text-align: right;
+                padding-right: 5px;
+            }
+        }
+
+        table {
+            width: 100%;
+
+            td {
+                width: 50%;
+                padding-top: 20px;
+                vertical-align: top;
+            }
+        }
     }
 
-    span.description, span.date, span.location {
-        display: block;
-        font-size: 12px;
-        padding: 3px 10px;
-        line-height: 1.3em
-    }
+    .digital-scout-scoreboard-details-status {
+        margin-top: -10px;
+        margin-bottom: 10px;
+        position: relative;
 
-    span.date {
-        font-style: italic
-    }
+        h3 {
+            font-size: 24px;
+            line-height: 36px;
+            margin: 10px 0 0 0;
+            padding: 0 10px;
+        }
 
-    span.location {
-        font-weight: bold
+        h4 {
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+            padding: 0;
+            border: none;
+            text-transform: none;
+        }
+
+        span.description,
+        span.date,
+        span.location {
+            display: block;
+            font-size: 12px;
+            padding: 3px 10px;
+            line-height: 1.3em;
+        }
+
+        span.date {
+            font-style: italic;
+        }
+
+        span.location {
+            font-weight: bold;
+        }
     }
-  }
 }
 
 /**** Scoreboard ****/
 .digital-scout-scoreboard {
-  th, td { text-align: center; }
-  td:first-child { text-align: left; }
-  border: 1px solid #cbcbcb;
-  overflow: hidden;
-  margin: 0 auto 20px auto;
-  position: relative;
-  vertical-align: middle;
+    th,
+    td {
+        text-align: center;
+    }
+    td:first-child {
+        text-align: left;
+    }
+    border: 1px solid #cbcbcb;
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    position: relative;
+    vertical-align: middle;
 
-  h3 {
-    font-size: 24px;
-    margin: 7px 0 0 0;
-    line-height: 1.15em;
-    padding: 10px;
-  }
+    h3 {
+        font-size: 24px;
+        margin: 7px 0 0 0;
+        line-height: 1.15em;
+        padding: 10px;
+    }
 
-  .digital-scout-game-status {
-    float: right;
-    font-size: 1.125em;
-    padding-right: 10px;
-    padding-top: 10px;
-  }
+    .digital-scout-game-status {
+        float: right;
+        font-size: 1.125em;
+        padding-right: 10px;
+        padding-top: 10px;
+    }
 
-  .digital-scout-winner span span:before, .digital-scout-winner a span:before { content: '☆ '; }
+    .digital-scout-winner span span:before,
+    .digital-scout-winner a span:before {
+        content: '☆ ';
+    }
 }
 
 /**** Team Stats ****/
@@ -262,481 +300,526 @@ label { cursor: pointer; }
 
 /**** Player Stats ****/
 .digital-scout-player-stats {
-  margin: 15px 0;
+    margin: 15px 0;
 
-  h3 {
-    font-size: 24px;
-    line-height: 36px;
-    margin: 10px 0 0 0;
-    padding: 0 10px;
-  }
-
-  th, td {
-    text-align: center;
-
-    &.digital-scout-player-stats-player-name {
-      text-align: left;
+    h3 {
+        font-size: 24px;
+        line-height: 36px;
+        margin: 10px 0 0 0;
+        padding: 0 10px;
     }
-  }
 
-  .starter {
-    color: #999;
-  }
+    th,
+    td {
+        text-align: center;
 
-  > .player-stats-not-available > p {
-    font-style: italic;
-    font-size: 0.875em;
-    padding: 0 10px;
-  }
+        &.digital-scout-player-stats-player-name {
+            text-align: left;
+        }
+    }
+
+    .starter {
+        color: #999;
+    }
+
+    > .player-stats-not-available > p {
+        font-style: italic;
+        font-size: 0.875em;
+        padding: 0 10px;
+    }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 1189px) {
-  .digital-scout-player-stats div.digital-scout-responsive-table-wrapper div.digital-scout-table-scrollable {
-    overflow: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
+    .digital-scout-player-stats
+        div.digital-scout-responsive-table-wrapper
+        div.digital-scout-table-scrollable {
+        overflow: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 .digital-scout-datacast .digital-scout-player-stats-as-reported-by-row td {
-  padding-top: 30px;
-  border: 0;
+    padding-top: 30px;
+    border: 0;
 }
 
 .digital-scout-datacast .digital-scout-player-stats-as-reported-by {
-  padding: 15px;
-  font-style: italic;
-  font-size: 0.75em;
-  opacity: 0.9;
+    padding: 15px;
+    font-style: italic;
+    font-size: 0.75em;
+    opacity: 0.9;
 }
 
 /**** Leaders ****/
 .digital-scout-game-leaders {
-  border: 1px solid #cbcbcb;
-  margin-bottom: 20px;
+    border: 1px solid #cbcbcb;
+    margin-bottom: 20px;
 
-  h3 {
-    font-size: 24px;
-    line-height: 36px;
-    margin: 10px 0 0 0;
-    padding: 10px;
-  }
+    h3 {
+        font-size: 24px;
+        line-height: 36px;
+        margin: 10px 0 0 0;
+        padding: 10px;
+    }
 }
 
 /**** Scoring Summary ****/
-.digital-scout-tabbed-details .digital-scout-scoring-summary .digital-scout-play-summary {
-  text-align: left;
+.digital-scout-tabbed-details
+    .digital-scout-scoring-summary
+    .digital-scout-play-summary {
+    text-align: left;
 }
 
 .digital-scout-scoring-summary-not-available {
-  padding: 0 10px;
-  font-style: italic;
-  font-size: 0.875em;
+    padding: 0 10px;
+    font-style: italic;
+    font-size: 0.875em;
 }
 
 /**** Play by Play ****/
 .digital-scout-play-by-play {
-  .digital-scout-logo {
-    .widget-logo-medium;
-    vertical-align:middle;
-  }
-
-  .digital-scout-play-by-play-time {
-    text-align: right;
-  }
-
-  .digital-scout-play-by-play-spot {
-      @media (min-width: @screen-sm-cutoff) {
-        min-width: 160px;
-      }
-      @media (max-width: @screen-sm-cutoff) {
-        width: 0;
-        padding: 0;
-      }
-  }
-
-  .digital-scout-play-by-play-description {
-    .digital-scout-play-by-play-spot {
-        color: #aaa;
-        font-weight: normal;
-    }
-  }
-
-  .digital-scout-scoring { font-weight: bold; }
-
-  .digital-scout-play-by-play-plays {
-    table {
-      border-top: 1px solid #ddd;
-      clear:both;
-      padding-top: 10px;
-      margin-top:20px;
-
-      .digital-scout-play-by-play-score {
+    .digital-scout-logo {
+        .widget-logo-medium;
         vertical-align: middle;
-        text-align: center;
-      }
+    }
 
-      th {
-        background-color: @highlight-color-1;
-        color: #fff;
-        text-align: left;
-        font-weight: normal;
-      }
+    .digital-scout-play-by-play-time {
+        text-align: right;
+    }
 
-      th, td {
-        &.digital-scout-play-by-play-team {
-          img.digital-scout-logo { margin-right: 5px; }
-          .digital-scout-play-by-play-team-acronym { display: none; }
-          white-space: nowrap;
+    .digital-scout-play-by-play-spot {
+        @media (min-width: @screen-sm-cutoff) {
+            min-width: 160px;
         }
-      }
-
-      td { vertical-align: middle; }
-      .digital-scout-play-by-play-team-away { text-align: right; white-space: normal; }
+        @media (max-width: @screen-sm-cutoff) {
+            width: 0;
+            padding: 0;
+        }
     }
-  }
 
-  .digital-scout-play-by-play-description {
-    width: 90%;
-  }
+    .digital-scout-play-by-play-description {
+        .digital-scout-play-by-play-spot {
+            color: #aaa;
+            font-weight: normal;
+        }
+    }
 
-  .digital-scout-play-by-play-link {
-    float: right;
-    margin-left: 10px;
-    i {
-      background: url(../img/playIcon.svg) no-repeat top left;
-      height: 20px;
-      width: 20px;
-      background-size: contain;
-      display: block;
+    .digital-scout-scoring {
+        font-weight: bold;
     }
-    :after {
-      clear: both;
+
+    .digital-scout-play-by-play-plays {
+        table {
+            border-top: 1px solid #ddd;
+            clear: both;
+            padding-top: 10px;
+            margin-top: 20px;
+
+            .digital-scout-play-by-play-score {
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            th {
+                background-color: @highlight-color-1;
+                color: #fff;
+                text-align: left;
+                font-weight: normal;
+            }
+
+            th,
+            td {
+                &.digital-scout-play-by-play-team {
+                    img.digital-scout-logo {
+                        margin-right: 5px;
+                    }
+                    .digital-scout-play-by-play-team-acronym {
+                        display: none;
+                    }
+                    white-space: nowrap;
+                }
+            }
+
+            td {
+                vertical-align: middle;
+            }
+            .digital-scout-play-by-play-team-away {
+                text-align: right;
+                white-space: normal;
+            }
+        }
     }
-  }
+
+    .digital-scout-play-by-play-description {
+        width: 90%;
+    }
+
+    .digital-scout-play-by-play-link {
+        float: right;
+        margin-left: 10px;
+        i {
+            background: url(../img/playIcon.svg) no-repeat top left;
+            height: 20px;
+            width: 20px;
+            background-size: contain;
+            display: block;
+        }
+        :after {
+            clear: both;
+        }
+    }
 }
 
 /**** Game Summary ****/
 .digital-scout-game-summary {
-  border: 1px solid #cbcbcb;
-  margin-bottom: 25px;
+    border: 1px solid #cbcbcb;
+    margin-bottom: 25px;
 
-  h3 {
-    font-size: 24px;
-    line-height: 36px;
-    margin: 10px 0 0 0;
-    padding: 10px;
-  }
-
-  th, td {
-    text-align: center;
-    &:first-child {
-      text-align: left;
+    h3 {
+        font-size: 24px;
+        line-height: 36px;
+        margin: 10px 0 0 0;
+        padding: 10px;
     }
-  }
+
+    th,
+    td {
+        text-align: center;
+        &:first-child {
+            text-align: left;
+        }
+    }
 }
 
 .digital-scout-period-selector {
-  padding-left: 10px;
-  padding-top: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
 
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    margin-top: 0;
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        margin-top: 0;
 
-    li {
-      display: inline-block;
-      margin-right: 5px;
-      border: 1px solid @highlight-color-1;
+        li {
+            display: inline-block;
+            margin-right: 5px;
+            border: 1px solid @highlight-color-1;
 
-      a {
-        text-decoration: none;
-        display: inline-block;
-        padding: 5px 15px;
-        color: @highlight-color-1;
-      }
+            a {
+                text-decoration: none;
+                display: inline-block;
+                padding: 5px 15px;
+                color: @highlight-color-1;
+            }
 
-      &:hover {
-        background-color: @highlight-color-1;
-        a { color: #fff; }
-      }
+            &:hover {
+                background-color: @highlight-color-1;
+                a {
+                    color: #fff;
+                }
+            }
 
-      &.digital-scout-active {
-        &, &:hover, &:focus {
-          background-color: @highlight-color-2;
-          a { color: #fff; }
-          border-color: @highlight-color-2;
+            &.digital-scout-active {
+                &,
+                &:hover,
+                &:focus {
+                    background-color: @highlight-color-2;
+                    a {
+                        color: #fff;
+                    }
+                    border-color: @highlight-color-2;
+                }
+
+                a {
+                    cursor: default;
+                }
+            }
+
+            &.digital-scout-selector-label {
+                border: none;
+                font-weight: bold;
+                text-transform: uppercase;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
         }
-
-        a { cursor: default; }
-      }
-
-      &.digital-scout-selector-label {
-        border: none;
-        font-weight:bold;
-        text-transform: uppercase;
-        &:hover { background-color: transparent; }
-      }
     }
-  }
 }
-
 
 /**** Attribution ****/
 .digital-scout-attribution {
-  position: absolute;
-  margin-left: 15px;
-  bottom: -10px;
-  right: 15px;
-  width: 128px;
-  font-size: 0.875em;
-  text-align: center;
+    position: absolute;
+    margin-left: 15px;
+    bottom: -10px;
+    right: 15px;
+    width: 128px;
+    font-size: 0.875em;
+    text-align: center;
 }
 
 @media only screen and (max-width: @screen-sm-cutoff) {
-  .digital-scout-attribution {
-    position: inherit;
-    bottom: 0;
-    right: inherit;
-    margin: 15px auto;
-    width: 128px;
-    text-align: center;
-  }
+    .digital-scout-attribution {
+        position: inherit;
+        bottom: 0;
+        right: inherit;
+        margin: 15px auto;
+        width: 128px;
+        text-align: center;
+    }
 }
 
 /**** Rosters ****/
 .digital-scout-rosters {
-  h3 {
-    font-size: 18px;
-    line-height: 36px;
-    margin: 10px 0 0 0;
-    padding: 0 10px;
-  }
-
-  @media (min-width: @screen-sm-cutoff) {
-    .clearfix;
-
-    .digital-scout-roster {
-      float: left;
-      width: 50%;
+    h3 {
+        font-size: 18px;
+        line-height: 36px;
+        margin: 10px 0 0 0;
+        padding: 0 10px;
     }
-  }
+
+    @media (min-width: @screen-sm-cutoff) {
+        .clearfix;
+
+        .digital-scout-roster {
+            float: left;
+            width: 50%;
+        }
+    }
 }
 
 /**** Shot Chart ****/
 .digital-scout-shot-chart {
-  .digital-scout-shot-chart-teams {
-    .clearfix;
-    overflow:hidden;
+    .digital-scout-shot-chart-teams {
+        .clearfix;
+        overflow: hidden;
 
-    .digital-scout-shot-chart-team {
-      float: left;
-      width: 50%;
-      border: 0px solid #fff;
-      box-sizing: border-box;
-      color: #fff;
-      padding: 10px;
-      /* column height fixing so both teams background stretches when one team word wraps and the other doesn't -- depends on container also having overflow:hidden -- amount of pixels is arbitrary as long as it is more than the longest column's height */
-      padding-bottom: 500px;
-      margin-bottom: -500px;
-      .clearfix;
+        .digital-scout-shot-chart-team {
+            float: left;
+            width: 50%;
+            border: 0px solid #fff;
+            box-sizing: border-box;
+            color: #fff;
+            padding: 10px;
+            /* column height fixing so both teams background stretches when one team word wraps and the other doesn't -- depends on container also having overflow:hidden -- amount of pixels is arbitrary as long as it is more than the longest column's height */
+            padding-bottom: 500px;
+            margin-bottom: -500px;
+            .clearfix;
 
-      &.digital-scout-shot-chart-team-away {
-        background-color: #12294E;
-        border-right-width: 2px;
-        >label { margin-bottom: 10px; }
-      }
+            &.digital-scout-shot-chart-team-away {
+                background-color: #12294e;
+                border-right-width: 2px;
+                > label {
+                    margin-bottom: 10px;
+                }
+            }
 
-      &.digital-scout-shot-chart-team-home {
-        background-color: #9D0B0E;
-        border-left-width: 2px;
-        >label>div { margin-bottom: 10px; }
-      }
+            &.digital-scout-shot-chart-team-home {
+                background-color: #9d0b0e;
+                border-left-width: 2px;
+                > label > div {
+                    margin-bottom: 10px;
+                }
+            }
 
-      @media (min-width: @screen-sm-cutoff) {
-        >label {
-          >div {
-            width:50%;
-            float:left;
-          }
+            @media (min-width: @screen-sm-cutoff) {
+                > label {
+                    > div {
+                        width: 50%;
+                        float: left;
+                    }
 
-          >select { font-size:12px; width:40%; float:right; margin:0; }
+                    > select {
+                        font-size: 12px;
+                        width: 40%;
+                        float: right;
+                        margin: 0;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 
-  .digital-scout-shot-chart-container {
-    position: relative;
-    clear: both;
+    .digital-scout-shot-chart-container {
+        position: relative;
+        clear: both;
 
-    img.digital-scout-basketball-court,
-      img.digital-scout-volleyball-court
-        { width: 100%; }
-    .digital-scout-shot-chart-shot {
-      width: 16px;
-      height: 16px;
-      position:absolute;
-      margin: -8px;
+        img.digital-scout-basketball-court,
+        img.digital-scout-volleyball-court {
+            width: 100%;
+        }
+        .digital-scout-shot-chart-shot {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            margin: -8px;
 
-      &.digital-scout-shot-chart-shot-made-home { background-image: url(../img/homeshotmade.png); }
-      &.digital-scout-shot-chart-shot-made-away { background-image: url(../img/awayshotmade.png); }
-      &.digital-scout-shot-chart-shot-missed-home { background-image: url(../img/homeshotmiss.png); }
-      &.digital-scout-shot-chart-shot-missed-away { background-image: url(../img/awayshotmiss.png); }
+            &.digital-scout-shot-chart-shot-made-home {
+                background-image: url(../img/homeshotmade.png);
+            }
+            &.digital-scout-shot-chart-shot-made-away {
+                background-image: url(../img/awayshotmade.png);
+            }
+            &.digital-scout-shot-chart-shot-missed-home {
+                background-image: url(../img/homeshotmiss.png);
+            }
+            &.digital-scout-shot-chart-shot-missed-away {
+                background-image: url(../img/awayshotmiss.png);
+            }
+        }
     }
-  }
 
-  .digital-scout-shot-chart-legend {
-    text-align: right;
+    .digital-scout-shot-chart-legend {
+        text-align: right;
 
-    > span {
-      background-repeat: no-repeat;
-      background-position: left center;
-      padding-left: 20px;
+        > span {
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 20px;
 
-      &.digital-scout-shot-chart-shot-made {
-        background-image: url(../img/awayshotmade.png);
-      }
-      &.digital-scout-shot-chart-shot-missed {
-        background-image: url(../img/awayshotmiss.png);
-      }
+            &.digital-scout-shot-chart-shot-made {
+                background-image: url(../img/awayshotmade.png);
+            }
+            &.digital-scout-shot-chart-shot-missed {
+                background-image: url(../img/awayshotmiss.png);
+            }
+        }
     }
-  }
 
-  + .shot-chart-not-available {
-    padding: 0 10px;
-  }
+    + .shot-chart-not-available {
+        padding: 0 10px;
+    }
 }
 
 /**** Hit Chart ****/
 
 .digital-scout-hit-chart-selector {
-  float: left;
-  margin: 0 10px 10px 10px;
+    float: left;
+    margin: 0 10px 10px 10px;
 }
 
 .digital-scout-hit-chart-tooltip-js {
-  display: none;
+    display: none;
 
-  /* bootstrap copied style */
-  position: absolute;
-  z-index: 1030;
-  font-size: 11px;
-  line-height: 1.4;
-  visibility: visible;
-
-  .tooltip-arrow {
+    /* bootstrap copied style */
     position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-  }
+    z-index: 1030;
+    font-size: 11px;
+    line-height: 1.4;
+    visibility: visible;
 
-  .tooltip-inner {
-    max-width: 200px;
-    padding: 8px;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    background-color: #000000;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-  }
+    .tooltip-arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+
+    .tooltip-inner {
+        max-width: 200px;
+        padding: 8px;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        background-color: #000000;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
 }
 
 .digital-scout-hit-chart-tooltip-js.top {
-  padding: 5px 0;
-  margin-top: -3px;
+    padding: 5px 0;
+    margin-top: -3px;
 }
 
 .digital-scout-hit-chart-tooltip-js.top .tooltip-arrow {
-  bottom: 0;
-  left: 50%;
-  margin-left: -5px;
-  border-top-color: #000000;
-  border-width: 5px 5px 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-top-color: #000000;
+    border-width: 5px 5px 0;
 }
 
 .digital-scout-hit-chart-tooltip-js.right {
-  padding: 0 5px;
-  margin-left: 3px;
+    padding: 0 5px;
+    margin-left: 3px;
 }
 
 .digital-scout-hit-chart-tooltip-js.right .tooltip-arrow {
-  top: 50%;
-  left: 0;
-  margin-top: -5px;
-  border-right-color: #000000;
-  border-width: 5px 5px 5px 0;
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    border-right-color: #000000;
+    border-width: 5px 5px 5px 0;
 }
 
 .digital-scout-hit-chart-tooltip-js.left {
-  padding: 0 5px;
-  margin-left: -3px;
+    padding: 0 5px;
+    margin-left: -3px;
 }
 
 .digital-scout-hit-chart-tooltip-js.left .tooltip-arrow {
-  top: 50%;
-  right: 0;
-  margin-top: -5px;
-  border-left-color: #000000;
-  border-width: 5px 0 5px 5px;
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    border-left-color: #000000;
+    border-width: 5px 0 5px 5px;
 }
-
 
 .digital-scout-hit-chart-legend {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 
-  > dl {
-    float: left;
-    font-size: 0.75em;
-    line-height: 20px;
+    > dl {
+        float: left;
+        font-size: 0.75em;
+        line-height: 20px;
 
-    & dt {
-      float: left; width: 90px;
-      clear: left;
-      text-align: right;
+        & dt {
+            float: left;
+            width: 90px;
+            clear: left;
+            text-align: right;
+        }
+        & dd {
+            margin-left: 110px;
+        }
     }
-    & dd {
-      margin-left: 110px;
-    }
-  }
 }
-
 
 /**** Drive Chart ****/
 .digital-scout-drivechart > canvas {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .digital-scout-drivechart-info {
-  padding: 10px;
+    padding: 10px;
 }
 
 .digital-scout-drivechart-info > table {
-  width: 100%;
-  margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 
-  + .digital-scout-hidden-sm td {
-    text-align: center;
-  }
+    + .digital-scout-hidden-sm td {
+        text-align: center;
+    }
 }
 
 .digital-scout-drivechart-info > .digital-scout-hidden-sm {
     text-align: center;
 }
 
-.digital-scout-drivechart-last-play, .digital-scout-drivechart-previous-play {
-  padding: 0 2px;
+.digital-scout-drivechart-last-play,
+.digital-scout-drivechart-previous-play {
+    padding: 0 2px;
 }
 
 .digital-scout-drivechart em {
-  display: block;
-  text-align: center;
-  margin: 30px;
-  font-size: 0.875em;
+    display: block;
+    text-align: center;
+    margin: 30px;
+    font-size: 0.875em;
 }

@@ -1,140 +1,150 @@
-<div class="digital-scout-datacast" datacast="{{unityGameKey}}" publisher="{{publisherKey}}" sport="{{sport}}"
-  include-leaders include-play-by-play include-player-stats include-team-stats include-players>
-  <div scoreboard></div>
-  <div ng-show="paymentRequired" redirect> </div>
+<div class="digital-scout-datacast" datacast="{{unityGameKey}}" publisher="{{publisherKey}}" sport="{{sport}}" include-leaders
+    include-play-by-play include-player-stats include-team-stats include-players>
+    <div scoreboard></div>
+    <div ng-show="paymentRequired" redirect> </div>
 
-  <div ng-if="sport == 'Football'">
-    <div game-leaders></div>
+    <div ng-if="sport == 'Football'">
+        <div game-leaders></div>
 
-    <div class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
-      <ul class="digital-scout-tabs">
-        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
-          <a href ng-click="selectedDetailTab = 1" title="Team Stats">
-            Team  <span class="digital-scout-hidden-sm">Stats</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 2" title="Scoring Summary">
-            Scoring
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 3" title="Play by Play">
-            <span class="digital-scout-hidden-sm">Play by Play</span>
-            <span class="digital-scout-visible-sm-inline">Plays</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
-          <a href ng-click="selectedDetailTab = 4">
-            Rosters
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" ng-show="playByPlayAvailable && !isFinal()">
-          <a href ng-click="selectedDetailTab = 5" title="Drive Chart">
-            <span class="digital-scout-hidden-sm">Drive Chart</span>
-            <span class="digital-scout-visible-sm-inline">Drive</span>
-          </a>
-        </li>
-      </ul>
-      <div class="digital-scout-tab-container">
-        <div football-team-stats ng-show="selectedDetailTab == 1"></div>
-        <div football-scoring-summary ng-show="selectedDetailTab == 2"></div>
-        <div play-by-play ng-show="selectedDetailTab == 3" class="digital-scout-tab-no-scroll"></div>
-        <div rosters ng-show="selectedDetailTab == 4"></div>
-        <div football-drive-chart ng-show="selectedDetailTab == 5"></div>
-      </div>
+        <div class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+            <ul class="digital-scout-tabs">
+                <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+                    <a href ng-click="selectedDetailTab = 1" title="Team Stats">
+                        Team
+                        <span class="digital-scout-hidden-sm">Stats</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 2" title="Scoring Summary">
+                        Scoring
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 3" title="Play by Play">
+                        <span class="digital-scout-hidden-sm">Play by Play</span>
+                        <span class="digital-scout-visible-sm-inline">Plays</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="(players[homeTeamSeasonId] | rosterPlayersToDisplay).length + (players[awayTeamSeasonId] | rosterPlayersToDisplay).length > 0">
+                    <a href ng-click="selectedDetailTab = 4">
+                        Rosters
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 5 }' ng-click="selectedDetailTab = 5" ng-show="playByPlayAvailable && !isFinal()">
+                    <a href ng-click="selectedDetailTab = 5" title="Drive Chart">
+                        <span class="digital-scout-hidden-sm">Drive Chart</span>
+                        <span class="digital-scout-visible-sm-inline">Drive</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="digital-scout-tab-container">
+                <div football-team-stats ng-show="selectedDetailTab == 1"></div>
+                <div football-scoring-summary ng-show="selectedDetailTab == 2"></div>
+                <div play-by-play ng-show="selectedDetailTab == 3" class="digital-scout-tab-no-scroll"></div>
+                <div rosters ng-show="selectedDetailTab == 4"></div>
+                <div football-drive-chart ng-show="selectedDetailTab == 5"></div>
+            </div>
+        </div>
+
+        <div ng-init="selectedPlayerTeam = 1" class="digital-scout-player-stats" ng-show="statsAvailable">
+            <ul class="digital-scout-tabs">
+                <li ng-class='{ "active": selectedPlayerTeam == 1 }' ng-click="selectedPlayerTeam = 1">
+                    <a href ng-click="selectedPlayerTeam = 1">
+                        <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo">
+                        <span class="digital-scout-hidden-sm">{{awayShortName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{awayAcronym}}</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedPlayerTeam == 2 }' ng-click="selectedPlayerTeam = 2">
+                    <a href ng-click="selectedPlayerTeam = 2">
+                        <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo">
+                        <span class="digital-scout-hidden-sm">{{homeShortName}}</span>
+                        <span class="digital-scout-visible-sm-inline">{{homeAcronym}}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="digital-scout-tab-container">
+                <div football-player-stats team-id="{{awayTeamSeasonId}}" ng-show="selectedPlayerTeam == 1"></div>
+                <div football-player-stats team-id="{{homeTeamSeasonId}}" ng-show="selectedPlayerTeam == 2"></div>
+            </div>
+        </div>
     </div>
 
-    <div ng-init="selectedPlayerTeam = 1" class="digital-scout-player-stats" ng-show="statsAvailable">
-      <ul class="digital-scout-tabs">
-        <li ng-class='{ "active": selectedPlayerTeam == 1 }' ng-click="selectedPlayerTeam = 1">
-          <a href ng-click="selectedPlayerTeam = 1">
-            <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo">
-            <span class="digital-scout-hidden-sm">{{awayShortName}}</span>
-            <span class="digital-scout-visible-sm-inline">{{awayAcronym}}</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedPlayerTeam == 2 }' ng-click="selectedPlayerTeam = 2">
-          <a href ng-click="selectedPlayerTeam = 2">
-            <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo">
-            <span class="digital-scout-hidden-sm">{{homeShortName}}</span>
-            <span class="digital-scout-visible-sm-inline">{{homeAcronym}}</span>
-          </a>
-        </li>
-      </ul>
-      <div class="digital-scout-tab-container">
-        <div football-player-stats team-id="{{awayTeamSeasonId}}" ng-show="selectedPlayerTeam == 1"></div>
-        <div football-player-stats team-id="{{homeTeamSeasonId}}" ng-show="selectedPlayerTeam == 2"></div>
-      </div>
+    <div ng-if="sport == 'Basketball'">
+        <div basketball-game-leaders></div>
+
+        <div ng-init="selectedDetailTab = 1" class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+            <ul class="digital-scout-tabs">
+                <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+                    <a href ng-click="selectedDetailTab = 1" title="Team Stats">Team
+                        <span class="digital-scout-hidden-sm">Stats</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
+                    <a href ng-click="selectedDetailTab = 2" title="Player Stats">Player
+                        <span class="digital-scout-hidden-sm">Stats</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 3" title="Play by Play">
+                        <span class="digital-scout-hidden-sm">Play by Play</span>
+                        <span class="digital-scout-visible-sm-inline">Plays</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 4" title="Short Chart">
+                        <span class="digital-scout-hidden-sm">Shot Chart</span>
+                        <span class="digital-scout-visible-sm-inline">Shots</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="digital-scout-tab-container">
+                <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
+                <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
+                <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>
+                <div basketball-shot-chart ng-show="selectedDetailTab == 4"></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div ng-if="sport == 'Basketball'">
-    <div basketball-game-leaders></div>
+    <div ng-if="sport == 'Volleyball'">
+        <div volleyball-game-leaders></div>
 
-    <div ng-init="selectedDetailTab = 1" class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
-      <ul class="digital-scout-tabs">
-        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
-          <a href ng-click="selectedDetailTab = 1" title="Team Stats">Team <span class="digital-scout-hidden-sm">Stats</span></a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
-          <a href ng-click="selectedDetailTab = 2" title="Player Stats">Player <span class="digital-scout-hidden-sm">Stats</span></a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 3" title="Play by Play">
-            <span class="digital-scout-hidden-sm">Play by Play</span>
-            <span class="digital-scout-visible-sm-inline">Plays</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 4" title="Short Chart">
-            <span class="digital-scout-hidden-sm">Shot Chart</span>
-            <span class="digital-scout-visible-sm-inline">Shots</span>
-          </a>
-        </li>
-      </ul>
-      <div class="digital-scout-tab-container">
-        <div basketball-team-stats ng-show="selectedDetailTab == 1"></div>
-        <div basketball-player-stats ng-show="selectedDetailTab == 2"></div>
-        <div basketball-play-by-play ng-show="selectedDetailTab == 3"></div>
-        <div basketball-shot-chart ng-show="selectedDetailTab == 4"></div>
-      </div>
+        <div ng-init="selectedDetailTab = 1" class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
+            <ul class="digital-scout-tabs">
+                <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
+                    <a href ng-click="selectedDetailTab = 1" title="Player Stats">
+                        Player
+                        <span class="digital-scout-hidden-sm">Stats</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
+                    <a href ng-click="selectedDetailTab = 2" title="Team Stats">
+                        Team
+                        <span class="digital-scout-hidden-sm">Stats</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 3" title="Play by Play">
+                        <span class="digital-scout-hidden-sm">Play by Play</span>
+                        <span class="digital-scout-visible-sm-inline">Plays</span>
+                    </a>
+                </li>
+                <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
+                    <a href ng-click="selectedDetailTab = 4" title="Hit Chart">
+                        <span class="digital-scout-hidden-sm">Hit Chart</span>
+                        <span class="digital-scout-visible-sm-inline">Hits</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="digital-scout-tab-container">
+                <div volleyball-player-stats ng-show="selectedDetailTab == 1"></div>
+                <div volleyball-team-stats ng-show="selectedDetailTab == 2"></div>
+                <div volleyball-play-by-play ng-show="selectedDetailTab == 3"></div>
+                <div volleyball-hit-chart ng-show="selectedDetailTab == 4">
+                    <!-- note: tab idx 4 is also $watched in the javascript, so if the order is changed update the JS for this directive as appropriate -->
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div ng-if="sport == 'Volleyball'">
-    <div volleyball-game-leaders></div>
-
-    <div ng-init="selectedDetailTab = 1" class="digital-scout-tabbed-details" ng-show="statsAvailable || playByPlayAvailable">
-      <ul class="digital-scout-tabs">
-        <li ng-class='{ "active": selectedDetailTab == 1 }' ng-click="selectedDetailTab = 1" ng-show="statsAvailable">
-          <a href ng-click="selectedDetailTab = 1" title="Player Stats">
-            Player <span class="digital-scout-hidden-sm">Stats</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 2 }' ng-click="selectedDetailTab = 2" ng-show="statsAvailable">
-          <a href ng-click="selectedDetailTab = 2" title="Team Stats">
-            Team <span class="digital-scout-hidden-sm">Stats</span></a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 3 }' ng-click="selectedDetailTab = 3" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 3" title="Play by Play">
-            <span class="digital-scout-hidden-sm">Play by Play</span>
-            <span class="digital-scout-visible-sm-inline">Plays</span>
-          </a>
-        </li>
-        <li ng-class='{ "active": selectedDetailTab == 4 }' ng-click="selectedDetailTab = 4" ng-show="playByPlayAvailable">
-          <a href ng-click="selectedDetailTab = 4" title="Hit Chart">
-            <span class="digital-scout-hidden-sm">Hit Chart</span>
-            <span class="digital-scout-visible-sm-inline">Hits</span>
-          </a>
-        </li>
-      </ul>
-      <div class="digital-scout-tab-container">
-        <div volleyball-player-stats ng-show="selectedDetailTab == 1"></div>
-        <div volleyball-team-stats ng-show="selectedDetailTab == 2"></div>
-        <div volleyball-play-by-play ng-show="selectedDetailTab == 3"></div>
-        <div volleyball-hit-chart ng-show="selectedDetailTab == 4"><!-- note: tab idx 4 is also $watched in the javascript, so if the order is changed update the JS for this directive as appropriate --></div>
-      </div>
-    </div>
-  </div>
 </div>

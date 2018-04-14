@@ -1,7 +1,6 @@
-angular.module('hsgc')
-	.directive('attribution', function() {
-		return {
-			restrict: 'EA',
-			templateUrl: 'templates/attribution.html'
-		};
-	});
+angular.module('hsgc').directive('attribution', function() {
+    return {
+        restrict: 'EA',
+        templateUrl: 'templates/attribution.html'
+    };
+});
