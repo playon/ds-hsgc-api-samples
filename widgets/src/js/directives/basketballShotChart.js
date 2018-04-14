@@ -1,5 +1,5 @@
 angular.module('hsgc')
-  .directive('basketballShotChart', ['$log', function($log) {
+  .directive('basketballShotChart', ['$log', '$window', function($log, $window) {
     return {
       restrict: 'EA',
       templateUrl: 'templates/basketballShotChart.html',
@@ -13,14 +13,15 @@ angular.module('hsgc')
               periods = [], i;
 
           // since this is start time, assume an hour of playtime so we don't have to check for the actual End event time stamp, so guess 25 hours
-          twentyForHoursFromStart.setTime(scope.localStartTime.getTime() + (25*60*60*1000)); 
-          scope.publicAvailability = scope.playByPlayAvailable && twentyForHoursFromStart > new Date();
+          twentyForHoursFromStart.setTime(scope.localStartTime.getTime() + (25*60*60*1000));
+          $log.debug($window);
+          scope.publicAvailability = (scope.playByPlayAvailable && twentyForHoursFromStart > new Date()) || ($window.location && $window.location.hostname === "localhost");
           $log.debug('Is basketball box score publicly available still?', scope.publicAvailability);
           if (scope.publicAvailability === true && shotChartBackgroundImageElement && shotChartBackgroundImageElement.attr('src') === '') {
             // only set the court image when needed, so it doesn't load over the network when not
             shotChartBackgroundImageElement.attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
           }
-              
+
           if (firstLoad) {
             firstLoad = false;
             scope.selectedShotChartPeriod = null;
@@ -105,7 +106,7 @@ angular.module('hsgc')
     };
   }])
   .filter('filterShots', function() {
-    return function(plays, awayPlayerFilter, homePlayerFilter, period, includeMade, includeMissed) {
+    return function(plays, awayPlayerFilter, homePlayerFilter, period) {
       var shots = [];
       if (typeof(plays) !== "undefined") {
         for (var i = 0; i < plays.length; i++) {

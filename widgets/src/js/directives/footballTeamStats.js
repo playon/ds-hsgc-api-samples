@@ -3,7 +3,7 @@ angular.module('hsgc')
 		return {
 			restrict: 'EA',
 			templateUrl: 'templates/footballTeamStats.html',
-			link: function(scope, element, attrs) {
+			link: function(scope/*, element, attrs*/) {
 				scope.timeOfPossessionRegex = /^00:/;
 			}
 		};

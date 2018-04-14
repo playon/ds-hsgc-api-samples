@@ -38,8 +38,7 @@ angular.module('hsgc')
               // need to pay; will likely need to navigate away anyway, so just stop trying to refresh, and show upsell
               $log.warning('402 Payment Required');
               $scope.paymentRequired = true;
-              angular.extend(scope, result.boxScore);
-              opts = {};
+              angular.extend($scope, result.boxScore);
             } else {
               // not sure what went wrong; try again in a little while
               $log.error('Datacast could not be loaded. Will try again. Status code:', result.status, result);

@@ -19,15 +19,15 @@
 }
 
 .digital-scout-datacast a:visited, .digital-scout-game-summary a:visited {
-  color: @link-color-visisted;
+  color: @link-color-visited;
   outline: 0;
 }
 
-.digital-scout-datacast p, .digital-scout-game-summary p { 
+.digital-scout-datacast p, .digital-scout-game-summary p {
   margin: 1em 0;
 }
 
-.digital-scout-datacast select, .digital-scout-game-summary select { 
+.digital-scout-datacast select, .digital-scout-game-summary select {
   margin-left: 5px;
 }
 
@@ -83,7 +83,7 @@ label { cursor: pointer; }
   padding: 0;
   position: relative;
   text-align: center;
-  
+
   .type {
     background-color: #484848;
     color: #fff;
@@ -91,7 +91,7 @@ label { cursor: pointer; }
     padding: 4px 17px;
     text-transform: uppercase
   }
-  
+
   .digital-scout-scoreboard-details-teams {
     background: @highlight-color-1;
     padding-bottom: 10px;
@@ -106,20 +106,20 @@ label { cursor: pointer; }
       line-height: @line-height-scoreboard-team-name;
       letter-spacing: @letter-spacing-scoreboard-team-name;
       .clearfix;
-      
-      a, a:hover {        
+
+      a, a:hover {
         color: #fff;
         text-shadow: 2px 2px black;
       }
     }
-    
+
     @media (max-width: @screen-sm-cutoff) {
       .name {
           font-size: 1.0em;
           line-height: 1.25em;
       }
     }
-    
+
     .score {
       background: #fcfcfc;
       border: 1px solid #eee;
@@ -133,7 +133,7 @@ label { cursor: pointer; }
       box-shadow: 3px 3px 1px #000;
       min-width: 30px
     }
-    
+
     .logo {
       -webkit-box-shadow: 3px 3px 1px #000;
       -moz-box-shadow: 3px 3px 1px #000;
@@ -143,9 +143,9 @@ label { cursor: pointer; }
       padding: 5px;
       background-size: 100%;
       background-repeat: no-repeat;
-      
+
       img {
-        .widget-logo-large;        
+        .widget-logo-large;
       }
     }
 
@@ -155,28 +155,28 @@ label { cursor: pointer; }
         margin-left: 10px;
         margin-right: -5px;
       }
-      
+
       .logo {
         float: left;
       }
-      
+
       .name { text-align: left; padding-left: 10px; }
     }
-    
+
     .right {
         .score {
         float: right;
         margin-right: 10px;
         margin-left: -5px;
       }
-      
+
       .logo {
         float: right
       }
-      
+
       .name { text-align: right; padding-right: 5px; }
     }
-  
+
     table {
       width: 100%;
 
@@ -199,7 +199,7 @@ label { cursor: pointer; }
       margin: 10px 0 0 0;
       padding: 0 10px;
     }
-  
+
     h4 {
         font-size: 16px;
         line-height: 24px;
@@ -207,7 +207,7 @@ label { cursor: pointer; }
         padding: 0;
         border: none;
         text-transform: none
-    }  
+    }
 
     span.description, span.date, span.location {
         display: block;
@@ -249,7 +249,7 @@ label { cursor: pointer; }
     padding-right: 10px;
     padding-top: 10px;
   }
-  
+
   .digital-scout-winner span span:before, .digital-scout-winner a span:before { content: '☆ '; }
 }
 
@@ -270,7 +270,7 @@ label { cursor: pointer; }
     margin: 10px 0 0 0;
     padding: 0 10px;
   }
-  
+
   th, td {
     text-align: center;
 
@@ -345,23 +345,23 @@ label { cursor: pointer; }
     text-align: right;
   }
 
-  .digital-scout-play-by-play-spot {      
+  .digital-scout-play-by-play-spot {
       @media (min-width: @screen-sm-cutoff) {
-        min-width: 160px;   
-      }      
+        min-width: 160px;
+      }
       @media (max-width: @screen-sm-cutoff) {
         width: 0;
         padding: 0;
       }
   }
-  
+
   .digital-scout-play-by-play-description {
     .digital-scout-play-by-play-spot {
         color: #aaa;
         font-weight: normal;
     }
   }
-  
+
   .digital-scout-scoring { font-weight: bold; }
 
   .digital-scout-play-by-play-plays {
@@ -375,7 +375,7 @@ label { cursor: pointer; }
         vertical-align: middle;
         text-align: center;
       }
-    
+
       th {
         background-color: @highlight-color-1;
         color: #fff;
@@ -390,7 +390,7 @@ label { cursor: pointer; }
           white-space: nowrap;
         }
       }
-      
+
       td { vertical-align: middle; }
       .digital-scout-play-by-play-team-away { text-align: right; white-space: normal; }
     }
@@ -399,7 +399,7 @@ label { cursor: pointer; }
   .digital-scout-play-by-play-description {
     width: 90%;
   }
-  
+
   .digital-scout-play-by-play-link {
     float: right;
     margin-left: 10px;
@@ -413,7 +413,7 @@ label { cursor: pointer; }
     :after {
       clear: both;
     }
-  }  
+  }
 }
 
 /**** Game Summary ****/
@@ -556,7 +556,7 @@ label { cursor: pointer; }
       }
 
       @media (min-width: @screen-sm-cutoff) {
-        >label { 
+        >label {
           >div {
             width:50%;
             float:left;
@@ -620,7 +620,7 @@ label { cursor: pointer; }
 .digital-scout-hit-chart-tooltip-js {
   display: none;
 
-  /* boostrap copied style */
+  /* bootstrap copied style */
   position: absolute;
   z-index: 1030;
   font-size: 11px;

@@ -16,15 +16,15 @@ angular.module('hsgc')
               var videoAndData = false;
               for (var i = 0; i < data.publishers.length; i++) {
                 if (data.publishers[i].key == scope.publisherKey || data.publishers[i].school_key == scope.publisherKey) {
-                  if (data.publishers[i].broadcasts.length > 0 || data.publishers[i].vods.length > 0) {
+                  if (data.publishers[i].broadcasts.length > 0) {
                     videoAndData = true;
                   }
                 }
               }
               scope.showStatus = !videoAndData;
             })
-            .error(function(data, status) {
-              $log.debug('Unity configuration for game', scope.gameKey, 'could not be loaded. Defaulting to showing the game status.');
+            .error(function(data) {
+              $log.debug('Unity configuration for game', scope.gameKey, 'could not be loaded. Defaulting to showing the game status.', data);
               scope.showStatus = true;
             });
         } else {

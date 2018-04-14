@@ -37,6 +37,6 @@
       "browser": true
     },
     "extends": "eslint:recommended",
-    "globals": { "$": true, "angular": true }
+    "globals": { "$": true, "angular": true, "ga": true }
   }
 }

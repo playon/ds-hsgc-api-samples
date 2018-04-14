@@ -27,11 +27,11 @@ angular.module('hsgc')
         var footballFieldCanvasSize = { width: -1 };
         // save reference to the paper instance, so multiple contexts may be used on one page
         var paper = null, paperDriveGroup = null;
-        // yardlines and textHeight adjust per size, but need to be used by multiple functions separately
+        // yard lines and textHeight adjust per size, but need to be used by multiple functions separately
         var yardLines = [], textHeight = 0;
 
-        var firstload = true;
-        
+        var firstLoad = true;
+
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
           if (newValue === 5 && newValue !== oldValue) {
             scope.resize(true, false);
@@ -44,8 +44,8 @@ angular.module('hsgc')
             return;
           }
 
-          if (firstload) {
-            firstload = false;                       
+          if (firstLoad) {
+            firstLoad = false;
 
             footballFieldCanvas = $(element.find('canvas')[0]);
             if (footballFieldCanvas) {
@@ -73,7 +73,7 @@ angular.module('hsgc')
             $log.debug('canvas element for the drive chart not available; play-by-play probably not available, which is fine', element);
             return;
           }
-            
+
           // calculate the drive chart size
           var desiredWidth = element.width() - parseInt(element.css("border-left-width"), 10) - parseInt(element.css("border-right-width"), 10);
           if (desiredWidth < 1) {
@@ -166,16 +166,16 @@ angular.module('hsgc')
           hashMarkSymbol.pivot = hashMarkSymbol.bounds.topLeft;
           hashMarkSymbol = new paper.Symbol(hashMarkSymbol);
           var verticalLineSymbol = new paper.Path.Line(new paper.Point(0, 0), new paper.Point(0, fieldSize.height));
-          verticalLineSymbol.strokeColor = yardNumberColor;          
+          verticalLineSymbol.strokeColor = yardNumberColor;
           verticalLineSymbol.strokeWidth = 1;
           verticalLineSymbol.pivot = verticalLineSymbol.bounds.topLeft;
           verticalLineSymbol = new paper.Symbol(verticalLineSymbol);
           var thickVerticalLineSymbol = new paper.Path.Line(new paper.Point(0, 0), new paper.Point(0, fieldSize.height));
           thickVerticalLineSymbol.strokeColor = yardNumberColor;
-          thickVerticalLineSymbol.strokeWidth = yardLineWidth;          
+          thickVerticalLineSymbol.strokeWidth = yardLineWidth;
           thickVerticalLineSymbol.pivot = thickVerticalLineSymbol.bounds.topLeft;
           thickVerticalLineSymbol = new paper.Symbol(thickVerticalLineSymbol);
-          
+
           for (i = 0; i < yardLines.length; yardLineSpacing > 5 ? i++ : i += 5) {
             // every 5 yards
             if (i % 5 === 0) {
@@ -240,7 +240,7 @@ angular.module('hsgc')
             paperDriveGroup.remove();
             paperDriveGroup = null;
           }
-          
+
           var fieldSize = paper.view.viewSize;
           var homeTeamIsOnOffense = scope.lastPlay.TeamSeasonId == scope.homeTeamSeasonId;
           var scrimmageYardLine = homeTeamIsOnOffense ? 100 - scope.lastPlay.Spot : scope.lastPlay.Spot;
@@ -317,7 +317,7 @@ angular.module('hsgc')
           return scope.getScrimmageLeft(play) + distance_offset;
         };
 
-        scope.downEmbelish = function(number) {
+        scope.downEmbellish = function(number) {
           if (number == 1) {
             return "1st";
           } else if (number == 2) {

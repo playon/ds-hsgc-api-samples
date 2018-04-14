@@ -4,20 +4,20 @@
     <table class="digital-scout-hidden-sm">
       <tr>
         <td>
-          Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
+          Down: {{downEmbellish(lastPlay.Down)}} and {{lastPlay.Distance}}
         </td>
         <td>
           Ball on {{getSpot(lastPlay)}}
         </td>
         <td>
-          Posession: {{lastPlay.TeamName}}
+          Possession: {{lastPlay.TeamName}}
         </td>
       </tr>
     </table>
     <table class="digital-scout-visible-sm-table">
       <tr>
         <td>
-          Down: {{downEmbelish(lastPlay.Down)}} and {{lastPlay.Distance}}
+          Down: {{downEmbellish(lastPlay.Down)}} and {{lastPlay.Distance}}
         </td>
       </tr>
       <tr>
@@ -27,7 +27,7 @@
       </tr>
       <tr>
         <td>
-          Posession: {{lastPlay.TeamName}}
+          Possession: {{lastPlay.TeamName}}
         </td>
       </tr>
     </table>
@@ -36,7 +36,7 @@
     </div>
     <div class="digital-scout-drivechart-previous-play">
       Previous Play:
-      <span ng-show="previousPlay.Down > 0">{{downEmbelish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, </span>
+      <span ng-show="previousPlay.Down > 0">{{downEmbellish(previousPlay.Down)}} and {{previousPlay.Distance}} at {{getSpot(previousPlay)}}, </span>
        {{previousPlay.Description}}
     </div>
     </div>

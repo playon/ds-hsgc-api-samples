@@ -13,9 +13,7 @@ angular.module('hsgc')
         var paper = typeof(window.paper) === 'undefined' ? null : window.paper, // get a local instance of the paper global
           firstLoad = true,
           selectedDetailTabForHitChart = 4,
-          previousPeriod = -1,
           // bind template elements that aren't simply bindable to values
-          canvasContainer = null,
           courtPerimeter = {
             x: 20,
             y: 10,
@@ -39,9 +37,9 @@ angular.module('hsgc')
         });
 
         scope.$watch('selectedDetailTab', function(newValue, oldValue) {
-          /* 
-            whenever the hit chart tab is shown (when it wasn't previously), 
-            run the resize code because the first load couldn't size it 
+          /*
+            whenever the hit chart tab is shown (when it wasn't previously),
+            run the resize code because the first load couldn't size it
             appropriately before the DOM was rendered and the CSS widths applied
             */
           // $log.debug('$watch(selectedDetailTab)', newValue, oldValue);
@@ -56,10 +54,8 @@ angular.module('hsgc')
             $log.debug('Datacast loaded. Initializing canvas...');
             firstLoad = false;
             scope.selectedHitChartPeriod = null; // default to All Games
-            previousPeriod = scope.currentPeriod; // default to current period
 
             // find the wrapping table since it is always visible, that way the canvas can be sized from that
-            canvasContainer = element.parents('.digital-scout-table');
             vballCourt = element.find('canvas');
             // $log.debug(canvas);
             paper.setup(vballCourt[0]);
@@ -147,7 +143,7 @@ angular.module('hsgc')
             for (i = 0; i < value.length; i++) {
               player = value[i];
 
-              // fake team player can't be gauranteed, so injected above, and skipped here
+              // fake team player can't be guaranteed, so injected above, and skipped here
               if (player.PlayerId < 1) {
                 continue;
               }
@@ -166,15 +162,15 @@ angular.module('hsgc')
         });
 
         scope.resize = function() {
-          /* 
+          /*
             Getting width is tricky; until it is visible, it often doesn't render full size.
-            Therefore, the onClick of the tab also kicks off this resize function. Plus, the 
+            Therefore, the onClick of the tab also kicks off this resize function. Plus, the
             element itself doesn't have a width in CSS until we set it. So here it gets the
             width from the parent (the tab container)--but it has a CSS padding set which isn't
             reflected in the result of width(), so it is manually adjusted for that here.
             Then, to calculate height, we have to take the canvas width, remove our own
-            padding (for hits that are outside the main court, for example serves) to find the 
-            court image width, halve that, then add back on the height padding to get the final 
+            padding (for hits that are outside the main court, for example serves) to find the
+            court image width, halve that, then add back on the height padding to get the final
             canvas height.
           */
 
@@ -339,12 +335,13 @@ angular.module('hsgc')
           item.bulletStart.onMouseLeave = scope.hitOnLeave;
           item.bulletEnd.onMouseEnter = scope.hitOnEnter;
           item.bulletEnd.onMouseLeave = scope.hitOnLeave;
+          item.hitTypeDescription = hitTypeDescription;
 
           // finally add the item to the array
           vballPoints.push(item);
         };
 
-        scope.buildHitPoints = function(playByPlay, homeTeasonSeasonId) {
+        scope.buildHitPoints = function(playByPlay, homeTeamSeasonId) {
           var i, play;
 
           scope.clearItems();
@@ -359,8 +356,8 @@ angular.module('hsgc')
             // create a set of vectors via the Paper.js library to represent this play
             scope.addItem({
               description: play.Description,
-              origin: play.TeamSeasonId == homeTeasonSeasonId ? [1 - play.OriginX, 1 - play.OriginY] : [play.OriginX, play.OriginY],
-              destination: play.TeamSeasonId == homeTeasonSeasonId ? [1 - play.DestinationX, 1 - play.DestinationY] : [play.DestinationX, play.DestinationY],
+              origin: play.TeamSeasonId == homeTeamSeasonId ? [1 - play.OriginX, 1 - play.OriginY] : [play.OriginX, play.OriginY],
+              destination: play.TeamSeasonId == homeTeamSeasonId ? [1 - play.DestinationX, 1 - play.DestinationY] : [play.DestinationX, play.DestinationY],
               grade: play.Grade,
               playerId: play.PlayerId,
               period: play.GameNumber,
@@ -406,7 +403,7 @@ angular.module('hsgc')
 
             // turn on the kill marker visibility (which may get turned off again later after turning off the whole attack)
             item.bulletKill2.visible = item.data.grade == 4;
-            // unassisted kills have another slash (making an X) but that stat isn't 
+            // unassisted kills have another slash (making an X) but that stat isn't
             // item.bulletKill1.visible = typeof(item.data.attackUnassisted) !== 'undefined' && item.data.attackUnassisted === true && item.bulletKill2.visible;
 
             // check if it should be visible or not
