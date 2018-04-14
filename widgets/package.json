@@ -1,10 +1,21 @@
 {
   "name": "hsgc-widgets",
-  "version": "2.0.2",
-  "private": true,
   "description": "Widgets for digitalscout.com",
+  "version": "2.0.3",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Digital Scout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jon-adams/ds-hsgc-api-samples"
+  },
+  "license": "MIT",
+  "private": true,
   "dependencies": {},
   "devDependencies": {
+    "bower": "^1.8.4",
+    "eslint": "^4.x",
     "grunt": "^1.0.2",
     "grunt-angular-templates": "^1.1.0",
     "grunt-aws-s3": "^2.0.0",
@@ -20,13 +31,12 @@
     "grunt-string-replace": "^1.3.1",
     "temporary": "0.0.8"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Digital Scout",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jon-adams/ds-hsgc-api-samples"
-  },
-  "license": "MIT"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "extends": "eslint:recommended",
+    "globals": { "$": true, "angular": true }
+  }
 }

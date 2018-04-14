@@ -7,16 +7,15 @@ angular.module('hsgc')
         scope.selectedShotChartPeriod = 0;
         scope.publicAvailability = scope.playByPlayAvailable;
         var firstLoad = true;
-        var previousPeriod = -1;
         scope.$on('datacastLoaded', function() {
           var twentyForHoursFromStart = new Date(),
               shotChartBackgroundImageElement = angular.element('.digital-scout-basketball-court'),
               periods = [], i;
 
-          // since this is start time, assume an hour of playtime so we don't have to check for the actual End event time stamp, so guesss 25 hours
+          // since this is start time, assume an hour of playtime so we don't have to check for the actual End event time stamp, so guess 25 hours
           twentyForHoursFromStart.setTime(scope.localStartTime.getTime() + (25*60*60*1000)); 
           scope.publicAvailability = scope.playByPlayAvailable && twentyForHoursFromStart > new Date();
-          $log.debug('Is basketball box score publicly availabile still?', scope.publicAvailability);
+          $log.debug('Is basketball box score publicly available still?', scope.publicAvailability);
           if (scope.publicAvailability === true && shotChartBackgroundImageElement && shotChartBackgroundImageElement.attr('src') === '') {
             // only set the court image when needed, so it doesn't load over the network when not
             shotChartBackgroundImageElement.attr('src', 'https://cdn.digitalscout.com/img/basketball-court.png');
@@ -25,7 +24,6 @@ angular.module('hsgc')
           if (firstLoad) {
             firstLoad = false;
             scope.selectedShotChartPeriod = null;
-            previousPeriod = scope.currentPeriod;
           }
 
           for (i = 1; i <= scope.currentPeriod; i++) {
@@ -109,16 +107,16 @@ angular.module('hsgc')
   .filter('filterShots', function() {
     return function(plays, awayPlayerFilter, homePlayerFilter, period, includeMade, includeMissed) {
       var shots = [];
-      if (typeof(plays) != "undefined") {
+      if (typeof(plays) !== "undefined") {
         for (var i = 0; i < plays.length; i++) {
           if (plays[i].IsShot) {
-            if (awayPlayerFilter != null && typeof(awayPlayerFilter) != "undefined" && plays[i].TeamSeasonId == awayPlayerFilter.TeamSeasonId && plays[i].PlayerId != awayPlayerFilter.PlayerId) {
+            if (awayPlayerFilter && plays[i].TeamSeasonId === awayPlayerFilter.TeamSeasonId && plays[i].PlayerId !== awayPlayerFilter.PlayerId) {
               continue;
             }
-            if (homePlayerFilter != null && typeof(homePlayerFilter) != "undefined" && plays[i].TeamSeasonId == homePlayerFilter.TeamSeasonId && plays[i].PlayerId != homePlayerFilter.PlayerId) {
+            if (homePlayerFilter && plays[i].TeamSeasonId === homePlayerFilter.TeamSeasonId && plays[i].PlayerId !== homePlayerFilter.PlayerId) {
               continue;
             }
-            if (period != null && typeof(period) != "undefined" && plays[i].Quarter != period) {
+            if (period !== null && typeof(period) !== "undefined" && plays[i].Quarter !== period) {
               //handle OT
               if (plays[i].Quarter <= 4 || period != 5) {
                 continue;

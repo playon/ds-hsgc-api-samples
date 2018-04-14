@@ -39,7 +39,10 @@
   </div>
   <div class="digital-scout-shot-chart-container">
     <img class="digital-scout-basketball-court" src=""/>
-    <div ng-repeat="shot in playByPlay | filterShots:awayPlayerFilter:homePlayerFilter:selectedShotChartPeriod" title="{{shot.Description}}" style="top: {{getShotTop(shot)}}%; left: {{getShotLeft(shot)}}%;"  class="digital-scout-shot-chart-shot {{getShotImageClass(shot)}}"></div>
+    <div ng-repeat="shot in playByPlay | filterShots:awayPlayerFilter:homePlayerFilter:selectedShotChartPeriod"
+        title="{{shot.Description}}"
+        ng-style="{top: getShotTop(shot) + '%', left: getShotLeft(shot) + '%'}"
+        class="digital-scout-shot-chart-shot {{getShotImageClass(shot)}}"></div>
   </div>
   <div class="digital-scout-shot-chart-legend">
     <span class="digital-scout-shot-chart-shot-made">Made</span>

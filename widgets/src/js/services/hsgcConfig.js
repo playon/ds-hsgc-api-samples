@@ -5,7 +5,6 @@ angular.module('hsgc').provider('hsgcConfig', function() {
     gaTracker: "UA-27695189-2", // Google Analytics tracker code
     //if apiRoot set here, overrides the versions that are usually loaded based on "env"
     //apiRoot: "https://api.digitalscout.com/v1.2/",
-    //unityRoot: "http://cfunity.nfhsnetwork.com/v1/",
     logoStdResWidth: 60,  // must be updated here and in `mixins.less: .widget-logo-large`
     logoStdResHeight: 60, // must be updated here and in `mixins.less: .widget-logo-large`
     logoHighResWidth: 120,  // must be logoStdResWidth * 2

@@ -1,5 +1,10 @@
 # History
 
+## 2.0.3 / 2018-04-14
+
+* Update AngularJS library
+* Various JavaScript cleanups
+
 ## 2.0.0 / 2017-11-17
 
 * Clean up CSS (includes breaking changes)
@@ -70,7 +75,7 @@
 * Add down and distance to play-by-play
 * Group play-by-play by drive
 * Add support for overtime in play-by-play
-* CSS namespacing
+* CSS namespaces
 * Generic third party support
 * BREAKING: Include angular dependency inside primary javascript include
 * BREAKING: Move to object based initializer
@@ -85,7 +90,7 @@
 
 ## 1.0.3 / 2014-07-28
 
-* Added new directive that allows inline templating for datacast properties
+* Added new directive that allows inline templates for datacast properties
   * `<div datacast="unity game key" publisher="publisher key" sport="football"> ... </div>`
   * To render a score for a team, use the syntax `{{getScore('team key')}}`
 * Added some basic logic for hiding widgets that data is unavailable for.  Please include nfhs.css or custom styles.
