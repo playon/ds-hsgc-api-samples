@@ -46,8 +46,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'build/hsgc-widgets.js': [
-                        'bower_components/angular/angular.js',
-                        'bower_components/paper/dist/paper-core.js',
+                        'node_modules/angular/angular.js',
+                        'node_modules/paper/dist/paper-core.js',
                         'src/js/app.js',
                         tmpTemplateFile.path,
                         'src/js/*/*.js'
@@ -80,8 +80,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'build/hsgc-widgets.min.js': [
-                        'bower_components/angular/angular.js',
-                        'bower_components/paper/dist/paper-core.js',
+                        'node_modules/angular/angular.js',
+                        'node_modules/paper/dist/paper-core.js',
                         'src/js/app.js',
                         tmpTemplateFile.path,
                         'src/js/*/*.js'

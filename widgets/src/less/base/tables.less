@@ -32,6 +32,7 @@
             }
         }
     }
+
     > thead > tr {
         > th,
         > td {
@@ -57,7 +58,7 @@
     }
 
     thead:first-child > tr:first-child > th,
-    td {
+    thead:first-child > tr:first-child > td {
         border-top: 0;
     }
 }
@@ -118,8 +119,7 @@
                 width: 100%;
                 margin-bottom: 0;
 
-                th,
-                td {
+                th {
                     white-space: nowrap;
                     display: none;
 
@@ -127,11 +127,18 @@
                         display: table-cell;
                     }
                 }
-            }
 
-            td {
-                &:last-child {
-                    border-bottom: 0;
+                td {
+                    white-space: nowrap;
+                    display: none;
+
+                    &:first-child {
+                        display: table-cell;
+                    }
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
                 }
             }
         }

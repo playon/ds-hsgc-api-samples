@@ -59,6 +59,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular@^1.6.x:
+  version "1.6.10"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.6.10.tgz#eed3080a34d29d0f681ff119b18ce294e3f74826"
+
 ansi-escapes@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"
@@ -337,6 +341,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+bootstrap@^3.x:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
+
 bower-config@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/bower-config/-/bower-config-1.4.1.tgz#85fd9df367c2b8dbbd0caa4c5f2bad40cd84c2cc"
@@ -346,10 +354,6 @@ bower-config@^1.4.0:
     optimist "^0.6.1"
     osenv "^0.1.3"
     untildify "^2.1.0"
-
-bower@^1.8.4:
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/bower/-/bower-1.8.4.tgz#e7876a076deb8137f7d06525dc5e8c66db82f28a"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1438,7 +1442,7 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
 
-gaze@^1.0.0:
+gaze@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/gaze/-/gaze-1.1.2.tgz#847224677adb8870d679257ed3388fdb61e40105"
   dependencies:
@@ -1630,13 +1634,13 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.2, graceful-fs@^4.1.3:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-grunt-angular-templates@^1.1.0:
+grunt-angular-templates@^1.1.x:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/grunt-angular-templates/-/grunt-angular-templates-1.1.0.tgz#109603a2b95ff01019b718c70341268f09d8be19"
   dependencies:
     html-minifier "~2.1.2"
 
-grunt-aws-s3@^2.0.0:
+grunt-aws-s3@^2.0.x:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/grunt-aws-s3/-/grunt-aws-s3-2.0.0.tgz#0262203d43646ca7bd92b2e1d2e71a2820edf9f5"
   dependencies:
@@ -1646,14 +1650,14 @@ grunt-aws-s3@^2.0.0:
     mime-types "2.0.x"
     progress "1.1.x"
 
-grunt-check-dependencies@^1.0.0:
+grunt-check-dependencies@^1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/grunt-check-dependencies/-/grunt-check-dependencies-1.0.0.tgz#51889587c57e827dde9cdf69b750ae0b2f881c50"
   dependencies:
     check-dependencies "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-grunt-cli@^1.2.0, grunt-cli@~1.2.0:
+grunt-cli@^1.2.x, grunt-cli@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/grunt-cli/-/grunt-cli-1.2.0.tgz#562b119ebb069ddb464ace2845501be97b35b6a8"
   dependencies:
@@ -1662,14 +1666,14 @@ grunt-cli@^1.2.0, grunt-cli@~1.2.0:
     nopt "~3.0.6"
     resolve "~1.1.0"
 
-grunt-contrib-clean@^1.1.0:
+grunt-contrib-clean@^1.1.x:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-clean/-/grunt-contrib-clean-1.1.0.tgz#564abf2d0378a983a15b9e3f30ee75b738c40638"
   dependencies:
     async "^1.5.2"
     rimraf "^2.5.1"
 
-grunt-contrib-connect@^1.0.2:
+grunt-contrib-connect@^1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/grunt-contrib-connect/-/grunt-contrib-connect-1.0.2.tgz#5cf933b91a67386044273c0b2444603cd98879ba"
   dependencies:
@@ -1683,14 +1687,14 @@ grunt-contrib-connect@^1.0.2:
     serve-index "^1.7.1"
     serve-static "^1.10.0"
 
-grunt-contrib-copy@^1.0.0:
+grunt-contrib-copy@^1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-copy/-/grunt-contrib-copy-1.0.0.tgz#7060c6581e904b8ab0d00f076e0a8f6e3e7c3573"
   dependencies:
     chalk "^1.1.1"
     file-sync-cmp "^0.1.0"
 
-grunt-contrib-imagemin@^2.0.1:
+grunt-contrib-imagemin@^2.0.x:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/grunt-contrib-imagemin/-/grunt-contrib-imagemin-2.0.1.tgz#e91e490ad8187dd8e57b09ce2a7ac3d2d2ab7208"
   dependencies:
@@ -1705,7 +1709,7 @@ grunt-contrib-imagemin@^2.0.1:
     imagemin-optipng "^5.1.0"
     imagemin-svgo "^5.1.0"
 
-grunt-contrib-less@^1.4.1:
+grunt-contrib-less@^1.4.x:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/grunt-contrib-less/-/grunt-contrib-less-1.4.1.tgz#3bbdec0b75d12ceaa55d62943625c0b0861cdf6f"
   dependencies:
@@ -1723,13 +1727,13 @@ grunt-contrib-uglify@>=3.3.0:
     uglify-js "~3.3.0"
     uri-path "^1.0.0"
 
-grunt-contrib-watch@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/grunt-contrib-watch/-/grunt-contrib-watch-1.0.0.tgz#84a1a7a1d6abd26ed568413496c73133e990018f"
+grunt-contrib-watch@^1.0.x:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/grunt-contrib-watch/-/grunt-contrib-watch-1.0.1.tgz#ca65934b6e04dbd26da684d598f79ee22f47fdac"
   dependencies:
     async "^1.5.0"
-    gaze "^1.0.0"
-    lodash "^3.10.1"
+    gaze "^1.1.0"
+    lodash "^4.0.0"
     tiny-lr "^0.2.1"
 
 grunt-known-options@~1.1.0:
@@ -1765,14 +1769,14 @@ grunt-legacy-util@~1.0.0:
     underscore.string "~3.2.3"
     which "~1.2.1"
 
-grunt-string-replace@^1.3.1:
+grunt-string-replace@^1.3.x:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/grunt-string-replace/-/grunt-string-replace-1.3.1.tgz#633a03bc78482a0e0e1f9df7f645811fc1fbb162"
   dependencies:
     async "^2.0.0"
     chalk "^1.0.0"
 
-grunt@^1.0.2:
+grunt@^1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/grunt/-/grunt-1.0.2.tgz#4e6a5e695b70472fd5304f5fa9e34236836a73bc"
   dependencies:
@@ -2639,13 +2643,13 @@ lodash@2.4.x:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
 
-lodash@^3.10.1, lodash@~3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
-
-lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.8.2, lodash@~4.17.4:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.8.2, lodash@~4.17.4:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
+
+lodash@~3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@~4.3.0:
   version "4.3.0"
@@ -3102,6 +3106,10 @@ p-pipe@^1.1.0:
 pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
+
+paper@^0.x:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.11.5.tgz#d662de67bce8218c287bfe17586d099d2cc48040"
 
 param-case@^2.1.0:
   version "2.1.1"
@@ -3881,6 +3889,10 @@ strip-outer@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
+stylelint-config-recommended@^2.x:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"
+
 sum-up@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sum-up/-/sum-up-1.0.3.tgz#1c661f667057f63bcb7875aa1438bc162525156e"
@@ -3960,7 +3972,7 @@ tempfile@^2.0.0:
     temp-dir "^1.0.0"
     uuid "^3.0.1"
 
-temporary@0.0.8:
+temporary@0.x:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/temporary/-/temporary-0.0.8.tgz#a18a981d28ba8ca36027fb3c30538c3ecb740ac0"
   dependencies:

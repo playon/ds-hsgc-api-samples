@@ -3,12 +3,13 @@
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
+* Remove deprecated bower front-end dependency package management in favor of npm for both front- and back-end
 * Various JavaScript cleanups
 
 ## 2.0.0 / 2017-11-17
 
 * Clean up CSS (includes breaking changes)
-  * Rename CSS class prefixes from `nfhs-scout` to `digital-scout`
+  * Switch CSS class prefixes to `digital-scout`
   * More consistent use of CSS prefixes
   * Restructure some HTML
   * New default styling/layout example: `less/digitalscout.less`
