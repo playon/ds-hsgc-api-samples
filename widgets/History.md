@@ -5,6 +5,7 @@
 * Update AngularJS library
 * Remove deprecated bower front-end dependency package management in favor of npm for both front- and back-end
 * Various JavaScript cleanups
+* Minor basketball layout fix for a particular width between tablet and mobile sizes
 
 ## 2.0.0 / 2017-11-17
 

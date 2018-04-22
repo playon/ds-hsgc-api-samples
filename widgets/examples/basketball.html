@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <!-- general browser meta data, may be customized but if in an IFRAME, doesn't really matter -->
     <title>Basketball</title>
     <link rel="icon" href="">
@@ -11,38 +12,51 @@
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet" type="text/css">
     <script>
-        (function(i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     </script>
 
 
     <!-- when implementing this elsewhere, point these links to the latest version on https://cdn.digitalscout.com/ -->
-    <script src="hsgc-widgets.js"></script> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/hsgc-widgets.js for example -->
-    <link rel="stylesheet" href="css/base.css"> <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/css/base.css for example -->
+    <script src="hsgc-widgets.js"></script>
+    <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/hsgc-widgets.js for example -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- in production, use https://cdn.digitalscout.com/js/hsgc-widgets/2.0.0/css/base.css for example -->
 
-    <!-- put your custom stylesheet here, to override the base.css with your own prefered layouts, styles, and colors -->
+    <!-- put your custom stylesheet here, to override the base.css with your own preferred layouts, styles, and colors -->
     <!-- <link href="https://stats.digitalscout.com/css/widgets.less" rel="stylesheet" type="text/css" /> -->
 
     <!-- development helpers, not necessary for use elsewhere -->
     <script type="text/javascript">
-      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") { 
-        $('head').append('<script language="javascript" src="//localhost:35729/livereload.js?snipver=1" async="async" defer="defer"><'+'/script>');
-      }
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            $('head').append('<script language="javascript" src="//localhost:35729/livereload.js?snipver=1" async="async" defer="defer"><' + '/script>');
+        }
     </script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
     <div class="container">
-      <!-- the sport and game id should be updated as necessary, and match the keyStrategy used below -->
-      <div full-box-score sport="Basketball" game="7924588"></div>
-      <!-- the game summary is optional, and is a separate element that can be removed or moved around as you wish -->
-      <div basketball-game-summary game="7924588" sport="Basketball"></div>
+        <div class="row-fluid">
+            <div class="col-md-8">
+                <!-- the sport and game id should be updated as necessary, and match the keyStrategy used below -->
+                <div full-box-score sport="Basketball" game="9105703"></div>
+            </div>
+            <div class="col-md-4">
+                <!-- the game summary is optional, and is a separate element that can be removed or moved around as you wish -->
+                <div game-summary game="9105703" sport="Basketball"></div>
+            </div>
+        </div>
+
     </div>
     <script>
-      hsgcWidgets.init({
-        env: 'prod',  // prod=production, stage=staging/testing, dev=development; switches between the default URL endpoints for each environment
-        keyStrategy: 'hsgc',  // hsgc is the default, using Digital Scout identifiers; others available for custom third-party use—contact support@digitalscout.com for more info
-        showTeamLinks: true,  // if true, will link team logos and names to stats.digitalscout.com
-        imageRoot: 'https://img.digitalscout.com/'
-      });
+        hsgcWidgets.init({
+            env: 'prod',  // prod=production, stage=staging/testing, dev=development; switches between the default URL endpoints for each environment
+            keyStrategy: 'hsgc',  // hsgc is the default, using Digital Scout identifiers; others available for custom third-party use—contact support@digitalscout.com for more info
+            showTeamLinks: true,  // if true, will link team logos and names to stats.digitalscout.com
+            imageRoot: 'https://img.digitalscout.com/'
+        });
     </script>
-  </body>
+</body>
+
 </html>
