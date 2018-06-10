@@ -5,7 +5,7 @@ angular.module('hsgc').directive('fullBoxScore', [
         return {
             restrict: 'AE',
             scope: {
-                unityGameKey: '@game',
+                gameKey: '@game',
                 publisherKey: '@publisher',
                 sport: '@sport',
                 showTeamLinks: '@showTeamLinks'

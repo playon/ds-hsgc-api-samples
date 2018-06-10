@@ -2,7 +2,7 @@ angular.module('hsgc').directive('miniBoxScore', function() {
     return {
         restrict: 'AE',
         scope: {
-            unityGameKey: '@game',
+            gameKey: '@game',
             sport: '@sport'
         },
         link: function(scope) {

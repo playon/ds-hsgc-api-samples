@@ -1,5 +1,9 @@
 # History
 
+## 2.0.4 / 2018-06-09
+
+* Lock down AngularJS 1.6 until the code can be upgrade to 1.7
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
