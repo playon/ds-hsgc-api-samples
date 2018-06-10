@@ -741,7 +741,9 @@ angular.module('hsgc').factory('HSGCApi', [
 
                 var url = '',
                     config = {
-                        params: {}
+                        params: {},
+                        cache: false, // eager-caching handled by the server
+                        timeout: hsgcConfig.apiNetworkTimeoutMs
                     };
                 angular.extend(config.params, options);
 

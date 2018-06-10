@@ -84,7 +84,7 @@ angular.module('hsgc').directive('datacast', [
                     // still can't find a game key; display to user
                     scope.errorMessage = "Game Not Supplied. Contact Support.";
                 }
-                if (scope.gameKey && config.keyStrategy === "ds-key" && !scope.publisher) {
+                if (scope.gameKey && config.keyStrategy === "ds-key" && !scope.apiKey) {
                     // still can't find a game key; display to user
                     scope.errorMessage = "Missing API key";
                 }
@@ -138,7 +138,7 @@ angular.module('hsgc').directive('datacast', [
                                 angular.extend(scope, result.boxScore);
                                 opts = {};
                             } else {
-                                // not sure what went wrong; try again in a little while
+                                // not sure what went wrong (if status == 0, probably client timeout); try again in a little while
                                 $log.error(
                                     'Datacast could not be loaded. Will try again. Status code:',
                                     result.status,

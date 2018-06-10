@@ -11,6 +11,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
         logoStdResHeight: 60, // must be updated here and in `mixins.less: .widget-logo-large`
         logoHighResWidth: 120, // must be logoStdResWidth * 2
         logoHighResHeight: 120, // must be logoStdResHeight * 2
+        apiNetworkTimeoutMs: 30000,
         showTeamLinks: true,
         datacastLoaded: function() {},
         beforeLoadDatacast: function(gameKey, publisherKey, cb) {
