@@ -49,7 +49,7 @@
         <div class="digital-scout-scoreboard-details-status">
             <div>
                 <span class="type">{{statusPretty}}</span>
-                <h4 class="date">{{longDateTimeDisplay}}</h4>
+                <h4 class="date"><span ng-show="longDateTimeDisplay">{{longDateTimeDisplay}}</span></h4>
                 <h4 ng-hide="errorMessage">{{gender}} {{sport}}</h4>
                 <h4 ng-show="errorMessage">{{errorMessage}}</h4>
                 <h4 class="description">{{gameType}}</h4>

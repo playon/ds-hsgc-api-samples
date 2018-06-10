@@ -167,12 +167,11 @@ angular.module('hsgc').factory('HSGCApi', [
                 statusDisplay: boxScore.StatusDisplay,
                 localStartTime: startTime,
                 longDateTimeDisplay:
-                    startTime.getFullYear() === new Date().getFullYear()
-                        ? ''
-                        : $filter('date')(
-                              startTime,
-                              'MMMM d, yyyy h:mm a'
-                          ) /* time zone acronym is need instead of long version of boxScore.TimeZone*/,
+                    $filter('date')(
+                        startTime, startTime.getFullYear() === new Date().getFullYear()
+                        ? 'MMM d h:mm a'
+                        : 'MMMM d, yyyy h:mm a')
+                        /* time zone acronym is need instead of long version of boxScore.TimeZone*/,
                 colors: colors,
                 inOverTime: inOverTime,
                 awayOvertimeScore: awayOTScore,
