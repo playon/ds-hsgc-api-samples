@@ -7,7 +7,7 @@
 
     <!-- required elements, leave these alone for the most part -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet" type="text/css">
     <script>
         (function(i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m); })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
@@ -23,7 +23,7 @@
 
     <!-- development helpers, not necessary for use elsewhere -->
     <script type="text/javascript">
-      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") { 
+      if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
         $('head').append('<script language="javascript" src="//localhost:35729/livereload.js?snipver=1" async="async" defer="defer"><'+'/script>');
       }
     </script>
@@ -86,7 +86,7 @@
         keyStrategy: 'hsgc',  // hsgc is the default, using Digital Scout identifiers; others available for custom third-party use—contact support@digitalscout.com for more info
         showTeamLinks: true,  // if true, will link team logos and names to stats.digitalscout.com
         imageRoot: 'https://img.digitalscout.com/'
-        //, 
+        //,
         // beforeLoadDatacast: hsgcWidgets.networkAuthorize /* check for authorization, or anything else you want to do, before the datacast load is attempted */,
         // fullBoxScoreFirstLoaded: function() { /* do something after first load */ }
       });

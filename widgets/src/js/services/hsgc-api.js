@@ -731,7 +731,7 @@ angular.module('hsgc').factory('HSGCApi', [
             });
         };
 
-        var getFullBox = function(key, publisherKey, sport, options) {
+        var getFullBox = function(gameKey, publisherKey, apiKey, sport, options) {
             if (
                 sport === 'Football' ||
                 sport === 'Basketball' ||
@@ -745,13 +745,17 @@ angular.module('hsgc').factory('HSGCApi', [
                     };
                 angular.extend(config.params, options);
 
+                if (hsgcConfig.keyStrategy === "ds-key") {
+                    config.headers = { 'X-API-Key': apiKey };
+                }
+
                 if (hsgcConfig.keyStrategy === 'unity') {
                     url =
                         hsgcConfig.apiRoot +
                         'games/thirdparty/' +
                         hsgcConfig.keyStrategy +
                         '/' +
-                        key;
+                        gameKey;
                     return $http.get(url, config).then(
                         function(boxScore) {
                             // success
@@ -787,7 +791,7 @@ angular.module('hsgc').factory('HSGCApi', [
                     );
                 } else {
                     // hsgc code
-                    url = hsgcConfig.apiRoot + 'games/' + key;
+                    url = hsgcConfig.apiRoot + 'games/' + gameKey;
                     return $http.get(url, config).then(
                         function(boxScore) {
                             // success

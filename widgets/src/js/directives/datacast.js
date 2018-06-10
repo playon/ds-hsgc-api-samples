@@ -1,9 +1,10 @@
 angular.module('hsgc').directive('datacast', [
     'HSGCApi',
+    '$location',
     '$timeout',
     '$log',
     'hsgcConfig',
-    function(HSGCApi, $timeout, $log, config) {
+    function(HSGCApi, $location, $timeout, $log, config) {
         return {
             restrict: 'EA',
             transclude: 'element',
@@ -36,6 +37,9 @@ angular.module('hsgc').directive('datacast', [
                 }
             ],
             link: function(scope, element, attrs, ctrl, transcludeFn) {
+                scope.errorMessage = null;
+                scope.apiKey = null;
+
                 if (
                     scope.sport !== 'Football' &&
                     scope.sport !== 'Basketball' &&
@@ -68,11 +72,29 @@ angular.module('hsgc').directive('datacast', [
                     $timeout(updateBoxScore, refreshIn);
                 };
 
+                // try to get game key and/or apiKey from the request parameters
+                if (!scope.gameKey) {
+                    scope.gameKey = $location.search().gameKey;
+                }
+                if (config.keyStrategy === "ds-key" && !scope.apiKey) {
+                    scope.apiKey = $location.search().apiKey;
+                }
+
+                if (!scope.gameKey) {
+                    // still can't find a game key; display to user
+                    scope.errorMessage = "Game Not Supplied. Contact Support.";
+                }
+                if (scope.gameKey && config.keyStrategy === "ds-key" && !scope.publisher) {
+                    // still can't find a game key; display to user
+                    scope.errorMessage = "Missing API key";
+                }
+
                 var firstLoad = true;
                 var updateBoxScore = function() {
                     HSGCApi.getFullBox(
                         scope.gameKey,
                         scope.publisher,
+                        scope.apiKey,
                         scope.sport,
                         opts
                     ).then(
@@ -140,6 +162,10 @@ angular.module('hsgc').directive('datacast', [
                         scope.gameKey,
                         scope.publisherKey,
                         function() {
+                            if (scope.loadError) {
+                                return function() {};
+                            }
+
                             return updateBoxScore();
                         }
                     );

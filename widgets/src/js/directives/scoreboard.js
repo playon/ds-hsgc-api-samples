@@ -10,11 +10,7 @@ angular.module('hsgc').directive('scoreboard', [
                 $log.debug('Show Team Links:', config.showTeamLinks);
                 scope.showTeamLinks = config.showTeamLinks;
 
-                $log.debug(
-                    'Scoreboard key strategy set to: "' +
-                        config.keyStrategy +
-                        '"'
-                );
+                $log.debug('Scoreboard key strategy set', config.keyStrategy);
 
                 //todo: this really is very NFHS Network specific—should probably move this outside the core widget code
                 if (config.keyStrategy === 'unity') {

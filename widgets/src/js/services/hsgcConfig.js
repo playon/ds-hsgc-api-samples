@@ -2,7 +2,8 @@
 angular.module('hsgc').provider('hsgcConfig', function() {
     this.config = {
         env: 'prod',
-        keyStrategy: 'unity',
+        keyStrategy: 'hsgc',    // can be "hsgc", "unity" (deprecated), or "ds-key"
+        apiKey: '', // only used, and is required in this case, when using the "ds-key" keyStrategy
         gaTracker: 'UA-27695189-2', // Google Analytics tracker code
         //if apiRoot set here, overrides the versions that are usually loaded based on "env"
         //apiRoot: "https://api.digitalscout.com/v1.2/",
@@ -13,6 +14,9 @@ angular.module('hsgc').provider('hsgcConfig', function() {
         showTeamLinks: true,
         datacastLoaded: function() {},
         beforeLoadDatacast: function(gameKey, publisherKey, cb) {
+            // the default handler does nothing but call the callback
+            // but some keyStrategy types may override this, or the
+            // calling code can implement their own
             cb();
         },
         fullBoxScoreFirstLoaded: function() {},

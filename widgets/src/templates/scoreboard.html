@@ -5,8 +5,8 @@
                 <tbody>
                     <tr>
                         <td class="left">
-                            <div class="score">{{awayScore}}</div>
-                            <div class="logo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
+                            <div class="score" ng-show="awayLogo || awayScore || awayName">{{awayScore}}</div>
+                            <div class="logo" ng-show="awayLogo" ng-style="{'background-color': getPrimaryColor(awayTeamSeasonId)}">
                                 <span ng-hide="showTeamLinks">
                                     <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
                                 </span>
@@ -24,8 +24,8 @@
                             </p>
                         </td>
                         <td class="right">
-                            <div class="score">{{homeScore}}</div>
-                            <div class="logo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
+                            <div class="score" ng-show="homeLogo || homeScore || homeName">{{homeScore}}</div>
+                            <div class="logo" ng-show="homeLogo" ng-style="{'background-color': getPrimaryColor(homeTeamSeasonId)}">
                                 <span ng-hide="showTeamLinks">
                                     <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
                                 </span>
@@ -50,7 +50,8 @@
             <div>
                 <span class="type">{{statusPretty}}</span>
                 <h3>{{statusDisplay}}</h3>
-                <h4>{{gender}} {{sport}}</h4>
+                <h4 ng-hide="errorMessage">{{gender}} {{sport}}</h4>
+                <h4 ng-show="errorMessage">{{errorMessage}}</h4>
                 <span class="description">{{gameType}}</span>
                 <span class="date">{{longDateTimeDisplay}}</span>
             </div>

@@ -19,9 +19,10 @@ var hsgc = angular.module('hsgc', []).config([
 var hsgcWidgets = {
     init: function(options) {
         hsgc.config([
-            'hsgcConfigProvider',
-            function(hsgcConfig) {
+            'hsgcConfigProvider', '$locationProvider',
+            function(hsgcConfig, $locationProvider) {
                 hsgcConfig.set(options);
+                $locationProvider.html5Mode({enabled: true, requireBase: false, rewriteLinks: false});
             }
         ]);
         angular.bootstrap(document, ['hsgc']);
@@ -29,6 +30,8 @@ var hsgcWidgets = {
 };
 
 hsgcWidgets.networkAuthorize = function(gameKey, publisherKey, cb) {
+    cb();
+    /*
     nfhs.auth.datacast(gameKey, publisherKey, function(auth) {
         if (auth.authorized) {
             cb();
@@ -54,4 +57,5 @@ hsgcWidgets.networkAuthorize = function(gameKey, publisherKey, cb) {
             }
         }
     });
+    */
 };

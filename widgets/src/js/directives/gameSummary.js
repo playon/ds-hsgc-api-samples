@@ -1,4 +1,4 @@
-angular.module('hsgc').directive('gameSummary', function() {
+angular.module('hsgc').directive('gameSummary', ['$location', function($location) {
     return {
         restrict: 'AE',
         scope: {
@@ -14,6 +14,15 @@ angular.module('hsgc').directive('gameSummary', function() {
             '$timeout',
             'hsgcConfig',
             function($scope, $element, HSGCApi, $log, $timeout, config) {
+                $scope.apiKey = null;
+                // try to get game key and/or apiKey from the request parameters
+                if (!$scope.gameKey) {
+                    $scope.gameKey = $location.search().gameKey;
+                }
+                if (config.keyStrategy === "ds-key" && !$scope.apiKey) {
+                    $scope.apiKey = $location.search().apiKey;
+                }
+
                 var setNextUpdate = function(refreshIn) {
                     $timeout(updateBoxScore, refreshIn);
                 };
@@ -22,6 +31,7 @@ angular.module('hsgc').directive('gameSummary', function() {
                     HSGCApi.getFullBox(
                         $scope.gameKey,
                         $scope.publisherKey,
+                        $scope.apiKey,
                         $scope.sport,
                         {
                             includeTeamAggregates: true,
@@ -78,4 +88,4 @@ angular.module('hsgc').directive('gameSummary', function() {
         ],
         templateUrl: 'templates/gameSummary.html'
     };
-});
+}]);
