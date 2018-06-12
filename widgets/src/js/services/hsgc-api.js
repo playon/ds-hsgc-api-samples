@@ -18,7 +18,9 @@ angular.module('hsgc').factory('HSGCApi', [
                     boxScore.CurrentPeriod > boxScore.RegulationPeriodCount,
                 homeOTScore = 0,
                 awayOTScore = 0,
-                startTime = new Date(boxScore.LocalStartTime);
+                startTime = new Date(boxScore.StartTimeUTC.replace(" +00", "Z").replace(" ", "T"));
+                // FYI, Chrome and the apps are okay with new Date("2018-02-24 13:00:00 +00"), but Firefox and Safari don't like it.
+                // This parses it to something more universally accepted (the ECMAScript definition of "YYYY-MM-DDTHH:mm:ss.sssZ").
 
             scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
             scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
@@ -170,8 +172,8 @@ angular.module('hsgc').factory('HSGCApi', [
                     $filter('date')(
                         startTime, startTime.getFullYear() === new Date().getFullYear()
                         ? 'MMM d h:mm a'
-                        : 'MMMM d, yyyy h:mm a')
-                        /* time zone acronym is need instead of long version of boxScore.TimeZone*/,
+                        : 'MMMM d, yyyy h:mm a'),
+                        /* time zone acronym is need instead of long version of boxScore.TimeZone*/
                 colors: colors,
                 inOverTime: inOverTime,
                 awayOvertimeScore: awayOTScore,

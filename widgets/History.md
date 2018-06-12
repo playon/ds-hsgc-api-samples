@@ -1,8 +1,10 @@
 # History
 
-## 2.0.4 / 2018-06-09
+## 2.0.4 / 2018-06-10
 
 * Lock down AngularJS 1.6 until the code can be upgrade to 1.7
+* A few design tweaks related to the game date display
+* Pass through API keys through to the DS API
 
 ## 2.0.3 / 2018-04-14
 
