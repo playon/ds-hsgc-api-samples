@@ -6,9 +6,10 @@
 * A few design tweaks related to the game date display
 * Pass through API keys through to the DS API
 
-*Hot patch to 1.2.0 on 2018-09-17:*
+*Hot fix on 2018-09-17:*
 
-* Football: Default selected tab to the Roster during in-progress games, until the drive chart responsive sizing can be fixed
+* Football: Default selected tab to the Play-by-play during in-progress games
+* Football: Fix the Drive Chart display for high-density screens (hdpi, retina, or whatever you want to call it)
 * Volleyball: Highlight negative score adjustments like other scoring plays
 
 ## 2.0.3 / 2018-04-14
@@ -28,7 +29,7 @@
 * Significant performance improvements for the football drive chart during live games
 * Show the "As Reported By" fields to the user
 
-*Hot patch to 2.0.0 on 2017-12-12:*
+*Hotfix on 2017-12-12:*
 
 * Various layout cleanups, especially for small screen devices
 
@@ -43,12 +44,12 @@
 * No longer stops polling if any API response returns an error
 * Library updates
 
-*Hot patch to 1.2.0 on 2017-10-16:*
+*Hotfix on 2017-10-16:*
 
 * Library updates
 * Basketball shot chart friendly message when shot chart not available for business reasons
 
-*Hot patch to 1.2.0 on 2017-11-06:*
+*Hotfix on 2017-11-06:*
 
 * Hide Football Drive Chart tab when data not available
 
@@ -62,7 +63,7 @@
 * Switch to CloudFront CDN for loading assets
 * Update grunt S3 SDK library to one that is still active
 
-*Hot patch to 1.1.0 on 2016-11-2:*
+*Hotfix on 2016-11-2:*
 
 * "Full box" view tab height looks better when text wraps (for example, the "Scoring Summary" football tab)
 * Various Football "Game Leaders" formatting improvements

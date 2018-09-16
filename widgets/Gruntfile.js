@@ -213,8 +213,9 @@ module.exports = function(grunt) {
                     protocol: 'https',
                     key: grunt.file.read('development.key').toString(),
                     cert: grunt.file.read('development.crt').toString(),
-                    base: './build'
                     ca: grunt.file.read('development-ca.crt').toString(),
+                    base: [ './', './build' ],
+                    open: true,
                     // livereload only works in linux; for windows, have to manually replace with <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
                     // livereload: 35729
                 }
@@ -244,6 +245,8 @@ module.exports = function(grunt) {
 
     // optimize destructively (but losslessly) minifies all images
     grunt.registerTask('optimize', ['imagemin']);
+
+    grunt.registerTask('serve-only', ['connect', 'watch']);
 
     // deploy deletes the /build directory, compiles, and pushes to S3 with the configured package.json version prefix
     grunt.registerTask('deploy', ['clean', 'build', 'aws_s3']);
