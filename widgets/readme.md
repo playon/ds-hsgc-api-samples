@@ -27,8 +27,8 @@ This code is licensed under the MIT license (see the README at the top level of 
 1. Download this repository, and navigate to the `widgets` directory
 1. Ensure `nodejs` is installed (preferably by `nvm`)
 1. Ensure npm is up to date with `npm update -g npm`
-1. Install `grunt` globally: `npm install grunt -g`
-1. Run `npm install` to install the project dependencies
+1. Install `grunt` globally: `npm install grunt yarn -g`
+1. Run `yarn` to install the project dependencies
 1. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
 1. To build: run `grunt` which will create a minified JavaScript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
 1. To test, go to [`https://localhost:3001/`](https://localhost:3001/) and select an appropriate HTML file to test—you will have to accept the self-signed certificate in your browser

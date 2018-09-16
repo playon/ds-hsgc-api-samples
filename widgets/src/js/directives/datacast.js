@@ -109,7 +109,7 @@ angular.module('hsgc').directive('datacast', [
                                     //this shouldn't be here, but i can't get it to work in the FullBoxScore directive
                                     if (scope.sport === 'Football') {
                                         if (scope.status === 'InProgress') {
-                                            scope.selectedDetailTab = 5;
+                                            scope.selectedDetailTab = 3;
                                         } else {
                                             scope.selectedDetailTab = 1;
                                         }

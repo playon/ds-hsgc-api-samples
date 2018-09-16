@@ -6,6 +6,11 @@
 * A few design tweaks related to the game date display
 * Pass through API keys through to the DS API
 
+*Hot patch to 1.2.0 on 2018-09-17:*
+
+* Football: Default selected tab to the Roster during in-progress games, until the drive chart responsive sizing can be fixed
+* Volleyball: Highlight negative score adjustments like other scoring plays
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
