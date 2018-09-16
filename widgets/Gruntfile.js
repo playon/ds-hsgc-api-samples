@@ -200,7 +200,8 @@ module.exports = function(grunt) {
                     livereload: {
                         port: 35729,
                         key: grunt.file.read('development.key').toString(),
-                        cert: grunt.file.read('development.crt').toString()
+                        cert: grunt.file.read('development.crt').toString(),
+                        ca: grunt.file.read('development-ca.crt').toString()
                     }
                 }
             }
@@ -213,6 +214,7 @@ module.exports = function(grunt) {
                     key: grunt.file.read('development.key').toString(),
                     cert: grunt.file.read('development.crt').toString(),
                     base: './build'
+                    ca: grunt.file.read('development-ca.crt').toString(),
                     // livereload only works in linux; for windows, have to manually replace with <script src="//localhost:35729/livereload.js?snipver=1" async="" defer=""></script>
                     // livereload: 35729
                 }
