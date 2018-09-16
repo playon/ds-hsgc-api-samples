@@ -33,14 +33,14 @@
             </thead>
             <tbody>
                 <tr ng-repeat="play in playByPlay | filter:{'GameNumber': selectedPeriod}:true">
-                    <td ng-class='{"digital-scout-scoring": play.Score > 0, "digital-scout-play-by-play-team": true, "digital-scout-play-by-play-team-away": true }'>
+                    <td ng-class='{"digital-scout-scoring": play.Score != 0, "digital-scout-play-by-play-team": true, "digital-scout-play-by-play-team-away": true }'>
                         <span ng-show="play.TeamSeasonId == awayTeamSeasonId" ng-class='{"digital-scout-play-by-play-description": play.Highlight}'>{{play.Description}}</span>
                         <a ng-if="play.Highlight" href='{{play.Highlight.LinkToHighlight}}' target="_blank">
                             <i class="playIcon"></i>
                         </a>
                     </td>
-                    <td class="digital-scout-play-by-play-score" ng-class='{"digital-scout-scoring": play.Score > 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
-                    <td ng-class='{"digital-scout-scoring": play.Score > 0, "digital-scout-play-by-play-team": true }'>
+                    <td class="digital-scout-play-by-play-score" ng-class='{"digital-scout-scoring": play.Score != 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
+                    <td ng-class='{"digital-scout-scoring": play.Score != 0, "digital-scout-play-by-play-team": true }'>
                         <span ng-show="play.TeamSeasonId == homeTeamSeasonId">{{play.Description}}</span>
                     </td>
                 </tr>
