@@ -12,7 +12,7 @@ var hsgc = angular.module('hsgc', []).config([
 
         // disable debug logging in production; this can be manually enabled here during development, but
         // DON'T COMMIT YOUR CHANGES if you decide to enable it temporarily
-        $logProvider.debugEnabled(true);
+        $logProvider.debugEnabled(false);
     }
 ]);
 

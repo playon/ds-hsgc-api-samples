@@ -12,6 +12,10 @@
 * Football: Fix the Drive Chart display for high-density screens (hdpi, retina, or whatever you want to call it)
 * Volleyball: Highlight negative score adjustments like other scoring plays
 
+*Hot fix on 2018-10-21:*
+
+* Time formatting fixed in for certain minute/seconds double types that were resulting in fractional seconds after calculation
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
