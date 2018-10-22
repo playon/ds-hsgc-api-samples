@@ -15,6 +15,7 @@
 *Hot fix on 2018-10-21:*
 
 * Time formatting fixed in for certain minute/seconds double types that were resulting in fractional seconds after calculation
+* Football & Basketball: Fix reporting by multiple parties on the Team Stats tab adding too many table cells
 
 ## 2.0.3 / 2018-04-14
 
