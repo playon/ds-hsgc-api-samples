@@ -1,14 +1,23 @@
 {
-  "name": "hsgcApiSample",
-  "version": "1.2.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "async": "~0.2.9",
-    "request": "~2.27.0"
+  "name": "ds-api-sample-js",
+  "description": "Digital Scout API sample code in JavaScript",
+  "version": "1.3.0",
+  "author": "Digital Scout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jon-adams/ds-hsgc-api-samples"
   },
-  "devDependencies": {},
-  "repository": "",
-  "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "async": "^2.x",
+    "request": "^2.x"
+  },
+  "devDependencies": {
+    "eslint": "^5.x"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended"
+  }
 }

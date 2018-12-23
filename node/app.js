@@ -1,9 +1,9 @@
 /********************Config*****************/
-var username = ''; //your hsgc username
-var password = ''; //your hsgc password
+var username = '';// your Digital Scout username
+var password = '';// your Digital Scout password
 /********************End Config*****************/
 
-var sys = require('util'),    
+var con = require('console'),    
     hsgc = require('./apiClient'),
     async = require('async');
 
@@ -18,7 +18,7 @@ getUserBoxScores2();
 
 function getUserBoxScores() {
 	if (!username || !password) {
-		sys.puts("Please edit your username and password at the top of app.js.");
+		con.error("Please edit your username and password at the top of app.js.");
 		quit();
 	}
 	hsgc.authenticate(username, password, function(authToken) {
@@ -29,7 +29,7 @@ function getUserBoxScores() {
 					if (boxScore.Status == 'Complete') {
 						text = text + ' (' + boxScore.AwayTeamAcronym + ' ' + boxScore.AwayScore + ', ' + boxScore.HomeTeamAcronym + ' ' + boxScore.HomeScore + ')';
 					}
-					sys.puts(text);					
+					con.info(text);					
 				});
 			});
 		});
@@ -38,17 +38,19 @@ function getUserBoxScores() {
 
 function getUserBoxScores2() {
 	if (!username || !password) {
-		sys.puts("Please edit your username and password at the top of app.js.");
+		con.error("Please edit your username and password at the top of app.js.");
 		quit();
 	}
 	hsgc.authenticate(username, password, function(authToken) {
+		console.debug('Authenticated');
 		hsgc.getUserBoxScores(authToken, function(boxScores) {
+			console.debug('Box scores found: ' + boxScores.length);
 			boxScores.forEach(function(boxScore) {
 				var text = boxScore.AwayTeamName + ' @ ' + boxScore.HomeTeamName + ' - ' + boxScore.StatusDisplay;
 				if (boxScore.Status == 'Complete') {
 					text = text + ' (' + boxScore.AwayTeamAcronym + ' ' + boxScore.AwayScore + ', ' + boxScore.HomeTeamAcronym + ' ' + boxScore.HomeScore + ')';
 				}
-				sys.puts(text);					
+				con.info(text);					
 			});
 		});
 	});
@@ -62,7 +64,7 @@ function getBoxScoresByState() {
 				if (boxScore.Status == 'Complete') {
 					text = text + ' (' + boxScore.AwayTeamAcronym + ' ' + boxScore.AwayScore + ', ' + boxScore.HomeTeamAcronym + ' ' + boxScore.HomeScore + ')';
 				}
-				sys.puts(text);
+				con.info(text);
 			});
 		});
 	});
@@ -72,7 +74,7 @@ function getBoxScoresByState() {
 
 function getBoxScoresForRegion(teams, callback) {
 	//getFootballTeamsInRegion(function(teams) {
-		sys.puts('Loading box scores');
+		con.info('Loading box scores...');
 		teams.forEach(function(team) {
 			team.Seasons.forEach(function(season) {
 				if (season.SeasonYear == 2013) {
@@ -88,12 +90,12 @@ function getBoxScoresForRegion(teams, callback) {
 
 function getGamesInRegion(callback) {
 	getFootballTeamsInRegion(function(teams) {
-		sys.puts('Loading games');
+		con.info('Loading games...');
 		teams.forEach(function(team) {
 			team.Seasons.forEach(function(season) {
 				if (season.SeasonYear == 2013) {
 					hsgc.getGamesBySeason(season.TeamSeasonId, function(games) {	
-						sys.puts('Loaded ' + games.length + ' games');
+						con.debug('Loaded ' + games.length + ' games');
 						callback(games);	
 					});		
 				}
@@ -104,13 +106,13 @@ function getGamesInRegion(callback) {
 
 function getFootballTeamsInRegion(callback) {
 	getSchoolsInRegion(function(schools) {
-		sys.puts('Loading teams');
+		con.info('Loading teams...');
 		mergeApiCalls(schools, function(school, cb) {
 			hsgc.getTeams('Football', 'Male', 'Varsity', school.SchoolId, function(teams) {	
 					cb(teams);
 				});
 		}, function(teams) {
-			sys.puts('Loaded ' + teams.length + ' teams');
+			con.debug('Loaded ' + teams.length + ' teams');
 			callback(teams);
 		});
 	});
@@ -118,13 +120,13 @@ function getFootballTeamsInRegion(callback) {
 
 function getSchoolsInRegion(callback) {	
 	findKansasAndMissouri(function(states) {
-		sys.puts('Loading schools');
+		con.info('Loading schools...');
 		mergeApiCalls(states, function(state, cb) {
 			hsgc.getSchools(state.Id, function(schools) {					
 					cb(schools);
 				});
 		}, function(schools) {
-			sys.puts('Loaded ' + schools.length + ' schools');
+			con.debug('Loaded ' + schools.length + ' schools');
 			callback(schools);
 		});
 	});
@@ -132,14 +134,14 @@ function getSchoolsInRegion(callback) {
 
 function findKansasAndMissouri(callback) {
 	hsgc.getStates(function(states) {
-		sys.puts('Loading states');
+		con.info('Loading states...');
 		var regionStates = [];
 		states.forEach(function(state) {			
 			if (state.Code == 'MO' || state.Code == 'KS') {						
 				regionStates.push(state);				
 			}			
 		});		
-		sys.puts('Loaded ' + regionStates.length + ' states');
+		con.debug('Loaded ' + regionStates.length + ' states');
 		callback(regionStates);
 	});
 }
