@@ -47,7 +47,7 @@
             </table>
         </div>
         <div class="digital-scout-scoreboard-details-status">
-            <div>
+            <div class="digital-scout-scoreboard-details-status-description">
                 <span class="type">{{statusPretty}}</span>
                 <h4 class="date">{{longDateTimeDisplay}}</h4>
                 <h4 ng-hide="errorMessage">{{gender}} {{sport}}</h4>
@@ -77,7 +77,7 @@
         </thead>
         <tbody>
             <tr>
-                <td ng-class="{'digital-scout-winner': isWinner(awayTeamKey)}">
+                <td ng-class="{'digital-scout-winner': isWinner(awayTeamSeasonId)}">
                     <span ng-show="!showTeamLinks">
                         <img ng-src="{{awayLogo}}" ng-srcset="{{awayLogoHigh}} 2x" class="digital-scout-logo" />
                         <span>{{awayShortName}}</span>
@@ -106,7 +106,7 @@
                 <td class="digital-scout-final">{{awayScore}}</td>
             </tr>
             <tr>
-                <td ng-class="{'digital-scout-winner': isWinner(homeTeamKey)}">
+                <td ng-class="{'digital-scout-winner': isWinner(homeTeamSeasonId)}">
                     <span ng-show="!showTeamLinks">
                         <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
                         <span>{{homeShortName}}</span>

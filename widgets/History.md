@@ -17,6 +17,12 @@
 * Time formatting fixed in for certain minute/seconds double types that were resulting in fractional seconds after calculation
 * Football & Basketball: Fix reporting by multiple parties on the Team Stats tab adding too many table cells
 
+*Hot fix on 2018-12-31:*
+
+* Remove Home/AwayTeamUnityKey since it is no longer used
+* Minor layout improvements during box score loading
+* Minor updates to various libraries
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library

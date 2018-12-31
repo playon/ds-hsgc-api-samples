@@ -18,8 +18,8 @@
         "paper": "^0.x"
     },
     "devDependencies": {
-        "eslint": "^4.x",
-        "grunt": "^1.0.x",
+        "eslint": "^5.x",
+        "grunt": "^1.x",
         "grunt-angular-templates": "^1.x",
         "grunt-aws-s3": "^2.x",
         "grunt-check-dependencies": "^1.x",

@@ -25,24 +25,15 @@ angular.module('hsgc').factory('HSGCApi', [
             scores[boxScore.HomeTeamSeasonId] = boxScore.HomeScore;
             scores[boxScore.AwayTeamSeasonId] = boxScore.AwayScore;
 
-            // map all the known keys so the final HSGC ids can be used; include originals to simplify lookup code later
+            // map all the known keys so the final HSGC ids can be used;
+            // include originals to simplify lookup code later
+            // (right now there is only the raw 1-to-1 mapping)...
             teamIdMapping[boxScore.HomeTeamSeasonId] =
                 boxScore.HomeTeamSeasonId;
             teamIdMapping[boxScore.AwayTeamSeasonId] =
                 boxScore.AwayTeamSeasonId;
-            teamIdMapping[safeToLower(boxScore.HomeTeamUnityKey)] =
-                boxScore.HomeTeamSeasonId;
-            teamIdMapping[safeToLower(boxScore.AwayTeamUnityKey)] =
-                boxScore.AwayTeamSeasonId;
+            // ...but custom mappings to alternate API system keys could go here, in theory...
 
-            colors[safeToLower(boxScore.HomeTeamUnityKey)] = {
-                primary: boxScore.HomeTeamPrimaryColor,
-                secondary: boxScore.HomeTeamSecondaryColor
-            };
-            colors[safeToLower(boxScore.AwayTeamUnityKey)] = {
-                primary: boxScore.AwayTeamPrimaryColor,
-                secondary: boxScore.AwayTeamSecondaryColor
-            };
             colors[boxScore.HomeTeamSeasonId] = {
                 primary: '#' + boxScore.HomeTeamPrimaryColor,
                 secondary: '#' + boxScore.HomeTeamSecondaryColor
@@ -90,8 +81,6 @@ angular.module('hsgc').factory('HSGCApi', [
                 teamIdMapping: teamIdMapping,
                 homeTeamSeasonId: boxScore.HomeTeamSeasonId,
                 awayTeamSeasonId: boxScore.AwayTeamSeasonId,
-                homeTeamKey: boxScore.HomeTeamUnityKey,
-                awayTeamKey: boxScore.AwayTeamUnityKey,
                 homeScore: boxScore.FinalScoresInFirstPeriod
                     ? boxScore.HomePeriodScores[0].Score
                     : boxScore.HomeScore,
@@ -234,18 +223,18 @@ angular.module('hsgc').factory('HSGCApi', [
                 isFinal: function() {
                     return this.status === 'Complete';
                 },
-                isWinner: function(teamKey) {
+                isWinner: function(teamSeasonId) {
                     if (this.isFinal()) {
                         if (
                             this.homeScore > this.awayScore &&
-                            this.teamIdMapping[safeToLower(teamKey)] ==
+                            this.teamIdMapping[safeToLower(teamSeasonId)] ==
                                 this.homeTeamSeasonId
                         ) {
                             return true;
                         }
                         if (
                             this.homeScore < this.awayScore &&
-                            this.teamIdMapping[safeToLower(teamKey)] ==
+                            this.teamIdMapping[safeToLower(teamSeasonId)] ==
                                 this.awayTeamSeasonId
                         ) {
                             return true;
@@ -662,7 +651,11 @@ angular.module('hsgc').factory('HSGCApi', [
 
         var safeToLower = function(toLower) {
             if (typeof toLower === 'undefined') {
+                // undefined; to avoid errors, return a blank string
                 return '';
+            } else if (Number.isInteger(toLower) || !(typeof toLower === 'string' || toLower instanceof String)) {
+                // either number or not a string; return unaltered
+                return toLower;
             } else {
                 return toLower.toLowerCase();
             }
