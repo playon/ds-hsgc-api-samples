@@ -24,7 +24,7 @@
                         <span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{awayName}}</span>
                     </th>
                     <th class="digital-scout-play-by-play-score">Score</th>
-                    <th class="digital-scout-play-by-play-team" title="{{homeName}}">
+                    <th class="digital-scout-play-by-play-team digital-scout-play-by-play-team-home" title="{{homeName}}">
                         <img ng-src="{{homeLogo}}" ng-srcset="{{homeLogoHigh}} 2x" class="digital-scout-logo" />
                         <span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm-inline">{{homeAcronym}}</span>
                         <span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{homeName}}</span>
@@ -40,7 +40,7 @@
                         </a>
                     </td>
                     <td class="digital-scout-play-by-play-score" ng-class='{"digital-scout-scoring": play.Score != 0 }'>{{play.AwayScore}} - {{play.HomeScore}}</td>
-                    <td ng-class='{"digital-scout-scoring": play.Score != 0, "digital-scout-play-by-play-team": true }'>
+                    <td ng-class='{"digital-scout-scoring": play.Score != 0, "digital-scout-play-by-play-team": true, "digital-scout-play-by-play-team-home": true }'>
                         <span ng-show="play.TeamSeasonId == homeTeamSeasonId">{{play.Description}}</span>
                     </td>
                 </tr>

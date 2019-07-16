@@ -8,7 +8,7 @@
 
 See the `examples` directory for what kind of code you would need to use to embed these widgets in an `IFRAME` anywhere on the web.
 
-The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.0.3/basic.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.3/basic.html)
+The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.0.4/minibox.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.4/minibox.html)
 
 ## License
 
