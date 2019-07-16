@@ -3,4 +3,3 @@ node_modules
 *.suo
 obj
 .vscode
-package-lock.json
