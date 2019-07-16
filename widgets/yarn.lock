@@ -292,7 +292,7 @@ archive-type@^4.0.0:
   dependencies:
     file-type "^4.2.0"
 
-argparse@^1.0.2, argparse@^1.0.7:
+argparse@^1.0.7:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.9.tgz#73d83bc263f86e97f8cc4f6bae1b0e90a7d22c86"
   dependencies:
@@ -559,9 +559,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.x:
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
+bootstrap@^3:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.4.1.tgz#c3a347d419e289ad11f4033e3c4132b87c081d72"
+  integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
 
 bower-config@^1.4.0:
   version "1.4.1"
@@ -1576,7 +1577,7 @@ eslint-visitor-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
 
-eslint@^6.x:
+eslint@^6:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.0.1.tgz#4a32181d72cb999d6f54151df7d337131f81cda7"
   integrity sha512-DyQRaMmORQ+JsWShYsSg4OPTjY56u1nCjAmICrE8vLWqyLKxhFXOthwMj1SA8xwfrv0CofLNVnqbfyhwCkaO0w==
@@ -1626,10 +1627,6 @@ espree@^6.0.0:
     acorn "^6.0.7"
     acorn-jsx "^5.0.0"
     eslint-visitor-keys "^1.0.0"
-
-esprima@^2.6.0:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
 esprima@^4.0.0:
   version "4.0.0"
@@ -2331,15 +2328,17 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.3:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-grunt-angular-templates@^1.x:
+grunt-angular-templates@^1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/grunt-angular-templates/-/grunt-angular-templates-1.1.0.tgz#109603a2b95ff01019b718c70341268f09d8be19"
+  integrity sha1-EJYDorlf8BAZtxjHA0EmjwnYvhk=
   dependencies:
     html-minifier "~2.1.2"
 
-grunt-aws-s3@^2.x:
+grunt-aws-s3@^2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/grunt-aws-s3/-/grunt-aws-s3-2.0.0.tgz#0262203d43646ca7bd92b2e1d2e71a2820edf9f5"
+  integrity sha512-gBzOiVmhtGivSc/rL+/E6DWq3TY2n8dUFZqtqlaEgVIFwyh6+M2NngqgnSTRgoDgxvqOzug8KsZ7wL+j4PdTVg==
   dependencies:
     async "0.9.x"
     aws-sdk "2.0.x"
@@ -2347,22 +2346,24 @@ grunt-aws-s3@^2.x:
     mime-types "2.0.x"
     progress "1.1.x"
 
-grunt-check-dependencies@^1.x:
+grunt-check-dependencies@^1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/grunt-check-dependencies/-/grunt-check-dependencies-1.0.0.tgz#51889587c57e827dde9cdf69b750ae0b2f881c50"
+  integrity sha1-UYiVh8V+gn3enN9pt1CuCy+IHFA=
   dependencies:
     check-dependencies "^1.0.1"
     lodash.clonedeep "^4.5.0"
 
-grunt-cli@^1.x:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/grunt-cli/-/grunt-cli-1.3.1.tgz#b9cb5b7a7200e490711e1ee7cb049c9a815471f0"
+grunt-cli@^1:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/grunt-cli/-/grunt-cli-1.3.2.tgz#60f12d12c1b5aae94ae3469c6b5fe24e960014e8"
+  integrity sha512-8OHDiZZkcptxVXtMfDxJvmN7MVJNE8L/yIcPb4HB7TlyFD1kDvjHrb62uhySsU14wJx9ORMnTuhRMQ40lH/orQ==
   dependencies:
     grunt-known-options "~1.1.0"
     interpret "~1.1.0"
     liftoff "~2.5.0"
     nopt "~4.0.1"
-    v8flags "~3.0.2"
+    v8flags "~3.1.1"
 
 grunt-cli@~1.2.0:
   version "1.2.0"
@@ -2373,16 +2374,18 @@ grunt-cli@~1.2.0:
     nopt "~3.0.6"
     resolve "~1.1.0"
 
-grunt-contrib-clean@^2.x:
+grunt-contrib-clean@^2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-clean/-/grunt-contrib-clean-2.0.0.tgz#3be7ca480da4b740aa5e9d863e2f7e8b24f8a68b"
+  integrity sha512-g5ZD3ORk6gMa5ugZosLDQl3dZO7cI3R14U75hTM+dVLVxdMNJCPVmwf9OUt4v4eWgpKKWWoVK9DZc1amJp4nQw==
   dependencies:
     async "^2.6.1"
     rimraf "^2.6.2"
 
-grunt-contrib-connect@^2.x:
+grunt-contrib-connect@^2:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-connect/-/grunt-contrib-connect-2.0.0.tgz#7ee86838f351f72c12186143ebc60823d8d524dd"
+  integrity sha512-JVjM9UDP84WbT2S7swkyuwPuxFtT+zry/RUBuP3IT8LZPEQjtzzMwiM+qimswNKQ9plh5WhcFWaaqz2ruB9/DA==
   dependencies:
     async "^2.6.1"
     connect "^3.6.6"
@@ -2394,14 +2397,15 @@ grunt-contrib-connect@^2.x:
     serve-index "^1.9.1"
     serve-static "^1.13.2"
 
-grunt-contrib-copy@^1.x:
+grunt-contrib-copy@^1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-copy/-/grunt-contrib-copy-1.0.0.tgz#7060c6581e904b8ab0d00f076e0a8f6e3e7c3573"
+  integrity sha1-cGDGWB6QS4qw0A8HbgqPbj58NXM=
   dependencies:
     chalk "^1.1.1"
     file-sync-cmp "^0.1.0"
 
-grunt-contrib-imagemin@^3.x:
+grunt-contrib-imagemin@^3:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-imagemin/-/grunt-contrib-imagemin-3.1.0.tgz#d04b3cb057a694e2aab37d9818db4fae3908770b"
   integrity sha512-c0duAb018eowVVfqNMN0S5Esx8mRZ1OP/hkEoKnJkOCaD9/DywKGvLuhschF+DByPSs4k1u1y38w9Bt+ihJG8A==
@@ -2417,9 +2421,10 @@ grunt-contrib-imagemin@^3.x:
     imagemin-optipng "^6.0.0"
     imagemin-svgo "^7.0.0"
 
-grunt-contrib-less@^1.x:
+grunt-contrib-less@^1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/grunt-contrib-less/-/grunt-contrib-less-1.4.1.tgz#3bbdec0b75d12ceaa55d62943625c0b0861cdf6f"
+  integrity sha1-O73sC3XRLOqlXWKUNiXAsIYc328=
   dependencies:
     async "^2.0.0"
     chalk "^1.0.0"
@@ -2435,9 +2440,10 @@ grunt-contrib-uglify@>=3.3.0:
     uglify-js "~3.3.0"
     uri-path "^1.0.0"
 
-grunt-contrib-watch@^1.x:
+grunt-contrib-watch@^1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/grunt-contrib-watch/-/grunt-contrib-watch-1.1.0.tgz#c143ca5b824b288a024b856639a5345aedb78ed4"
+  integrity sha512-yGweN+0DW5yM+oo58fRu/XIRrPcn3r4tQx+nL7eMRwjpvk+rQY6R8o94BPK0i2UhTg9FN21hS+m8vR8v9vXfeg==
   dependencies:
     async "^2.6.0"
     gaze "^1.1.0"
@@ -2479,17 +2485,18 @@ grunt-legacy-util@~1.1.1:
     underscore.string "~3.3.4"
     which "~1.3.0"
 
-grunt-string-replace@^1.x:
+grunt-string-replace@^1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/grunt-string-replace/-/grunt-string-replace-1.3.1.tgz#633a03bc78482a0e0e1f9df7f645811fc1fbb162"
+  integrity sha1-YzoDvHhIKg4OH5339kWBH8H7sWI=
   dependencies:
     async "^2.0.0"
     chalk "^1.0.0"
 
-grunt@^1.x:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/grunt/-/grunt-1.0.3.tgz#b3c99260c51d1b42835766e796527b60f7bba374"
-  integrity sha512-/JzmZNPfKorlCrrmxWqQO4JVodO+DVd5XX4DkocL/1WlLlKVLE9+SdEIempOAxDhWPysLle6afvn/hg7Ck2k9g==
+grunt@^1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/grunt/-/grunt-1.0.4.tgz#c799883945a53a3d07622e0737c8f70bfe19eb38"
+  integrity sha512-PYsMOrOC+MsdGEkFVwMaMyc6Ob7pKmq+deg1Sjr+vvMWp35sztfwKE7qoN51V+UEtHsyNuMcGdgMLFkBHvMxHQ==
   dependencies:
     coffeescript "~1.10.0"
     dateformat "~1.0.12"
@@ -2502,7 +2509,7 @@ grunt@^1.x:
     grunt-legacy-log "~2.0.0"
     grunt-legacy-util "~1.1.1"
     iconv-lite "~0.4.13"
-    js-yaml "~3.5.2"
+    js-yaml "~3.13.0"
     minimatch "~3.0.2"
     mkdirp "~0.5.1"
     nopt "~3.0.6"
@@ -3236,20 +3243,13 @@ js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
 
-js-yaml@^3.13.1:
+js-yaml@^3.13.1, js-yaml@~3.13.0:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
-
-js-yaml@~3.5.2:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.5.5.tgz#0377c38017cabc7322b0d1fbcd25a491641f2fbe"
-  dependencies:
-    argparse "^1.0.2"
-    esprima "^2.6.0"
 
 jsbn@~0.1.0:
   version "0.1.1"
@@ -3259,15 +3259,16 @@ jsesc@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-2.5.1.tgz#e421a2a8e20d6b0819df28908f782526b96dd1fe"
 
-jshint@^2.x:
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/jshint/-/jshint-2.9.5.tgz#1e7252915ce681b40827ee14248c46d34e9aa62c"
+jshint@^2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/jshint/-/jshint-2.10.2.tgz#ed6626c4f8223c98e94aaea62767435427a49a3d"
+  integrity sha512-e7KZgCSXMJxznE/4WULzybCMNXNAd/bf5TSrvVEq78Q/K8ZwFpmBqQeDtNiHc3l49nV4E/+YeHU/JZjSUIrLAA==
   dependencies:
     cli "~1.0.0"
     console-browserify "1.1.x"
     exit "0.1.x"
     htmlparser2 "3.8.x"
-    lodash "3.7.x"
+    lodash "~4.17.11"
     minimatch "~3.0.2"
     shelljs "0.3.x"
     strip-json-comments "1.0.x"
@@ -3450,10 +3451,6 @@ lodash@2.4.x:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.2.tgz#fadd834b9683073da179b3eae6d9c0d15053f73e"
 
-lodash@3.7.x:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.7.0.tgz#3678bd8ab995057c07ade836ed2ef087da811d45"
-
 lodash@^4.14.0, lodash@^4.8.2, lodash@~4.17.4:
   version "4.17.5"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
@@ -3462,7 +3459,7 @@ lodash@^4.17.10, lodash@^4.17.11, lodash@~4.17.10, lodash@~4.17.5:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
-lodash@^4.17.12:
+lodash@^4.17.12, lodash@~4.17.11:
   version "4.17.14"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
   integrity sha512-mmKYbW3GLuJeX+iGP+Y7Gp1AiGHGbXHCOh/jZmrawMmsE7MS4znI3RL2FsjbqOyMayHInjOeykW7PEajUk1/xw==
@@ -4191,9 +4188,10 @@ pako@~0.2.0:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
 
-paper@^0.x:
-  version "0.11.5"
-  resolved "https://registry.yarnpkg.com/paper/-/paper-0.11.5.tgz#d662de67bce8218c287bfe17586d099d2cc48040"
+paper@^0:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/paper/-/paper-0.12.3.tgz#7274a31c17b8998ab0d98207fcf25a8f25f4c18d"
+  integrity sha512-MBlJ0xKFkU/K0eTk2VoAlNbqbfp7MJMVw7gF6v0pveXrBXrJ+1842YLTm07jjjbVJaQZnLvtecDf6Mbazc3jig==
 
 param-case@^2.1.0:
   version "2.1.1"
@@ -5396,11 +5394,12 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-stylelint-config-recommended@^2.x:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"
+stylelint-config-recommended@^2:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.2.0.tgz#46ab139db4a0e7151fd5f94af155512886c96d3f"
+  integrity sha512-bZ+d4RiNEfmoR74KZtCKmsABdBJr4iXRiCso+6LtMJPw5rd/KnxUWTxht7TbafrTJK1YRjNgnN0iVZaJfc3xJA==
 
-stylelint@^10.x:
+stylelint@^10:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-10.1.0.tgz#1bc4c4ce878107e7c396b19226d91ba28268911a"
   integrity sha512-OmlUXrgzEMLQYj1JPTpyZPR9G4bl0StidfHnGJEMpdiQ0JyTq0MPg1xkHk1/xVJ2rTPESyJCDWjG8Kbpoo7Kuw==
@@ -5553,9 +5552,10 @@ tempfile@^2.0.0:
     temp-dir "^1.0.0"
     uuid "^3.0.1"
 
-temporary@0.x:
+temporary@0:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/temporary/-/temporary-0.0.8.tgz#a18a981d28ba8ca36027fb3c30538c3ecb740ac0"
+  integrity sha1-oYqYHSi6jKNgJ/s8MFOMPst0CsA=
   dependencies:
     package ">= 1.0.0 < 1.2.0"
 
@@ -5927,9 +5927,10 @@ uuid@^3.0.0, uuid@^3.0.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
-v8flags@~3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-3.0.2.tgz#ad6a78a20a6b23d03a8debc11211e3cc23149477"
+v8flags@~3.1.1:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/v8flags/-/v8flags-3.1.3.tgz#fc9dc23521ca20c5433f81cc4eb9b3033bb105d8"
+  integrity sha512-amh9CCg3ZxkzQ48Mhcb8iX7xpAfYJgePHxWMQCBWECpOSqJUXgY26ncA61UTV0BkPqfhcy6mzwCIoP4ygxpW8w==
   dependencies:
     homedir-polyfill "^1.0.1"
 
