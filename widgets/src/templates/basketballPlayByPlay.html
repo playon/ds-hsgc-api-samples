@@ -28,7 +28,7 @@
                 <tr ng-repeat="play in playByPlay | filter:{'Quarter': selectedPeriod}:true">
                     <td ng-class='{"digital-scout-scoring": play.IsScoring, "digital-scout-play-by-play-team": true }'>
                         <img ng-src="{{getLogo(play)}}" class="digital-scout-logo" />
-                        <span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm">{{getTeamAcronym(play)}}</span>
+                        <span class="digital-scout-play-by-play-team-acronym digital-scout-visible-sm-inline">{{getTeamAcronym(play)}}</span>
                         <span class="digital-scout-play-by-play-team-name digital-scout-hidden-sm">{{play.TeamName}}</span>
                     </td>
                     <td ng-class='{"digital-scout-scoring": play.IsScoring }'>

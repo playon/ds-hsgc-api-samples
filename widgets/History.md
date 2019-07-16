@@ -23,6 +23,11 @@
 * Minor layout improvements during box score loading
 * Minor updates to various libraries
 
+*Hot fix on 2019-07-15:*
+
+* Updated libraries
+* Basketball and Volleyball: Fix word-wrapping in play-by-play on mobile devices
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
