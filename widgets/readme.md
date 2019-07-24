@@ -16,7 +16,7 @@ This code is licensed under the MIT license (see the README at the top level of 
 
 ## Development Requirements
 
-1. **nodejs**
+1. **nodejs** v8+
 1. **npm**
 1. **grunt** (`npm install -g grunt-cli`)
 

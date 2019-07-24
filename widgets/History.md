@@ -28,6 +28,10 @@
 * Updated libraries
 * Basketball and Volleyball: Fix word-wrapping in play-by-play on mobile devices
 
+*Hot fix on 2019-07-23:*
+
+* Updated libraries
+
 ## 2.0.3 / 2018-04-14
 
 * Update AngularJS library
