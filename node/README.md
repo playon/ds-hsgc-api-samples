@@ -7,6 +7,7 @@ Sample node (JavaScript) code to access the Digital Scout API
 Standard node install. `npm` for package management.
 
 - `node install`
+- `npm update`
 
 ## Run
 
