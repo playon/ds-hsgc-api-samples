@@ -8,7 +8,15 @@
 
 See the `examples` directory for what kind of code you would need to use to embed these widgets in an `IFRAME` anywhere on the web.
 
-The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.0.4/minibox.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.4/minibox.html)
+The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/minibox.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/minibox.html)
+
+Most of the examples link to a specific game for demonstration. Most of the common examples, like `football.html`, `basketball.html`, and `volleyball.html` do not. Instead, you need to pass a `gameKey` like you need to when you reference the specific game you want to show.
+
+Here are some examples you can use in this case:
+
+* [`basketball.html?gameKey=9105703`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/basketball.html?gameKey=9105703)
+* [`football.html?gameKey=8284106`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/football.html?gameKey=8284106)
+* [`volleyball.html?gameKey=8267306`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/volleyball.html?gameKey=8267306)
 
 ## License
 
@@ -50,17 +58,6 @@ The bulk of the code you will probably need to modify for development is in less
 
 * For new sports, update `src/js/directives/datacast.js`, `src/js/services/hsgc-api.js`, `src/templates/gameSummary.html`, and `src/templates/fullBoxScore.html` to allow and implement the new sport, in addition to any new directives and templates required for that sport
 * Info about configuration options are available at `src/js/services/hsgcConfig.js`
-* `bower.js` maintains the current JS library dependencies--see the **JavaScript libraries** section below
-
-#### JavaScript libraries
-
-Bower is used to maintain the various JS libraries used.
-
-The `bower.js` file maintains which packages and versions are used and allowed to be updated to. (See the official docs of [Ranges](https://github.com/npm/node-semver#ranges) on how to define acceptable version ranges.)
-
-Use `bower update` and `bower install LIBRARY_NAME_HERE --save` to update and install libraries.
-
-Once bower has been run, manually update the build targets in `Gruntfile.js` to compile/include those libraries where appropriate.
 
 #### Debug logging
 

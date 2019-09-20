@@ -1,5 +1,10 @@
 # History
 
+## 2.0.5 / 2019-09-19
+
+* Remove hard-coded example game ids from the main sport examples, in favor of showing how to use URL params like `gameKey=123`
+* Update libraries
+
 ## 2.0.4 / 2018-06-10
 
 * Lock down AngularJS 1.6 until the code can be upgrade to 1.7
