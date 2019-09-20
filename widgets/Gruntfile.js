@@ -28,7 +28,6 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'build/css/digitalscout.css': 'src/less/digitalscout.less',
-                    'build/usa_today.css': 'examples/usa_today.less',
                     'build/css/base.css': 'src/less/base/base.less'
                 }
             }
