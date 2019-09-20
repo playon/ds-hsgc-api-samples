@@ -46,41 +46,6 @@
     </div>
 
     <script>
-      nfhs = {
-        auth: {
-          datacast: function(gameKey, publisherKey, cb) {
-            cb({authorized: true});
-          }
-        },
-        utils: {
-          getUnityObject: function(type, key, cb) {
-            var resource;
-            if (type == "game") {
-              resource = "games";
-            }
-            $.get(hsgcWidgets.unityRoot + resource + "/" + key, function(data) {
-              cb(data);
-            });
-          }
-        },
-        analytics: {
-          sendPageView: function(data) { console.log(data); }
-        },
-        templater: {
-          datacastUpsell: function(game, cb) {
-            cb({});
-          }
-        }
-      };
-
-      nfhsplayer = {
-        templates: {
-          upsell: function(vars) {
-            return '<div>Upsell</div>';
-          }
-        }
-      };
-
       hsgcWidgets.init({
         env: 'prod',  // prod=production, stage=staging/testing, dev=development; switches between the default URL endpoints for each environment
         keyStrategy: 'hsgc',  // hsgc is the default, using Digital Scout identifiers; others available for custom third-party use—contact support@digitalscout.com for more info
