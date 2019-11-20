@@ -13,7 +13,7 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "angular": "1.6.x",
+        "angular": "1.7.x",
         "bootstrap": "^3.4.1",
         "paper": "^0.12.3"
     },
