@@ -1,5 +1,11 @@
 # History
 
+## 2.1.0 / 2019-10-03
+
+* Requires Node v10+
+* Update libraries
+* Ensure tabs do not get extra margin added to them when embedded in other stylesheets
+
 ## 2.0.5 / 2019-09-19
 
 * Remove hard-coded example game ids from the main sport examples, in favor of showing how to use URL params like `gameKey=123`
