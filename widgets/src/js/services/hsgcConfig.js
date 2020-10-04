@@ -42,7 +42,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
             ? 'https://api-cf.digitalscout.com/v1.2/'
             : this.config.env === 'stage'
                 ? 'https://api-stage.digitalscout.com/v1.2/'
-                : 'https://api.gamecenter.dev/';
+                : 'https://api.gamecenter.test/';
     };
 
     this.getHsgcStatsRoot = function() {
@@ -50,7 +50,7 @@ angular.module('hsgc').provider('hsgcConfig', function() {
             ? 'https://stats.digitalscout.com/'
             : this.config.env === 'stage'
                 ? 'https://stats-stage.digitalscout.com/'
-                : 'https://stats.gamecenter.dev/';
+                : 'https://stats.gamecenter.test/';
     };
 
     this.getUnityApiRoot = function() {
