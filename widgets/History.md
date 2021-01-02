@@ -6,6 +6,11 @@
 * Update libraries
 * Ensure tabs do not get extra margin added to them when embedded in other stylesheets
 
+*Hot fix on 2021-01-02:*
+
+* Football: Team stat header abbreviations on mobile to fix horizontal scrolling issue
+* Update libraries
+
 ## 2.0.5 / 2019-09-19
 
 * Remove hard-coded example game ids from the main sport examples, in favor of showing how to use URL params like `gameKey=123`

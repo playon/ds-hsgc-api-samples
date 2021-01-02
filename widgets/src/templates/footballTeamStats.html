@@ -11,72 +11,114 @@
         </thead>
         <tbody>
             <tr>
-                <td>Number of Plays</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Number of Plays</span>
+                    <span class="digital-scout-visible-sm-inline" title="Number of Plays">Plays</span>
+                </td>
                 <td>{{awayStats.TotalPlays}}</td>
                 <td>{{homeStats.TotalPlays}}</td>
             </tr>
             <tr>
-                <td>Total Offense</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Total Offense</span>
+                    <span class="digital-scout-visible-sm-inline" title="Total Offense">OFF Yds</span>
+                </td>
                 <td>{{awayStats.TotalYards}}</td>
                 <td>{{homeStats.TotalYards}}</td>
             </tr>
             <tr>
-                <td>Time of Possession</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Time of Possession</span>
+                    <span class="digital-scout-visible-sm-inline" title="Time of Possession">Time of POS</span>
+                </td>
                 <td>{{awayStats.TimeOfPossession.replace(timeOfPossessionRegex, '')}}</td>
                 <td>{{homeStats.TimeOfPossession.replace(timeOfPossessionRegex, '')}}</td>
             </tr>
             <tr>
-                <td>Rushing Attempts - Yards</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Rushing Attempts - Yards</span>
+                    <span class="digital-scout-visible-sm-inline" title="Rushing Attempts - Yards">Rush Att-Yds</span>
+                </td>
                 <td>{{awayStats.RushingAttempts}} - {{awayStats.RushingYards}}</td>
                 <td>{{homeStats.RushingAttempts}} - {{homeStats.RushingYards}}</td>
             </tr>
             <tr>
-                <td>Passing: Completions - Attempts</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Passing: Completions - Attempts</span>
+                    <span class="digital-scout-visible-sm-inline" title="Passing: Completions - Attempts">Pass: Cmp-Att</span>
+                </td>
                 <td>{{awayStats.PassingCompletions}} - {{awayStats.PassingAttempts}}</td>
                 <td>{{homeStats.PassingCompletions}} - {{homeStats.PassingAttempts}}</td>
             </tr>
             <tr>
-                <td>Passing Yards</td>
+                <td>
+                    <span class="digital-scout-hidden-sm"></span>
+                    <span class="digital-scout-visible-sm-inline" title="Passing Yards">Pass Yds</span>
+                </td>
                 <td>{{awayStats.PassingYards}}</td>
                 <td>{{homeStats.PassingYards}}</td>
             </tr>
             <tr>
-                <td>Passing: Touchdowns - Interceptions</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Passing: Touchdowns - Interceptions</span>
+                    <span class="digital-scout-visible-sm-inline" title="Passing: Touchdowns - Interceptions">TD-Int</span>
+                </td>
                 <td>{{awayStats.PassingTouchdowns}} - {{awayStats.Interceptions}}</td>
                 <td>{{homeStats.PassingTouchdowns}} - {{homeStats.Interceptions}}</td>
             </tr>
             <tr>
-                <td>Fumbles - Lost</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Fumbles - Lost</span>
+                    <span class="digital-scout-visible-sm-inline" title="Fumbles - Lost">Lost</span>
+                </td>
                 <td>{{awayStats.Fumbles}} - {{awayStats.FumblesLost}}</td>
                 <td>{{homeStats.Fumbles}} - {{homeStats.FumblesLost}}</td>
             </tr>
             <tr>
-                <td>Turnovers</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Turnovers</span>
+                    <span class="digital-scout-visible-sm-inline" title="Turnovers">Turnovers</span>
+                </td>
                 <td>{{awayStats.Turnovers}}</td>
                 <td>{{homeStats.Turnovers}}</td>
             </tr>
             <tr>
-                <td>First Downs</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">First Downs</span>
+                    <span class="digital-scout-visible-sm-inline" title="First Downs">1st</span>
+                </td>
                 <td>{{awayStats.FirstDowns}}</td>
                 <td>{{homeStats.FirstDowns}}</td>
             </tr>
             <tr>
-                <td>First Downs - Rushing</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">First Downs - Rushing</span>
+                    <span class="digital-scout-visible-sm-inline" title="First Downs - Rushing">1st Rush</span>
+                </td>
                 <td>{{awayStats.FirstDownsRushing}}</td>
                 <td>{{homeStats.FirstDownsRushing}}</td>
             </tr>
             <tr>
-                <td>First Downs - Passing</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">First Downs - Passing</span>
+                    <span class="digital-scout-visible-sm-inline" title="First Downs - Passing">1st Pass</span>
+                </td>
                 <td>{{awayStats.FirstDownsPassing}}</td>
                 <td>{{homeStats.FirstDownsPassing}}</td>
             </tr>
             <tr>
-                <td>First Downs - Penalties</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">First Downs - Penalties</span>
+                    <span class="digital-scout-visible-sm-inline" title="First Downs - Penalties">1st Penalty</span>
+                </td>
                 <td>{{awayStats.FirstDownsPenalty}}</td>
                 <td>{{homeStats.FirstDownsPenalty}}</td>
             </tr>
             <tr>
-                <td>Third Down Conversions/Attempts</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Third Down Conversions/Attempts</span>
+                    <span class="digital-scout-visible-sm-inline" title="Third Down Conversions/Attempts">3rd</span>
+                </td>
                 <td>
                     <span ng-show="awayStats.ThirdDownAttempts > 0">
                         {{awayStats.ThirdDownConversions}}/{{awayStats.ThirdDownAttempts}} ({{awayStats.ThirdDownConversionPercentage | decimals:1}}%)
@@ -89,7 +131,10 @@
                 </td>
             </tr>
             <tr>
-                <td>Fourth Down Conversions/Attempts</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Fourth Down Conversions/Attempts</span>
+                    <span class="digital-scout-visible-sm-inline" title="Fourth Down Conversions/Attempts">4th</span>
+                </td>
                 <td>
                     <span ng-show="awayStats.FourthDownAttempts > 0">
                         {{awayStats.FourthDownConversions}}/{{awayStats.FourthDownAttempts}} ({{awayStats.FourthDownConversionPercentage | decimals:1}}%)
@@ -102,17 +147,26 @@
                 </td>
             </tr>
             <tr>
-                <td>Penalties - Yards</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Penalties - Yards</span>
+                    <span class="digital-scout-visible-sm-inline" title="Penalties - Yards">Penalty Yds</span>
+                </td>
                 <td>{{awayStats.Penalties}} - {{awayStats.PenaltyYards}}</td>
                 <td>{{homeStats.Penalties}} - {{homeStats.PenaltyYards}}</td>
             </tr>
             <tr>
-                <td>Defensive Sacks - Yards</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Defensive Sacks - Yards</span>
+                    <span class="digital-scout-visible-sm-inline" title="Defensive Sacks - Yards">Sk Yds</span>
+                </td>
                 <td>{{awayStats.DefensiveSacks}} - {{awayStats.DefensiveSackYardage}}</td>
                 <td>{{homeStats.DefensiveSacks}} - {{homeStats.DefensiveSackYardage}}</td>
             </tr>
             <tr>
-                <td>Punts - Average</td>
+                <td>
+                    <span class="digital-scout-hidden-sm">Punts - Average</span>
+                    <span class="digital-scout-visible-sm-inline" title="Punts - Average">Punts - Avg</span>
+                </td>
                 <td>{{awayStats.PuntingAttempts}} - {{awayStats.PuntingAverageYards | decimals:1}}</td>
                 <td>{{homeStats.PuntingAttempts}} - {{homeStats.PuntingAverageYards | decimals:1}}</td>
             </tr>
