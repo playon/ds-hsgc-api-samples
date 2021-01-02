@@ -24,7 +24,7 @@ This code is licensed under the MIT license (see the README at the top level of 
 
 ## Development Requirements
 
-1. **nodejs** v10.22.1+
+1. **nodejs** v14.15+
 1. **npm**
 1. **grunt** (`npm install -g grunt-cli`)
 
@@ -37,6 +37,7 @@ This code is licensed under the MIT license (see the README at the top level of 
 1. Ensure npm is up to date with `npm update -g npm`
 1. Install `grunt` globally: `npm install grunt yarn -g`
 1. Run `yarn` to install the project dependencies
+   1. Note: Windows Powershell can't run some special syntax paperjs `0.12.11` uses, so you need to use git bash or similar, by running this at the command line `C:\Program Files\git\bin\bash.exe` then running `yarn` from there. (See [paperjs issue #1833](https://github.com/paperjs/paper.js/issues/1833) for more on the issue.)
 1. Create a new file in the main `widgets` directory called `.grunt-aws`. The file should contains a JSON object with the properties `key` and `secret`. For local testing, it can have fake data, and does *not* need access to the S3. For example, for local testing this will work: `{ "key": "your_key", "secret": "your_secret" }`
 1. To build: run `grunt` which will create a minified JavaScript file at `build/hsgc-widgets.min.js`, as well as styled and un-styled, example HTML pages
 1. To test, go to [`https://localhost:3001/`](https://localhost:3001/) and select an appropriate HTML file to test—you will have to accept the self-signed certificate in your browser
