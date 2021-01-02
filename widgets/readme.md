@@ -8,15 +8,15 @@
 
 See the `examples` directory for what kind of code you would need to use to embed these widgets in an `IFRAME` anywhere on the web.
 
-The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/minibox.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/minibox.html)
+The examples are available for display at `https://cdn.digitalscout.com/js/hsgc-widgets/VERSION/EXAMPLE.html` where `VERSION` is the current version as specified in `package.json` and `EXAMPLE.html` is the one of the example HTML files in the `examples/` directory in this repository. For example, [`https://cdn.digitalscout.com/js/hsgc-widgets/2.1.0/minibox.html`](https://cdn.digitalscout.com/js/hsgc-widgets/2.1.0/minibox.html)
 
 Most of the examples link to a specific game for demonstration. Most of the common examples, like `football.html`, `basketball.html`, and `volleyball.html` do not. Instead, you need to pass a `gameKey` like you need to when you reference the specific game you want to show.
 
 Here are some examples you can use in this case:
 
-* [`basketball.html?gameKey=9105703`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/basketball.html?gameKey=9105703)
-* [`football.html?gameKey=8284106`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/football.html?gameKey=8284106)
-* [`volleyball.html?gameKey=8267306`](https://cdn.digitalscout.com/js/hsgc-widgets/2.0.5/volleyball.html?gameKey=8267306)
+* [`basketball.html?gameKey=9105703`](https://cdn.digitalscout.com/js/hsgc-widgets/2.1.0/basketball.html?gameKey=9105703)
+* [`football.html?gameKey=8284106`](https://cdn.digitalscout.com/js/hsgc-widgets/2.1.0/football.html?gameKey=8284106)
+* [`volleyball.html?gameKey=8267306`](https://cdn.digitalscout.com/js/hsgc-widgets/2.1.0/volleyball.html?gameKey=8267306)
 
 ## License
 
